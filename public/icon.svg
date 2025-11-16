@@ -1,143 +1,21 @@
-<!DOCTYPE svg [
-  <!ENTITY center "50">
-  <!ENTITY leftX "12">
-  <!ENTITY leftXS "8">
-  <!ENTITY rightX "88">
-  <!ENTITY rightXS "92">
-  <!ENTITY topY "23">
-  <!ENTITY bottomY "77">
-  <!ENTITY bracketWidth "15">
-  <!ENTITY leftInnerX "28">
-  <!ENTITY rightInnerX "72">
-  <!ENTITY strokeWidth "8">
-  <!ENTITY starRadius "27">
-  <!ENTITY starTop "24">
-  <!ENTITY starRight "76">
-  <!ENTITY starBottom "76">
-  <!ENTITY starLeft "24">
-  <!ENTITY squareStrokeWidth "6">
-  <!ENTITY squareOffset "3">
-  <!ENTITY rectWidth "80">
-  <!ENTITY rectHeight "60">
-  <!ENTITY rectX "13">
-  <!ENTITY rectY "23">
-  <!ENTITY rectDrawWidth "74">
-  <!ENTITY rectDrawHeight "54">
-]>
-<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
   <defs>
-    <linearGradient id="gradient" gradientUnits="userSpaceOnUse" x1="8" y1="19" x2="92" y2="81">
-      <stop offset="0" stop-color="oklch(62.3% 0.214 259.815)" />
-      <stop offset="1" stop-color="oklch(65.6% 0.241 354.308)" />
+    <linearGradient id="gradient" gradientUnits="userSpaceOnUse" x1="51" y1="103" x2="461" y2="409">
+      <stop offset="0" stop-color="#2b7fff" />
+      <stop offset="1" stop-color="#f6339a" />
     </linearGradient>
   </defs>
-  <!-- 
-    Variables defined in DOCTYPE:
-    l = 70.71 (length of vertical lines)
-    center = 50
-    leftX = center - l/2 = 14.645
-    rightX = center + l/2 = 85.355
-    topY = center - l/2 = 14.645
-    bottomY = center + l/2 = 85.355
-  -->
-
-  <!-- Black rectangle inscribed in circle (corners touch circle) -->
-  <!-- 
-    Aspect ratio 4:3 (width:height = 4:3)
-    For circle radius = 50, inscribed rectangle with ratio 4:3:
-    - Full width = 80, Full height = 60
-    - Half width = 40, Half height = 30
-    - Diagonal/2 = sqrt(40² + 30²) = sqrt(1600 + 900) = sqrt(2500) = 50 ✓
-    
-    Corners at: (10, 20), (90, 20), (90, 80), (10, 80)
-    With stroke-width = 6 (centered), outer edge extends 3px beyond rect boundary
-    So rect must start at (10 + 3, 20 + 3) = (13, 23)
-    with size (80 - 6, 60 - 6) = (74, 54)
-    This makes outer corners align with circle
-  -->
-
-  <!-- Circle with radius 50 -->
-  <!-- <circle cx="&center;" cy="&center;" r="50" fill="#2C2C2C"/> -->
-
-  <rect 
-    x="&rectX;" 
-    y="&rectY;" 
-    width="&rectDrawWidth;" 
-    height="&rectDrawHeight;" 
-    fill="none" 
-    stroke="none" 
-    stroke-width="&squareStrokeWidth;"
-  />
-    
-  <!-- Four-pointed star with concave curves -->
-  <!-- Each side is a quarter circle arc inverted (concave inward) -->
+  
   <path 
-    d="M &center;,&starTop;
-       A &starRadius; &starRadius; 0 0 0 &starRight;,&center;
-       A &starRadius; &starRadius; 0 0 0 &center;,&starBottom;
-       A &starRadius; &starRadius; 0 0 0 &starLeft;,&center;
-       A &starRadius; &starRadius; 0 0 0 &center;,&starTop;
-       Z"
+    d="M 256,123 A 138 138 0 0 0 389,256 A 138 138 0 0 0 256,389 A 138 138 0 0 0 123,256 A 138 138 0 0 0 256,123 Z"
     fill="url(#gradient)"
-    stroke="none"
   />
   
-  <!-- Left bracket [ -->
-  <!-- Vertical line: x = center - l/2, y from center - l/2 to center + l/2 -->
-  <line 
-    x1="&leftX;" 
-    y1="&topY;" 
-    x2="&leftX;" 
-    y2="&bottomY;" 
-    stroke="url(#gradient)" 
-    stroke-width="&strokeWidth;"
-  />
-  <!-- Top horizontal line -->
-  <line 
-    x1="&leftXS;" 
-    y1="&topY;" 
-    x2="&leftInnerX;" 
-    y2="&topY;" 
-    stroke="url(#gradient)" 
-    stroke-width="&strokeWidth;"
-  />
-  <!-- Bottom horizontal line -->
-  <line 
-    x1="&leftXS;" 
-    y1="&bottomY;" 
-    x2="&leftInnerX;" 
-    y2="&bottomY;" 
-    stroke="url(#gradient)" 
-    stroke-width="&strokeWidth;"
-  />
+  <line x1="69" y1="103" x2="69" y2="409" stroke="url(#gradient)" stroke-width="36" />
+  <line x1="51" y1="121" x2="141" y2="121" stroke="url(#gradient)" stroke-width="36" />
+  <line x1="51" y1="391" x2="141" y2="391" stroke="url(#gradient)" stroke-width="36" />
   
-  <!-- Right bracket ] -->
-  <!-- Vertical line: x = center + l/2, y from center - l/2 to center + l/2 -->
-  <line 
-    x1="&rightX;" 
-    y1="&topY;" 
-    x2="&rightX;" 
-    y2="&bottomY;" 
-    stroke="url(#gradient)" 
-    stroke-width="&strokeWidth;"
-  />
-  <!-- Top horizontal line -->
-  <line 
-    x1="&rightXS;" 
-    y1="&topY;" 
-    x2="&rightInnerX;" 
-    y2="&topY;" 
-    stroke="url(#gradient)" 
-    stroke-width="&strokeWidth;"
-  />
-  <!-- Bottom horizontal line -->
-  <line 
-    x1="&rightXS;" 
-    y1="&bottomY;" 
-    x2="&rightInnerX;" 
-    y2="&bottomY;" 
-    stroke="url(#gradient)" 
-    stroke-width="&strokeWidth;"
-  />
-
+  <line x1="443" y1="103" x2="443" y2="409" stroke="url(#gradient)" stroke-width="36" />
+  <line x1="461" y1="121" x2="371" y2="121" stroke="url(#gradient)" stroke-width="36" />
+  <line x1="461" y1="391" x2="371" y2="391" stroke="url(#gradient)" stroke-width="36" />
 </svg>
