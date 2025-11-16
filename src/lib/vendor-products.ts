@@ -78,10 +78,10 @@ export function getProductsByVendor(vendorName: string): VendorProduct[] {
   // Providers
   providersData.forEach((provider) => {
     // Check both vendor and name
-    const matchesvendor = provider.vendor?.toLowerCase() === normalizedVendorName;
+    const matchesVendor = provider.vendor?.toLowerCase() === normalizedVendorName;
     const matchesName = provider.name?.toLowerCase() === normalizedVendorName;
 
-    if (matchesvendor || matchesName) {
+    if (matchesVendor || matchesName) {
       products.push({
         id: provider.id,
         name: provider.name,
@@ -91,32 +91,6 @@ export function getProductsByVendor(vendorName: string): VendorProduct[] {
       });
     }
   });
-
-  return products;
-}
-
-/**
- * Get products by vendor ID (matches vendor.id from vendors.json)
- */
-export function getProductsByvendor(vendor: string): VendorProduct[] {
-  const products: VendorProduct[] = [];
-
-  // Providers have vendor field that matches vendor.id
-  providersData.forEach((provider) => {
-    if (provider.vendor === vendor) {
-      products.push({
-        id: provider.id,
-        name: provider.name,
-        category: 'provider',
-        categoryLabel: 'Provider',
-        path: `model-providers/${provider.id}`,
-      });
-    }
-  });
-
-  // Models might have vendor that matches vendor name
-  // We need to get the vendor name from vendor first
-  // For now, we'll just check if vendor field matches common vendor names
 
   return products;
 }

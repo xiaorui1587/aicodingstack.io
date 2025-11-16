@@ -25,6 +25,7 @@ import {
   formatPriceForDescription,
   buildProductDescription,
 } from './helpers';
+import { defaultLocale } from '@/i18n/config';
 
 /**
  * Generate metadata for category list pages (IDEs, CLIs, etc.)
@@ -68,7 +69,7 @@ export async function generateListPageMetadata(options: {
   });
 
   // Build OpenGraph
-  const canonicalPath = locale === 'en' ? `/${basePath}` : `/${locale}/${basePath}`;
+  const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`;
   const displayName = CATEGORY_DISPLAY_NAMES[category as keyof typeof CATEGORY_DISPLAY_NAMES] || translatedTitle;
   const openGraph = buildOpenGraph({
     title: `${translatedTitle} - Best ${displayName} ${METADATA_DEFAULTS.currentYear}`,
@@ -149,7 +150,7 @@ export async function generateSoftwareDetailMetadata(options: {
   });
 
   // Build OpenGraph with product image
-  const canonicalPath = locale === 'en' ? `/${basePath}` : `/${locale}/${basePath}`;
+  const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`;
   const imagePath = getOGImagePath(category, slug);
 
   const openGraph = buildOpenGraph({
@@ -238,7 +239,7 @@ export async function generateModelDetailMetadata(options: {
   });
 
   // Build OpenGraph
-  const canonicalPath = locale === 'en' ? `/${basePath}` : `/${locale}/${basePath}`;
+  const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`;
   const imagePath = getOGImagePath('models', slug);
 
   const openGraph = buildOpenGraph({
@@ -321,7 +322,7 @@ export async function generateComparisonMetadata(options: {
   });
 
   // Build OpenGraph
-  const canonicalPath = locale === 'en' ? `/${basePath}` : `/${locale}/${basePath}`;
+  const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`;
 
   const openGraph = buildOpenGraph({
     title: `${categoryName} Comparison`,
@@ -383,7 +384,7 @@ export async function generateArticleMetadata(options: {
   });
 
   // Build OpenGraph with article metadata
-  const canonicalPath = locale === 'en' ? `/${basePath}` : `/${locale}/${basePath}`;
+  const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`;
   const imagePath = getOGImagePath('articles', slug);
 
   const openGraph = buildOpenGraph({
@@ -448,7 +449,7 @@ export async function generateDocsMetadata(options: {
   });
 
   // Build OpenGraph
-  const canonicalPath = locale === 'en' ? `/${basePath}` : `/${locale}/${basePath}`;
+  const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`;
 
   const openGraph = buildOpenGraph({
     title: doc.title,

@@ -1,4 +1,4 @@
-import type { Locale } from '@/i18n/config';
+import { defaultLocale, type Locale } from '@/i18n/config';
 
 /**
  * Interface for manifest items with i18n support
@@ -28,8 +28,8 @@ export function getLocalizedField<T extends ManifestItemWithI18n>(
   field: keyof T,
   locale: Locale
 ): string {
-  // If locale is 'en' (default), return the original field
-  if (locale === 'en') {
+  // If locale is default, return the original field
+  if (locale === defaultLocale) {
     return item[field] as string;
   }
 
@@ -55,8 +55,8 @@ export function localizeManifestItem<T extends Record<string, unknown>>(
   locale: Locale,
   fields: (keyof T)[] = ['description' as keyof T]
 ): T {
-  // If locale is 'en' (default), return the original item
-  if (locale === 'en') {
+  // If locale is default, return the original item
+  if (locale === defaultLocale) {
     return item;
   }
 

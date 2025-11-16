@@ -10,24 +10,24 @@ import {
   METADATA_DEFAULTS,
   type Category,
 } from './config';
+import { locales, localeToOgLocale, type Locale } from '@/i18n/config';
 
 /**
  * Maps internal locale format to OpenGraph locale format
  * @example 'zh-Hans' → 'zh_CN', 'en' → 'en_US'
  */
 export function mapLocaleToOG(locale: string): string {
-  const localeMap: Record<string, string> = {
-    'en': 'en_US',
-    'zh-Hans': 'zh_CN',
-  };
-  return localeMap[locale] || 'en_US';
+  return localeToOgLocale[locale as Locale] || localeToOgLocale[SITE_CONFIG.defaultLocale as Locale];
 }
 
 /**
  * Gets alternate locale for OpenGraph
+ * Returns all other locales in OpenGraph format
  */
 export function getAlternateOGLocale(locale: string): string[] {
-  return locale === 'en' ? ['zh_CN'] : ['en_US'];
+  return locales
+    .filter((l) => l !== locale)
+    .map((l) => localeToOgLocale[l]);
 }
 
 /**

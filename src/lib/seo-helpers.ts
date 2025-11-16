@@ -3,11 +3,14 @@
  * Utilities for generating SEO-friendly URLs and metadata
  */
 
+import { locales, defaultLocale, localeToOgLocale, type Locale } from '@/i18n/config';
+
 /**
  * Generate canonical path with locale support
+ * Default locale (en) doesn't get a prefix, other locales do
  */
 export function getCanonicalPath(basePath: string, locale: string): string {
-  return locale === 'en' ? basePath : `/${locale}/${basePath}`;
+  return locale === defaultLocale ? basePath : `/${locale}${basePath}`;
 }
 
 /**
@@ -20,26 +23,38 @@ export function getFullUrl(basePath: string, locale: string): string {
 
 /**
  * Generate language alternates for a given base path
+ * Dynamically builds alternates from configured locales
  */
 export function getLanguageAlternates(basePath: string): Record<string, string> {
-  return {
-    'en': basePath,
-    'zh-Hans': `/zh-Hans${basePath}`,
-  };
+  const alternates: Record<string, string> = {};
+
+  locales.forEach((locale) => {
+    if (locale === defaultLocale) {
+      alternates[locale] = basePath;
+    } else {
+      alternates[locale] = `/${locale}${basePath}`;
+    }
+  });
+
+  return alternates;
 }
 
 /**
  * Get OpenGraph locale string
+ * Maps locale code to OpenGraph format (e.g., 'en' -> 'en_US')
  */
 export function getOgLocale(locale: string): string {
-  return locale === 'zh-Hans' ? 'zh_CN' : 'en_US';
+  return localeToOgLocale[locale as Locale] || localeToOgLocale[defaultLocale];
 }
 
 /**
  * Get OpenGraph alternate locales
+ * Returns all other locales in OpenGraph format
  */
 export function getOgAlternateLocales(locale: string): string[] {
-  return locale === 'en' ? ['zh_CN'] : ['en_US'];
+  return locales
+    .filter((l) => l !== locale)
+    .map((l) => localeToOgLocale[l]);
 }
 
 /**

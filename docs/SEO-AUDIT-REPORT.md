@@ -31,7 +31,6 @@ AI Coding Stack has a solid technical foundation with proper implementation incl
 - Clean URL structure: `{category}/{slug}`
 - Breadcrumb navigation implemented on detail pages
 - Proper routing for 14+ page types covering 6 categories:
-  - Terminals (iTerm2, Warp, Ghostty, WezTerm)
   - IDEs (VS Code, Cursor, TRAE)
   - CLIs (Codex, Claude Code)
   - 
