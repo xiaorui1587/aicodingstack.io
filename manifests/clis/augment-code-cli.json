@@ -1,0 +1,83 @@
+{
+  "id": "augment-code-cli",
+  "name": "Augment Code CLI",
+  "description": "Augment Code CLI brings autonomous AI agents to your terminal with industry-leading context engine. Features native TUI, automated workflows, and deep codebase understanding.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "Augment Code CLI 将自主 AI Agent 带到您的终端，配备行业领先的上下文引擎。具有原生 TUI、自动化工作流和深度代码库理解功能。"
+    }
+  },
+  "websiteUrl": "https://www.augmentcode.com",
+  "docsUrl": "https://docs.augmentcode.com/cli",
+  "verified": false,
+  "vendor": "Augment",
+  "license": "Proprietary",
+  "latestVersion": "0.7.0",
+  "pricing": [
+    {
+      "name": "Individual",
+      "value": 30,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    },
+    {
+      "name": "Teams",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Business"
+    },
+    {
+      "name": "Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://www.augmentcode.com/",
+    "changelog": null,
+    "pricing": "https://www.augmentcode.com/pricing",
+    "mcp": "https://www.augmentcode.com/mcp",
+    "issue": null
+  },
+  "communityUrls": {
+    "linkedin": "https://www.linkedin.com/company/augment-code",
+    "twitter": "https://twitter.com/augmentcode",
+    "github": "https://github.com/augmentcode/auggie",
+    "youtube": null,
+    "discord": null,
+    "reddit": null,
+    "blog": "https://www.augmentcode.com/blog"
+  },
+  "githubUrl": "https://github.com/augmentcode/auggie",
+  "githubStars": 0.1,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": "npm install -g @augmentcode/npm i @augmentcode/auggie",
+      "launchCommand": "auggie",
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": "npm install -g @augmentcode/npm i @augmentcode/auggie",
+      "launchCommand": "auggie",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": "npm install -g @augmentcode/npm i @augmentcode/auggie",
+      "launchCommand": "auggie",
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [
+    {
+      "type": "extension",
+      "productId": "augment-code"
+    }
+  ]
+}

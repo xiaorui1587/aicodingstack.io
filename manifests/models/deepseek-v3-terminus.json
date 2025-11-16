@@ -1,0 +1,27 @@
+{
+  "id": "deepseek-v3-terminus",
+  "name": "DeepSeek V3.1 Terminus",
+  "description": "DeepSeek V3.1 Terminus-extended version with 67B parameters and 64K context window, designed for advanced reasoning and code generation tasks.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "DeepSeek V3.1 Terminus 扩展版本，67B 参数，64K 上下文窗口，专为高级推理和代码生成任务设计。"
+    }
+  },
+  "websiteUrl": "https://www.deepseek.com/",
+  "docsUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1-Terminus",
+  "verified": false,
+  "vendor": "DeepSeek",
+  "size": "67B",
+  "totalContext": "64K",
+  "maxOutput": "4K",
+  "tokenPricing": {
+    "input": 0.14,
+    "output": 0.14,
+    "cache": null
+  },
+  "platformUrls": {
+    "huggingface": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1-Terminus",
+    "artificialAnalysis": "https://artificialanalysis.ai/models/deepseek-v3-1-terminus",
+    "openrouter": "https://openrouter.ai/deepseek/deepseek-v3.1-terminus"
+  }
+}

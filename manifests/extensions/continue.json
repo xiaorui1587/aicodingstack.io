@@ -1,0 +1,72 @@
+{
+  "id": "continue",
+  "name": "Continue",
+  "description": "Open-source AI code assistant that lets you build custom agents across your IDE, terminal, and CI. Features Agent, Chat, Edit, and Autocomplete modes with full model flexibility and MCP integration.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "开源 AI 代码助手，让您可以在 IDE、终端和 CI 中构建自定义 Agent。具有 Agent、Chat、Edit 和 Autocomplete 模式，支持完全的模型灵活性和 MCP 集成。"
+    }
+  },
+  "websiteUrl": "https://www.continue.dev",
+  "docsUrl": "https://docs.continue.dev",
+  "verified": false,
+  "vendor": "Continue Dev",
+  "license": "Apache-2.0",
+  "latestVersion": "1.0.0",
+  "pricing": [
+    {
+      "name": "Solo (Open Source)",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Team",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Business"
+    },
+    {
+      "name": "Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://marketplace.visualstudio.com/items?itemName=Continue.continue",
+    "changelog": "https://github.com/continuedev/continue/releases",
+    "pricing": "https://www.continue.dev/pricing",
+    "mcp": null,
+    "issue": "https://github.com/continuedev/continue/issues"
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": null,
+    "github": "https://github.com/continuedev/continue",
+    "youtube": null,
+    "discord": "https://discord.gg/continue",
+    "reddit": null,
+    "blog": "https://www.continue.dev/blog"
+  },
+  "githubStars": 29.8,
+  "supportedIdes": [
+    {
+      "ideId": "vscode",
+      "marketplaceUrl": "https://marketplace.visualstudio.com/items?itemName=Continue.continue",
+      "installCommand": "code --install-extension Continue.continue",
+      "installUri": null
+    },
+    {
+      "ideId": "jetbrains",
+      "marketplaceUrl": "https://marketplace.visualstudio.com/items?itemName=Continue.continue",
+      "installCommand": "code --install-extension Continue.continue",
+      "installUri": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": "https://github.com/continuedev/continue"
+}

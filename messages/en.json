@@ -1,0 +1,486 @@
+{
+  "stacks": {
+    "aiCodingStack": "AI Coding Stack",
+    "ides": "IDEs",
+    "clis": "CLIs",
+    "terminals": "Terminals",
+    "extensions": "Extensions",
+    "models": "Models",
+    "modelProviders": "Model Providers",
+    "vendors": "Vendors"
+  },
+  "community": {
+    "github": "GitHub",
+    "discord": "Discord",
+    "twitter": "X (Twitter)",
+    "youtube": "YouTube",
+    "reddit": "Reddit",
+    "linkedin": "LinkedIn",
+    "huggingface": "HuggingFace",
+    "artificialAnalysis": "Artificial Analysis",
+    "openrouter": "OpenRouter"
+},
+  "header": {
+    "docs": "Docs",
+    "articles": "Articles",
+    "curatedCollections": "Curated Collections",
+    "comparison": "Comparison",
+    "features": "Features",
+    "aiCodingStack": "AI Coding Stack",
+    "collections": "Collections",
+    "aiCodingLandscape": "AI Coding Landscape",
+    "aiCodingLandscapeDesc": "Visualize the complete AI coding ecosystem",
+    "developmentTools": "Development Tools",
+    "integration": "Integration",
+    "intelligence": "Intelligence"
+  },
+  "footer": {
+    "aicodingstack": "AI Coding Stack",
+    "tagline": "Your AI Coding Ecosystem Hub.",
+    "openSource": "Open source AI coding metadata repository.",
+    "resources": "Resources",
+    "documentation": "Documentation",
+    "community": "Community",
+    "copyright": "© 2025 AI Coding Stack • Built with ❤︎ • Open Source",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "faq": "FAQ",
+    "selectLanguage": "Select Language"
+  },
+
+  "pages": {
+    "home": {
+      "meta": {
+        "title": "AI Coding Stack - Your AI Coding Ecosystem Hub",
+        "description": "Comprehensive directory for AI coding tools. Discover, compare and explore IDEs, CLIs, terminals, models and providers.",
+        "name": "AI Coding Stack"
+      },
+      "title": "Your AI Coding Ecosystem Hub",
+      "subtitle": "Discover, Compare, Build Faster.",
+      "description": "Explore and compare AI coding tools: IDEs, CLIs, Terminals, Models, and Providers — all in one place.",
+      "exploreTools": "Explore Tools",
+      "readDocs": "Read Documentation",
+      "faq": "Frequently Asked Questions",
+      "features": {
+        "title": "Core Features",
+        "directory": {
+          "title": "Comprehensive Directory",
+          "description": "Explore a curated collection of AI coding tools across IDEs, CLIs, extensions, models, and providers. All in one place, always up to date."
+        },
+        "comparison": {
+          "title": "Smart Comparison",
+          "description": "Compare tools side-by-side with detailed specifications, pricing, and features. Make informed decisions about which AI coding tools best fit your workflow."
+        },
+        "ecosystem": {
+          "title": "Ecosystem Overview",
+          "description": "Visualize the complete AI coding ecosystem with interactive landscape views. Understand how different tools, models, and providers connect and complement each other."
+        },
+        "tracking": {
+          "title": "Progress Tracking",
+          "description": "Stay updated with the latest developments, versions, and updates across the AI coding landscape. Track new releases, feature additions, and ecosystem changes."
+        }
+      }
+    },
+    "curatedCollections": {
+      "title": "Curated Collections",
+      "subtitle": "Handpicked resources, specifications, protocols, and tools for AI coding",
+      "specifications": {
+        "title": "Specifications & Protocols",
+        "description": "Essential standards and protocols for modern software development"
+      },
+      "articles": {
+        "title": "Featured Articles",
+        "description": "Must-read articles about AI coding from industry leaders"
+      },
+      "tools": {
+        "title": "Ecosystem Tools",
+        "description": "Curated tools and utilities for AI coding workflows"
+      }
+    },
+    "articles": {
+      "title": "Articles",
+      "subtitle": "Deep dives into AI coding: tutorials, insights, best practices for IDEs, CLIs, and LLM models. Learn how to build 10x faster with AI.",
+      "keywords": "AI coding articles, AI development tutorials, AI coding best practices, LLM coding guides, AI IDE guides"
+    },
+    "docs": {
+      "title": "Documentation",
+      "subtitle": "Complete guide to AI Coding Stack: exploring tools, understanding specifications, and choosing the right AI coding tools for your workflow.",
+      "keywords": "AI coding stack docs, AI coding tools guide, IDE comparison, CLI comparison, AI model specs"
+    }
+  },
+
+  "stacksPages": {
+    "overview": {
+      "title": "AI Coding Stack",
+      "subtitle": "Explore the complete AI coding ecosystem: IDEs, CLIs, terminals, models, and providers.",
+      "slogan": "Discover. Compare. Build 10x Faster.",
+      "exploreStack": "Explore the Stack",
+      "overviewTitle": "AI Coding Stack Overview",
+      "ides": {
+        "title": "IDEs",
+        "description": "AI-powered integrated development environments that understand your codebase and provide intelligent assistance. From VS Code to Cursor, discover the editors that make coding collaborative with AI."
+      },
+      "clis": {
+        "title": "CLIs",
+        "description": "Command-line AI assistants that bring the power of large language models directly to your terminal. Execute complex tasks with natural language, right from your shell."
+      },
+      "terminals": {
+        "title": "Terminals",
+        "description": "Modern terminal emulators with built-in AI capabilities. From command suggestions to workflow automation, these terminals are built for the AI era."
+      },
+      "extensions": {
+        "title": "Extensions",
+        "description": "AI-powered coding extensions and plugins for your favorite IDE. From code completion to intelligent refactoring, enhance your development experience with AI assistance."
+      },
+      "models": {
+        "title": "Models",
+        "description": "The intelligence layer. Large language models optimized for code generation, understanding, and analysis. Compare specs, pricing, and capabilities across leading AI models."
+      },
+      "modelProviders": {
+        "title": "Model Providers",
+        "description": "LLM API providers offering access to various AI models. From DeepSeek to OpenRouter, discover platforms that power your AI coding tools with unified APIs and model access."
+      },
+      "vendors": {
+        "title": "Vendors",
+        "description": "Leading companies and organizations building AI technologies. From OpenAI to Anthropic, discover the vendors behind the AI coding revolution."
+      }
+    },
+    "terminals": {
+      "title": "Terminals",
+      "subtitle": "Modern terminal emulators with built-in AI capabilities",
+      "compareAll": "Compare All",
+      "noMatches": "No terminals match your filters",
+      "allTerminals": "All Terminals"
+    },
+    "ides": {
+      "title": "IDEs",
+      "subtitle": "AI-enhanced integrated development environments",
+      "compareAll": "Compare All",
+      "noMatches": "No IDEs match your filters",
+      "allIDEs": "All IDEs"
+    },
+    "clis": {
+      "title": "CLIs",
+      "subtitle": "AI-powered command-line coding assistants",
+      "compareAll": "Compare All",
+      "noMatches": "No CLIs match your filters",
+      "allCLIs": "All CLIs"
+    },
+    "extensions": {
+      "title": "Extensions",
+      "subtitle": "AI-powered coding extensions and plugins",
+      "compareAll": "Compare All",
+      "noMatches": "No extensions match your filters",
+      "allExtensions": "All Extensions"
+    },
+    "models": {
+      "title": "Models",
+      "subtitle": "Large language models optimized for code generation and analysis",
+      "compareAll": "Compare All",
+      "size": "Size:",
+      "context": "Context:",
+      "pricing": "Pricing:"
+    },
+    "modelProviders": {
+      "title": "Model Providers",
+      "subtitle": "LLM API providers offering access to various AI models",
+      "foundationProviders": "Foundation Model Providers",
+      "serviceProviders": "Model Service Providers"
+    },
+    "vendors": {
+      "title": "Vendors",
+      "subtitle": "Leading companies and organizations building AI technologies"
+    }
+  },
+
+  "stackDetailPages": {
+    "terminalDetail": {
+      "breadcrumb": {
+        "aiCodingStack": "AI Coding Stack",
+        "terminals": "Terminals"
+      },
+      "allTerminals": "All Terminals"
+    },
+    "ideDetail": {
+      "breadcrumb": {
+        "aiCodingStack": "AI Coding Stack",
+        "ides": "IDEs"
+      },
+      "allIDEs": "All IDEs"
+    },
+    "cliDetail": {
+      "breadcrumb": {
+        "aiCodingStack": "AI Coding Stack",
+        "clis": "CLIs"
+      },
+      "allCLIs": "All CLIs"
+    },
+    "extensionDetail": {
+      "breadcrumb": {
+        "aiCodingStack": "AI Coding Stack",
+        "extensions": "Extensions"
+      },
+      "allExtensions": "All Extensions"
+    },
+    "modelDetail": {
+      "breadcrumb": {
+        "aiCodingStack": "AI Coding Stack",
+        "models": "Models"
+      },
+      "metaTitle": "AI Coding Model | Specs & Pricing 2025",
+      "specifications": "Specifications",
+      "modelSize": "Model Size",
+      "totalContext": "Total Context",
+      "maxOutput": "Max Output",
+      "pricing": "Pricing",
+      "backTo": "Back to",
+      "allModels": "All Models",
+      "labels": {
+        "size": "Size",
+        "context": "Context",
+        "maxOutput": "Max Output",
+        "pricing": "Pricing",
+        "website": "Website",
+        "huggingface": "HuggingFace",
+        "artificialAnalysis": "Artificial Analysis",
+        "openrouter": "OpenRouter"
+      }
+    },
+    "vendorDetail": {
+      "breadcrumb": {
+        "home": "Home",
+        "aiCodingStack": "AI Coding Stack",
+        "vendors": "Vendors"
+      },
+      "metaTitle": "AI Technology Vendor | Company Profile 2025",
+      "metaDescription": "Explore {name}'s AI products and technologies.",
+      "vendorDetails": "Vendor Details",
+      "productsTitle": "Products",
+      "productsSubtitle": "Explore products and services from {vendorName}",
+      "quickLinks": "Quick Links",
+      "communityLinks": "Community Links",
+      "website": "Website",
+      "visitWebsite": "Visit official website",
+      "github": "GitHub",
+      "viewGitHub": "View open source repositories",
+      "twitter": "Twitter",
+      "followTwitter": "Follow on Twitter",
+      "linkedin": "LinkedIn",
+      "connectLinkedIn": "Connect on LinkedIn",
+      "youtube": "YouTube",
+      "watchYouTube": "Watch videos on YouTube",
+      "discord": "Discord",
+      "joinDiscord": "Join Discord community",
+      "reddit": "Reddit",
+      "joinReddit": "Join Reddit community",
+      "backTo": "Back to",
+      "allVendors": "All Vendors",
+      "indexLabel": "INDEX"
+    },
+    "modelProviderDetail": {
+      "breadcrumb": {
+        "aiCodingStack": "AI Coding Stack",
+        "modelProviders": "Model Providers"
+      },
+      "findOnAiPlatforms": "Find on AI Platforms",
+      "communityLinks": "Community Links",
+      "aiPlatforms": {
+        "huggingface": {
+          "title": "HuggingFace",
+          "description": "View on HuggingFace"
+        },
+        "artificialAnalysis": {
+          "title": "Artificial Analysis",
+          "description": "View performance analysis"
+        },
+        "openrouter": {
+          "title": "OpenRouter",
+          "description": "Access via OpenRouter"
+        }
+      },
+      "community": {
+        "linkedin": {
+          "title": "LinkedIn",
+          "description": "Follow us"
+        },
+        "twitter": {
+          "title": "Twitter",
+          "description": "Follow us"
+        },
+        "github": {
+          "title": "GitHub",
+          "description": "View repos"
+        },
+        "youtube": {
+          "title": "YouTube",
+          "description": "Watch videos"
+        },
+        "discord": {
+          "title": "Discord",
+          "description": "Join community"
+        },
+        "reddit": {
+          "title": "Reddit",
+          "description": "Join discussion"
+        }
+      },
+      "backTo": "Back to",
+      "allModelProviders": "All Model Providers",
+      "indexLabel": "INDEX"
+    }
+  },
+
+  "comparison": {
+    "breadcrumb": {
+      "aiCodingStack": "AI Coding Stack",
+      "comparison": "Comparison",
+      "ides": "IDEs",
+      "clis": "CLIs",
+      "extensions": "Extensions",
+      "terminals": "Terminals",
+      "models": "Models"
+    },
+    "terminals": {
+      "title": "Terminal Comparison",
+      "subtitle": "Compare features, pricing, and specifications of terminal emulators side by side.",
+      "backTo": "Back to Terminals"
+    },
+    "ides": {
+      "title": "IDE Comparison",
+      "subtitle": "Compare features, pricing, and specifications of AI-powered IDEs side by side.",
+      "backTo": "Back to IDEs"
+    },
+    "clis": {
+      "title": "CLI Comparison",
+      "subtitle": "Compare features, pricing, and specifications of AI coding CLI tools side by side.",
+      "backTo": "Back to CLIs"
+    },
+    "extensions": {
+      "title": "Extension Comparison",
+      "subtitle": "Compare features, pricing, and specifications of AI coding extensions side by side.",
+      "backTo": "Back to Extensions"
+    },
+    "models": {
+      "title": "Model Comparison",
+      "subtitle": "Compare specifications and pricing of AI coding models side by side.",
+      "backTo": "Back to Models"
+    },
+    "columns": {
+      "vendor": "Vendor",
+      "license": "License",
+      "version": "Version",
+      "platforms": "Platforms",
+      "supportedIdes": "Supported IDEs",
+      "githubStars": "Stars",
+      "links": "Links",
+      "freePlan": "Free Plan",
+      "startingPrice": "Starting Price",
+      "maxPrice": "Max Price",
+      "modelSize": "Model Size",
+      "contextLength": "Context Length",
+      "maxOutput": "Max Output",
+      "pricing": "Pricing"
+    },
+    "linkTitles": {
+      "officialWebsite": "Official Website",
+      "download": "Download",
+      "documentation": "Documentation"
+    },
+    "pricingValues": {
+      "free": "Free",
+      "freeOnly": "Free only"
+    }
+  },
+
+  "license": {
+    "proprietary": "Proprietary"
+  },
+
+  "components": {
+    "sidebar": {
+      "selectItem": "Select an item",
+      "backToTop": "Back to top"
+    },
+    "docsSidebar": {
+      "title": "DOCUMENTATION",
+      "label": "Documentation"
+    },
+    "collectionScrollbar": {
+      "specifications": "Specifications & Protocols",
+      "articles": "Featured Articles",
+      "tools": "Ecosystem Tools"
+    },
+    "stackSidebar": {
+      "title": "STACKS",
+      "label": "AI Coding Stack",
+      "overview": "Overview"
+    },
+    "filterSortBar": {
+      "sort": "Sort:",
+      "sortDefault": "Default",
+      "sortNameAsc": "Name (A-Z)",
+      "sortNameDesc": "Name (Z-A)",
+      "license": "License:",
+      "openSource": "Open Source",
+      "proprietary": "Proprietary",
+      "platform": "Platform:",
+      "clearFilters": "Clear filters"
+    },
+    "backToNavigation": {
+      "backTo": "Back to",
+      "indexLabel": "INDEX"
+    },
+    "productHero": {
+      "vendor": "Vendor",
+      "version": "Version",
+      "license": "License",
+      "stars": "Stars",
+      "platforms": "Platforms",
+      "type": "Type",
+      "visitWebsite": "Visit Website",
+      "documentation": "Documentation",
+      "download": "Download",
+      "getApiKey": "Get API Key",
+      "supportedIdes": "Supported IDEs",
+      "runtime": "Runtime",
+      "categories": {
+        "IDE": "IDE",
+        "CLI": "CLI",
+        "EXTENSION": "Extension",
+        "TERMINAL": "Terminal",
+        "MODEL": "Model",
+        "PROVIDER": "Model Provider",
+        "VENDOR": "Vendor"
+      },
+      "providerTypes": {
+        "foundation-model-provider": "Foundation Model Provider",
+        "model-service-provider": "Model Service Provider"
+      }
+    },
+    "productCommands": {
+      "install": "Install",
+      "launch": "Launch",
+      "command": "Command"
+    },
+    "productLinks": {
+      "download": "Download",
+      "resources": "Resources",
+      "community": "Community",
+      "changelog": "Changelog",
+      "pricing": "Pricing",
+      "blog": "Blog",
+      "mcp": "MCP Documentation",
+      "issue": "Issue Tracker",
+      "linkedin": "LinkedIn",
+      "twitter": "X (Twitter)",
+      "github": "GitHub",
+      "youtube": "YouTube",
+      "discord": "Discord",
+      "reddit": "Reddit"
+    },
+    "productPricing": {
+      "title": "Pricing",
+      "viewFullDetails": "View full pricing details →"
+    }
+  }
+}

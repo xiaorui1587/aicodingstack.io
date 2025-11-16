@@ -1,0 +1,66 @@
+{
+  "id": "jetbrains-junie",
+  "name": "JetBrains Junie",
+  "description": "JetBrains Junie is an AI coding agent that autonomously executes tasks or collaborates with developers. It handles routine tasks independently while assisting with complex work.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "JetBrains Junie 是一个 AI 编码 Agent，可以自主执行任务或与开发者协作。它独立处理常规任务，同时协助复杂工作。"
+    }
+  },
+  "websiteUrl": "https://www.jetbrains.com/junie/",
+  "docsUrl": "https://www.jetbrains.com/help/junie/",
+  "verified": false,
+  "vendor": "JetBrains",
+  "license": "Proprietary",
+  "latestVersion": "1.0.0",
+  "pricing": [
+    {
+      "name": "JetBrains AI Subscription",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Individual"
+    },
+    {
+      "name": "JetBrains AI Business",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Business"
+    },
+    {
+      "name": "JetBrains AI Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://plugins.jetbrains.com/plugin/junie",
+    "changelog": "https://www.jetbrains.com/idea/whatsnew/",
+    "pricing": "https://www.jetbrains.com/idea/buy/",
+    "mcp": null,
+    "issue": "https://youtrack.jetbrains.com/issues"
+  },
+  "communityUrls": {
+    "linkedin": "https://www.linkedin.com/company/jetbrains",
+    "twitter": "https://twitter.com/jetbrains",
+    "github": null,
+    "youtube": "https://www.youtube.com/c/JetBrainsTV",
+    "discord": null,
+    "reddit": "https://www.reddit.com/r/JetBrains",
+    "blog": "https://blog.jetbrains.com/junie/"
+  },
+  "githubStars": null,
+  "supportedIdes": [
+    {
+      "ideId": "jetbrains",
+      "marketplaceUrl": "https://plugins.jetbrains.com/plugin/junie",
+      "installCommand": "Install via JetBrains Plugin Marketplace",
+      "installUri": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": null
+}

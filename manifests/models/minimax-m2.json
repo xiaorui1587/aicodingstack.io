@@ -1,0 +1,27 @@
+{
+  "id": "minimax-m2",
+  "name": "MiniMax M2",
+  "description": "A 230B parameter MoE model from MiniMax with 204.8K context window, designed for intelligent agents and coding tasks. Activates 10B parameters per inference.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "MiniMax 推出的 230B 参数混合专家模型（MoE），具备 204.8K 上下文窗口，专为智能代理和编程任务设计。每次推理激活 10B 参数。"
+    }
+  },
+  "websiteUrl": "https://platform.minimaxi.com/",
+  "docsUrl": "https://platform.minimaxi.com/docs/api-reference/text-openai-api",
+  "verified": false,
+  "vendor": "MiniMax",
+  "size": "230B",
+  "totalContext": "204.8K",
+  "maxOutput": "8K",
+  "tokenPricing": {
+    "input": 0,
+    "output": 0,
+    "cache": null
+  },
+  "platformUrls": {
+    "huggingface": null,
+    "artificialAnalysis": null,
+    "openrouter": null
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "id": "neovate-code",
+  "name": "Neovate Code",
+  "description": "Ant Group's Neovate Code is an open-source smart programming assistant. Generates code, fixes bugs, reviews code, and adds tests with flexible multi-client architecture.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "蚂蚁集团的 Neovate Code 是开源智能编程助手。生成代码、修复错误、审查代码并添加测试，具有灵活的多客户端架构。"
+    }
+  },
+  "websiteUrl": "https://neovateai.dev",
+  "docsUrl": "https://neovateai.dev/en/docs/overview/",
+  "verified": false,
+  "vendor": "Ant Group",
+  "license": "MIT",
+  "latestVersion": "0.12.7",
+  "pricing": [
+    {
+      "name": "Free (Individual)",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Standard (Business)",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Business"
+    },
+    {
+      "name": "Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://www.npmjs.com/package/@neovate/code",
+    "changelog": "https://github.com/neovateai/neovate-code/tags",
+    "pricing": "https://neovateai.dev",
+    "mcp": null,
+    "issue": "https://github.com/neovateai/neovate-code/issues"
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": null,
+    "github": "https://github.com/neovateai/neovate-code",
+    "youtube": null,
+    "discord": null,
+    "reddit": null,
+    "blog": "https://neovateai.dev/en/blog"
+  },
+  "githubStars": 1,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": "npm install -g @neovate/code",
+      "launchCommand": "neovate (alias: neo)",
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": "npm install -g @neovate/code",
+      "launchCommand": "neovate (alias: neo)",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": "npm install -g @neovate/code",
+      "launchCommand": "neovate (alias: neo)",
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": "https://github.com/neovateai/neovate-code"
+}

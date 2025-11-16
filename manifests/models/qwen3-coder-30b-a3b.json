@@ -1,0 +1,27 @@
+{
+  "id": "qwen3-coder-30b-a3b",
+  "name": "Qwen3 Coder 30B-A3B",
+  "description": "Qwen3 Coder is a specialized code generation model with 32B parameters and 32K context window, optimized for efficient code writing and debugging tasks.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "Qwen3 Coder 是专为代码生成设计的模型，32B 参数，32K 上下文窗口，优化了代码编写和调试任务的效率。"
+    }
+  },
+  "websiteUrl": "https://qwen.ai",
+  "docsUrl": "https://huggingface.co/Qwen/Qwen3-Coder-30B-A3B-Instruct",
+  "verified": false,
+  "vendor": "Qwen",
+  "size": "32B",
+  "totalContext": "32K",
+  "maxOutput": "4K",
+  "tokenPricing": {
+    "input": 0.2,
+    "output": 0.2,
+    "cache": null
+  },
+  "platformUrls": {
+    "huggingface": "https://huggingface.co/Qwen/Qwen3-Coder-30B-A3B-Instruct",
+    "artificialAnalysis": "https://artificialanalysis.ai/models/qwen3-coder-30b-a3b-instruct",
+    "openrouter": "https://openrouter.ai/qwen/qwen3-coder-30b-a3b-instruct"
+  }
+}

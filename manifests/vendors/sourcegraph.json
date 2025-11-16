@@ -1,0 +1,22 @@
+{
+  "id": "sourcegraph",
+  "name": "Sourcegraph",
+  "description": "A code intelligence platform providing universal code search, navigation, and AI-powered development tools including the Amp coding agent.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "代码智能平台，提供通用代码搜索、导航和 AI 驱动的开发工具，包括 Amp 编码 Agent。"
+    }
+  },
+  "websiteUrl": "https://sourcegraph.com/",
+  "docsUrl": null,
+  "verified": false,
+  "communityUrls": {
+    "linkedin": "https://www.linkedin.com/company/sourcegraph",
+    "twitter": "https://twitter.com/sourcegraph",
+    "github": "https://github.com/sourcegraph",
+    "youtube": "https://www.youtube.com/@sourcegraph",
+    "discord": null,
+    "reddit": null,
+    "blog": null
+  }
+}

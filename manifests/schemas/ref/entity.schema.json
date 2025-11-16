@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "entity.schema.json",
+  "title": "Base Info Schema",
+  "description": "Core fields shared across all entity types (products, models, providers, vendors, etc.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier (lowercase with hyphens)",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "name": {
+      "type": "string",
+      "description": "The official name of the entity"
+    },
+    "description": {
+      "type": "string",
+      "description": "A concise description of the entity and its key features",
+      "maxLength": 200
+    },
+    "i18n": {
+      "$ref": "./i18n.schema.json",
+      "description": "Internationalization translations"
+    },
+    "websiteUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://",
+      "description": "Official website URL"
+    },
+    "docsUrl": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "pattern": "^https://",
+      "description": "Documentation URL (null if not available)"
+    },
+    "verified": {
+      "type": "boolean",
+      "description": "Whether the entity has been verified"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "description",
+    "i18n",
+    "websiteUrl",
+    "docsUrl",
+    "verified"
+  ]
+}
+

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Platform URLs Schema",
+  "description": "Schema for third-party platform URLs (HuggingFace, Artificial Analysis, OpenRouter)",
+  "type": "object",
+  "properties": {
+    "huggingface": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri",
+      "pattern": "^https://huggingface\\.co/",
+      "description": "HuggingFace organization or model page URL"
+    },
+    "artificialAnalysis": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri",
+      "pattern": "^https://artificialanalysis\\.ai/",
+      "description": "Artificial Analysis provider/model page URL"
+    },
+    "openrouter": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri",
+      "pattern": "^https://openrouter\\.ai/",
+      "description": "OpenRouter provider/model page URL"
+    }
+  },
+  "required": [
+    "huggingface",
+    "artificialAnalysis",
+    "openrouter"
+  ],
+  "additionalProperties": false
+}
+

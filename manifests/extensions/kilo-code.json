@@ -1,0 +1,73 @@
+{
+  "id": "kilo-code",
+  "name": "Kilo Code",
+  "description": "Kilo Code is an open-source VS Code AI agent supporting 400+ models. Features multi-mode workflow (Architect, Coder, Debugger), transparent pricing, and MCP server marketplace integration.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "Kilo Code 是一个开源的 VS Code AI Agent，支持 400+ 模型。具备多模式工作流（架构师、编码器、调试器）、透明定价和 MCP 服务器市场集成功能。"
+    }
+  },
+  "websiteUrl": "https://kilocode.ai",
+  "docsUrl": "https://kilocode.ai/docs",
+  "verified": false,
+  "vendor": "Kilo Code",
+  "license": "Apache-2.0",
+  "latestVersion": "4.110.0",
+  "pricing": [
+    {
+      "name": "Free (Open Source)",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Pay As You Go",
+      "value": null,
+      "currency": "USD",
+      "per": "usage",
+      "category": "Individual"
+    },
+    {
+      "name": "Teams",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Business"
+    },
+    {
+      "name": "Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code",
+    "changelog": "https://github.com/Kilo-Org/kilocode/releases",
+    "pricing": "https://kilocode.ai/pricing",
+    "mcp": null,
+    "issue": "https://github.com/Kilo-Org/kilocode/issues"
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": "https://twitter.com/kilocode",
+    "github": "https://github.com/Kilo-Org/kilocode",
+    "youtube": "https://www.youtube.com/@kilocode",
+    "discord": "https://kilocode.ai/discord",
+    "reddit": "https://www.reddit.com/r/kilocode",
+    "blog": "https://kilocode.ai/blog"
+  },
+  "githubStars": 12.2,
+  "supportedIdes": [
+    {
+      "ideId": "vscode",
+      "marketplaceUrl": "https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code",
+      "installCommand": "code --install-extension kilocode.Kilo-Code",
+      "installUri": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": "https://github.com/Kilo-Org/kilocode"
+}

@@ -1,0 +1,78 @@
+{
+  "id": "amazon-q-developer-cli",
+  "name": "Amazon Q Developer CLI",
+  "description": "Amazon Q Developer CLI is an agentic AI assistant in your CLI that executes tasks, understands your codebase, and speeds up development through adaptive, natural dialogue.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "Amazon Q Developer CLI 是您命令行中的智能 AI 助手，执行任务、理解您的代码库，并通过自适应自然对话加速开发。"
+    }
+  },
+  "websiteUrl": "https://aws.amazon.com/developer/learning/q-developer-cli/",
+  "docsUrl": "https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line.html",
+  "verified": false,
+  "vendor": "Amazon Web Services",
+  "license": "Apache-2.0, MIT",
+  "latestVersion": "v1.18.1",
+  "pricing": [
+    {
+      "name": "Free Tier",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Pay-per-use",
+      "value": null,
+      "currency": "USD",
+      "per": "request",
+      "category": "Individual"
+    },
+    {
+      "name": "Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://aws.amazon.com/developer/learning/q-developer-cli/",
+    "changelog": "https://github.com/aws/amazon-q-developer-cli/releases",
+    "pricing": "https://aws.amazon.com/q/pricing/",
+    "mcp": null,
+    "issue": "https://github.com/aws/amazon-q-developer-cli/issues"
+  },
+  "communityUrls": {
+    "linkedin": "https://www.linkedin.com/company/amazon-web-services",
+    "twitter": "https://twitter.com/awscloud",
+    "github": "https://github.com/aws/amazon-q-developer-cli",
+    "youtube": "https://www.youtube.com/@amazonwebservices",
+    "discord": null,
+    "reddit": null,
+    "blog": "https://aws.amazon.com/blogs/aws/"
+  },
+  "githubStars": 1.8,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": "brew install --cask amazon-q",
+      "launchCommand": "q",
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": "brew install --cask amazon-q",
+      "launchCommand": "q",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": "brew install --cask amazon-q",
+      "launchCommand": "q",
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": "https://github.com/aws/amazon-q-developer-cli"
+}

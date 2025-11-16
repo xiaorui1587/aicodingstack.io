@@ -1,0 +1,66 @@
+{
+  "id": "github-copilot",
+  "name": "GitHub Copilot",
+  "description": "GitHub Copilot is an AI pair programmer that helps you write code faster and with less work. It draws context from comments and code to suggest individual lines and entire functions.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "GitHub Copilot 是一个 AI 结对程序员，帮助您更快地编写代码并减少工作量。它从注释和代码中获取上下文，建议单行代码和整个函数。"
+    }
+  },
+  "websiteUrl": "https://github.com/features/copilot",
+  "docsUrl": "https://docs.github.com/en/copilot",
+  "verified": false,
+  "vendor": "GitHub",
+  "license": "Proprietary",
+  "latestVersion": "1.0.0",
+  "pricing": [
+    {
+      "name": "Copilot Individual",
+      "value": 10,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    },
+    {
+      "name": "Copilot Business",
+      "value": 19,
+      "currency": "USD",
+      "per": "user/month",
+      "category": "Business"
+    },
+    {
+      "name": "Copilot Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://marketplace.visualstudio.com/items?itemName=GitHub.copilot",
+    "changelog": null,
+    "pricing": "https://github.com/features/copilot/pricing",
+    "mcp": null,
+    "issue": null
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": "https://twitter.com/github",
+    "github": null,
+    "youtube": "https://www.youtube.com/@github",
+    "discord": null,
+    "reddit": null,
+    "blog": "https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/"
+  },
+  "githubStars": null,
+  "supportedIdes": [
+    {
+      "ideId": "vscode",
+      "marketplaceUrl": "https://marketplace.visualstudio.com/items?itemName=GitHub.copilot",
+      "installCommand": "code --install-extension GitHub.copilot",
+      "installUri": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": null
+}

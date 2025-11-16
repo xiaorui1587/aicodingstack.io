@@ -1,0 +1,78 @@
+{
+  "id": "continue-cli",
+  "name": "Continue CLI",
+  "description": "Open-source CLI agent that brings continuous AI to your terminal. Build and run custom agents with any model, define your own rules, and integrate MCP tools without vendor lock-in.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "开源 CLI Agent，将持续 AI 带到您的终端。使用任何模型构建和运行自定义 Agent，定义您自己的规则，并集成 MCP 工具，无供应商锁定。"
+    }
+  },
+  "websiteUrl": "https://www.continue.dev",
+  "docsUrl": "https://docs.continue.dev",
+  "verified": false,
+  "vendor": "Continue Dev",
+  "license": "Apache-2.0",
+  "latestVersion": "1.5.7",
+  "pricing": [
+    {
+      "name": "Solo (Open Source)",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Team",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Business"
+    },
+    {
+      "name": "Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://github.com/continuedev/continue/releases",
+    "changelog": "https://github.com/continuedev/continue/releases",
+    "pricing": "https://www.continue.dev/pricing",
+    "mcp": null,
+    "issue": "https://github.com/continuedev/continue/issues"
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": null,
+    "github": "https://github.com/continuedev/continue",
+    "youtube": null,
+    "discord": "https://discord.gg/continue",
+    "reddit": null,
+    "blog": "https://www.continue.dev/blog"
+  },
+  "githubStars": 29.8,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": "npm install -g @continuedev/continue-cli",
+      "launchCommand": "continue",
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": "npm install -g @continuedev/continue-cli",
+      "launchCommand": "continue",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": "npm install -g @continuedev/continue-cli",
+      "launchCommand": "continue",
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": "https://github.com/continuedev/continue"
+}

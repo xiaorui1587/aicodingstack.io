@@ -1,0 +1,225 @@
+import Link from 'next/link';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { JsonLd } from '@/components/JsonLd';
+import { getTranslations } from 'next-intl/server';
+import { getFaqItems } from '@/lib/faq';
+import { MarkdownContent } from '@/components/MarkdownContent';
+import { buildCanonicalUrl, buildOpenGraph, buildTwitterCard, buildTitle } from '@/lib/metadata';
+
+export const revalidate = 3600;
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'pages.home.meta' });
+
+  const canonicalPath = locale === 'en' ? '/' : `/${locale}`;
+  const title = buildTitle({ title: t('title'), includeSiteName: false });
+  const description = t('description');
+
+  return {
+    title,
+    description,
+    keywords: 'AI coding, AI IDE, AI CLI, AI extensions, LLM models, AI coding tools, Cursor, Claude Code, VS Code',
+    alternates: {
+      canonical: canonicalPath,
+      languages: {
+        en: '/',
+        'zh-Hans': '/zh-Hans',
+      },
+    },
+    openGraph: buildOpenGraph({
+      title: t('title'),
+      description,
+      url: buildCanonicalUrl({ path: canonicalPath, locale }),
+      locale,
+      type: 'website',
+    }),
+    twitter: buildTwitterCard({
+      title: t('title'),
+      description,
+    }),
+  };
+}
+
+async function getFaqSchema(locale: string) {
+  const faqItems = getFaqItems(locale);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(faq => ({
+      "@type": "Question",
+      "name": faq.title,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.content
+      }
+    }))
+  };
+}
+
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function Home({ params }: Props) {
+  const { locale } = await params;
+  const tHome = await getTranslations({ locale, namespace: 'pages.home' });
+  const tFeatures = await getTranslations({ locale, namespace: 'pages.home.features' });
+  const faqItems = getFaqItems(locale);
+  const faqSchema = await getFaqSchema(locale);
+
+  return (
+    <>
+      <JsonLd data={faqSchema} />
+      <Header />
+
+      {/* Hero Section */}
+      <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
+        <div className="max-w-[1200px] mx-auto px-[var(--spacing-md)]">
+          <div className="text-center max-w-[900px] mx-auto">
+            <div className="mb-[var(--spacing-md)]">
+              <pre className="text-[0.45rem] leading-[1.3] inline-block text-left bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-transparent">
+{`╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                                                   ║
+║     █████╗ ██╗     ██████╗ ██████╗ ██████╗ ██╗███╗   ██╗ ██████╗     ███████╗████████╗ █████╗  ██████╗██╗  ██╗    ║
+║    ██╔══██╗██║    ██╔════╝██╔═══██╗██╔══██╗██║████╗  ██║██╔════╝     ██╔════╝╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝    ║
+║    ███████║██║    ██║     ██║   ██║██║  ██║██║██╔██╗ ██║██║  ███╗    ███████╗   ██║   ███████║██║     █████╔╝     ║
+║    ██╔══██║██║    ██║     ██║   ██║██║  ██║██║██║╚██╗██║██║   ██║    ╚════██║   ██║   ██╔══██║██║     ██╔═██╗     ║
+║    ██║  ██║██║    ╚██████╗╚██████╔╝██████╔╝██║██║ ╚████║╚██████╔╝    ███████║   ██║   ██║  ██║╚██████╗██║  ██╗    ║
+║    ╚═╝  ╚═╝╚═╝     ╚═════╝ ╚═════╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝     ╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝    ║
+║                                                                                                                   ║
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝`}
+              </pre>
+            </div>
+
+            <h1 className="text-[2rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-md)]">
+              {tHome('title')}
+            </h1>
+
+            <p className="text-base leading-[1.8] text-[var(--color-text-secondary)] mb-[var(--spacing-lg)] font-light">
+              {tHome('subtitle')}
+              <br />
+              {tHome('description')}
+            </p>
+
+            {/* CTA Section */}
+            <div className="flex gap-[var(--spacing-md)] justify-center flex-wrap max-w-[600px] mx-auto">
+              <Link
+                href="/ai-coding-stack"
+                className="inline-flex items-center gap-[var(--spacing-xs)] px-[var(--spacing-lg)] py-[var(--spacing-sm)] text-sm font-medium border border-[var(--color-border-strong)] bg-[var(--color-text)] text-[var(--color-bg)] hover:bg-[var(--color-text-secondary)] transition-all"
+              >
+                {tHome('exploreTools')}
+              </Link>
+              <Link
+                href="/docs"
+                className="inline-flex items-center gap-[var(--spacing-xs)] px-[var(--spacing-lg)] py-[var(--spacing-sm)] text-sm font-medium border border-[var(--color-border)] hover:bg-[var(--color-hover)] transition-all"
+              >
+                {tHome('readDocs')}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="py-[var(--spacing-xl)] border-b border-[var(--color-border)]">
+        <div className="max-w-[1200px] mx-auto px-[var(--spacing-md)]">
+          <h2 className="text-[1.5rem] font-semibold tracking-[-0.02em] mb-[var(--spacing-sm)]">
+            <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">{'//'}</span>
+            {tFeatures('title')}
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--spacing-lg)] mt-[var(--spacing-lg)]">
+            <div className="border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5">
+              <pre className="text-xs leading-tight text-[var(--color-text-muted)] mb-[var(--spacing-md)]">
+{`┌─────┐
+│ DIR │
+└─────┘`}
+              </pre>
+              <h3 className="text-base font-semibold tracking-tight mb-[var(--spacing-sm)]">
+                {tFeatures('directory.title')}
+              </h3>
+              <p className="text-sm leading-relaxed text-[var(--color-text-secondary)] font-light">
+                {tFeatures('directory.description')}
+              </p>
+            </div>
+
+            <div className="border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5">
+              <pre className="text-xs leading-tight text-[var(--color-text-muted)] mb-[var(--spacing-md)]">
+{`┌─────┐
+│ CMP │
+└─────┘`}
+              </pre>
+              <h3 className="text-base font-semibold tracking-tight mb-[var(--spacing-sm)]">
+                {tFeatures('comparison.title')}
+              </h3>
+              <p className="text-sm leading-relaxed text-[var(--color-text-secondary)] font-light">
+                {tFeatures('comparison.description')}
+              </p>
+            </div>
+
+            <div className="border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5">
+              <pre className="text-xs leading-tight text-[var(--color-text-muted)] mb-[var(--spacing-md)]">
+{`┌─────┐
+│ ECO │
+└─────┘`}
+              </pre>
+              <h3 className="text-base font-semibold tracking-tight mb-[var(--spacing-sm)]">
+                {tFeatures('ecosystem.title')}
+              </h3>
+              <p className="text-sm leading-relaxed text-[var(--color-text-secondary)] font-light">
+                {tFeatures('ecosystem.description')}
+              </p>
+            </div>
+
+            <div className="border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5">
+              <pre className="text-xs leading-tight text-[var(--color-text-muted)] mb-[var(--spacing-md)]">
+{`┌─────┐
+│ TRK │
+└─────┘`}
+              </pre>
+              <h3 className="text-base font-semibold tracking-tight mb-[var(--spacing-sm)]">
+                {tFeatures('tracking.title')}
+              </h3>
+              <p className="text-sm leading-relaxed text-[var(--color-text-secondary)] font-light">
+                {tFeatures('tracking.description')}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section id="faq" className="py-[var(--spacing-xl)] border-b border-[var(--color-border)]">
+        <div className="max-w-[1200px] mx-auto px-[var(--spacing-md)]">
+          <h2 className="text-[1.5rem] font-semibold tracking-[-0.02em] mb-[var(--spacing-sm)]">
+            <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">{'//'}</span>
+            {tHome('faq')}
+          </h2>
+
+          <div className="mt-[var(--spacing-lg)] space-y-[var(--spacing-md)]">
+            {faqItems.map((faq, index) => (
+              <article key={index} className="border border-[var(--color-border)] p-[var(--spacing-md)]" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <details className="group">
+                  <summary className="text-base font-medium tracking-tight cursor-pointer list-none select-none flex items-center gap-[var(--spacing-xs)] text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors">
+                    <span className="text-[var(--color-text-muted)] text-xs group-open:rotate-90 transition-transform">▶</span>
+                    <h3 itemProp="name" className="font-medium">{faq.title}</h3>
+                  </summary>
+                  <div className="mt-[var(--spacing-sm)] pl-[var(--spacing-md)]" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                    <div className="text-sm leading-relaxed text-[var(--color-text-secondary)] font-light" itemProp="text">
+                      <MarkdownContent content={faq.content} />
+                    </div>
+                  </div>
+                </details>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </>
+  );
+}

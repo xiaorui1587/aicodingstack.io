@@ -1,0 +1,85 @@
+{
+  "id": "windsurf",
+  "name": "Windsurf Editor",
+  "description": "An AI-native IDE featuring the \"Cascade\" assistant that autonomously generates, edits, tests, and deploys code. Integrates MCP servers and plugin hooks to maintain developer flow state.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "AI 原生 IDE，具有智能助手 Cascade，可自主生成、编辑、测试和部署代码。集成 MCP 服务器和插件钩子，让开发者保持心流状态。"
+    }
+  },
+  "websiteUrl": "https://windsurf.com/",
+  "docsUrl": "https://docs.windsurf.com",
+  "verified": false,
+  "vendor": "Cognition",
+  "license": "Proprietary",
+  "latestVersion": "1.12.12",
+  "pricing": [
+    {
+      "name": "Free",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Pro",
+      "value": 15,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    },
+    {
+      "name": "Teams",
+      "value": 30,
+      "currency": "USD",
+      "per": "user/month",
+      "category": "Business"
+    },
+    {
+      "name": "Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://windsurf.com/download",
+    "changelog": "https://windsurf.com/changelog",
+    "pricing": "https://windsurf.com/pricing",
+    "mcp": null,
+    "issue": null
+  },
+  "communityUrls": {
+    "linkedin": "https://www.linkedin.com/company/windsurf",
+    "twitter": "https://x.com/windsurf",
+    "github": null,
+    "youtube": "https://www.youtube.com/@windsurf",
+    "discord": null,
+    "reddit": null,
+    "blog": "https://windsurf.com/blog"
+  },
+  "githubStars": null,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": null,
+      "launchCommand": "windsurf",
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": null,
+      "launchCommand": "windsurf",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": null,
+      "launchCommand": "windsurf",
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": null
+}

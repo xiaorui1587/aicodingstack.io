@@ -1,0 +1,85 @@
+{
+  "id": "github-copilot-cli",
+  "name": "GitHub Copilot CLI",
+  "description": "GitHub Copilot CLI brings AI assistance to your terminal. Suggests shell commands, generates code snippets, and integrates with repositories through natural language.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "GitHub Copilot CLI 将 AI 辅助功能带到您的终端。建议 shell 命令、生成代码片段，并通过自然语言与代码仓库集成。"
+    }
+  },
+  "websiteUrl": "https://github.com/features/copilot/cli",
+  "docsUrl": "https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli",
+  "verified": false,
+  "vendor": "GitHub",
+  "license": "Proprietary",
+  "latestVersion": "0.0.334",
+  "pricing": [
+    {
+      "name": "Copilot Pro",
+      "value": 10,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    },
+    {
+      "name": "Copilot Pro+",
+      "value": 39,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    },
+    {
+      "name": "Copilot Business",
+      "value": 19,
+      "currency": "USD",
+      "per": "user/month",
+      "category": "Business"
+    },
+    {
+      "name": "Copilot Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://www.npmjs.com/package/@github/copilot",
+    "changelog": "https://github.com/github/copilot-cli/releases",
+    "pricing": "https://docs.github.com/en/billing/product-billing/github-copilot",
+    "mcp": null,
+    "issue": "https://github.com/github/copilot-cli/issues"
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": "https://twitter.com/github",
+    "github": "https://github.com/github/copilot-cli",
+    "youtube": "https://www.youtube.com/@github",
+    "discord": null,
+    "reddit": null,
+    "blog": "https://github.blog/changelog/2025-04-20-github-copilot-cli-public-preview/"
+  },
+  "githubStars": 5,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": "npm install -g @github/copilot",
+      "launchCommand": "copilot",
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": "npm install -g @github/copilot",
+      "launchCommand": "copilot",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": "npm install -g @github/copilot",
+      "launchCommand": "copilot",
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": "https://github.com/github/copilot-cli"
+}

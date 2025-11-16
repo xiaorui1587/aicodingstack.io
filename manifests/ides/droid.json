@@ -1,0 +1,90 @@
+{
+  "id": "droid",
+  "name": "Droid",
+  "description": "An AI development platform providing \"Droids\" - autonomous coding agents that automate software tasks across workflows. Droids refactor code, handle debugging and tests, and generate features.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "AI 开发平台，提供 Droids —— 在工作流中自动化软件任务的自主编码 Agent。Droids 重构代码、处理调试和测试并生成功能。"
+    }
+  },
+  "websiteUrl": "https://factory.ai/",
+  "docsUrl": "https://docs.factory.ai",
+  "verified": false,
+  "vendor": "Factory.ai",
+  "license": "Proprietary",
+  "latestVersion": "Latest",
+  "pricing": [
+    {
+      "name": "BYOK",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Pro",
+      "value": 20,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    },
+    {
+      "name": "Max",
+      "value": 200,
+      "currency": "USD",
+      "per": "month",
+      "category": "Business"
+    },
+    {
+      "name": "Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": null,
+    "changelog": null,
+    "pricing": "https://factory.ai/pricing",
+    "mcp": null,
+    "issue": null
+  },
+  "communityUrls": {
+    "linkedin": "https://www.linkedin.com/company/factoryai",
+    "twitter": "https://x.com/FactoryAI",
+    "github": null,
+    "youtube": null,
+    "discord": null,
+    "reddit": null,
+    "blog": "https://factory.ai/news"
+  },
+  "githubStars": null,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": null,
+      "launchCommand": null,
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": null,
+      "launchCommand": null,
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": null,
+      "launchCommand": null,
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [
+    {
+      "type": "cli",
+      "productId": "factory"
+    }
+  ],
+  "githubUrl": null
+}

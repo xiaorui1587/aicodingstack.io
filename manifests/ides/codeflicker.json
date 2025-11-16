@@ -1,0 +1,58 @@
+{
+  "id": "codeflicker",
+  "name": "CodeFlicker",
+  "description": "An AI-powered intelligent code editor designed to unleash your coding imagination with advanced AI assistance.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "由人工智能驱动的智能代码编辑器，旨在释放您的代码想象力，提供先进的AI辅助功能。"
+    }
+  },
+  "websiteUrl": "https://www.codeflicker.ai",
+  "docsUrl": "https://www.codeflicker.ai/docs/",
+  "verified": false,
+  "vendor": "StreamLake",
+  "license": "Proprietary",
+  "latestVersion": "0.2.0",
+  "pricing": [
+    {
+      "name": "Free",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://www.codeflicker.ai/download",
+    "changelog": "https://www.codeflicker.ai/docs/changelog.html",
+    "pricing": null,
+    "mcp": null,
+    "issue": null
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": "https://x.com/CodeFlicker_ai",
+    "github": null,
+    "youtube": null,
+    "discord": "https://discord.gg/rVdpZS9D3C",
+    "reddit": null,
+    "blog": null
+  },
+  "githubStars": null,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": null,
+      "launchCommand": null,
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": null,
+      "launchCommand": null,
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": null
+}

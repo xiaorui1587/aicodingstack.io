@@ -1,0 +1,78 @@
+{
+  "id": "codebuddy-cli",
+  "name": "CodeBuddy CLI",
+  "description": "CodeBuddy CLI is an AI-driven code editor that integrates intelligent code generation, debugging, and development workflows into your terminal. Features TUI mode and inline chat.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "CodeBuddy CLI 是 AI 驱动的代码编辑器，将智能代码生成、调试和开发工作流集成到您的终端。具有 TUI 模式和内联聊天功能。"
+    }
+  },
+  "websiteUrl": "https://www.codebuddy.ai/cli",
+  "docsUrl": "https://www.codebuddy.ai/docs/cli/",
+  "verified": false,
+  "vendor": "Tencent Cloud",
+  "license": "Proprietary",
+  "latestVersion": "Latest",
+  "pricing": [
+    {
+      "name": "Free Tier",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Pro",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Individual"
+    },
+    {
+      "name": "Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://www.codebuddy.ai/cli",
+    "changelog": null,
+    "pricing": "https://www.codebuddy.ai/pricing",
+    "mcp": null,
+    "issue": null
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": null,
+    "github": null,
+    "youtube": null,
+    "discord": null,
+    "reddit": null,
+    "blog": null
+  },
+  "githubStars": null,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": "npm install -g codebuddy-cli",
+      "launchCommand": "codebuddy",
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": "npm install -g codebuddy-cli",
+      "launchCommand": "codebuddy",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": "npm install -g codebuddy-cli",
+      "launchCommand": "codebuddy",
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": null
+}

@@ -1,0 +1,71 @@
+{
+  "id": "opencode",
+  "name": "OpenCode",
+  "description": "OpenCode is an open source AI coding agent built for the terminal. Features native TUI, LSP support, multi-session capability, and works with 75+ LLM providers including local models.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "OpenCode 是一个为终端构建的开源 AI 编码 Agent。具有原生 TUI、LSP 支持、多会话功能，支持 75+ 个 LLM 提供商，包括本地模型。"
+    }
+  },
+  "websiteUrl": "https://opencode.ai",
+  "docsUrl": "https://opencode.ai",
+  "verified": false,
+  "vendor": "SST",
+  "license": "MIT",
+  "latestVersion": "0.15.16",
+  "pricing": [
+    {
+      "name": "Open Source",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Zen (Optimized Models)",
+      "value": null,
+      "currency": null,
+      "per": "usage-based",
+      "category": "Individual"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://opencode.ai",
+    "changelog": "https://github.com/sst/opencode/releases",
+    "pricing": "https://opencode.ai",
+    "mcp": null,
+    "issue": "https://github.com/sst/opencode/issues"
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": "https://twitter.com/opencode",
+    "github": "https://github.com/sst/opencode",
+    "youtube": null,
+    "discord": "https://discord.gg/opencode",
+    "reddit": null,
+    "blog": null
+  },
+  "githubStars": 32.4,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": "npm i -g opencode-ai@latest",
+      "launchCommand": "opencode",
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": "npm i -g opencode-ai@latest",
+      "launchCommand": "opencode",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": "npm i -g opencode-ai@latest",
+      "launchCommand": "opencode",
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": "https://github.com/sst/opencode"
+}

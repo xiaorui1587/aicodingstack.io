@@ -1,0 +1,22 @@
+{
+  "id": "deepseek",
+  "name": "DeepSeek",
+  "description": "A leading AI research company focused on developing advanced language models and AI technologies for coding and general intelligence.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "领先的 AI 研究公司，专注于开发先进的语言模型和 AI 技术，用于编码和通用智能。"
+    }
+  },
+  "websiteUrl": "https://www.deepseek.com/",
+  "docsUrl": null,
+  "verified": false,
+  "communityUrls": {
+    "linkedin": "https://www.linkedin.com/company/deepseek",
+    "twitter": "https://twitter.com/DeepSeekAI",
+    "github": "https://github.com/deepseek-ai",
+    "youtube": null,
+    "discord": null,
+    "reddit": "https://www.reddit.com/r/DeepSeekAI",
+    "blog": null
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "id": "amp-cli",
+  "name": "Amp",
+  "description": "A frontier coding agent by Sourcegraph that performs autonomous reasoning, code editing, and complex tasks. Available as CLI and in VS Code, Cursor, and Windsurf.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "Sourcegraph 的前沿编码 Agent，执行自主推理、代码编辑和复杂任务。提供 CLI 版本，并在 VS Code、Cursor 和 Windsurf 中可用。"
+    }
+  },
+  "websiteUrl": "https://ampcode.com",
+  "docsUrl": "https://ampcode.com",
+  "verified": false,
+  "vendor": "Sourcegraph",
+  "license": "Proprietary",
+  "latestVersion": "1.0.0",
+  "pricing": [
+    {
+      "name": "Amp Free",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Pro",
+      "value": null,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    },
+    {
+      "name": "Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://ampcode.com",
+    "changelog": "https://ampcode.com",
+    "pricing": "https://ampcode.com/pricing",
+    "mcp": null,
+    "issue": null
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": "https://twitter.com/ampcode",
+    "github": null,
+    "youtube": null,
+    "discord": "https://discord.com/invite/GT742pq9rS",
+    "reddit": null,
+    "blog": null
+  },
+  "githubStars": null,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": "Install via VS Code Marketplace, Cursor, or Windsurf",
+      "launchCommand": "amp",
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": "Install via VS Code Marketplace, Cursor, or Windsurf",
+      "launchCommand": "amp",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": "Install via VS Code Marketplace, Cursor, or Windsurf",
+      "launchCommand": "amp",
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": null
+}

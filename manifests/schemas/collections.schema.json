@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Collections Manifest Schema",
+  "description": "Schema for curated collections of specifications, articles, and tools",
+  "type": "object",
+  "properties": {
+    "specifications": {
+      "$ref": "#/$defs/collectionSection"
+    },
+    "articles": {
+      "$ref": "#/$defs/collectionSection"
+    },
+    "tools": {
+      "$ref": "#/$defs/collectionSection"
+    }
+  },
+  "required": ["specifications", "articles", "tools"],
+  "additionalProperties": false,
+  "$defs": {
+    "collectionSection": {
+      "type": "object",
+      "description": "A collection section containing title, description, i18n, and cards",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Section title"
+        },
+        "description": {
+          "type": "string",
+          "description": "Section description"
+        },
+        "i18n": {
+          "$ref": "./ref/i18n.schema.json",
+          "description": "Internationalization translations for section fields"
+        },
+        "cards": {
+          "type": "array",
+          "description": "Array of cards within this section",
+          "items": {
+            "$ref": "#/$defs/collectionCard"
+          },
+          "minItems": 1
+        }
+      },
+      "required": ["title", "description", "i18n", "cards"],
+      "additionalProperties": false
+    },
+    "collectionCard": {
+      "type": "object",
+      "description": "A card containing a title, i18n, and items",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Card title"
+        },
+        "i18n": {
+          "$ref": "./ref/i18n.schema.json",
+          "description": "Internationalization translations for card fields"
+        },
+        "items": {
+          "type": "array",
+          "description": "Array of items within this card",
+          "items": {
+            "$ref": "#/$defs/collectionItem"
+          },
+          "minItems": 0
+        }
+      },
+      "required": ["title", "i18n", "items"],
+      "additionalProperties": false
+    },
+    "collectionItem": {
+      "type": "object",
+      "description": "An individual item within a collection card",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Item name"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://",
+          "description": "Item URL"
+        },
+        "description": {
+          "type": "string",
+          "description": "Item description"
+        },
+        "i18n": {
+          "$ref": "./ref/i18n.schema.json",
+          "description": "Internationalization translations for item fields"
+        }
+      },
+      "required": ["name", "url", "description", "i18n"],
+      "additionalProperties": false
+    }
+  }
+}

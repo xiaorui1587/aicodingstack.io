@@ -1,0 +1,78 @@
+{
+  "id": "gemini-cli",
+  "name": "Gemini CLI",
+  "description": "Google's Gemini CLI brings advanced AI models to your terminal. Provides code completion, explanations, test generation, and bug fixes while supporting multiple languages.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "Google 的 Gemini CLI 将先进的 AI 模型带到您的终端。提供代码补全、解释、测试生成和错误修复，同时支持多种语言。"
+    }
+  },
+  "websiteUrl": "https://geminicli.com",
+  "docsUrl": "https://geminicli.com/docs/",
+  "verified": false,
+  "vendor": "Google",
+  "license": "Apache-2.0",
+  "latestVersion": "0.5.4",
+  "pricing": [
+    {
+      "name": "Individual (Free)",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Gemini Code Assist Standard",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Business"
+    },
+    {
+      "name": "Gemini Code Assist Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://www.npmjs.com/package/@google/gemini-cli",
+    "changelog": "https://geminicli.com/docs/changelogs/",
+    "pricing": "https://codeassist.google/",
+    "mcp": null,
+    "issue": "https://github.com/google-gemini/gemini-cli/issues"
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": null,
+    "github": "https://github.com/google-gemini/gemini-cli",
+    "youtube": "https://www.youtube.com/@GoogleDevelopers",
+    "discord": null,
+    "reddit": null,
+    "blog": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-cli-custom-slash-commands"
+  },
+  "githubStars": 82.1,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": "npm install -g @google/gemini-cli",
+      "launchCommand": "gemini",
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": "npm install -g @google/gemini-cli",
+      "launchCommand": "gemini",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": "npm install -g @google/gemini-cli",
+      "launchCommand": "gemini",
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": "https://github.com/google-gemini/gemini-cli"
+}

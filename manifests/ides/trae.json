@@ -1,0 +1,71 @@
+{
+  "id": "trae",
+  "name": "TRAE",
+  "description": "An AI-powered IDE that acts as a 10x \"AI engineer,\" providing real-time code completion, chat-based assistance, and autonomous code generation (Builder/SOLO mode) for end-to-end development.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "AI 驱动的 IDE，充当 10 倍效率 AI 工程师，提供实时代码补全、聊天式辅助和自主代码生成（Builder/SOLO 模式）用于端到端开发。"
+    }
+  },
+  "websiteUrl": "https://www.trae.ai/",
+  "docsUrl": "https://docs.trae.ai",
+  "verified": false,
+  "vendor": "ByteDance",
+  "license": "Proprietary",
+  "latestVersion": "2.7.1",
+  "pricing": [
+    {
+      "name": "Free",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Pro",
+      "value": 10,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://www.trae.ai/download",
+    "changelog": "https://www.trae.ai/changelog",
+    "pricing": "https://www.trae.ai/pricing",
+    "mcp": null,
+    "issue": null
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": "https://x.com/Trae_ai",
+    "github": null,
+    "youtube": null,
+    "discord": null,
+    "reddit": "https://www.reddit.com/r/Trae_ai/",
+    "blog": "https://www.trae.ai/blog"
+  },
+  "githubStars": null,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": null,
+      "launchCommand": "trae",
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": null,
+      "launchCommand": "trae",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": null,
+      "launchCommand": "trae",
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": null
+}

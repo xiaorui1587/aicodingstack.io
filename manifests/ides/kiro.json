@@ -1,0 +1,92 @@
+{
+  "id": "kiro",
+  "name": "Kiro",
+  "description": "AWS's agentic IDE that brings spec-driven development to VS Code. Uses AI agents to convert natural language specs into code, automate tasks, and integrate with workflows.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "AWS 的智能 IDE，为 VS Code 带来规范驱动开发。使用 AI Agent 将自然语言规范转化为代码、自动化任务并与工作流集成。"
+    }
+  },
+  "websiteUrl": "https://kiro.dev/",
+  "docsUrl": "https://kiro.dev/docs",
+  "verified": false,
+  "vendor": "Amazon Web Services",
+  "license": "Proprietary",
+  "latestVersion": "1.0",
+  "pricing": [
+    {
+      "name": "Free",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Pro",
+      "value": 20,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    },
+    {
+      "name": "Pro+",
+      "value": 40,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    },
+    {
+      "name": "Power",
+      "value": 200,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    },
+    {
+      "name": "Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://kiro.dev/downloads",
+    "changelog": "https://kiro.dev/changelog",
+    "pricing": "https://kiro.dev/pricing",
+    "mcp": null,
+    "issue": "https://github.com/kirodotdev/Kiro/issues"
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": null,
+    "github": "https://github.com/kirodotdev/Kiro",
+    "youtube": null,
+    "discord": null,
+    "reddit": null,
+    "blog": "https://kiro.dev/blog"
+  },
+  "githubStars": 2.2,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": null,
+      "launchCommand": "kiro",
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": null,
+      "launchCommand": "kiro",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": null,
+      "launchCommand": "kiro",
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": "https://github.com/kirodotdev/Kiro"
+}

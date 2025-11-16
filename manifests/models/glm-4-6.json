@@ -1,0 +1,27 @@
+{
+  "id": "glm-4-6",
+  "name": "GLM 4.6",
+  "description": "GLM 4.6 is a 9B parameter language model from Z.ai with 128K context window, optimized for efficient performance and multilingual understanding.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "GLM 4.6 是 Z.ai 推出的 9B 参数语言模型，具备 128K 上下文窗口，专为高效性能和多语言理解优化。"
+    }
+  },
+  "websiteUrl": "https://z.ai",
+  "docsUrl": "https://huggingface.co/zai-org/GLM-4.6",
+  "verified": false,
+  "vendor": "Z.ai",
+  "size": "9B",
+  "totalContext": "128K",
+  "maxOutput": "4K",
+  "tokenPricing": {
+    "input": 0.1,
+    "output": 0.1,
+    "cache": null
+  },
+  "platformUrls": {
+    "huggingface": "https://huggingface.co/zai-org/GLM-4.6",
+    "artificialAnalysis": "https://artificialanalysis.ai/models/glm-4-6",
+    "openrouter": "https://openrouter.ai/z-ai/glm-4.6"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "id": "kimi-cli",
+  "name": "Kimi CLI",
+  "description": "Kimi CLI is a new CLI agent that can help you with your software development tasks and terminal operations. Features shell-like UI, Zsh integration, Agent Client Protocol support, and MCP support.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "Kimi CLI 是一款新的 CLI Agent，可以帮助您完成软件开发任务和终端操作。具有类 Shell 的用户界面、Zsh 集成、Agent Client Protocol 支持和 MCP 支持。"
+    }
+  },
+  "websiteUrl": "https://github.com/MoonshotAI/kimi-cli",
+  "docsUrl": "https://github.com/MoonshotAI/kimi-cli#readme",
+  "verified": false,
+  "vendor": "Moonshot AI",
+  "license": "Apache-2.0",
+  "latestVersion": "0.42",
+  "pricing": [
+    {
+      "name": "Free Tier",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    }
+  ],
+  "resourceUrls": {
+    "download": null,
+    "changelog": "https://github.com/MoonshotAI/kimi-cli/blob/main/CHANGELOG.md",
+    "pricing": null,
+    "mcp": null,
+    "issue": "https://github.com/MoonshotAI/kimi-cli/issues"
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": null,
+    "github": "https://github.com/MoonshotAI/kimi-cli",
+    "youtube": null,
+    "discord": null,
+    "reddit": null,
+    "blog": null
+  },
+  "githubStars": 2.6,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": "uv tool install --python 3.13 kimi-cli",
+      "launchCommand": "kimi",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": "uv tool install --python 3.13 kimi-cli",
+      "launchCommand": "kimi",
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": "https://github.com/MoonshotAI/kimi-cli"
+}

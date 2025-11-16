@@ -1,0 +1,83 @@
+{
+  "id": "intellij-idea",
+  "name": "IntelliJ IDEA",
+  "description": "A powerful Java IDE with intelligent code assistance, refactoring tools, and support for multiple languages. Available in Community (free) and Ultimate (paid) editions.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "功能强大的 Java IDE，具有智能代码辅助、重构工具和多语言支持。提供社区版（免费）和旗舰版（付费）两个版本。"
+    }
+  },
+  "websiteUrl": "https://www.jetbrains.com/idea/",
+  "docsUrl": "https://www.jetbrains.com/help/idea/",
+  "verified": false,
+  "vendor": "JetBrains",
+  "license": "Proprietary",
+  "latestVersion": "2024.3",
+  "pricing": [
+    {
+      "name": "Community",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Ultimate",
+      "value": 169,
+      "currency": "USD",
+      "per": "year",
+      "category": "Individual"
+    },
+    {
+      "name": "All Products Pack",
+      "value": 249,
+      "currency": "USD",
+      "per": "year",
+      "category": "Individual"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://www.jetbrains.com/idea/download/",
+    "changelog": "https://www.jetbrains.com/idea/whatsnew/",
+    "pricing": "https://www.jetbrains.com/idea/buy/",
+    "mcp": null,
+    "issue": "https://youtrack.jetbrains.com/issues/IDEA"
+  },
+  "communityUrls": {
+    "linkedin": "https://www.linkedin.com/company/jetbrains",
+    "twitter": "https://x.com/intellijidea",
+    "github": "https://github.com/JetBrains/intellij-community",
+    "youtube": "https://www.youtube.com/user/JetBrainsTV",
+    "discord": null,
+    "reddit": "https://www.reddit.com/r/IntelliJIDEA",
+    "blog": "https://blog.jetbrains.com/idea/"
+  },
+  "githubStars": 19.1,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": "https://www.jetbrains.com/idea/download/",
+      "launchCommand": "idea",
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": "https://www.jetbrains.com/idea/download/",
+      "launchCommand": "idea",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": "https://www.jetbrains.com/idea/download/",
+      "launchCommand": "idea",
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [
+    {
+      "type": "cli",
+      "productId": "idea"
+    }
+  ],
+  "githubUrl": "https://github.com/JetBrains/intellij-community"
+}

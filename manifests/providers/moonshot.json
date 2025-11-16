@@ -1,0 +1,32 @@
+{
+  "id": "moonshot",
+  "name": "Moonshot",
+  "description": "An AI company specializing in large language models and intelligent applications, known for the Kimi AI assistant.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "专注于大型语言模型和智能应用的 AI 公司，以 Kimi AI 助手而闻名。"
+    }
+  },
+  "websiteUrl": "https://www.moonshot.ai/",
+  "docsUrl": "https://platform.moonshot.ai/docs/",
+  "verified": false,
+  "vendor": "moonshot",
+  "type": "foundation-model-provider",
+  "applyKeyUrl": "https://platform.moonshot.ai/console/api-keys",
+  "platformUrls": {
+    "huggingface": "https://huggingface.co/moonshotai",
+    "artificialAnalysis": "https://artificialanalysis.ai/providers/moonshot_ai",
+    "openrouter": "https://openrouter.ai/provider/moonshotai"
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": "https://twitter.com/MoonshotAI",
+    "github": "https://github.com/moonshotai",
+    "youtube": null,
+    "discord": null,
+    "reddit": null,
+    "blog": null
+  },
+  "githubUrl": "https://github.com/moonshotai",
+  "githubStars": null
+}

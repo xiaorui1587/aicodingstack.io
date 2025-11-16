@@ -1,0 +1,83 @@
+{
+  "id": "zed",
+  "name": "Zed",
+  "description": "A next-generation code editor built in Rust for high-performance collaboration with humans and AI. Features agentic editing, multibuffer editing, and native Git support.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "用 Rust 构建的下一代代码编辑器，专为与人类和 AI 的高性能协作而设计。具有智能编辑、多缓冲区编辑和原生 Git 支持。"
+    }
+  },
+  "websiteUrl": "https://zed.dev/",
+  "docsUrl": "https://zed.dev/docs",
+  "verified": false,
+  "vendor": "Zed Industries",
+  "license": "GPL-3.0",
+  "latestVersion": "0.140.0",
+  "pricing": [
+    {
+      "name": "Free",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Teams",
+      "value": 15,
+      "currency": "USD",
+      "per": "user/month",
+      "category": "Business"
+    },
+    {
+      "name": "Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://zed.dev/download",
+    "changelog": "https://zed.dev/releases",
+    "pricing": "https://zed.dev/pricing",
+    "mcp": null,
+    "issue": "https://github.com/zed-industries/zed/issues"
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": "https://x.com/zeddotdev",
+    "github": "https://github.com/zed-industries/zed",
+    "youtube": "https://www.youtube.com/@zeddotdev",
+    "discord": null,
+    "reddit": null,
+    "blog": "https://zed.dev/blog"
+  },
+  "githubStars": 69.5,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": "https://zed.dev/download",
+      "launchCommand": "zed",
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": "https://zed.dev/download",
+      "launchCommand": "zed",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": "https://zed.dev/download",
+      "launchCommand": "zed",
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [
+    {
+      "type": "cli",
+      "productId": "zed"
+    }
+  ],
+  "githubUrl": "https://github.com/zed-industries/zed"
+}

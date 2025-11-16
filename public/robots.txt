@@ -1,0 +1,15 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/static/
+Disallow: /*.json$
+
+# Crawl-delay for polite crawling
+Crawl-delay: 0.5
+
+# Sitemaps
+Sitemap: https://aicodingstack.io/sitemap.xml
+
+# Host preference (optional but good for SEO)
+Host: https://aicodingstack.io

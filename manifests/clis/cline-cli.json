@@ -1,0 +1,64 @@
+{
+  "id": "cline-cli",
+  "name": "Cline CLI",
+  "description": "Cline CLI enables headless task execution from the terminal and integrates Cline anywhere. Use it to power GitHub Actions, Discord bots, and Linear tickets with collaborative AI.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "Cline CLI 支持从终端无头执行任务并将 Cline 集成到任何地方。使用它通过协作 AI 驱动 GitHub Actions、Discord 机器人和 Linear 工单。"
+    }
+  },
+  "websiteUrl": "https://cline.bot/cline-cli",
+  "docsUrl": "https://cline.bot/docs",
+  "verified": false,
+  "vendor": "Cline Bot Inc",
+  "license": "Proprietary",
+  "latestVersion": "Preview",
+  "pricing": [
+    {
+      "name": "Teams",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Business"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://www.npmjs.com/package/cline",
+    "changelog": null,
+    "pricing": "https://cline.bot/pricing",
+    "mcp": "https://cline.bot/mcp-marketplace",
+    "issue": null
+  },
+  "communityUrls": {
+    "linkedin": "https://www.linkedin.com/company/cline-bot",
+    "twitter": "https://twitter.com/clinebot",
+    "github": null,
+    "youtube": null,
+    "discord": null,
+    "reddit": "https://www.reddit.com/r/cline",
+    "blog": "https://cline.bot/blog"
+  },
+  "githubStars": null,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": "npm install -g cline",
+      "launchCommand": "cline",
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": "npm install -g cline",
+      "launchCommand": "cline",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": "npm install -g cline",
+      "launchCommand": "cline",
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": null
+}

@@ -1,0 +1,69 @@
+{
+	"name": "aicodingstack",
+	"version": "1.0.0",
+	"description": "AI Coding Stack Website",
+	"scripts": {
+		"dev": "npm run generate:manifests && npm run generate:metadata && next dev",
+		"build": "npm run validate:manifests && npm run generate:manifests && npm run generate:metadata && BUILD_TIME=$(date -u +%Y-%m-%dT%H:%M:%SZ) next build",
+		"start": "next start",
+		"lint": "next lint",
+		"validate:manifests": "node scripts/validate-manifests.mjs",
+		"validate:urls": "node scripts/validate-urls.mjs",
+		"generate:manifests": "node scripts/generate-manifest-indexes.js",
+		"generate:metadata": "node scripts/generate-metadata.mjs",
+		"fetch:github-stars": "node scripts/fetch-github-stars.mjs",
+		"deploy": "npm run validate:manifests && npm run generate:manifests && npm run generate:metadata && BUILD_TIME=$(date -u +%Y-%m-%dT%H:%M:%SZ) opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+		"preview": "npm run validate:manifests && npm run generate:manifests && npm run generate:metadata && BUILD_TIME=$(date -u +%Y-%m-%dT%H:%M:%SZ) opennextjs-cloudflare build && opennextjs-cloudflare preview",
+		"cf-typegen": "wrangler types --env-interface CloudflareEnv ./cloudflare-env.d.ts",
+		"analyze": "ANALYZE=true BUILD_TIME=$(date -u +%Y-%m-%dT%H:%M:%SZ) npm run build"
+	},
+	"dependencies": {
+		"@mdx-js/loader": "^3.1.1",
+		"@mdx-js/react": "^3.1.1",
+		"@next/mdx": "^15.5.4",
+		"@next/third-parties": "^15.5.4",
+		"@opennextjs/cloudflare": "^1.3.0",
+		"@types/mdx": "^2.0.13",
+		"gray-matter": "^4.0.3",
+		"lucide-react": "^0.545.0",
+		"next": "^15.5.6",
+		"next-intl": "^4.3.12",
+		"react": "19.1.0",
+		"react-dom": "19.1.0",
+		"recharts": "^3.3.0",
+		"rehype-highlight": "^7.0.2",
+		"remark-frontmatter": "^5.0.0",
+		"remark-gfm": "^4.0.1",
+		"remark-mdx-frontmatter": "^5.2.0"
+	},
+	"devDependencies": {
+		"@eslint/eslintrc": "^3",
+		"@next/bundle-analyzer": "^15.5.5",
+		"@tailwindcss/postcss": "^4",
+		"@types/node": "^20.19.18",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"ajv": "^8.17.1",
+		"ajv-formats": "^3.0.1",
+		"eslint": "^9",
+		"eslint-config-next": "15.4.6",
+		"tailwindcss": "^4",
+		"typescript": "^5",
+		"user-agents": "^1.1.669",
+		"wrangler": "^4.42.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ericyangpan/aicodingstack.git"
+	},
+	"author": "Pan YANG",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/ericyangpan/aicodingstack/issues"
+	},
+	"homepage": "https://github.com/ericyangpan/aicodingstack#readme",
+	"browserslist": [
+		"defaults and fully supports es6-module",
+		"maintained node versions"
+	]
+}

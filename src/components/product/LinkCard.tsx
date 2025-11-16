@@ -1,0 +1,105 @@
+/**
+ * LinkCard Component
+ * 
+ * A reusable card component for displaying external links with consistent styling.
+ * Supports horizontal and vertical layouts.
+ */
+
+interface LinkCardProps {
+  href: string;
+  title: string;
+  description: string;
+  layout?: 'horizontal' | 'vertical';
+}
+
+/**
+ * Individual link card component
+ */
+export function LinkCard({ href, title, description, layout = 'horizontal' }: LinkCardProps) {
+  const isHorizontal = layout === 'horizontal';
+  
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener"
+      className={`border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5 group ${isHorizontal ? '' : 'text-center'}`}
+    >
+      {isHorizontal ? (
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className="text-sm font-semibold tracking-tight mb-1">{title}</h3>
+            <p className="text-xs text-[var(--color-text-muted)]">{description}</p>
+          </div>
+          <span className="text-lg text-[var(--color-text-muted)] group-hover:text-[var(--color-text)] group-hover:translate-x-1 transition-all">
+            →
+          </span>
+        </div>
+      ) : (
+        <>
+          <h3 className="text-sm font-semibold tracking-tight mb-1">{title}</h3>
+          <p className="text-xs text-[var(--color-text-muted)]">{description}</p>
+        </>
+      )}
+    </a>
+  );
+}
+
+interface LinkCardGridProps {
+  title: string;
+  links: Array<{
+    key: string;
+    title: string;
+    description: string;
+  }>;
+  urls: Record<string, unknown>;
+  layout?: 'horizontal' | 'vertical';
+  gridCols?: string;
+}
+
+/**
+ * Grid container for link cards
+ * Automatically filters out links with empty URLs
+ */
+export function LinkCardGrid({ 
+  title, 
+  links, 
+  urls, 
+  layout = 'horizontal',
+  gridCols = 'grid-cols-1 md:grid-cols-3'
+}: LinkCardGridProps) {
+  // Filter out links where the URL is missing or not a string
+  const availableLinks = links.filter(link => {
+    const url = urls[link.key];
+    return url && typeof url === 'string';
+  });
+  
+  // Don't render if no links are available
+  if (availableLinks.length === 0) {
+    return null;
+  }
+  
+  return (
+    <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
+      <div className="max-w-[900px] mx-auto px-[var(--spacing-md)]">
+        <h2 className="text-[1.5rem] font-semibold tracking-[-0.02em] mb-[var(--spacing-sm)]">
+          <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">{'//'}</span>
+          {title}
+        </h2>
+
+        <div className={`grid ${gridCols} gap-[var(--spacing-md)] mt-[var(--spacing-lg)]`}>
+          {availableLinks.map(link => (
+            <LinkCard
+              key={link.key}
+              href={urls[link.key] as string}
+              title={link.title}
+              description={link.description}
+              layout={layout}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+

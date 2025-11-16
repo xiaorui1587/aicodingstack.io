@@ -1,0 +1,194 @@
+import { notFound } from 'next/navigation';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { BackToNavigation } from '@/components/controls/BackToNavigation';
+import { Breadcrumb } from '@/components/controls/Breadcrumb';
+import { JsonLd } from '@/components/JsonLd';
+import { ProductHero } from '@/components/product';
+import { getTranslations } from 'next-intl/server';
+import { generateModelDetailMetadata } from '@/lib/metadata';
+import type { ManifestModel } from '@/types/manifests';
+import { modelsData as models } from '@/lib/generated';
+
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  return models.map((model) => ({
+    slug: model.id,
+  }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const { locale, slug } = await params;
+  const model = models.find((m) => m.id === slug);
+
+  if (!model) {
+    return { title: 'Model Not Found | AI Coding Stack' };
+  }
+
+  return await generateModelDetailMetadata({
+    locale: locale as 'en' | 'zh-Hans',
+    slug,
+    model: {
+      name: model.name,
+      description: model.description || '',
+      vendor: model.vendor,
+      size: model.size,
+      totalContext: typeof model.totalContext === 'string' ? parseInt(model.totalContext.replace(/[KM]/g, '')) * (model.totalContext.includes('K') ? 1000 : 1) : model.totalContext,
+      maxOutput: typeof model.maxOutput === 'string' ? parseInt(model.maxOutput.replace(/[KM]/g, '')) * (model.maxOutput.includes('K') ? 1000 : 1) : model.maxOutput,
+      tokenPricing: model.tokenPricing,
+    },
+    translationNamespace: 'stackDetailPages.modelDetail',
+  });
+}
+
+export default async function ModelPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const { locale, slug } = await params;
+  const model = models.find((m) => m.id === slug) as unknown as ManifestModel | undefined;
+  const t = await getTranslations({ locale, namespace: 'stackDetailPages.modelDetail' });
+  const tStacks = await getTranslations({ locale, namespace: 'stacks' });
+  const tHero = await getTranslations({ locale, namespace: 'components.productHero' });
+  const tLabels = await getTranslations({ locale, namespace: 'stackDetailPages.modelDetail.labels' });
+
+  if (!model) {
+    notFound();
+  }
+
+  // Schema.org structured data
+  const pricingDisplayForSchema = model.tokenPricing?.input 
+    ? model.tokenPricing.input.toString()
+    : model.tokenPricing?.output 
+    ? model.tokenPricing.output.toString()
+    : null;
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": model.name,
+    "description": `${model.name} by ${model.vendor}`,
+    "brand": {
+      "@type": "Organization",
+      "name": model.vendor
+    },
+    "offers": pricingDisplayForSchema ? {
+      "@type": "Offer",
+      "price": pricingDisplayForSchema,
+      "priceCurrency": "USD"
+    } : undefined,
+  };
+
+  return (
+    <>
+      <JsonLd data={productSchema} />
+      <Header />
+
+      <Breadcrumb
+        items={[
+          { name: tStacks('aiCodingStack'), href: '/ai-coding-stack' },
+          { name: tStacks('models'), href: 'models' },
+          { name: model.name, href: `models/${model.id}` },
+        ]}
+      />
+
+      {/* Hero Section */}
+      <ProductHero
+        name={model.name}
+        description={`by ${model.vendor}`}
+        vendor={model.vendor}
+        category="MODEL"
+        categoryLabel={tHero('categories.MODEL')}
+        additionalInfo={[
+          model.size && { label: tLabels('size'), value: model.size },
+          model.totalContext && { label: tLabels('context'), value: model.totalContext },
+          model.maxOutput && { label: tLabels('maxOutput'), value: model.maxOutput }
+        ].filter(Boolean) as { label: string; value: string }[]}
+        pricing={pricingDisplayForSchema ? { label: tLabels('pricing'), value: pricingDisplayForSchema } : undefined}
+        additionalUrls={[
+          model.websiteUrl && { label: tLabels('website'), url: model.websiteUrl, icon: '↗' },
+          model.platformUrls?.huggingface && { label: tLabels('huggingface'), url: model.platformUrls.huggingface, icon: '→' },
+          model.platformUrls?.artificialAnalysis && { label: tLabels('artificialAnalysis'), url: model.platformUrls.artificialAnalysis, icon: '→' },
+          model.platformUrls?.openrouter && { label: tLabels('openrouter'), url: model.platformUrls.openrouter, icon: '→' }
+        ].filter(Boolean) as { label: string; url: string; icon?: string }[]}
+        labels={{
+          vendor: tHero('vendor'),
+          version: tHero('version'),
+          license: tHero('license'),
+          stars: tHero('stars'),
+          visitWebsite: tHero('visitWebsite'),
+          documentation: tHero('documentation'),
+        }}
+      />
+
+      {/* Specifications */}
+      <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
+        <div className="max-w-[800px] mx-auto px-[var(--spacing-md)]">
+          <h2 className="text-[1.5rem] font-semibold tracking-[-0.02em] mb-[var(--spacing-sm)]">
+            <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">{'//'}</span>
+            {t('specifications')}
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--spacing-md)] mt-[var(--spacing-lg)]">
+            {model.size && (
+              <div className="border border-[var(--color-border)] p-[var(--spacing-md)]">
+                <h3 className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider font-medium mb-[var(--spacing-xs)]">
+                  {t('modelSize')}
+                </h3>
+                <p className="text-lg font-semibold tracking-tight">{model.size}</p>
+              </div>
+            )}
+
+            {model.totalContext && (
+              <div className="border border-[var(--color-border)] p-[var(--spacing-md)]">
+                <h3 className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider font-medium mb-[var(--spacing-xs)]">
+                  {t('totalContext')}
+                </h3>
+                <p className="text-lg font-semibold tracking-tight">{model.totalContext}</p>
+              </div>
+            )}
+
+            {model.maxOutput && (
+              <div className="border border-[var(--color-border)] p-[var(--spacing-md)]">
+                <h3 className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider font-medium mb-[var(--spacing-xs)]">
+                  {t('maxOutput')}
+                </h3>
+                <p className="text-lg font-semibold tracking-tight">{model.maxOutput}</p>
+              </div>
+            )}
+
+            {model.tokenPricing && (
+              <div className="border border-[var(--color-border)] p-[var(--spacing-md)]">
+                <h3 className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider font-medium mb-[var(--spacing-xs)]">
+                  {t('pricing')}
+                </h3>
+                <div className="space-y-1">
+                  {model.tokenPricing.input !== null && model.tokenPricing.input !== undefined && (
+                    <p className="text-sm">
+                      <span className="text-[var(--color-text-muted)] text-xs">Input: </span>
+                      <span className="font-semibold tracking-tight">${model.tokenPricing.input}/M</span>
+                    </p>
+                  )}
+                  {model.tokenPricing.output !== null && model.tokenPricing.output !== undefined && (
+                    <p className="text-sm">
+                      <span className="text-[var(--color-text-muted)] text-xs">Output: </span>
+                      <span className="font-semibold tracking-tight">${model.tokenPricing.output}/M</span>
+                    </p>
+                  )}
+                  {model.tokenPricing.cache !== null && model.tokenPricing.cache !== undefined && (
+                    <p className="text-sm">
+                      <span className="text-[var(--color-text-muted)] text-xs">Cache: </span>
+                      <span className="font-semibold tracking-tight">${model.tokenPricing.cache}/M</span>
+                    </p>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Navigation */}
+      <BackToNavigation href="models" title={t('allModels')} />
+
+      <Footer />
+    </>
+  );
+}

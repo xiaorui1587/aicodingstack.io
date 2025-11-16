@@ -1,0 +1,104 @@
+{
+  "id": "cursor",
+  "name": "Cursor",
+  "description": "An AI-powered code editor built on VS Code with advanced AI capabilities for code generation, editing, and understanding.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "基于 VS Code 构建的 AI 驱动代码编辑器，具有高级 AI 功能，用于代码生成、编辑和理解。"
+    }
+  },
+  "websiteUrl": "https://cursor.com/",
+  "docsUrl": "https://cursor.com/docs",
+  "verified": false,
+  "vendor": "Anysphere",
+  "license": "Proprietary",
+  "latestVersion": "1.7.28",
+  "pricing": [
+    {
+      "name": "Hobby",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Pro",
+      "value": 20,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    },
+    {
+      "name": "Pro+",
+      "value": 60,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    },
+    {
+      "name": "Ultra",
+      "value": 200,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    },
+    {
+      "name": "Teams",
+      "value": 40,
+      "currency": "USD",
+      "per": "user/month",
+      "category": "Business"
+    },
+    {
+      "name": "Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://cursor.com/download",
+    "changelog": "https://cursor.com/changelog",
+    "pricing": "https://cursor.com/pricing",
+    "mcp": "https://cursor.com/docs/context/mcp",
+    "issue": "https://github.com/getcursor/cursor/issues"
+  },
+  "communityUrls": {
+    "linkedin": "https://www.linkedin.com/company/cursorai/",
+    "twitter": "https://x.com/cursor_ai",
+    "github": "https://github.com/cursor/cursor",
+    "youtube": "https://www.youtube.com/@cursor_ai",
+    "discord": null,
+    "reddit": "https://www.reddit.com/r/cursor",
+    "blog": "https://cursor.com/blog"
+  },
+  "githubStars": 31.6,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": null,
+      "launchCommand": "cursor",
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": null,
+      "launchCommand": "cursor",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": null,
+      "launchCommand": "cursor",
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [
+    {
+      "type": "cli",
+      "productId": "cursor-agent"
+    }
+  ],
+  "githubUrl": "https://github.com/cursor/cursor"
+}

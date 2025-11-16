@@ -1,0 +1,78 @@
+{
+  "id": "amp",
+  "name": "Amp",
+  "description": "A frontier coding agent by Sourcegraph for VS Code, Cursor, and Windsurf. Features autonomous reasoning, comprehensive editing, and shared sessions.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "适用于 VS Code、Cursor 和 Windsurf 的前沿编码 Agent。具有自主推理、全面编辑和会话共享功能。"
+    }
+  },
+  "websiteUrl": "https://ampcode.com",
+  "docsUrl": "https://ampcode.com",
+  "verified": false,
+  "vendor": "Sourcegraph",
+  "license": "Proprietary",
+  "latestVersion": "1.0.0",
+  "pricing": [
+    {
+      "name": "Amp Free",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Pro",
+      "value": null,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    },
+    {
+      "name": "Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://ampcode.com",
+    "changelog": "https://ampcode.com",
+    "pricing": "https://ampcode.com/pricing",
+    "mcp": null,
+    "issue": null
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": "https://twitter.com/ampcode",
+    "github": null,
+    "youtube": null,
+    "discord": "https://discord.com/invite/GT742pq9rS",
+    "reddit": null,
+    "blog": null
+  },
+  "githubStars": null,
+  "supportedIdes": [
+    {
+      "ideId": "vscode",
+      "marketplaceUrl": "https://ampcode.com",
+      "installCommand": "Install via VS Code Marketplace, Cursor, or Windsurf",
+      "installUri": null
+    },
+    {
+      "ideId": "cursor",
+      "marketplaceUrl": null,
+      "installCommand": null,
+      "installUri": null
+    },
+    {
+      "ideId": "windsurf",
+      "marketplaceUrl": null,
+      "installCommand": null,
+      "installUri": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": null
+}

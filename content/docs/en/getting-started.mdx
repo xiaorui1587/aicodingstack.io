@@ -1,0 +1,79 @@
+---
+title: 'Getting Started'
+---
+
+# Getting Started
+
+AI Coding Stack is a comprehensive directory and metadata repository for the AI coding ecosystem. This guide will help you understand how to use the website and contribute to the project.
+
+## Exploring the Stack
+
+### Browse Categories
+
+Visit [aicodingstack.io](https://aicodingstack.io) to explore different categories of AI coding tools:
+
+- **IDEs** - Find AI-powered integrated development environments (VS Code, Cursor, TRAE)
+- **CLIs** - Explore command-line AI coding assistants (Codex, Claude Code)
+- **Models** - Compare large language models for coding (Kimi K2, DeepSeek V3.1, GLM 4.5, Qwen3 Coder)
+- **Providers** - Review LLM API providers (DeepSeek, Moonshot, SiliconFlow, OpenRouter)
+
+### Compare Tools
+
+Use the website to compare different tools side-by-side, reviewing their features, capabilities, and official documentation links.
+
+## Contributing to the Metadata
+
+AI Coding Stack is community-maintained. You can contribute by adding new tools or updating existing entries in our manifest files.
+
+### Understanding Manifests
+
+All tool metadata is stored in JSON files under the `manifests/` directory:
+
+- `ides.json` - IDE metadata
+- `clis.json` - CLI tool metadata
+- `models.json` - LLM model metadata
+- `providers.json` - API provider metadata
+
+### Adding a New Tool
+
+1. Clone the repository
+2. Locate the appropriate manifest file in `manifests/`
+3. Add your entry following the existing schema
+4. Ensure all URLs are accessible
+5. Submit a pull request
+
+### Manifest Schema Examples
+
+**For IDEs/CLIs:**
+```json
+{
+  "name": "Tool Name",
+  "id": "tool-id",
+  "vendor": "Vendor Name",
+  "description": "Brief description",
+  "websiteUrl": "https://...",
+  "docsUrl": "https://...",
+  "latestVersion": "1.0.0"
+}
+```
+
+**For Models:**
+```json
+{
+  "name": "Model Name",
+  "vendor": "Vendor",
+  "id": "model-id",
+  "size": "70B",
+  "totalContext": 128000,
+  "maxOutput": 4096,
+  "pricing": {...},
+  "urls": {...}
+}
+```
+
+## Next Steps
+
+- Browse the [AI Coding Stack](/ai-coding-stack) to discover tools
+- Check the `manifests/` directory to see how metadata is structured
+- Read the [CLAUDE.md](https://github.com/ericyangpan/aicodingstack/blob/main/CLAUDE.md) for detailed contribution guidelines
+- Submit your first contribution to help grow the directory

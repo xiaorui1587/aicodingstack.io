@@ -1,0 +1,72 @@
+{
+  "id": "codebuddy",
+  "name": "CodeBuddy IDE",
+  "description": "Tencent's AI coding assistant offering intelligent code completion, multi-file code generation (Craft Mode), design-to-code conversion, and integrated deployment tools.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "腾讯的 AI 编码助手，提供智能代码补全、多文件代码生成（Craft 模式）、设计转代码转换和集成部署工具。"
+    }
+  },
+  "websiteUrl": "https://www.codebuddy.ai/",
+  "docsUrl": "https://www.codebuddy.ai/docs/ide/",
+  "verified": false,
+  "vendor": "Tencent",
+  "license": "Proprietary",
+  "latestVersion": "1.0.0",
+  "pricing": [
+    {
+      "name": "Free",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Pro",
+      "value": 9.95,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    },
+    {
+      "name": "Teams",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Business"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://www.codebuddy.ai/ide",
+    "changelog": null,
+    "pricing": "https://www.codebuddy.ai/pricing",
+    "mcp": null,
+    "issue": null
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": null,
+    "github": null,
+    "youtube": null,
+    "discord": null,
+    "reddit": null,
+    "blog": "https://www.codebuddy.ai/blog"
+  },
+  "githubStars": null,
+  "platforms": [
+    {
+      "os": "Windows",
+      "installCommand": null,
+      "launchCommand": "codebuddy",
+      "installPath": null
+    },
+    {
+      "os": "macOS",
+      "installCommand": null,
+      "launchCommand": "codebuddy",
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": null
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "app.schema.json",
+  "title": "Base App Schema",
+  "description": "Common fields for application products (CLI, IDE)",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "./product.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "platforms": {
+          "type": "array",
+          "description": "Supported platforms with install/launch details",
+          "items": {
+            "type": "object",
+            "properties": {
+              "os": {
+                "type": "string",
+                "enum": ["macOS", "Windows", "Linux"],
+                "description": "Operating system"
+              },
+              "installPath": {
+                "type": ["string", "null"],
+                "description": "Default install path or binary path on this OS"
+              },
+              "installCommand": {
+                "type": ["string", "null"],
+                "description": "Command to install the product on this OS"
+              },
+              "launchCommand": {
+                "type": ["string", "null"],
+                "description": "Command to launch the product on this OS"
+              }
+            },
+            "required": [
+              "os",
+              "installPath"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "installCommand": {
+          "type": ["string", "null"],
+          "description": "Top-level install command (optional, prefer platform-specific values)"
+        },
+        "launchCommand": {
+          "type": ["string", "null"],
+          "description": "Top-level launch command (optional, prefer platform-specific values)"
+        }
+      },
+      "required": [
+        "platforms"
+      ]
+    }
+  ]
+}
+

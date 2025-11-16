@@ -1,0 +1,84 @@
+{
+  "id": "cline",
+  "name": "Cline",
+  "description": "Cline is an open-source collaborative coding agent for complex work. It provides plan-then-act workflow with complete transparency, model freedom, and client-side architecture for enterprise security.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "Cline 是一个开源的协作式编码 Agent，用于复杂工作。它提供计划-执行工作流程，具有完全透明性、模型自由度和企业级安全的客户端架构。"
+    }
+  },
+  "websiteUrl": "https://cline.bot",
+  "docsUrl": "https://cline.bot/docs",
+  "verified": false,
+  "vendor": "Cline Bot",
+  "license": "Apache-2.0",
+  "latestVersion": "1.0.0",
+  "pricing": [
+    {
+      "name": "Free",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Teams",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Business"
+    },
+    {
+      "name": "Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://marketplace.visualstudio.com/items?itemName=Cline.cline",
+    "changelog": "https://github.com/clinebot/cline/releases",
+    "pricing": "https://cline.bot/pricing",
+    "mcp": "https://cline.bot/mcp",
+    "issue": "https://github.com/clinebot/cline/issues"
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": "https://twitter.com/clinebot",
+    "github": "https://github.com/cline/cline",
+    "youtube": null,
+    "discord": null,
+    "reddit": "https://reddit.com/r/Cline",
+    "blog": "https://cline.bot/blog"
+  },
+  "githubStars": 52.3,
+  "supportedIdes": [
+    {
+      "ideId": "vscode",
+      "marketplaceUrl": "https://marketplace.visualstudio.com/items?itemName=Cline.cline",
+      "installCommand": "code --install-extension Cline.cline",
+      "installUri": null
+    },
+    {
+      "ideId": "jetbrains",
+      "marketplaceUrl": "https://marketplace.visualstudio.com/items?itemName=Cline.cline",
+      "installCommand": "code --install-extension Cline.cline",
+      "installUri": null
+    },
+    {
+      "ideId": "cursor",
+      "marketplaceUrl": null,
+      "installCommand": null,
+      "installUri": null
+    },
+    {
+      "ideId": "windsurf",
+      "marketplaceUrl": null,
+      "installCommand": null,
+      "installUri": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": "https://github.com/cline/cline"
+}

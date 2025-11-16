@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "vendor-entity.schema.json",
+  "title": "Vendor Entity Schema",
+  "description": "Extended entity schema with vendor-related fields for models, providers, and MCP servers",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "./entity.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "vendor": {
+          "type": "string",
+          "description": "The company or organization that develops this entity"
+        }
+      },
+      "required": [
+        "vendor"
+      ]
+    }
+  ]
+}
+

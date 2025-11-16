@@ -1,0 +1,32 @@
+{
+  "id": "deepseek",
+  "name": "DeepSeek",
+  "description": "A leading AI research company focused on developing advanced language models and AI technologies for coding and general intelligence.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "领先的 AI 研究公司，专注于开发先进的语言模型和 AI 技术，用于编码和通用智能。"
+    }
+  },
+  "websiteUrl": "https://www.deepseek.com/",
+  "docsUrl": "https://platform.deepseek.com/api-docs/",
+  "verified": false,
+  "vendor": "deepseek",
+  "type": "foundation-model-provider",
+  "applyKeyUrl": "https://platform.deepseek.com/apply",
+  "platformUrls": {
+    "huggingface": "https://huggingface.co/deepseek-ai",
+    "artificialAnalysis": "https://artificialanalysis.ai/providers/deepseek",
+    "openrouter": "https://openrouter.ai/provider/deepseek"
+  },
+  "communityUrls": {
+    "linkedin": "https://www.linkedin.com/company/deepseek",
+    "twitter": "https://twitter.com/DeepSeekAI",
+    "github": "https://github.com/deepseek-ai",
+    "youtube": null,
+    "discord": null,
+    "reddit": "https://www.reddit.com/r/DeepSeekAI",
+    "blog": null
+  },
+  "githubUrl": "https://github.com/deepseek-ai",
+  "githubStars": null
+}

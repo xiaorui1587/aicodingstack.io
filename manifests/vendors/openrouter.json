@@ -1,0 +1,22 @@
+{
+  "id": "openrouter",
+  "name": "OpenRouter",
+  "description": "A unified API platform that provides access to multiple AI models from different providers through a single interface.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "统一的 API 平台，通过单一接口提供来自不同提供商的多个 AI 模型的访问。"
+    }
+  },
+  "websiteUrl": "https://openrouter.ai/",
+  "docsUrl": null,
+  "verified": false,
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": "https://twitter.com/OpenRouterAI",
+    "github": "https://github.com/openrouter-ai",
+    "youtube": null,
+    "discord": "https://discord.gg/openrouter",
+    "reddit": null,
+    "blog": null
+  }
+}

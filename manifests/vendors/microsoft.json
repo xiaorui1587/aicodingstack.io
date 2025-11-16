@@ -1,0 +1,22 @@
+{
+  "id": "microsoft",
+  "name": "Microsoft",
+  "description": "A multinational technology corporation developing computer software, consumer electronics, and AI-powered services.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "开发计算机软件、消费电子产品和 AI 驱动服务的跨国科技公司。"
+    }
+  },
+  "websiteUrl": "https://www.microsoft.com/",
+  "docsUrl": null,
+  "verified": false,
+  "communityUrls": {
+    "linkedin": "https://www.linkedin.com/company/microsoft",
+    "twitter": "https://twitter.com/Microsoft",
+    "github": "https://github.com/microsoft",
+    "youtube": "https://www.youtube.com/user/Microsoft",
+    "discord": null,
+    "reddit": "https://www.reddit.com/r/Microsoft",
+    "blog": null
+  }
+}

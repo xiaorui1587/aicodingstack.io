@@ -1,0 +1,73 @@
+{
+  "id": "tabnine",
+  "name": "Tabnine",
+  "description": "Tabnine is an AI code completion tool that helps developers write code faster and more accurately. It provides intelligent code suggestions based on context and learns from your codebase.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "Tabnine 是一个 AI 代码补全工具，帮助开发者更快、更准确地编写代码。它基于上下文提供智能代码建议，并从您的代码库中学习。"
+    }
+  },
+  "websiteUrl": "https://www.tabnine.com/",
+  "docsUrl": "https://docs.tabnine.com/",
+  "verified": false,
+  "vendor": "Tabnine",
+  "license": "Proprietary",
+  "latestVersion": "4.0.0",
+  "pricing": [
+    {
+      "name": "Starter (Free)",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Pro",
+      "value": 12,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    },
+    {
+      "name": "Business",
+      "value": 39,
+      "currency": "USD",
+      "per": "user/month",
+      "category": "Business"
+    },
+    {
+      "name": "Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode",
+    "changelog": "https://github.com/codota/TabNine/releases",
+    "pricing": "https://www.tabnine.com/pricing",
+    "mcp": null,
+    "issue": "https://github.com/codota/TabNine/issues"
+  },
+  "communityUrls": {
+    "linkedin": "https://www.linkedin.com/company/tabnine",
+    "twitter": "https://twitter.com/TabNine",
+    "github": "https://github.com/codota/TabNine",
+    "youtube": "https://www.youtube.com/c/TabNine",
+    "discord": null,
+    "reddit": null,
+    "blog": "https://www.tabnine.com/blog"
+  },
+  "githubStars": 10.8,
+  "supportedIdes": [
+    {
+      "ideId": "vscode",
+      "marketplaceUrl": "https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode",
+      "installCommand": "code --install-extension TabNine.tabnine-vscode",
+      "installUri": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": "https://github.com/codota/TabNine"
+}

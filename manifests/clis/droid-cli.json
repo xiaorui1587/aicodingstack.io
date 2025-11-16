@@ -1,0 +1,78 @@
+{
+  "id": "droid-cli",
+  "name": "Droid CLI",
+  "description": "Factory AI's Droid CLI is a terminal-based coding agent that handles complete feature development from planning to testing. Integrates with enterprise tools and provides transparent diff reviews.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "Factory AI 的 Droid CLI 是基于终端的编码 Agent，处理从规划到测试的完整功能开发。与企业工具集成并提供透明的差异审查。"
+    }
+  },
+  "websiteUrl": "https://factory.ai",
+  "docsUrl": "https://docs.factory.ai/cli/getting-started/overview",
+  "verified": false,
+  "vendor": "Factory AI",
+  "license": "Proprietary",
+  "latestVersion": "3.2.0",
+  "pricing": [
+    {
+      "name": "Pro",
+      "value": 20,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    },
+    {
+      "name": "Max",
+      "value": 200,
+      "currency": "USD",
+      "per": "month",
+      "category": "Business"
+    },
+    {
+      "name": "Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://app.factory.ai/cli",
+    "changelog": null,
+    "pricing": "https://docs.factory.ai/pricing",
+    "mcp": "https://docs.factory.ai/cli/configuration/model-context-protocol",
+    "issue": null
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": "https://twitter.com/FactoryAI",
+    "github": null,
+    "youtube": null,
+    "discord": null,
+    "reddit": null,
+    "blog": null
+  },
+  "githubStars": null,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": "curl -fsSL https://app.factory.ai/cli | sh",
+      "launchCommand": "droid",
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": "curl -fsSL https://app.factory.ai/cli | sh",
+      "launchCommand": "droid",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": "curl -fsSL https://app.factory.ai/cli | sh",
+      "launchCommand": "droid",
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [],
+  "githubUrl": null
+}

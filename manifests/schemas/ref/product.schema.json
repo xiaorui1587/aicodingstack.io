@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Base Product Schema",
+  "description": "Common fields for all product types (CLI, IDE)",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "./vendor-entity.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "latestVersion": {
+          "type": "string",
+          "description": "The latest stable version number"
+        },
+        "githubUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri",
+          "pattern": "^https://github.com/",
+          "description": "GitHub repository URL"
+        },
+        "githubStars": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Number of GitHub stars"
+        },
+        "license": {
+          "type": "string",
+          "description": "Valid SPDX License Identifier or the literal Proprietary",
+          "examples": [
+            "Proprietary",
+            "MIT",
+            "Apache-2.0",
+            "GPL-3.0-only",
+            "GPL-3.0-or-later"
+          ]
+        },
+        "pricing": {
+          "type": "array",
+          "description": "Pricing tiers for the product (can be empty array if not applicable)",
+          "items": {
+            "$ref": "#/$defs/pricingTier"
+          },
+          "minItems": 1
+        },
+        "resourceUrls": {
+          "$ref": "#/$defs/resourceUrls"
+        },
+        "communityUrls": {
+          "$ref": "./community-urls.schema.json"
+        },
+        "relatedProducts": {
+          "$ref": "#/$defs/relatedProducts"
+        }
+      },
+      "required": [
+        "latestVersion",
+        "githubUrl",
+        "githubStars",
+        "license",
+        "pricing",
+        "resourceUrls",
+        "communityUrls"
+      ]
+    }
+  ],
+  "$defs": {
+    "relatedProducts": {
+      "type": "array",
+      "description": "Related products (CLIs, extensions, etc.)",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "ide",
+              "cli",
+              "extension"
+            ],
+            "description": "Type of the related product"
+          },
+          "productId": {
+            "type": "string",
+            "description": "ID of the related product"
+          }
+        },
+        "required": [
+          "type",
+          "productId"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "pricingTier": {
+      "type": "object",
+      "description": "Pricing tier definition",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the pricing tier"
+        },
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "Price value (null for custom pricing, 0 for free)"
+        },
+        "currency": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "ISO 4217 currency code (e.g., 'USD', 'CNY', 'EUR')",
+          "enum": [
+            "USD",
+            "CNY",
+            "EUR",
+            null
+          ]
+        },
+        "per": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Billing period with optional unit (e.g., 'month', 'year', 'user/month', 'seat/year', 'one-time', 'custom')"
+        },
+        "category": {
+          "type": "string",
+          "description": "Category of the pricing tier (e.g., 'Individual', 'Business', 'Enterprise')"
+        }
+      },
+      "required": [
+        "name",
+        "value",
+        "category"
+      ],
+      "additionalProperties": false
+    },
+    "resourceUrls": {
+      "type": "object",
+      "description": "Collection of relevant URLs for the product",
+      "properties": {
+        "download": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri",
+          "pattern": "^https://",
+          "description": "Download page URL"
+        },
+        "changelog": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri",
+          "pattern": "^https://",
+          "description": "Changelog or release notes URL"
+        },
+        "pricing": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri",
+          "pattern": "^https://",
+          "description": "Pricing information URL"
+        },
+        "mcp": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri",
+          "pattern": "^https://",
+          "description": "MCP (Model Context Protocol) documentation URL"
+        },
+        "issue": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri",
+          "pattern": "^https://",
+          "description": "Issue tracker URL (e.g., GitHub Issues)"
+        }
+      },
+      "required": [
+        "download",
+        "changelog",
+        "pricing",
+        "mcp",
+        "issue"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

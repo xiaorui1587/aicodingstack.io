@@ -1,0 +1,69 @@
+{
+  "id": "vscode",
+  "name": "Visual Studio Code",
+  "description": "A free, open-source code editor with extensive language support and an ecosystem of extensions (including AI agents like GitHub Copilot) for editing, debugging, and version control.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "免费开源的代码编辑器，具有广泛的语言支持和扩展生态系统（包括 GitHub Copilot 等 AI Agent），用于编辑、调试和版本控制。"
+    }
+  },
+  "websiteUrl": "https://code.visualstudio.com/",
+  "docsUrl": "https://code.visualstudio.com/docs",
+  "verified": false,
+  "vendor": "Microsoft",
+  "license": "MIT",
+  "latestVersion": "1.104",
+  "pricing": [
+    {
+      "name": "Free",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://code.visualstudio.com/download",
+    "changelog": "https://code.visualstudio.com/updates",
+    "pricing": null,
+    "mcp": "https://github.com/mcp",
+    "issue": "https://github.com/microsoft/vscode/issues"
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": "https://x.com/code",
+    "github": "https://github.com/microsoft/vscode",
+    "youtube": null,
+    "discord": null,
+    "reddit": "https://www.reddit.com/r/vscode",
+    "blog": "https://code.visualstudio.com/blogs"
+  },
+  "githubStars": 178.4,
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": "https://code.visualstudio.com/download",
+      "launchCommand": "code",
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": "https://code.visualstudio.com/download",
+      "launchCommand": "code",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": "https://code.visualstudio.com/download",
+      "launchCommand": "code",
+      "installPath": null
+    }
+  ],
+  "relatedProducts": [
+    {
+      "type": "cli",
+      "productId": "code"
+    }
+  ],
+  "githubUrl": "https://github.com/microsoft/vscode"
+}

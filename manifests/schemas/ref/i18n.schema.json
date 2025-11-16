@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "i18n.schema.json",
+  "title": "I18n Schema",
+  "description": "Internationalization translations schema for use across all manifests",
+  "type": "object",
+  "patternProperties": {
+    "^[a-z]{2}(-[A-Z][a-z]+)?$": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Translated name",
+          "maxLength": 100
+        },
+        "title": {
+          "type": "string",
+          "description": "Translated title",
+          "maxLength": 100
+        },
+        "description": {
+          "type": "string",
+          "description": "Translated description",
+          "maxLength": 200
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

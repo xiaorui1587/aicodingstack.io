@@ -1,0 +1,32 @@
+{
+  "id": "siliconflow",
+  "name": "SiliconFlow",
+  "description": "A cloud-based AI platform providing access to various large language models and AI services for developers and enterprises.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "基于云的 AI 平台，为开发者和企业提供各种大型语言模型和 AI 服务的访问。"
+    }
+  },
+  "websiteUrl": "https://siliconflow.com/",
+  "docsUrl": "https://docs.siliconflow.com/",
+  "verified": false,
+  "vendor": "siliconflow",
+  "type": "model-service-provider",
+  "applyKeyUrl": "https://cloud.siliconflow.com/me/account/ak",
+  "platformUrls": {
+    "huggingface": "https://huggingface.co/siliconflow",
+    "artificialAnalysis": "https://artificialanalysis.ai/providers/siliconflow",
+    "openrouter": "https://openrouter.ai/provider/siliconflow"
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": "https://twitter.com/SiliconFlow",
+    "github": "https://github.com/siliconflow",
+    "youtube": null,
+    "discord": null,
+    "reddit": null,
+    "blog": null
+  },
+  "githubUrl": "https://github.com/siliconflow",
+  "githubStars": null
+}

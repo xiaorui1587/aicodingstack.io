@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Provider Manifest Schema",
+  "description": "Schema for AI model providers and service aggregators",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "allOf": [
+      {
+        "$ref": "./ref/vendor-entity.schema.json"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Provider category",
+            "enum": [
+              "foundation-model-provider",
+              "model-service-provider"
+            ]
+          },
+          "applyKeyUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri",
+            "description": "API key application URL"
+          },
+          "platformUrls": {
+            "$ref": "./ref/platform-urls.schema.json",
+            "description": "URLs to various third-party platform pages for this provider"
+          },
+          "communityUrls": {
+            "$ref": "./ref/community-urls.schema.json",
+            "description": "Community presence URLs for the provider"
+          }
+        },
+        "required": [
+          "type",
+          "applyKeyUrl",
+          "platformUrls",
+          "communityUrls"
+        ]
+      }
+    ]
+  }
+}

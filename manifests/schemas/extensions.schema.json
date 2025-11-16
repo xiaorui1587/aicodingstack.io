@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Extensions Manifest Schema",
+  "description": "Schema for IDE extensions metadata",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "allOf": [
+      { "$ref": "./ref/product.schema.json" },
+      {
+        "type": "object",
+        "properties": {
+          "supportedIdes": {
+            "type": "array",
+            "description": "List of IDEs that support this extension",
+            "items": {
+              "$ref": "#/$defs/ideSupport"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          }
+        },
+        "required": ["supportedIdes"]
+      }
+    ]
+  },
+  "$defs": {
+    "ideSupport": {
+      "type": "object",
+      "description": "IDE-specific extension support information",
+      "properties": {
+        "ideId": {
+          "type": "string",
+          "description": "IDE identifier (e.g., 'vscode', 'intellij', 'vim')"
+        },
+        "marketplaceUrl": {
+          "type": ["string", "null"],
+          "format": "uri",
+          "pattern": "^https://",
+          "description": "Extension marketplace URL for this IDE"
+        },
+        "installCommand": {
+          "type": ["string", "null"],
+          "description": "CLI command to install the extension"
+        },
+        "installUri": {
+          "type": ["string", "null"],
+          "format": "uri",
+          "description": "Deep link URI for one-click installation"
+        }
+      },
+      "required": ["ideId", "marketplaceUrl", "installCommand", "installUri"],
+      "additionalProperties": false
+    }
+  }
+}
