@@ -8,7 +8,8 @@ import "./globals.css";
 import ClientLayout from "@/components/ClientLayout";
 import { WebVitals } from "./web-vitals";
 import { JsonLd } from "@/components/JsonLd";
-import { locales, type Locale } from '@/i18n/config';
+import { locales, defaultLocale, type Locale } from '@/i18n/config';
+import { getOgLocale, getOgAlternateLocales, getLanguageAlternates } from '@/lib/seo-helpers';
 
 // Reduced font weights from 4 to 2 for better performance
 const ibmPlexMono = IBM_Plex_Mono({
@@ -45,11 +46,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = siteMessages?.title || "AI Coding Stack - Your AI Coding Ecosystem Hub";
   const description = siteMessages?.description || "Comprehensive directory for AI coding tools. Discover, compare and explore IDEs, CLIs, MCP servers, models and providers.";
 
-  // Map locale to OpenGraph locale format
-  const ogLocale = locale === 'zh-Hans' ? 'zh_CN' : 'en_US';
+  // Get canonical path based on locale
+  const canonicalPath = locale === defaultLocale ? '/' : `/${locale}`;
+  const baseUrl = 'https://aicodingstack.io';
 
   return {
-    metadataBase: new URL('https://aicodingstack.io'),
+    metadataBase: new URL(baseUrl),
     title,
     description,
     keywords: [
@@ -58,17 +60,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'AI IDE',
       'AI coding assistant',
       'AI CLI',
-      'MCP servers',
       'LLM models',
       'AI coding directory',
       'coding tools comparison',
     ].join(', '),
+    icons: {
+      icon: '/icon.svg',
+      shortcut: '/icon.svg',
+      apple: '/icon.svg',
+    },
     alternates: {
-      canonical: locale === 'en' ? '/' : `/${locale}`,
-      languages: {
-        'en': '/',
-        'zh-Hans': '/zh-Hans',
-      },
+      canonical: canonicalPath,
+      languages: getLanguageAlternates('/'),
     },
     appleWebApp: {
       capable: true,
@@ -81,9 +84,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     openGraph: {
       type: 'website',
-      locale: ogLocale,
-      alternateLocale: locale === 'en' ? ['zh_CN'] : ['en_US'],
-      url: locale === 'en' ? 'https://aicodingstack.io' : `https://aicodingstack.io/${locale}`,
+      locale: getOgLocale(locale),
+      alternateLocale: getOgAlternateLocales(locale),
+      url: `${baseUrl}${canonicalPath}`,
       siteName: 'AI Coding Stack',
       title,
       description,

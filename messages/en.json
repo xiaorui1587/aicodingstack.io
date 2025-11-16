@@ -3,7 +3,6 @@
     "aiCodingStack": "AI Coding Stack",
     "ides": "IDEs",
     "clis": "CLIs",
-    "terminals": "Terminals",
     "extensions": "Extensions",
     "models": "Models",
     "modelProviders": "Model Providers",
@@ -31,7 +30,6 @@
     "aiCodingLandscape": "AI Coding Landscape",
     "aiCodingLandscapeDesc": "Visualize the complete AI coding ecosystem",
     "developmentTools": "Development Tools",
-    "integration": "Integration",
     "intelligence": "Intelligence"
   },
   "footer": {
@@ -52,12 +50,12 @@
     "home": {
       "meta": {
         "title": "AI Coding Stack - Your AI Coding Ecosystem Hub",
-        "description": "Comprehensive directory for AI coding tools. Discover, compare and explore IDEs, CLIs, terminals, models and providers.",
+        "description": "Comprehensive directory for AI coding tools. Discover, compare and explore IDEs, CLIs, extensions, models and providers.",
         "name": "AI Coding Stack"
       },
       "title": "Your AI Coding Ecosystem Hub",
       "subtitle": "Discover, Compare, Build Faster.",
-      "description": "Explore and compare AI coding tools: IDEs, CLIs, Terminals, Models, and Providers — all in one place.",
+      "description": "Explore and compare AI coding tools: IDEs, CLIs, extensions, models, and providers — all in one place.",
       "exploreTools": "Explore Tools",
       "readDocs": "Read Documentation",
       "faq": "Frequently Asked Questions",
@@ -112,7 +110,7 @@
   "stacksPages": {
     "overview": {
       "title": "AI Coding Stack",
-      "subtitle": "Explore the complete AI coding ecosystem: IDEs, CLIs, terminals, models, and providers.",
+      "subtitle": "Explore the complete AI coding ecosystem: IDEs, CLIs, extensions, models, and providers.",
       "slogan": "Discover. Compare. Build 10x Faster.",
       "exploreStack": "Explore the Stack",
       "overviewTitle": "AI Coding Stack Overview",
@@ -123,10 +121,6 @@
       "clis": {
         "title": "CLIs",
         "description": "Command-line AI assistants that bring the power of large language models directly to your terminal. Execute complex tasks with natural language, right from your shell."
-      },
-      "terminals": {
-        "title": "Terminals",
-        "description": "Modern terminal emulators with built-in AI capabilities. From command suggestions to workflow automation, these terminals are built for the AI era."
       },
       "extensions": {
         "title": "Extensions",
@@ -144,13 +138,6 @@
         "title": "Vendors",
         "description": "Leading companies and organizations building AI technologies. From OpenAI to Anthropic, discover the vendors behind the AI coding revolution."
       }
-    },
-    "terminals": {
-      "title": "Terminals",
-      "subtitle": "Modern terminal emulators with built-in AI capabilities",
-      "compareAll": "Compare All",
-      "noMatches": "No terminals match your filters",
-      "allTerminals": "All Terminals"
     },
     "ides": {
       "title": "IDEs",
@@ -194,13 +181,6 @@
   },
 
   "stackDetailPages": {
-    "terminalDetail": {
-      "breadcrumb": {
-        "aiCodingStack": "AI Coding Stack",
-        "terminals": "Terminals"
-      },
-      "allTerminals": "All Terminals"
-    },
     "ideDetail": {
       "breadcrumb": {
         "aiCodingStack": "AI Coding Stack",
@@ -337,13 +317,7 @@
       "ides": "IDEs",
       "clis": "CLIs",
       "extensions": "Extensions",
-      "terminals": "Terminals",
       "models": "Models"
-    },
-    "terminals": {
-      "title": "Terminal Comparison",
-      "subtitle": "Compare features, pricing, and specifications of terminal emulators side by side.",
-      "backTo": "Back to Terminals"
     },
     "ides": {
       "title": "IDE Comparison",
@@ -447,7 +421,6 @@
         "IDE": "IDE",
         "CLI": "CLI",
         "EXTENSION": "Extension",
-        "TERMINAL": "Terminal",
         "MODEL": "Model",
         "PROVIDER": "Model Provider",
         "VENDOR": "Vendor"

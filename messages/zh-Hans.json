@@ -3,7 +3,6 @@
     "aiCodingStack": "AI 编码技术栈",
     "ides": "IDE",
     "clis": "命令行",
-    "terminals": "终端",
     "extensions": "扩展插件",
     "models": "模型",
     "modelProviders": "模型提供商",
@@ -31,7 +30,6 @@
     "aiCodingLandscape": "AI 编码全景图",
     "aiCodingLandscapeDesc": "可视化 AI 编码生态系统全貌",
     "developmentTools": "开发工具",
-    "integration": "集成",
     "intelligence": "智能层"
   },
   "footer": {
@@ -47,7 +45,6 @@
     "faq": "常见问题",
     "selectLanguage": "选择语言"
   },
-
   "pages": {
     "home": {
       "meta": {
@@ -108,7 +105,6 @@
       "keywords": "AI 编码技术栈文档, AI 编码工具指南, IDE 对比, 命令行对比, AI 模型规格"
     }
   },
-
   "stacksPages": {
     "overview": {
       "title": "AI 编码技术栈",
@@ -123,10 +119,6 @@
       "clis": {
         "title": "命令行",
         "description": "将大语言模型的强大功能直接带到终端的命令行 AI 助手。用自然语言直接在 shell 中执行复杂任务。"
-      },
-      "terminals": {
-        "title": "终端",
-        "description": "内置 AI 功能的现代终端模拟器。从命令建议到工作流自动化,这些终端为 AI 时代而生。"
       },
       "extensions": {
         "title": "扩展插件",
@@ -144,13 +136,6 @@
         "title": "厂商",
         "description": "构建 AI 技术的领先公司和组织。从 OpenAI 到 Anthropic,发现 AI 编码革命背后的厂商。"
       }
-    },
-    "terminals": {
-      "title": "终端",
-      "subtitle": "内置 AI 功能的现代终端模拟器",
-      "compareAll": "对比所有",
-      "noMatches": "没有符合筛选条件的终端",
-      "allTerminals": "所有终端"
     },
     "ides": {
       "title": "IDE",
@@ -192,15 +177,7 @@
       "subtitle": "构建 AI 技术的领先公司和组织"
     }
   },
-
   "stackDetailPages": {
-    "terminalDetail": {
-      "breadcrumb": {
-        "aiCodingStack": "AI 编码技术栈",
-        "terminals": "终端"
-      },
-      "allTerminals": "所有终端"
-    },
     "ideDetail": {
       "breadcrumb": {
         "aiCodingStack": "AI 编码技术栈",
@@ -329,7 +306,6 @@
       "indexLabel": "索引"
     }
   },
-
   "comparison": {
     "breadcrumb": {
       "aiCodingStack": "AI 编码技术栈",
@@ -337,13 +313,7 @@
       "ides": "IDE",
       "clis": "命令行",
       "extensions": "扩展插件",
-      "terminals": "终端",
       "models": "模型"
-    },
-    "terminals": {
-      "title": "终端对比",
-      "subtitle": "并排对比终端模拟器的功能、定价和规格。",
-      "backTo": "返回终端列表"
     },
     "ides": {
       "title": "IDE 对比",
@@ -391,11 +361,9 @@
       "freeOnly": "仅免费"
     }
   },
-
   "license": {
     "proprietary": "专有"
   },
-
   "components": {
     "sidebar": {
       "selectItem": "选择一个项目",
@@ -447,7 +415,6 @@
         "IDE": "IDE",
         "CLI": "命令行",
         "EXTENSION": "扩展插件",
-        "TERMINAL": "终端",
         "MODEL": "模型",
         "PROVIDER": "模型提供商",
         "VENDOR": "厂商"

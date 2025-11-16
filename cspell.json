@@ -1,0 +1,28 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "useGitignore": true,
+  "ignorePaths": [
+    "cloudflare-env.d.ts",
+    "docs"
+  ],
+  "words": [
+    "agentic",
+    "AiCodingStack",
+    "BMAD",
+    "BYOK",
+    "CLIs",
+    "Junie",
+    "Kimi",
+    "Kiro",
+    "Kode",
+    "Neovate",
+    "Qoder",
+    "QoderCLI",
+    "Qwen",
+    "Roo",
+    "shareAI",
+    "TRAE"
+  ],
+  "allowCompoundWords": true
+}
