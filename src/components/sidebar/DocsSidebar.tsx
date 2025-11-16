@@ -1,7 +1,7 @@
 'use client';
 
 import Sidebar, { SidebarItem } from './Sidebar';
-import type { DocSection } from '@/lib/docs';
+import type { DocSection } from '@/lib/generated/docs';
 import { useTranslations, useLocale } from 'next-intl';
 
 type DocsSidebarProps = {

@@ -4,22 +4,32 @@
  * Do not edit manually - run the script to regenerate
  */
 
+import Claude37Sonnet from '../../../manifests/models/claude-3-7-sonnet.json';
+import ClaudeOpus41 from '../../../manifests/models/claude-opus-4-1.json';
 import DeepseekV3Terminus from '../../../manifests/models/deepseek-v3-terminus.json';
 import Glm46 from '../../../manifests/models/glm-4-6.json';
+import Gpt41 from '../../../manifests/models/gpt-4-1.json';
+import Gpt45 from '../../../manifests/models/gpt-4-5.json';
+import Gpt4o from '../../../manifests/models/gpt-4o.json';
 import KimiK20905 from '../../../manifests/models/kimi-k2-0905.json';
 import MinimaxM2 from '../../../manifests/models/minimax-m2.json';
 import Qwen3Coder30bA3b from '../../../manifests/models/qwen3-coder-30b-a3b.json';
 import Qwen3Coder480bA35b from '../../../manifests/models/qwen3-coder-480b-a35b.json';
 
 export const modelsData = [
+  Claude37Sonnet,
+  ClaudeOpus41,
   DeepseekV3Terminus,
   Glm46,
+  Gpt41,
+  Gpt45,
+  Gpt4o,
   KimiK20905,
   MinimaxM2,
   Qwen3Coder30bA3b,
   Qwen3Coder480bA35b
 ];
 
-export type Model = typeof DeepseekV3Terminus;
+export type Model = typeof Claude37Sonnet;
 
 export default modelsData;

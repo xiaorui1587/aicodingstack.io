@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
-import { articles } from '@/lib/articles';
-import { docSections } from '@/lib/docs';
+import { articles } from '@/lib/generated/articles';
+import { docSections } from '@/lib/generated/docs';
 import { locales } from '@/i18n/config';
 import {
   idesData,
