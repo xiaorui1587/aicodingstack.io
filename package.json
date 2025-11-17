@@ -58,14 +58,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/ericyangpan/aicodingstack.git"
+		"url": "git+https://github.com/aicodingstack/aicodingstack.git"
 	},
 	"author": "Pan YANG",
 	"license": "Apache-2.0",
 	"bugs": {
-		"url": "https://github.com/ericyangpan/aicodingstack/issues"
+		"url": "https://github.com/aicodingstack/aicodingstack/issues"
 	},
-	"homepage": "https://github.com/ericyangpan/aicodingstack#readme",
+	"homepage": "https://github.com/aicodingstack/aicodingstack#readme",
 	"browserslist": [
 		"defaults and fully supports es6-module",
 		"maintained node versions"

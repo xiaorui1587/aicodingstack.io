@@ -1,6 +1,13 @@
 # AI Coding Stack
 
+[![CI Status](https://github.com/aicodingstack/aicodingstack.io/workflows/CI/badge.svg)](https://github.com/aicodingstack/aicodingstack.io/actions/workflows/ci.yml)
+[![Deploy Status](https://github.com/aicodingstack/aicodingstack.io/workflows/Deploy%20Production/badge.svg)](https://github.com/aicodingstack/aicodingstack.io/actions/workflows/deploy-production.yml)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 > Your AI Coding Ecosystem Hub - Discover, Compare, Build Faster
+
+[Live Site](https://aicodingstack.io) | [Contributing](CONTRIBUTING.md) | [Discussions](https://github.com/aicodingstack/aicodingstack.io/discussions)
 
 AI Coding Stack is a comprehensive directory and community-maintained metadata repository for AI-powered coding tools, models, and platforms.
 
@@ -30,6 +37,13 @@ AI Coding Stack is a comprehensive directory and community-maintained metadata r
 ## Contributing
 
 We welcome contributions! Please check the manifest files in `manifests/` to add or update tool information.
+
+## Contact
+
+- **Issues & Bugs:** [GitHub Issues](https://github.com/aicodingstack/aicodingstack.io/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/aicodingstack/aicodingstack.io/discussions)
+- **Security:** security@aicodingstack.io
+- **General:** hello@aicodingstack.io
 
 ## License
 
