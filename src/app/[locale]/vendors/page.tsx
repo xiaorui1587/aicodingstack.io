@@ -30,7 +30,7 @@ export default async function VendorsPage({ params }: Props) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'stacksPages.vendors' });
   const vendors = vendorsData as unknown as ManifestVendor[];
-  const localizedVendors = localizeManifestItems(vendors, locale as Locale);
+  const localizedVendors = localizeManifestItems(vendors as unknown as Record<string, unknown>[], locale as Locale) as unknown as typeof vendors;
 
   return (
     <>

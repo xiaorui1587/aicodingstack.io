@@ -65,7 +65,7 @@ function Header() {
             </li>
             <li>
               <a
-                href="https://github.com/ericyangpan/aicodingstack"
+                href="https://github.com/aicodingstack/aicodingstack"
                 target="_blank"
                 rel="noopener"
                 className="text-sm border-b border-transparent hover:border-[var(--color-border-strong)] pb-[var(--spacing-xs)] transition-all"
@@ -148,7 +148,7 @@ function Header() {
               </li>
               <li>
                 <a
-                  href="https://github.com/ericyangpan/aicodingstack"
+                  href="https://github.com/aicodingstack/aicodingstack"
                   target="_blank"
                   rel="noopener"
                   className="block text-sm py-[var(--spacing-xs)] hover:text-[var(--color-text-secondary)] transition-colors"

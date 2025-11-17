@@ -88,7 +88,7 @@ function Footer() {
             <h4 className="text-sm font-semibold tracking-tight">{tFooter('community')}</h4>
             <ul className="flex flex-col gap-[var(--spacing-xs)] list-none">
               <li>
-                <a href="https://github.com/ericyangpan/aicodingstack" target="_blank" rel="noopener" className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors font-light">
+                <a href="https://github.com/aicodingstack/aicodingstack" target="_blank" rel="noopener" className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors font-light">
                   {tCommunity('github')}
                 </a>
               </li>

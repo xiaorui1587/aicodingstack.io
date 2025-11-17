@@ -662,7 +662,7 @@ const organizationSchema = {
   "logo": "https://aicodingstack.io/logo.png",
   "description": "Comprehensive directory and metadata repository for the AI coding ecosystem",
   "sameAs": [
-    "https://github.com/ericyangpan/aicodingstack"
+    "https://github.com/aicodingstack/aicodingstack"
   ]
 };
 
@@ -1085,13 +1085,13 @@ const organizationSchema = {
   "description": "Comprehensive directory and metadata repository for the AI coding ecosystem. Discover and compare AI coding tools, models, and platforms.",
   "foundingDate": "2025",
   "sameAs": [
-    "https://github.com/ericyangpan/aicodingstack",
+    "https://github.com/aicodingstack/aicodingstack",
     "https://twitter.com/aicodingstack"
   ],
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "customer support",
-    "url": "https://github.com/ericyangpan/aicodingstack/issues"
+    "url": "https://github.com/aicodingstack/aicodingstack/issues"
   }
 };
 ```

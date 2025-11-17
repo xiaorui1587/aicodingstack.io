@@ -30,7 +30,7 @@ export default async function ModelProvidersPage({ params }: Props) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'stacksPages.modelProviders' });
   const providers = providersData as unknown as ManifestProvider[];
-  const localizedProviders = localizeManifestItems(providers, locale as Locale);
+  const localizedProviders = localizeManifestItems(providers as unknown as Record<string, unknown>[], locale as Locale) as unknown as typeof providers;
   const foundationModelProviders = localizedProviders.filter((p) => p.type === 'foundation-model-provider');
   const modelServiceProviders = localizedProviders.filter((p) => p.type === 'model-service-provider');
 

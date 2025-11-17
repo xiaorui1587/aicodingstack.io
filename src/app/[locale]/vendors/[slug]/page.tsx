@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return { title: 'Vendor Not Found | AI Coding Stack' };
   }
 
-  const vendor = localizeManifestItem(vendorRaw, locale as Locale);
+  const vendor = localizeManifestItem(vendorRaw as unknown as Record<string, unknown>, locale as Locale) as unknown as ManifestVendor;
 
   return await generateSoftwareDetailMetadata({
     locale: locale as 'en' | 'zh-Hans',

@@ -119,12 +119,12 @@ const organizationSchema = {
   "description": "Comprehensive directory and community-maintained metadata repository for AI-powered coding tools, models, and platforms.",
   "foundingDate": "2025",
   "sameAs": [
-    "https://github.com/ericyangpan/aicodingstack"
+    "https://github.com/aicodingstack/aicodingstack"
   ],
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "customer support",
-    "url": "https://github.com/ericyangpan/aicodingstack/issues"
+    "url": "https://github.com/aicodingstack/aicodingstack/issues"
   }
 };
 

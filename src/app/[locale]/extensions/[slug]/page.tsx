@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return { title: 'Extension Not Found | AI Coding Stack' };
   }
 
-  const extension = localizeManifestItem(extensionRaw, locale as Locale);
+  const extension = localizeManifestItem(extensionRaw as unknown as Record<string, unknown>, locale as Locale) as unknown as ManifestExtension;
   const t = await getTranslations({ locale });
 
   const licenseStr = extension.license ? translateLicenseText(extension.license, t) : '';

@@ -25,7 +25,7 @@ export default function IDEsPageClient({ locale }: Props) {
 
   // Localize IDEs
   const localizedIdes = useMemo(() => {
-    return localizeManifestItems(idesData, locale as Locale);
+    return localizeManifestItems(idesData as unknown as Record<string, unknown>[], locale as Locale) as unknown as typeof idesData;
   }, [locale]);
 
   // Filter and sort IDEs

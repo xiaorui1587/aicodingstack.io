@@ -33,10 +33,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       name: model.name,
       description: model.description || '',
       vendor: model.vendor,
-      size: model.size,
-      totalContext: typeof model.totalContext === 'string' ? parseInt(model.totalContext.replace(/[KM]/g, '')) * (model.totalContext.includes('K') ? 1000 : 1) : model.totalContext,
-      maxOutput: typeof model.maxOutput === 'string' ? parseInt(model.maxOutput.replace(/[KM]/g, '')) * (model.maxOutput.includes('K') ? 1000 : 1) : model.maxOutput,
-      tokenPricing: model.tokenPricing,
+      size: model.size ?? undefined,
+      totalContext: typeof model.totalContext === 'string' ? parseInt(model.totalContext.replace(/[KM]/g, '')) * (model.totalContext.includes('K') ? 1000 : 1) : (model.totalContext ?? undefined),
+      maxOutput: typeof model.maxOutput === 'string' ? parseInt(model.maxOutput.replace(/[KM]/g, '')) * (model.maxOutput.includes('K') ? 1000 : 1) : (model.maxOutput ?? undefined),
+      tokenPricing: model.tokenPricing ? {
+        input: model.tokenPricing.input ?? undefined,
+        output: model.tokenPricing.output ?? undefined,
+      } : undefined,
     },
     translationNamespace: 'stackDetailPages.modelDetail',
   });

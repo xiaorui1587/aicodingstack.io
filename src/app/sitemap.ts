@@ -89,7 +89,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
 
   // IDE detail pages - generate for all locales
-  const ideDetailPages: MetadataRoute.Sitemap = (idesData as ManifestItem[])
+  const ideDetailPages: MetadataRoute.Sitemap = (idesData as unknown as ManifestItem[])
     .filter((ide) => ide.id)
     .flatMap((ide) =>
       generateLocalizedPages(baseUrl, `/ides/${ide.id}`, {
@@ -100,7 +100,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     );
 
   // CLI detail pages - generate for all locales
-  const cliDetailPages: MetadataRoute.Sitemap = (clisData as ManifestItem[])
+  const cliDetailPages: MetadataRoute.Sitemap = (clisData as unknown as ManifestItem[])
     .filter((cli) => cli.id)
     .flatMap((cli) =>
       generateLocalizedPages(baseUrl, `/clis/${cli.id}`, {
@@ -111,7 +111,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     );
 
   // Model detail pages - generate for all locales (更频繁更新)
-  const modelDetailPages: MetadataRoute.Sitemap = (modelsData as ManifestItem[])
+  const modelDetailPages: MetadataRoute.Sitemap = (modelsData as unknown as ManifestItem[])
     .filter((model) => model.id)
     .flatMap((model) =>
       generateLocalizedPages(baseUrl, `/models/${model.id}`, {
@@ -122,7 +122,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     );
 
   // Provider detail pages - generate for all locales
-  const providerDetailPages: MetadataRoute.Sitemap = (providersData as ManifestItem[])
+  const providerDetailPages: MetadataRoute.Sitemap = (providersData as unknown as ManifestItem[])
     .filter((provider) => provider.id)
     .flatMap((provider) =>
       generateLocalizedPages(baseUrl, `/model-providers/${provider.id}`, {

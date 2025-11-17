@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return { title: 'CLI Not Found | AI Coding Stack' };
   }
 
-  const cli = localizeManifestItem(cliRaw, locale as Locale) as ManifestCLI;
+  const cli = localizeManifestItem(cliRaw as unknown as Record<string, unknown>, locale as Locale) as unknown as ManifestCLI;
   const t = await getTranslations({ locale });
 
   const licenseStr = cli.license ? translateLicenseText(cli.license, t) : '';

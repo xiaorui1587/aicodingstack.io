@@ -364,7 +364,7 @@ export default function IDEComparisonPageClient({ locale }: Props) {
       <section className="pb-[var(--spacing-lg)] border-b border-[var(--color-border)]">
         <div className="max-w-[1200px] mx-auto px-[var(--spacing-md)]">
           <ComparisonTable
-            items={ides}
+            items={ides as unknown as Record<string, unknown>[]}
             columns={columns}
             itemLinkPrefix={`/${locale}/ides`}
             stickyTopOffset={60 + (isBreadcrumbFixed ? breadcrumbHeight : 0)}

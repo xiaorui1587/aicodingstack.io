@@ -25,7 +25,7 @@ export default function CLIsPageClient({ locale }: Props) {
 
   // Localize CLIs
   const localizedClis = useMemo(() => {
-    return localizeManifestItems(clisData, locale as Locale);
+    return localizeManifestItems(clisData as unknown as Record<string, unknown>[], locale as Locale) as unknown as typeof clisData;
   }, [locale]);
 
   // Filter and sort CLIs

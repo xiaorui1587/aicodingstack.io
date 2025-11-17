@@ -25,7 +25,7 @@ export default function ExtensionsPageClient({ locale }: Props) {
 
   // Localize Extensions
   const localizedExtensions = useMemo(() => {
-    return localizeManifestItems(extensionsData, locale as Locale);
+    return localizeManifestItems(extensionsData as unknown as Record<string, unknown>[], locale as Locale) as unknown as typeof extensionsData;
   }, [locale]);
 
   // Filter and sort Extensions
