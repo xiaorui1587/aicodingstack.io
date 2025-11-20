@@ -14,6 +14,7 @@ import { generateSoftwareDetailMetadata } from '@/lib/metadata';
 import type { Locale } from '@/i18n/config';
 import type { ManifestCLI, ManifestPricingTier, ComponentResourceUrls, ComponentCommunityUrls } from '@/types/manifests';
 import { clisData as clis } from '@/lib/generated';
+import { getGithubStars } from '@/lib/generated/github-stars';
 
 export const revalidate = 3600;
 
@@ -138,7 +139,7 @@ export default async function CLIPage({ params }: { params: Promise<{ locale: st
         categoryLabel={tHero('categories.CLI')}
         latestVersion={cli.latestVersion}
         license={cli.license}
-        githubStars={cli.githubStars as number | null | undefined}
+        githubStars={getGithubStars('clis', cli.id)}
         platforms={cli.platforms?.map(p => p.os)}
         websiteUrl={websiteUrl}
         docsUrl={docsUrl}

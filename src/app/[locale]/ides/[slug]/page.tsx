@@ -14,6 +14,7 @@ import { generateSoftwareDetailMetadata } from '@/lib/metadata';
 import type { Locale } from '@/i18n/config';
 import type { ManifestIDE, ManifestPricingTier, ComponentResourceUrls, ComponentCommunityUrls } from '@/types/manifests';
 import { idesData as ides } from '@/lib/generated';
+import { getGithubStars } from '@/lib/generated/github-stars';
 
 export const revalidate = 3600;
 
@@ -140,7 +141,7 @@ export default async function IDEPage({ params }: { params: Promise<{ locale: st
         categoryLabel={tHero('categories.IDE')}
         latestVersion={ide.latestVersion}
         license={ide.license}
-        githubStars={ide.githubStars as number | null | undefined}
+        githubStars={getGithubStars('ides', ide.id)}
         platforms={ide.platforms?.map(p => p.os)}
         websiteUrl={websiteUrl}
         docsUrl={docsUrl}

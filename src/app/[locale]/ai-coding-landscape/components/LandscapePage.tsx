@@ -1,6 +1,5 @@
 'use client';
 
-import { Link } from '@/i18n/navigation';
 import LandscapeViewTabs from './LandscapeViewTabs';
 import { BackToNavigation } from '@/components/controls/BackToNavigation';
 import type {

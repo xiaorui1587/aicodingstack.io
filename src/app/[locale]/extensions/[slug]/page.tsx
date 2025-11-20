@@ -13,6 +13,7 @@ import { generateSoftwareDetailMetadata } from '@/lib/metadata';
 import type { Locale } from '@/i18n/config';
 import type { ManifestExtension } from '@/types/manifests';
 import { extensionsData as extensions } from '@/lib/generated';
+import { getGithubStars } from '@/lib/generated/github-stars';
 
 export const revalidate = 3600;
 
@@ -126,7 +127,7 @@ export default async function ExtensionPage({ params }: { params: Promise<{ loca
         categoryLabel={tHero('categories.EXTENSION')}
         latestVersion={extension.latestVersion}
         license={extension.license}
-        githubStars={extension.githubStars as number | null | undefined}
+        githubStars={getGithubStars('extensions', extension.id)}
         additionalInfo={extension.supportedIdes && extension.supportedIdes.length > 0 ? [{
           label: tHero('supportedIdes'),
           value: extension.supportedIdes.map(ideSupport => ideSupport.ideId).join(', ')

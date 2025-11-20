@@ -10,6 +10,7 @@ import ComparisonTable, { type ComparisonColumn } from '@/components/ComparisonT
 import { formatPrice, type PricingTier } from '@/lib/pricing';
 import { renderLicense } from '@/lib/license';
 import { extensionsData as extensions } from '@/lib/generated';
+import { getGithubStars } from '@/lib/generated/github-stars';
 
 type Props = {
   locale: string;
@@ -87,8 +88,9 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
     {
       key: 'githubStars',
       label: tComparison('columns.githubStars'),
-      render: (value: unknown, item: Record<string, unknown>) => {
-        const stars = value as number | null;
+      render: (_: unknown, item: Record<string, unknown>) => {
+        const id = item.id as string;
+        const stars = getGithubStars('extensions', id);
         const communityUrls = item.communityUrls as {
           github?: string;
         } | undefined;
