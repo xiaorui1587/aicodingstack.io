@@ -23,23 +23,27 @@ export function getDocBySlug(slug: string, locale: string = 'en'): DocSection | 
   return sections.find((doc) => doc.slug === slug);
 }
 
-// MDX components mapping for all locales (webpack will handle this at build time)
-const docComponents: Record<string, Record<string, React.ComponentType>> = {
+// MDX components mapping for all locales (dynamic imports)
+const docComponents: Record<string, Record<string, () => Promise<{ default: React.ComponentType }>>> = {
   'en': {
-    'getting-started': require('@content/docs/en/getting-started.mdx').default,
-    'welcome': require('@content/docs/en/welcome.mdx').default,
+    'getting-started': () => import('@content/docs/en/getting-started.mdx'),
+    'welcome': () => import('@content/docs/en/welcome.mdx'),
   },
   'zh-Hans': {
-    'getting-started': require('@content/docs/zh-Hans/getting-started.mdx').default,
-    'welcome': require('@content/docs/zh-Hans/welcome.mdx').default,
+    'getting-started': () => import('@content/docs/zh-Hans/getting-started.mdx'),
+    'welcome': () => import('@content/docs/zh-Hans/welcome.mdx'),
   },
   'de': {
-    'getting-started': require('@content/docs/de/getting-started.mdx').default,
-    'welcome': require('@content/docs/de/welcome.mdx').default,
+    'getting-started': () => import('@content/docs/de/getting-started.mdx'),
+    'welcome': () => import('@content/docs/de/welcome.mdx'),
   },
 };
 
-// Get components for a specific locale with fallback to English
-export function getDocComponents(locale: string = 'en'): Record<string, React.ComponentType> {
-  return docComponents[locale] || docComponents['en'] || {};
+// Get a specific doc component for a given locale and slug
+export async function getDocComponent(locale: string = 'en', slug: string): Promise<React.ComponentType | null> {
+  const loaders = docComponents[locale] || docComponents['en'];
+  const loader = loaders?.[slug];
+  if (!loader) return null;
+  const mdxModule = await loader();
+  return mdxModule.default;
 }

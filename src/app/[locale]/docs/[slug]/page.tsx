@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DocsSidebar from '@/components/sidebar/DocsSidebar';
-import { getDocSections, getDocBySlug, getDocComponents } from '@/lib/generated/docs';
+import { getDocSections, getDocBySlug, getDocComponent } from '@/lib/generated/docs';
 import { generateDocsMetadata } from '@/lib/metadata';
 
 type Props = {
@@ -53,8 +53,7 @@ export default async function DocPage({ params }: Props) {
   }
 
   const docSections = getDocSections(locale);
-  const docComponents = getDocComponents(locale);
-  const DocContent = docComponents[slug];
+  const DocContent = await getDocComponent(locale, slug);
 
   if (!DocContent) {
     return (

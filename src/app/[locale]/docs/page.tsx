@@ -1,7 +1,7 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DocsSidebar from '@/components/sidebar/DocsSidebar';
-import { getDocSections, getDocComponents } from '@/lib/generated/docs';
+import { getDocSections, getDocComponent } from '@/lib/generated/docs';
 import { getTranslations } from 'next-intl/server';
 import { buildCanonicalUrl, buildOpenGraph, buildTwitterCard, buildTitle } from '@/lib/metadata';
 
@@ -45,8 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function DocsPage({ params }: Props) {
   const { locale } = await params;
   const docSections = getDocSections(locale);
-  const docComponents = getDocComponents(locale);
-  const WelcomeDoc = docComponents['welcome'];
+  const WelcomeDoc = await getDocComponent(locale, 'welcome');
   return (
     <>
       <Header />

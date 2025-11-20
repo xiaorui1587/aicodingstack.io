@@ -46,7 +46,7 @@ type Props = {
 export default async function AICodingStackPage({ params }: Props) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'stacksPages.overview' });
-  const ManifestoContent = getManifestoComponent(locale);
+  const ManifestoContent = await getManifestoComponent(locale);
 
   return (
     <>

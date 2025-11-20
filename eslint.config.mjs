@@ -11,12 +11,6 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
-  {
-    rules: {
-      // Allow require() for MDX component imports (webpack handles these at build time)
-      "@typescript-eslint/no-require-imports": "off",
-    },
-  },
 ];
 
 export default eslintConfig;

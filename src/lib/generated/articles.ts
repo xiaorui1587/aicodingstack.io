@@ -24,23 +24,27 @@ export function getArticleBySlug(slug: string, locale: string = 'en'): ArticleMe
   return localeArticles.find((article) => article.slug === slug);
 }
 
-// MDX components mapping for all locales (webpack will handle this at build time)
-const articleComponents: Record<string, Record<string, React.ComponentType>> = {
+// MDX components mapping for all locales (dynamic imports)
+const articleComponents: Record<string, Record<string, () => Promise<{ default: React.ComponentType }>>> = {
   'en': {
-    'getting-started-with-ai-coding': require('@content/articles/en/getting-started-with-ai-coding.mdx').default,
-    'mcp-servers-explained': require('@content/articles/en/mcp-servers-explained.mdx').default,
+    'getting-started-with-ai-coding': () => import('@content/articles/en/getting-started-with-ai-coding.mdx'),
+    'mcp-servers-explained': () => import('@content/articles/en/mcp-servers-explained.mdx'),
   },
   'zh-Hans': {
-    'getting-started-with-ai-coding': require('@content/articles/zh-Hans/getting-started-with-ai-coding.mdx').default,
-    'mcp-servers-explained': require('@content/articles/zh-Hans/mcp-servers-explained.mdx').default,
+    'getting-started-with-ai-coding': () => import('@content/articles/zh-Hans/getting-started-with-ai-coding.mdx'),
+    'mcp-servers-explained': () => import('@content/articles/zh-Hans/mcp-servers-explained.mdx'),
   },
   'de': {
-    'getting-started-with-ai-coding': require('@content/articles/de/getting-started-with-ai-coding.mdx').default,
-    'mcp-servers-explained': require('@content/articles/de/mcp-servers-explained.mdx').default,
+    'getting-started-with-ai-coding': () => import('@content/articles/de/getting-started-with-ai-coding.mdx'),
+    'mcp-servers-explained': () => import('@content/articles/de/mcp-servers-explained.mdx'),
   },
 };
 
-// Get components for a specific locale with fallback to English
-export function getArticleComponents(locale: string = 'en'): Record<string, React.ComponentType> {
-  return articleComponents[locale] || articleComponents['en'] || {};
+// Get a specific article component for a given locale and slug
+export async function getArticleComponent(locale: string = 'en', slug: string): Promise<React.ComponentType | null> {
+  const loaders = articleComponents[locale] || articleComponents['en'];
+  const loader = loaders?.[slug];
+  if (!loader) return null;
+  const mdxModule = await loader();
+  return mdxModule.default;
 }

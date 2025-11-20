@@ -5,12 +5,14 @@
  * Return the Manifesto MDX React component for a given locale.
  * Falls back to the default locale ('en') when the requested locale is missing.
  */
-export function getManifestoComponent(locale: string = 'en'): React.ComponentType {
-  const components: Record<string, React.ComponentType> = {
-    'en': require('@content/manifesto/en/index.mdx').default,
-    'zh-Hans': require('@content/manifesto/zh-Hans/index.mdx').default,
-    'de': require('@content/manifesto/de/index.mdx').default,
+export async function getManifestoComponent(locale: string = 'en'): Promise<React.ComponentType> {
+  const components: Record<string, () => Promise<{ default: React.ComponentType }>> = {
+    'en': () => import('@content/manifesto/en/index.mdx'),
+    'zh-Hans': () => import('@content/manifesto/zh-Hans/index.mdx'),
+    'de': () => import('@content/manifesto/de/index.mdx'),
   };
 
-  return components[locale] || components['en'];
+  const loader = components[locale] || components['en'];
+  const mdxModule = await loader();
+  return mdxModule.default;
 }

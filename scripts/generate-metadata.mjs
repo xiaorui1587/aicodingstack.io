@@ -246,7 +246,7 @@ function generateArticleComponentsCode(articles) {
   for (const locale of locales) {
     const localeArticles = articles[locale];
     const componentEntries = localeArticles.map(article =>
-      `    '${article.slug}': require('@content/articles/${locale}/${article.slug}.mdx').default,`
+      `    '${article.slug}': () => import('@content/articles/${locale}/${article.slug}.mdx'),`
     ).join('\n');
 
     if (componentEntries) {
@@ -254,7 +254,7 @@ function generateArticleComponentsCode(articles) {
     }
   }
 
-  return `const articleComponents: Record<string, Record<string, React.ComponentType>> = {\n${componentLines.join('\n')}\n};`;
+  return `const articleComponents: Record<string, Record<string, () => Promise<{ default: React.ComponentType }>>> = {\n${componentLines.join('\n')}\n};`;
 }
 
 // Generate component imports for docs
@@ -265,7 +265,7 @@ function generateDocComponentsCode(docs) {
   for (const locale of locales) {
     const localeDocs = docs[locale];
     const componentEntries = localeDocs.map(doc =>
-      `    '${doc.slug}': require('@content/docs/${locale}/${doc.slug}.mdx').default,`
+      `    '${doc.slug}': () => import('@content/docs/${locale}/${doc.slug}.mdx'),`
     ).join('\n');
 
     if (componentEntries) {
@@ -273,7 +273,7 @@ function generateDocComponentsCode(docs) {
     }
   }
 
-  return `const docComponents: Record<string, Record<string, React.ComponentType>> = {\n${componentLines.join('\n')}\n};`;
+  return `const docComponents: Record<string, Record<string, () => Promise<{ default: React.ComponentType }>>> = {\n${componentLines.join('\n')}\n};`;
 }
 
 // Generate component import for manifesto (single index.mdx per locale)
@@ -283,11 +283,11 @@ function generateManifestoComponentsCode() {
   for (const locale of SUPPORTED_LOCALES) {
     const manifestoIndex = path.join(rootDir, `content/manifesto/${locale}/index.mdx`);
     if (fs.existsSync(manifestoIndex)) {
-      componentLines.push(`    '${locale}': require('@content/manifesto/${locale}/index.mdx').default,`);
+      componentLines.push(`    '${locale}': () => import('@content/manifesto/${locale}/index.mdx'),`);
     }
   }
 
-  return `  const components: Record<string, React.ComponentType> = {\n${componentLines.join('\n')}\n  };`;
+  return `  const components: Record<string, () => Promise<{ default: React.ComponentType }>> = {\n${componentLines.join('\n')}\n  };`;
 }
 
 // Main execution
@@ -359,12 +359,16 @@ export function getArticleBySlug(slug: string, locale: string = 'en'): ArticleMe
   return localeArticles.find((article) => article.slug === slug);
 }
 
-// MDX components mapping for all locales (webpack will handle this at build time)
+// MDX components mapping for all locales (dynamic imports)
 ${articlesComponentsCode}
 
-// Get components for a specific locale with fallback to English
-export function getArticleComponents(locale: string = 'en'): Record<string, React.ComponentType> {
-  return articleComponents[locale] || articleComponents['en'] || {};
+// Get a specific article component for a given locale and slug
+export async function getArticleComponent(locale: string = 'en', slug: string): Promise<React.ComponentType | null> {
+  const loaders = articleComponents[locale] || articleComponents['en'];
+  const loader = loaders?.[slug];
+  if (!loader) return null;
+  const mdxModule = await loader();
+  return mdxModule.default;
 }
 `;
 
@@ -397,12 +401,16 @@ export function getDocBySlug(slug: string, locale: string = 'en'): DocSection | 
   return sections.find((doc) => doc.slug === slug);
 }
 
-// MDX components mapping for all locales (webpack will handle this at build time)
+// MDX components mapping for all locales (dynamic imports)
 ${docsComponentsCode}
 
-// Get components for a specific locale with fallback to English
-export function getDocComponents(locale: string = 'en'): Record<string, React.ComponentType> {
-  return docComponents[locale] || docComponents['en'] || {};
+// Get a specific doc component for a given locale and slug
+export async function getDocComponent(locale: string = 'en', slug: string): Promise<React.ComponentType | null> {
+  const loaders = docComponents[locale] || docComponents['en'];
+  const loader = loaders?.[slug];
+  if (!loader) return null;
+  const mdxModule = await loader();
+  return mdxModule.default;
 }
 `;
 
@@ -417,10 +425,12 @@ export function getDocComponents(locale: string = 'en'): Record<string, React.Co
  * Return the Manifesto MDX React component for a given locale.
  * Falls back to the default locale ('en') when the requested locale is missing.
  */
-export function getManifestoComponent(locale: string = 'en'): React.ComponentType {
+export async function getManifestoComponent(locale: string = 'en'): Promise<React.ComponentType> {
 ${manifestoComponentsCode}
 
-  return components[locale] || components['en'];
+  const loader = components[locale] || components['en'];
+  const mdxModule = await loader();
+  return mdxModule.default;
 }
 `;
 

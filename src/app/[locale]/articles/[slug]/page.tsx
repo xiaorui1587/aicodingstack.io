@@ -2,7 +2,7 @@ import { Link } from '@/i18n/navigation';
 import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { getArticles, getArticleBySlug, getArticleComponents } from '@/lib/generated/articles';
+import { getArticles, getArticleBySlug, getArticleComponent } from '@/lib/generated/articles';
 import { generateArticleMetadata } from '@/lib/metadata';
 
 type Props = {
@@ -53,8 +53,7 @@ export default async function ArticlePage({ params }: Props) {
     notFound();
   }
 
-  const articleComponents = getArticleComponents(locale);
-  const ArticleContent = articleComponents[slug];
+  const ArticleContent = await getArticleComponent(locale, slug);
 
   if (!ArticleContent) {
     return (
