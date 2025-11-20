@@ -1,7 +1,7 @@
 'use client';
 
 import { memo, useCallback } from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { useTheme } from './ThemeProvider';
 import LanguageSwitcher from './controls/LanguageSwitcher';
 import { useTranslations } from 'next-intl';

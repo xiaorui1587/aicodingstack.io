@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import StackSidebar from '@/components/sidebar/StackSidebar';
@@ -89,7 +89,7 @@ export default async function AICodingStackPage({ params }: Props) {
                 ].map((stack) => (
                   <Link
                     key={stack.key}
-                    href={`/${locale}/${stack.path}`}
+                    href={`/${stack.path}`}
                     className="block border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5 group"
                   >
                     <div className="flex justify-between items-start mb-[var(--spacing-md)]">
