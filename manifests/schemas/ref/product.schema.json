@@ -23,14 +23,6 @@
           "pattern": "^https://github.com/",
           "description": "GitHub repository URL"
         },
-        "githubStars": {
-          "type": [
-            "number",
-            "null"
-          ],
-          "minimum": 0,
-          "description": "Number of GitHub stars"
-        },
         "license": {
           "type": "string",
           "description": "Valid SPDX License Identifier or the literal Proprietary",
@@ -63,7 +55,6 @@
       "required": [
         "latestVersion",
         "githubUrl",
-        "githubStars",
         "license",
         "pricing",
         "resourceUrls",

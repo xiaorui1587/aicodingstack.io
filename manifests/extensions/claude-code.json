@@ -13,7 +13,6 @@
   "vendor": "Anthropic",
   "latestVersion": "2.0.42",
   "githubUrl": "https://github.com/anthropics/claude-code",
-  "githubStars": 42,
   "license": "Proprietary",
   "pricing": [
     {

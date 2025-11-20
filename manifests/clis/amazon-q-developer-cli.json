@@ -13,7 +13,6 @@
   "vendor": "Amazon Web Services",
   "latestVersion": "v1.18.1",
   "githubUrl": "https://github.com/aws/amazon-q-developer-cli",
-  "githubStars": 1.8,
   "license": "Apache-2.0, MIT",
   "pricing": [
     {

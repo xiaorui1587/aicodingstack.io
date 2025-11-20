@@ -13,7 +13,6 @@
   "vendor": "Google",
   "latestVersion": "0.5.4",
   "githubUrl": "https://github.com/google-gemini/gemini-cli",
-  "githubStars": 82.1,
   "license": "Apache-2.0",
   "pricing": [
     {

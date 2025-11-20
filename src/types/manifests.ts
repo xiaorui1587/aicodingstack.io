@@ -197,7 +197,6 @@ export interface ManifestCollectionItem {
 export interface ManifestBaseProduct extends ManifestVendorEntity {
   latestVersion: string;
   githubUrl: string | null;
-  githubStars: number | null;
   license: string; // SPDX License Identifier or 'Proprietary'
   pricing?: ManifestPricingTier[];
   resourceUrls: ManifestResourceUrls;
@@ -215,7 +214,6 @@ export interface ManifestBaseProduct extends ManifestVendorEntity {
 export interface ManifestIDE extends ManifestVendorEntity {
   latestVersion: string;
   githubUrl: string | null;
-  githubStars: number | null;
   license: string;
   pricing: ManifestPricingTier[];
   resourceUrls: ManifestResourceUrls;
@@ -240,7 +238,6 @@ export interface ManifestIDE extends ManifestVendorEntity {
 export interface ManifestCLI extends ManifestVendorEntity {
   latestVersion: string;
   githubUrl: string | null;
-  githubStars: number | null;
   license: string;
   pricing: ManifestPricingTier[];
   resourceUrls: ManifestResourceUrls;
@@ -286,7 +283,6 @@ export interface ManifestExtension extends ManifestApp {
     installCommand?: string | null;
   }>;
   githubUrl?: string | null;
-  githubStars?: number | null;
 }
 
 // =============================================================================
@@ -339,7 +335,6 @@ export interface ManifestProvider extends ManifestVendorEntity {
   };
   communityUrls?: ManifestCommunityUrls;
   githubUrl?: string | null;
-  githubStars?: number | null;
   pricing?: ManifestPricingTier[];
   [key: string]: unknown;
 }
@@ -436,7 +431,6 @@ export function isManifestBaseProduct(obj: unknown): obj is ManifestBaseProduct 
     isManifestVendorEntity(obj) &&
     'latestVersion' in obj &&
     'githubUrl' in obj &&
-    'githubStars' in obj &&
     'license' in obj &&
     'pricing' in obj &&
     'resourceUrls' in obj &&

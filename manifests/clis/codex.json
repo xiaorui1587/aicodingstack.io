@@ -13,7 +13,6 @@
   "vendor": "OpenAI",
   "latestVersion": "0.44.0",
   "githubUrl": "https://github.com/openai/codex",
-  "githubStars": 50.2,
   "license": "Apache-2.0",
   "pricing": [
     {
