@@ -69,7 +69,7 @@ const EDGE_COLORS: Record<string, string> = {
 
 // Custom node component
 function CustomNode({ data }: { data: NodeData }) {
-  const colors = NODE_COLORS[data.type] || NODE_COLORS.vendor
+  const colors = (NODE_COLORS[data.type] || NODE_COLORS.vendor)!
   const isVendor = data.type === 'vendor'
 
   return (

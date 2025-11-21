@@ -21,9 +21,11 @@ export default function CollectionScrollbar() {
       const scrollPosition = window.scrollY + 100
 
       for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i].id)
+        const sectionData = sections[i]
+        if (!sectionData) continue
+        const section = document.getElementById(sectionData.id)
         if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i].id)
+          setActiveSection(sectionData.id)
           break
         }
       }

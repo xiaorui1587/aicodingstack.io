@@ -52,6 +52,7 @@ function MatrixCell({ products, category, categoryColor }: MatrixCellProps) {
 
   if (products.length === 1) {
     const product = products[0]
+    if (!product) return null
     return (
       <Link
         href={product.path}

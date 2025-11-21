@@ -106,7 +106,7 @@ function renderInlineMarkdown(text: string): React.ReactNode {
         parts.push(
           <Link
             key={key++}
-            href={match[2]}
+            href={match[2] || '#'}
             className="text-[var(--color-text)] underline hover:no-underline"
           >
             {match[1]}

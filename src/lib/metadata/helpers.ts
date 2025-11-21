@@ -308,6 +308,7 @@ export function formatPriceForDescription(
   if (!pricing || pricing.length === 0) return null
 
   const firstTier = pricing[0]
+  if (!firstTier) return null
   if (firstTier.value === null || firstTier.value === 0) {
     return 'Free'
   }
