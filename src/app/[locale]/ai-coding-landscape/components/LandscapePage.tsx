@@ -1,35 +1,35 @@
-'use client';
+'use client'
 
-import LandscapeViewTabs from './LandscapeViewTabs';
-import { BackToNavigation } from '@/components/controls/BackToNavigation';
+import { BackToNavigation } from '@/components/controls/BackToNavigation'
 import type {
-  VendorMatrixRow,
-  LandscapeStats,
-  RelationshipNode,
-  RelationshipEdge,
   LandscapeProduct,
-} from '@/lib/landscape-data';
+  LandscapeStats,
+  RelationshipEdge,
+  RelationshipNode,
+  VendorMatrixRow,
+} from '@/lib/landscape-data'
+import LandscapeViewTabs from './LandscapeViewTabs'
 
 interface LandscapePageProps {
-  matrixData: VendorMatrixRow[];
+  matrixData: VendorMatrixRow[]
   graphData: {
-    nodes: RelationshipNode[];
-    edges: RelationshipEdge[];
-  };
+    nodes: RelationshipNode[]
+    edges: RelationshipEdge[]
+  }
   productsByCategory: {
-    ides: LandscapeProduct[];
-    clis: LandscapeProduct[];
-    extensions: LandscapeProduct[];
-    models: LandscapeProduct[];
-    providers: LandscapeProduct[];
-  };
-  stats: LandscapeStats;
-  locale: string;
+    ides: LandscapeProduct[]
+    clis: LandscapeProduct[]
+    extensions: LandscapeProduct[]
+    models: LandscapeProduct[]
+    providers: LandscapeProduct[]
+  }
+  stats: LandscapeStats
+  locale: string
   translations: {
-    title: string;
-    description: string;
-    backTitle: string;
-  };
+    title: string
+    description: string
+    backTitle: string
+  }
 }
 
 export default function LandscapePage({
@@ -45,7 +45,9 @@ export default function LandscapePage({
       {/* Page Header */}
       <div className="text-center mb-[var(--spacing-xl)]">
         <h1 className="text-[3rem] font-semibold tracking-[-0.04em] mb-[var(--spacing-sm)]">
-          <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">🗺️</span>
+          <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
+            🗺️
+          </span>
           {translations.title}
         </h1>
         <p className="text-lg text-[var(--color-text-secondary)] font-light max-w-[800px] mx-auto">
@@ -93,5 +95,5 @@ export default function LandscapePage({
         <BackToNavigation href="/ai-coding-stack" title={translations.backTitle} />
       </div>
     </div>
-  );
+  )
 }

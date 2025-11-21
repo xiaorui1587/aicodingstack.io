@@ -1,55 +1,55 @@
-'use client';
+'use client'
 
-import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
-import { useTranslations } from 'next-intl';
-import { Home, FileText, Github, Linkedin, Twitter, Youtube, Download } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import ComparisonTable, { type ComparisonColumn } from '@/components/ComparisonTable';
-import { formatPrice, type PricingTier } from '@/lib/pricing';
-import { renderLicense } from '@/lib/license';
-import { extensionsData as extensions } from '@/lib/generated';
-import { getGithubStars } from '@/lib/generated/github-stars';
+import { Download, FileText, Github, Home, Linkedin, Twitter, Youtube } from 'lucide-react'
+import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+import { useEffect, useRef, useState } from 'react'
+import ComparisonTable, { type ComparisonColumn } from '@/components/ComparisonTable'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import { extensionsData as extensions } from '@/lib/generated'
+import { getGithubStars } from '@/lib/generated/github-stars'
+import { renderLicense } from '@/lib/license'
+import { formatPrice, type PricingTier } from '@/lib/pricing'
 
 type Props = {
-  locale: string;
-};
+  locale: string
+}
 
 export default function ExtensionComparisonPageClient({ locale }: Props) {
-  const tComparison = useTranslations('comparison');
-  const tCommunity = useTranslations('community');
-  const t = useTranslations();
-  const breadcrumbRef = useRef<HTMLElement>(null);
-  const [isBreadcrumbFixed, setIsBreadcrumbFixed] = useState(false);
-  const [breadcrumbHeight, setBreadcrumbHeight] = useState(0);
+  const tComparison = useTranslations('comparison')
+  const tCommunity = useTranslations('community')
+  const t = useTranslations()
+  const breadcrumbRef = useRef<HTMLElement>(null)
+  const [isBreadcrumbFixed, setIsBreadcrumbFixed] = useState(false)
+  const [breadcrumbHeight, setBreadcrumbHeight] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!breadcrumbRef.current) return;
+      if (!breadcrumbRef.current) return
 
-      const headerHeight = 60; // Height of the site header
-      const breadcrumbTop = breadcrumbRef.current.offsetTop;
+      const headerHeight = 60 // Height of the site header
+      const breadcrumbTop = breadcrumbRef.current.offsetTop
 
       if (window.scrollY > breadcrumbTop - headerHeight) {
         if (!isBreadcrumbFixed) {
-          setBreadcrumbHeight(breadcrumbRef.current.offsetHeight);
+          setBreadcrumbHeight(breadcrumbRef.current.offsetHeight)
         }
-        setIsBreadcrumbFixed(true);
+        setIsBreadcrumbFixed(true)
       } else {
-        setIsBreadcrumbFixed(false);
+        setIsBreadcrumbFixed(false)
       }
-    };
+    }
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
-    handleScroll();
+    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleScroll)
+    handleScroll()
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
-    };
-  }, [isBreadcrumbFixed]);
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
+  }, [isBreadcrumbFixed])
 
   const columns: ComparisonColumn[] = [
     {
@@ -69,36 +69,39 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
       key: 'supportedIdes',
       label: tComparison('columns.supportedIdes'),
       render: (value: unknown) => {
-        const supportedIdes = value as Array<{ ideId: string }> | undefined;
-        if (!supportedIdes || supportedIdes.length === 0) return '-';
+        const supportedIdes = value as Array<{ ideId: string }> | undefined
+        if (!supportedIdes || supportedIdes.length === 0) return '-'
         return (
           <div className="flex flex-wrap gap-1 text-xs">
-            {supportedIdes.map((item, index) => (
+            {supportedIdes.map(item => (
               <span
-                key={index}
+                key={item.ideId}
                 className="px-1.5 py-0.5 bg-[var(--color-hover)] border border-[var(--color-border)] rounded text-[var(--color-text-secondary)]"
               >
                 {item.ideId}
               </span>
             ))}
           </div>
-        );
+        )
       },
     },
     {
       key: 'githubStars',
       label: tComparison('columns.githubStars'),
       render: (_: unknown, item: Record<string, unknown>) => {
-        const id = item.id as string;
-        const stars = getGithubStars('extensions', id);
-        const communityUrls = item.communityUrls as {
-          github?: string;
-        } | undefined;
-        const githubUrl = communityUrls?.github;
+        const id = item.id as string
+        const stars = getGithubStars('extensions', id)
+        const communityUrls = item.communityUrls as
+          | {
+              github?: string
+            }
+          | undefined
+        const githubUrl = communityUrls?.github
 
-        if (stars === null || stars === undefined) return <span className="text-right block">-</span>;
+        if (stars === null || stars === undefined)
+          return <span className="text-right block">-</span>
 
-        const starsText = `${stars.toFixed(1)}k`;
+        const starsText = `${stars.toFixed(1)}k`
 
         if (githubUrl) {
           return (
@@ -110,28 +113,32 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
             >
               {starsText}
             </a>
-          );
+          )
         }
 
-        return <span className="text-right block">{starsText}</span>;
+        return <span className="text-right block">{starsText}</span>
       },
     },
     {
       key: 'links',
       label: tComparison('columns.links'),
       render: (_: unknown, item: Record<string, unknown>) => {
-        const websiteUrl = item.websiteUrl as string | undefined;
-        const docsUrl = item.docsUrl as string | undefined;
-        const resourceUrls = item.resourceUrls as {
-          download?: string;
-        } | undefined;
-        const communityUrls = item.communityUrls as {
-          github?: string;
-          twitter?: string;
-          linkedin?: string;
-          youtube?: string;
-          reddit?: string;
-        } | undefined;
+        const websiteUrl = item.websiteUrl as string | undefined
+        const docsUrl = item.docsUrl as string | undefined
+        const resourceUrls = item.resourceUrls as
+          | {
+              download?: string
+            }
+          | undefined
+        const communityUrls = item.communityUrls as
+          | {
+              github?: string
+              twitter?: string
+              linkedin?: string
+              youtube?: string
+              reddit?: string
+            }
+          | undefined
 
         return (
           <div className="flex gap-2 items-center">
@@ -241,46 +248,46 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
               </span>
             )}
           </div>
-        );
+        )
       },
     },
     {
       key: 'pricing-free',
       label: tComparison('columns.freePlan'),
       render: (_: unknown, item: Record<string, unknown>) => {
-        const pricing = item.pricing as PricingTier[];
-        if (!pricing || pricing.length === 0) return '✓'; // Extensions without pricing info are typically free
-        const freePlan = pricing.find((p) => p.value === 0);
-        return freePlan || pricing.length === 0 ? '✓' : '-';
+        const pricing = item.pricing as PricingTier[]
+        if (!pricing || pricing.length === 0) return '✓' // Extensions without pricing info are typically free
+        const freePlan = pricing.find(p => p.value === 0)
+        return freePlan || pricing.length === 0 ? '✓' : '-'
       },
     },
     {
       key: 'pricing-min',
       label: tComparison('columns.startingPrice'),
       render: (_: unknown, item: Record<string, unknown>) => {
-        const pricing = item.pricing as PricingTier[];
-        if (!pricing || pricing.length === 0) return tComparison('pricingValues.free');
-        const paidPlans = pricing.filter((p) => p.value && p.value > 0);
-        if (paidPlans.length === 0) return tComparison('pricingValues.freeOnly');
-        const minPrice = Math.min(...paidPlans.map((p) => p.value as number));
-        const minPlan = paidPlans.find((p) => p.value === minPrice);
-        return minPlan ? formatPrice(minPlan) : '-';
+        const pricing = item.pricing as PricingTier[]
+        if (!pricing || pricing.length === 0) return tComparison('pricingValues.free')
+        const paidPlans = pricing.filter(p => p.value && p.value > 0)
+        if (paidPlans.length === 0) return tComparison('pricingValues.freeOnly')
+        const minPrice = Math.min(...paidPlans.map(p => p.value as number))
+        const minPlan = paidPlans.find(p => p.value === minPrice)
+        return minPlan ? formatPrice(minPlan) : '-'
       },
     },
     {
       key: 'pricing-max',
       label: tComparison('columns.maxPrice'),
       render: (_: unknown, item: Record<string, unknown>) => {
-        const pricing = item.pricing as PricingTier[];
-        if (!pricing || pricing.length === 0) return '-';
-        const paidPlans = pricing.filter((p) => p.value && p.value > 0);
-        if (paidPlans.length === 0) return '-';
-        const maxPrice = Math.max(...paidPlans.map((p) => p.value as number));
-        const maxPlan = paidPlans.find((p) => p.value === maxPrice);
-        return maxPlan ? formatPrice(maxPlan) : '-';
+        const pricing = item.pricing as PricingTier[]
+        if (!pricing || pricing.length === 0) return '-'
+        const paidPlans = pricing.filter(p => p.value && p.value > 0)
+        if (paidPlans.length === 0) return '-'
+        const maxPrice = Math.max(...paidPlans.map(p => p.value as number))
+        const maxPlan = paidPlans.find(p => p.value === maxPrice)
+        return maxPlan ? formatPrice(maxPlan) : '-'
       },
     },
-  ];
+  ]
 
   return (
     <>
@@ -305,7 +312,9 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
                 {tComparison('breadcrumb.extensions')}
               </Link>
               <span className="text-[var(--color-text-muted)]">/</span>
-              <span className="text-[var(--color-text)] font-medium">{tComparison('breadcrumb.comparison')}</span>
+              <span className="text-[var(--color-text)] font-medium">
+                {tComparison('breadcrumb.comparison')}
+              </span>
             </nav>
           </div>
         </section>
@@ -317,7 +326,9 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
         className="py-[var(--spacing-sm)] bg-[var(--color-hover)] border-b border-[var(--color-border)]"
       >
         <div className="max-w-[1200px] mx-auto px-[var(--spacing-md)]">
-          <nav className={`flex items-center gap-[var(--spacing-xs)] text-[0.8125rem] ${isBreadcrumbFixed ? 'invisible' : ''}`}>
+          <nav
+            className={`flex items-center gap-[var(--spacing-xs)] text-[0.8125rem] ${isBreadcrumbFixed ? 'invisible' : ''}`}
+          >
             <Link
               href={`/${locale}/ai-coding-stack`}
               className="text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors"
@@ -332,7 +343,9 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
               {tComparison('breadcrumb.extensions')}
             </Link>
             <span className="text-[var(--color-text-muted)]">/</span>
-            <span className="text-[var(--color-text)] font-medium">{tComparison('breadcrumb.comparison')}</span>
+            <span className="text-[var(--color-text)] font-medium">
+              {tComparison('breadcrumb.comparison')}
+            </span>
           </nav>
         </div>
       </section>
@@ -375,5 +388,5 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
 
       <Footer />
     </>
-  );
+  )
 }

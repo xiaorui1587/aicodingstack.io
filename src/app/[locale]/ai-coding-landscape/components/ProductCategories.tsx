@@ -1,25 +1,25 @@
-'use client';
+'use client'
 
-import { useState, useMemo } from 'react';
-import Link from 'next/link';
-import type { LandscapeProduct, ProductCategory } from '@/lib/landscape-data';
+import Link from 'next/link'
+import { useMemo, useState } from 'react'
+import type { LandscapeProduct, ProductCategory } from '@/lib/landscape-data'
 
 interface ProductCategoriesProps {
   productsByCategory: {
-    ides: LandscapeProduct[];
-    clis: LandscapeProduct[];
-    extensions: LandscapeProduct[];
-    models: LandscapeProduct[];
-    providers: LandscapeProduct[];
-  };
+    ides: LandscapeProduct[]
+    clis: LandscapeProduct[]
+    extensions: LandscapeProduct[]
+    models: LandscapeProduct[]
+    providers: LandscapeProduct[]
+  }
 }
 
 const CATEGORIES: {
-  key: keyof ProductCategoriesProps['productsByCategory'];
-  label: string;
-  icon: string;
-  color: string;
-  path: string;
+  key: keyof ProductCategoriesProps['productsByCategory']
+  label: string
+  icon: string
+  color: string
+  path: string
 }[] = [
   {
     key: 'ides',
@@ -56,13 +56,13 @@ const CATEGORIES: {
     color: 'from-indigo-500/20 to-violet-500/20',
     path: 'model-providers',
   },
-];
+]
 
-type SortOption = 'name' | 'stars' | 'vendor';
+type SortOption = 'name' | 'stars' | 'vendor'
 
 interface ProductCardProps {
-  product: LandscapeProduct;
-  categoryColor: string;
+  product: LandscapeProduct
+  categoryColor: string
 }
 
 function ProductCard({ product, categoryColor }: ProductCardProps) {
@@ -78,9 +78,7 @@ function ProductCard({ product, categoryColor }: ProductCardProps) {
             <h4 className="font-semibold text-sm tracking-tight group-hover:text-[var(--color-text)] transition-colors line-clamp-1">
               {product.name}
             </h4>
-            <p className="text-xs text-[var(--color-text-muted)] mt-1">
-              by {product.vendor}
-            </p>
+            <p className="text-xs text-[var(--color-text-muted)] mt-1">by {product.vendor}</p>
           </div>
           {product.githubStars && product.githubStars > 0 && (
             <div className="flex items-center gap-1 text-xs text-[var(--color-text-secondary)]">
@@ -97,9 +95,7 @@ function ProductCard({ product, categoryColor }: ProductCardProps) {
 
         {/* Metadata */}
         <div className="flex items-center gap-3 text-xs text-[var(--color-text-muted)] pt-2 border-t border-[var(--color-border)]">
-          {product.latestVersion && (
-            <span className="font-mono">v{product.latestVersion}</span>
-          )}
+          {product.latestVersion && <span className="font-mono">v{product.latestVersion}</span>}
           {product.license && (
             <span className="px-2 py-0.5 bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded">
               {product.license}
@@ -108,16 +104,16 @@ function ProductCard({ product, categoryColor }: ProductCardProps) {
         </div>
       </div>
     </Link>
-  );
+  )
 }
 
 export default function ProductCategories({ productsByCategory }: ProductCategoriesProps) {
   const [selectedCategory, setSelectedCategory] = useState<
     keyof ProductCategoriesProps['productsByCategory'] | 'all'
-  >('all');
-  const [sortBy, setSortBy] = useState<SortOption>('name');
-  const [licenseFilter, setLicenseFilter] = useState<'all' | 'open-source' | 'proprietary'>('all');
-  const [searchQuery, setSearchQuery] = useState('');
+  >('all')
+  const [sortBy, setSortBy] = useState<SortOption>('name')
+  const [licenseFilter, setLicenseFilter] = useState<'all' | 'open-source' | 'proprietary'>('all')
+  const [searchQuery, setSearchQuery] = useState('')
 
   // Get products for selected category
   const selectedProducts = useMemo(() => {
@@ -128,75 +124,76 @@ export default function ProductCategories({ productsByCategory }: ProductCategor
         ...productsByCategory.extensions,
         ...productsByCategory.models,
         ...productsByCategory.providers,
-      ];
+      ]
     }
-    return productsByCategory[selectedCategory];
-  }, [selectedCategory, productsByCategory]);
+    return productsByCategory[selectedCategory]
+  }, [selectedCategory, productsByCategory])
 
   // Filter and sort products
   const filteredAndSortedProducts = useMemo(() => {
-    let filtered = selectedProducts;
+    let filtered = selectedProducts
 
     // Search filter
     if (searchQuery) {
-      const query = searchQuery.toLowerCase();
+      const query = searchQuery.toLowerCase()
       filtered = filtered.filter(
-        (p) =>
+        p =>
           p.name.toLowerCase().includes(query) ||
           p.vendor.toLowerCase().includes(query) ||
           p.description.toLowerCase().includes(query)
-      );
+      )
     }
 
     // License filter
     if (licenseFilter !== 'all') {
-      filtered = filtered.filter((p) => {
+      filtered = filtered.filter(p => {
         if (licenseFilter === 'open-source') {
-          return p.license && p.license.toLowerCase() !== 'proprietary';
+          return p.license && p.license.toLowerCase() !== 'proprietary'
         }
-        return p.license && p.license.toLowerCase() === 'proprietary';
-      });
+        return p.license && p.license.toLowerCase() === 'proprietary'
+      })
     }
 
     // Sort
     const sorted = [...filtered].sort((a, b) => {
       switch (sortBy) {
         case 'name':
-          return a.name.localeCompare(b.name);
+          return a.name.localeCompare(b.name)
         case 'stars':
-          return (b.githubStars || 0) - (a.githubStars || 0);
+          return (b.githubStars || 0) - (a.githubStars || 0)
         case 'vendor':
-          return a.vendor.localeCompare(b.vendor);
+          return a.vendor.localeCompare(b.vendor)
         default:
-          return 0;
+          return 0
       }
-    });
+    })
 
-    return sorted;
-  }, [selectedProducts, searchQuery, licenseFilter, sortBy]);
+    return sorted
+  }, [selectedProducts, searchQuery, licenseFilter, sortBy])
 
   // Group products by vendor
   const productsByVendor = useMemo(() => {
-    const grouped = new Map<string, LandscapeProduct[]>();
-    filteredAndSortedProducts.forEach((product) => {
+    const grouped = new Map<string, LandscapeProduct[]>()
+    filteredAndSortedProducts.forEach(product => {
       if (!grouped.has(product.vendor)) {
-        grouped.set(product.vendor, []);
+        grouped.set(product.vendor, [])
       }
-      grouped.get(product.vendor)!.push(product);
-    });
-    return Array.from(grouped.entries()).sort((a, b) => a[0].localeCompare(b[0]));
-  }, [filteredAndSortedProducts]);
+      grouped.get(product.vendor)!.push(product)
+    })
+    return Array.from(grouped.entries()).sort((a, b) => a[0].localeCompare(b[0]))
+  }, [filteredAndSortedProducts])
 
   const getCategoryColor = (category: ProductCategory): string => {
-    const cat = CATEGORIES.find((c) => c.key === `${category}s`);
-    return cat?.color || 'from-gray-500/20 to-slate-500/20';
-  };
+    const cat = CATEGORIES.find(c => c.key === `${category}s`)
+    return cat?.color || 'from-gray-500/20 to-slate-500/20'
+  }
 
   return (
     <div className="space-y-[var(--spacing-lg)]">
       {/* Category Tabs */}
       <div className="flex flex-wrap gap-2">
         <button
+          type="button"
           onClick={() => setSelectedCategory('all')}
           className={`px-4 py-2 text-sm border transition-all ${
             selectedCategory === 'all'
@@ -206,9 +203,10 @@ export default function ProductCategories({ productsByCategory }: ProductCategor
         >
           All Categories
         </button>
-        {CATEGORIES.map((cat) => (
+        {CATEGORIES.map(cat => (
           <button
             key={cat.key}
+            type="button"
             onClick={() => setSelectedCategory(cat.key)}
             className={`px-4 py-2 text-sm border transition-all flex items-center gap-2 ${
               selectedCategory === cat.key
@@ -233,7 +231,7 @@ export default function ProductCategories({ productsByCategory }: ProductCategor
             type="text"
             placeholder="Search products, vendors..."
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={e => setSearchQuery(e.target.value)}
             className="w-full px-4 py-2 text-sm border border-[var(--color-border)] bg-[var(--color-bg)] focus:border-[var(--color-border-strong)] focus:outline-none transition-colors"
           />
         </div>
@@ -243,6 +241,7 @@ export default function ProductCategories({ productsByCategory }: ProductCategor
           {/* License Filter */}
           <div className="flex gap-1">
             <button
+              type="button"
               onClick={() => setLicenseFilter('all')}
               className={`px-3 py-1 text-xs border transition-all ${
                 licenseFilter === 'all'
@@ -253,6 +252,7 @@ export default function ProductCategories({ productsByCategory }: ProductCategor
               All
             </button>
             <button
+              type="button"
               onClick={() => setLicenseFilter('open-source')}
               className={`px-3 py-1 text-xs border transition-all ${
                 licenseFilter === 'open-source'
@@ -263,6 +263,7 @@ export default function ProductCategories({ productsByCategory }: ProductCategor
               Open Source
             </button>
             <button
+              type="button"
               onClick={() => setLicenseFilter('proprietary')}
               className={`px-3 py-1 text-xs border transition-all ${
                 licenseFilter === 'proprietary'
@@ -280,6 +281,7 @@ export default function ProductCategories({ productsByCategory }: ProductCategor
               Sort:
             </span>
             <button
+              type="button"
               onClick={() => setSortBy('name')}
               className={`px-3 py-1 text-xs border transition-all ${
                 sortBy === 'name'
@@ -290,6 +292,7 @@ export default function ProductCategories({ productsByCategory }: ProductCategor
               Name
             </button>
             <button
+              type="button"
               onClick={() => setSortBy('stars')}
               className={`px-3 py-1 text-xs border transition-all ${
                 sortBy === 'stars'
@@ -300,6 +303,7 @@ export default function ProductCategories({ productsByCategory }: ProductCategor
               Stars
             </button>
             <button
+              type="button"
               onClick={() => setSortBy('vendor')}
               className={`px-3 py-1 text-xs border transition-all ${
                 sortBy === 'vendor'
@@ -315,17 +319,19 @@ export default function ProductCategories({ productsByCategory }: ProductCategor
 
       {/* Results Count */}
       <div className="text-sm text-[var(--color-text-secondary)]">
-        Showing {filteredAndSortedProducts.length} product{filteredAndSortedProducts.length !== 1 ? 's' : ''}
+        Showing {filteredAndSortedProducts.length} product
+        {filteredAndSortedProducts.length !== 1 ? 's' : ''}
         {sortBy === 'vendor' && productsByVendor.length > 0 && (
-          <span> from {productsByVendor.length} vendor{productsByVendor.length !== 1 ? 's' : ''}</span>
+          <span>
+            {' '}
+            from {productsByVendor.length} vendor{productsByVendor.length !== 1 ? 's' : ''}
+          </span>
         )}
       </div>
 
       {/* Products Grid */}
       {filteredAndSortedProducts.length === 0 ? (
-        <div className="text-center py-12 text-[var(--color-text-muted)]">
-          No products found
-        </div>
+        <div className="text-center py-12 text-[var(--color-text-muted)]">No products found</div>
       ) : sortBy === 'vendor' ? (
         // Grouped by vendor
         <div className="space-y-[var(--spacing-xl)]">
@@ -344,7 +350,7 @@ export default function ProductCategories({ productsByCategory }: ProductCategor
                 </span>
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--spacing-md)]">
-                {products.map((product) => (
+                {products.map(product => (
                   <ProductCard
                     key={`${product.category}-${product.id}`}
                     product={product}
@@ -358,7 +364,7 @@ export default function ProductCategories({ productsByCategory }: ProductCategor
       ) : (
         // Simple grid
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--spacing-md)]">
-          {filteredAndSortedProducts.map((product) => (
+          {filteredAndSortedProducts.map(product => (
             <ProductCard
               key={`${product.category}-${product.id}`}
               product={product}
@@ -372,14 +378,14 @@ export default function ProductCategories({ productsByCategory }: ProductCategor
       {selectedCategory !== 'all' && (
         <div className="border-t border-[var(--color-border)] pt-[var(--spacing-lg)]">
           <Link
-            href={CATEGORIES.find((c) => c.key === selectedCategory)?.path || '#'}
+            href={CATEGORIES.find(c => c.key === selectedCategory)?.path || '#'}
             className="inline-flex items-center gap-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors"
           >
-            <span>View all {CATEGORIES.find((c) => c.key === selectedCategory)?.label}</span>
+            <span>View all {CATEGORIES.find(c => c.key === selectedCategory)?.label}</span>
             <span>→</span>
           </Link>
         </div>
       )}
     </div>
-  );
+  )
 }

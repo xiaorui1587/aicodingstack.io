@@ -1,17 +1,17 @@
-import Link from 'next/link';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { getArticles } from '@/lib/generated/articles';
-import { getTranslations } from 'next-intl/server';
-import { buildCanonicalUrl, buildOpenGraph, buildTwitterCard, buildTitle } from '@/lib/metadata';
+import Link from 'next/link'
+import { getTranslations } from 'next-intl/server'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import { getArticles } from '@/lib/generated/articles'
+import { buildCanonicalUrl, buildOpenGraph, buildTitle, buildTwitterCard } from '@/lib/metadata'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'pages.articles' });
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'pages.articles' })
 
-  const canonicalPath = locale === 'en' ? '/articles' : `/${locale}/articles`;
-  const title = buildTitle({ title: `${t('title')} - AI Coding Insights & Tutorials` });
-  const description = t('subtitle');
+  const canonicalPath = locale === 'en' ? '/articles' : `/${locale}/articles`
+  const title = buildTitle({ title: `${t('title')} - AI Coding Insights & Tutorials` })
+  const description = t('subtitle')
 
   return {
     title,
@@ -35,16 +35,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: `${t('title')} - AI Coding Insights & Tutorials`,
       description,
     }),
-  };
+  }
 }
 
 type Props = {
-  params: Promise<{ locale: string }>;
-};
+  params: Promise<{ locale: string }>
+}
 
 export default async function ArticlesPage({ params }: Props) {
-  const { locale } = await params;
-  const articles = getArticles(locale);
+  const { locale } = await params
+  const articles = getArticles(locale)
   return (
     <>
       <Header />
@@ -53,7 +53,9 @@ export default async function ArticlesPage({ params }: Props) {
         {/* Page Header */}
         <div className="text-center mb-[var(--spacing-xl)]">
           <h1 className="text-[2rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
-            <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">{'//'}</span>
+            <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
+              {'//'}
+            </span>
             Articles
           </h1>
           <p className="text-base text-[var(--color-text-secondary)] font-light">
@@ -63,7 +65,7 @@ export default async function ArticlesPage({ params }: Props) {
 
         {/* Articles Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--spacing-md)]">
-          {articles.map((article) => (
+          {articles.map(article => (
             <Link
               key={article.slug}
               href={`/articles/${article.slug}`}
@@ -94,5 +96,5 @@ export default async function ArticlesPage({ params }: Props) {
 
       <Footer />
     </>
-  );
+  )
 }

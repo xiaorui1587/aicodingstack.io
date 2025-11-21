@@ -1,22 +1,22 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
+import Link from 'next/link'
 import {
-  BarChart,
   Bar,
-  PieChart,
-  Pie,
+  BarChart,
+  CartesianGrid,
   Cell,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from 'recharts';
-import type { LandscapeStats } from '@/lib/landscape-data';
+} from 'recharts'
+import type { LandscapeStats } from '@/lib/landscape-data'
 
 interface StatisticsDashboardProps {
-  stats: LandscapeStats;
+  stats: LandscapeStats
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -25,12 +25,12 @@ const CATEGORY_COLORS: Record<string, string> = {
   extensions: '#ec4899', // pink
   models: '#8b5cf6', // purple
   providers: '#6366f1', // indigo
-};
+}
 
 const LICENSE_COLORS = {
   'Open Source': '#10b981',
   Proprietary: '#f59e0b',
-};
+}
 
 export default function StatisticsDashboard({ stats }: StatisticsDashboardProps) {
   // Prepare category distribution data
@@ -40,50 +40,42 @@ export default function StatisticsDashboard({ stats }: StatisticsDashboardProps)
     { name: 'Extensions', value: stats.counts.extensions, color: CATEGORY_COLORS.extensions },
     { name: 'Models', value: stats.counts.models, color: CATEGORY_COLORS.models },
     { name: 'Providers', value: stats.counts.providers, color: CATEGORY_COLORS.providers },
-  ];
+  ]
 
   // Prepare license distribution data
   const licenseData = [
     { name: 'Open Source', value: stats.openSourceCount, color: LICENSE_COLORS['Open Source'] },
     { name: 'Proprietary', value: stats.proprietaryCount, color: LICENSE_COLORS.Proprietary },
-  ];
+  ]
 
   // Prepare platform support data
   const platformData = [
     { name: 'macOS', count: stats.platformSupport.macOS },
     { name: 'Windows', count: stats.platformSupport.windows },
     { name: 'Linux', count: stats.platformSupport.linux },
-  ];
+  ]
 
   // Prepare vendor product count data (top 10)
-  const topVendors = stats.vendorsByProductCount.slice(0, 10);
+  const topVendors = stats.vendorsByProductCount.slice(0, 10)
 
   return (
     <div className="space-y-[var(--spacing-xl)]">
       {/* Key Metrics */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-[var(--spacing-md)]">
         <div className="p-[var(--spacing-lg)] border border-[var(--color-border)] bg-gradient-to-br from-blue-500/10 to-purple-500/10">
-          <div className="text-3xl font-bold tracking-tight mb-2">
-            {stats.totalProducts}
-          </div>
+          <div className="text-3xl font-bold tracking-tight mb-2">{stats.totalProducts}</div>
           <div className="text-sm text-[var(--color-text-secondary)]">Total Products</div>
         </div>
         <div className="p-[var(--spacing-lg)] border border-[var(--color-border)] bg-gradient-to-br from-green-500/10 to-emerald-500/10">
-          <div className="text-3xl font-bold tracking-tight mb-2">
-            {stats.totalVendors}
-          </div>
+          <div className="text-3xl font-bold tracking-tight mb-2">{stats.totalVendors}</div>
           <div className="text-sm text-[var(--color-text-secondary)]">Total Vendors</div>
         </div>
         <div className="p-[var(--spacing-lg)] border border-[var(--color-border)] bg-gradient-to-br from-pink-500/10 to-rose-500/10">
-          <div className="text-3xl font-bold tracking-tight mb-2">
-            {stats.openSourceCount}
-          </div>
+          <div className="text-3xl font-bold tracking-tight mb-2">{stats.openSourceCount}</div>
           <div className="text-sm text-[var(--color-text-secondary)]">Open Source</div>
         </div>
         <div className="p-[var(--spacing-lg)] border border-[var(--color-border)] bg-gradient-to-br from-purple-500/10 to-indigo-500/10">
-          <div className="text-3xl font-bold tracking-tight mb-2">
-            {stats.proprietaryCount}
-          </div>
+          <div className="text-3xl font-bold tracking-tight mb-2">{stats.proprietaryCount}</div>
           <div className="text-sm text-[var(--color-text-secondary)]">Proprietary</div>
         </div>
       </div>
@@ -93,7 +85,7 @@ export default function StatisticsDashboard({ stats }: StatisticsDashboardProps)
         {/* Category Distribution Pie Chart */}
         <div className="p-[var(--spacing-lg)] border border-[var(--color-border)] bg-[var(--color-bg-subtle)]">
           <h3 className="text-lg font-semibold mb-[var(--spacing-md)] flex items-center gap-2">
-            <span className="text-[var(--color-text-muted)]">{"//"}</span>
+            <span className="text-[var(--color-text-muted)]">{'//'}</span>
             Product Category Distribution
           </h3>
           <ResponsiveContainer width="100%" height={300}>
@@ -104,17 +96,17 @@ export default function StatisticsDashboard({ stats }: StatisticsDashboardProps)
                 cy="50%"
                 labelLine={false}
                 label={(props: unknown) => {
-                  const data = props as { percent?: number; name?: string };
-                  const percent = data.percent || 0;
-                  const name = data.name || '';
-                  return `${name} ${(percent * 100).toFixed(0)}%`;
+                  const data = props as { percent?: number; name?: string }
+                  const percent = data.percent || 0
+                  const name = data.name || ''
+                  return `${name} ${(percent * 100).toFixed(0)}%`
                 }}
                 outerRadius={80}
                 fill="#8884d8"
                 dataKey="value"
               >
-                {categoryData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
+                {categoryData.map(entry => (
+                  <Cell key={entry.name} fill={entry.color} />
                 ))}
               </Pie>
               <Tooltip
@@ -130,7 +122,7 @@ export default function StatisticsDashboard({ stats }: StatisticsDashboardProps)
         {/* License Distribution Pie Chart */}
         <div className="p-[var(--spacing-lg)] border border-[var(--color-border)] bg-[var(--color-bg-subtle)]">
           <h3 className="text-lg font-semibold mb-[var(--spacing-md)] flex items-center gap-2">
-            <span className="text-[var(--color-text-muted)]">{"//"}</span>
+            <span className="text-[var(--color-text-muted)]">{'//'}</span>
             License Distribution
           </h3>
           <ResponsiveContainer width="100%" height={300}>
@@ -141,17 +133,17 @@ export default function StatisticsDashboard({ stats }: StatisticsDashboardProps)
                 cy="50%"
                 labelLine={false}
                 label={(props: unknown) => {
-                  const data = props as { percent?: number; name?: string };
-                  const percent = data.percent || 0;
-                  const name = data.name || '';
-                  return `${name} ${(percent * 100).toFixed(0)}%`;
+                  const data = props as { percent?: number; name?: string }
+                  const percent = data.percent || 0
+                  const name = data.name || ''
+                  return `${name} ${(percent * 100).toFixed(0)}%`
                 }}
                 outerRadius={80}
                 fill="#8884d8"
                 dataKey="value"
               >
-                {licenseData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
+                {licenseData.map(entry => (
+                  <Cell key={entry.name} fill={entry.color} />
                 ))}
               </Pie>
               <Tooltip
@@ -170,7 +162,7 @@ export default function StatisticsDashboard({ stats }: StatisticsDashboardProps)
         {/* Platform Support Bar Chart */}
         <div className="p-[var(--spacing-lg)] border border-[var(--color-border)] bg-[var(--color-bg-subtle)]">
           <h3 className="text-lg font-semibold mb-[var(--spacing-md)] flex items-center gap-2">
-            <span className="text-[var(--color-text-muted)]">{"//"}</span>
+            <span className="text-[var(--color-text-muted)]">{'//'}</span>
             Platform Support
           </h3>
           <ResponsiveContainer width="100%" height={250}>
@@ -192,14 +184,19 @@ export default function StatisticsDashboard({ stats }: StatisticsDashboardProps)
         {/* Vendors by Product Count Bar Chart */}
         <div className="p-[var(--spacing-lg)] border border-[var(--color-border)] bg-[var(--color-bg-subtle)]">
           <h3 className="text-lg font-semibold mb-[var(--spacing-md)] flex items-center gap-2">
-            <span className="text-[var(--color-text-muted)]">{"//"}</span>
+            <span className="text-[var(--color-text-muted)]">{'//'}</span>
             Top Vendors by Product Count
           </h3>
           <ResponsiveContainer width="100%" height={350}>
             <BarChart data={topVendors} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
               <XAxis type="number" stroke="var(--color-text-secondary)" />
-              <YAxis dataKey="vendorName" type="category" width={120} stroke="var(--color-text-secondary)" />
+              <YAxis
+                dataKey="vendorName"
+                type="category"
+                width={120}
+                stroke="var(--color-text-secondary)"
+              />
               <Tooltip
                 contentStyle={{
                   backgroundColor: 'var(--color-bg)',
@@ -215,7 +212,7 @@ export default function StatisticsDashboard({ stats }: StatisticsDashboardProps)
       {/* Top by GitHub Stars */}
       <div className="p-[var(--spacing-lg)] border border-[var(--color-border)] bg-[var(--color-bg-subtle)]">
         <h3 className="text-lg font-semibold mb-[var(--spacing-md)] flex items-center gap-2">
-          <span className="text-[var(--color-text-muted)]">{"//"}</span>
+          <span className="text-[var(--color-text-muted)]">{'//'}</span>
           Top 10 Products by GitHub Stars
         </h3>
         <div className="space-y-[var(--spacing-sm)]">
@@ -252,11 +249,11 @@ export default function StatisticsDashboard({ stats }: StatisticsDashboardProps)
       {/* Detailed Breakdown */}
       <div className="p-[var(--spacing-lg)] border border-[var(--color-border)] bg-[var(--color-bg-subtle)]">
         <h3 className="text-lg font-semibold mb-[var(--spacing-md)] flex items-center gap-2">
-          <span className="text-[var(--color-text-muted)]">{"//"}</span>
+          <span className="text-[var(--color-text-muted)]">{'//'}</span>
           Category Breakdown
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-5 gap-[var(--spacing-md)]">
-          {categoryData.map((cat) => (
+          {categoryData.map(cat => (
             <Link
               key={cat.name}
               href={`/${cat.name.toLowerCase()}`}
@@ -277,5 +274,5 @@ export default function StatisticsDashboard({ stats }: StatisticsDashboardProps)
         </div>
       </div>
     </div>
-  );
+  )
 }

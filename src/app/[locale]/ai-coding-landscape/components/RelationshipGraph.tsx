@@ -1,29 +1,29 @@
-'use client';
+'use client'
 
-import { useState, useMemo } from 'react';
 import {
-  ReactFlow,
-  Controls,
   Background,
-  MiniMap,
-  useNodesState,
-  useEdgesState,
   BackgroundVariant,
-  Position,
-  type Node,
+  Controls,
   type Edge,
-} from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
-import type { RelationshipNode, RelationshipEdge } from '@/lib/landscape-data';
+  MiniMap,
+  type Node,
+  Position,
+  ReactFlow,
+  useEdgesState,
+  useNodesState,
+} from '@xyflow/react'
+import { useMemo, useState } from 'react'
+import '@xyflow/react/dist/style.css'
+import type { RelationshipEdge, RelationshipNode } from '@/lib/landscape-data'
 
 // Type for node data in ReactFlow
-type NodeData = RelationshipNode['data'] & { type: RelationshipNode['type'] };
+type NodeData = RelationshipNode['data'] & { type: RelationshipNode['type'] }
 
 interface RelationshipGraphProps {
   graphData: {
-    nodes: RelationshipNode[];
-    edges: RelationshipEdge[];
-  };
+    nodes: RelationshipNode[]
+    edges: RelationshipEdge[]
+  }
 }
 
 // Node type colors
@@ -58,19 +58,19 @@ const NODE_COLORS: Record<string, { bg: string; border: string; text: string }> 
     border: 'border-indigo-400',
     text: 'text-indigo-100',
   },
-};
+}
 
 // Edge type colors
 const EDGE_COLORS: Record<string, string> = {
   'vendor-product': '#64748b', // slate
   'extension-ide': '#ec4899', // pink
   'related-product': '#8b5cf6', // purple
-};
+}
 
 // Custom node component
 function CustomNode({ data }: { data: NodeData }) {
-  const colors = NODE_COLORS[data.type] || NODE_COLORS.vendor;
-  const isVendor = data.type === 'vendor';
+  const colors = NODE_COLORS[data.type] || NODE_COLORS.vendor
+  const isVendor = data.type === 'vendor'
 
   return (
     <div
@@ -78,42 +78,38 @@ function CustomNode({ data }: { data: NodeData }) {
         isVendor ? 'min-w-[120px]' : 'min-w-[100px]'
       }`}
     >
-      <div className="font-semibold text-sm text-center whitespace-nowrap">
-        {data.label}
-      </div>
+      <div className="font-semibold text-sm text-center whitespace-nowrap">{data.label}</div>
       {data.category && (
-        <div className="text-xs text-center opacity-75 mt-1">
-          {data.category.toUpperCase()}
-        </div>
+        <div className="text-xs text-center opacity-75 mt-1">{data.category.toUpperCase()}</div>
       )}
     </div>
-  );
+  )
 }
 
 const nodeTypes = {
   custom: CustomNode,
-};
+}
 
 export default function RelationshipGraph({ graphData }: RelationshipGraphProps) {
   const [visibleNodeTypes, setVisibleNodeTypes] = useState<Set<string>>(
     new Set(['vendor', 'ide', 'cli', 'extension', 'model', 'provider'])
-  );
+  )
 
   // Convert graph data to React Flow format with layout
   const { initialNodes, initialEdges } = useMemo(() => {
     // Simple force-directed layout approximation
-    const vendors = graphData.nodes.filter((n) => n.type === 'vendor');
-    const products = graphData.nodes.filter((n) => n.type !== 'vendor');
+    const vendors = graphData.nodes.filter(n => n.type === 'vendor')
+    const products = graphData.nodes.filter(n => n.type !== 'vendor')
 
-    const nodes: Node[] = [];
-    const addedNodeIds = new Set<string>();
-    const productRadius = 200;
+    const nodes: Node[] = []
+    const addedNodeIds = new Set<string>()
+    const productRadius = 200
 
     // Layout vendors in a circle
     vendors.forEach((vendor, i) => {
-      const angle = (i / vendors.length) * 2 * Math.PI;
-      const x = 500 + Math.cos(angle) * 400;
-      const y = 400 + Math.sin(angle) * 400;
+      const angle = (i / vendors.length) * 2 * Math.PI
+      const x = 500 + Math.cos(angle) * 400
+      const y = 400 + Math.sin(angle) * 400
 
       if (!addedNodeIds.has(vendor.id)) {
         nodes.push({
@@ -127,32 +123,32 @@ export default function RelationshipGraph({ graphData }: RelationshipGraphProps)
           },
           sourcePosition: Position.Right,
           targetPosition: Position.Left,
-        });
-        addedNodeIds.add(vendor.id);
+        })
+        addedNodeIds.add(vendor.id)
       }
-    });
+    })
 
     // Layout products around their vendors
-    const productsByVendor = new Map<string, RelationshipNode[]>();
-    products.forEach((product) => {
-      const vendorId = product.data.vendorId;
+    const productsByVendor = new Map<string, RelationshipNode[]>()
+    products.forEach(product => {
+      const vendorId = product.data.vendorId
       if (vendorId) {
-        const vendorNodeId = `vendor-${vendorId}`;
+        const vendorNodeId = `vendor-${vendorId}`
         if (!productsByVendor.has(vendorNodeId)) {
-          productsByVendor.set(vendorNodeId, []);
+          productsByVendor.set(vendorNodeId, [])
         }
-        productsByVendor.get(vendorNodeId)!.push(product);
+        productsByVendor.get(vendorNodeId)!.push(product)
       }
-    });
+    })
 
     productsByVendor.forEach((prods, vendorId) => {
-      const vendorNode = nodes.find((n) => n.id === vendorId);
-      if (!vendorNode) return;
+      const vendorNode = nodes.find(n => n.id === vendorId)
+      if (!vendorNode) return
 
       prods.forEach((product, i) => {
-        const angle = (i / prods.length) * 2 * Math.PI;
-        const x = vendorNode.position.x + Math.cos(angle) * productRadius;
-        const y = vendorNode.position.y + Math.sin(angle) * productRadius;
+        const angle = (i / prods.length) * 2 * Math.PI
+        const x = vendorNode.position.x + Math.cos(angle) * productRadius
+        const y = vendorNode.position.y + Math.sin(angle) * productRadius
 
         if (!addedNodeIds.has(product.id)) {
           nodes.push({
@@ -167,13 +163,13 @@ export default function RelationshipGraph({ graphData }: RelationshipGraphProps)
             },
             sourcePosition: Position.Right,
             targetPosition: Position.Left,
-          });
-          addedNodeIds.add(product.id);
+          })
+          addedNodeIds.add(product.id)
         }
-      });
-    });
+      })
+    })
 
-    const edges: Edge[] = graphData.edges.map((edge) => ({
+    const edges: Edge[] = graphData.edges.map(edge => ({
       id: edge.id,
       source: edge.source,
       target: edge.target,
@@ -189,40 +185,38 @@ export default function RelationshipGraph({ graphData }: RelationshipGraphProps)
         fill: '#94a3b8',
         fontSize: 10,
       },
-    }));
+    }))
 
-    return { initialNodes: nodes, initialEdges: edges };
-  }, [graphData]);
+    return { initialNodes: nodes, initialEdges: edges }
+  }, [graphData])
 
-  const [nodes, , onNodesChange] = useNodesState(initialNodes);
-  const [edges, , onEdgesChange] = useEdgesState(initialEdges);
+  const [nodes, , onNodesChange] = useNodesState(initialNodes)
+  const [edges, , onEdgesChange] = useEdgesState(initialEdges)
 
   // Filter nodes and edges based on visible types
   const filteredNodes = useMemo(() => {
-    return nodes.filter((node) => {
-      const nodeData = node.data as NodeData;
-      return visibleNodeTypes.has(nodeData.type);
-    });
-  }, [nodes, visibleNodeTypes]);
+    return nodes.filter(node => {
+      const nodeData = node.data as NodeData
+      return visibleNodeTypes.has(nodeData.type)
+    })
+  }, [nodes, visibleNodeTypes])
 
   const filteredEdges = useMemo(() => {
-    const visibleNodeIds = new Set(filteredNodes.map((n) => n.id));
-    return edges.filter(
-      (edge) => visibleNodeIds.has(edge.source) && visibleNodeIds.has(edge.target)
-    );
-  }, [edges, filteredNodes]);
+    const visibleNodeIds = new Set(filteredNodes.map(n => n.id))
+    return edges.filter(edge => visibleNodeIds.has(edge.source) && visibleNodeIds.has(edge.target))
+  }, [edges, filteredNodes])
 
   const toggleNodeType = (type: string) => {
-    const newSet = new Set(visibleNodeTypes);
+    const newSet = new Set(visibleNodeTypes)
     if (newSet.has(type)) {
       // Don't allow hiding vendors
-      if (type === 'vendor') return;
-      newSet.delete(type);
+      if (type === 'vendor') return
+      newSet.delete(type)
     } else {
-      newSet.add(type);
+      newSet.add(type)
     }
-    setVisibleNodeTypes(newSet);
-  };
+    setVisibleNodeTypes(newSet)
+  }
 
   const nodeTypeCategories: { key: string; label: string; icon: string }[] = [
     { key: 'vendor', label: 'Vendors', icon: '🏢' },
@@ -231,16 +225,17 @@ export default function RelationshipGraph({ graphData }: RelationshipGraphProps)
     { key: 'extension', label: 'Extensions', icon: '🔌' },
     { key: 'model', label: 'Models', icon: '🤖' },
     { key: 'provider', label: 'Providers', icon: '🔑' },
-  ];
+  ]
 
   return (
     <div className="space-y-[var(--spacing-md)]">
       {/* Controls */}
       <div className="flex flex-wrap gap-2 items-center">
         <span className="text-sm text-[var(--color-text-secondary)] mr-2">Show:</span>
-        {nodeTypeCategories.map((cat) => (
+        {nodeTypeCategories.map(cat => (
           <button
             key={cat.key}
+            type="button"
             onClick={() => toggleNodeType(cat.key)}
             disabled={cat.key === 'vendor'}
             className={`px-3 py-1 text-xs border transition-all flex items-center gap-1 ${
@@ -275,10 +270,10 @@ export default function RelationshipGraph({ graphData }: RelationshipGraphProps)
           <Controls className="bg-[var(--color-bg)] border border-[var(--color-border)]" />
           <MiniMap
             className="bg-[var(--color-bg)] border border-[var(--color-border)]"
-            nodeColor={(node) => {
-              const nodeData = node.data as NodeData;
-              const colors = NODE_COLORS[nodeData.type];
-              return colors?.border || '#64748b';
+            nodeColor={node => {
+              const nodeData = node.data as NodeData
+              const colors = NODE_COLORS[nodeData.type]
+              return colors?.border || '#64748b'
             }}
           />
         </ReactFlow>
@@ -303,5 +298,5 @@ export default function RelationshipGraph({ graphData }: RelationshipGraphProps)
         </div>
       </div>
     </div>
-  );
+  )
 }

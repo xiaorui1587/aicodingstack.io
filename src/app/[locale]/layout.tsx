@@ -1,54 +1,56 @@
-import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono } from "next/font/google";
-import { GoogleAnalytics } from '@next/third-parties/google';
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
-import { notFound } from 'next/navigation';
-import "./globals.css";
-import ClientLayout from "@/components/ClientLayout";
-import { WebVitals } from "./web-vitals";
-import { JsonLd } from "@/components/JsonLd";
-import { locales, defaultLocale, type Locale } from '@/i18n/config';
-import { getOgLocale, getOgAlternateLocales, getLanguageAlternates } from '@/lib/seo-helpers';
+import { GoogleAnalytics } from '@next/third-parties/google'
+import type { Metadata, Viewport } from 'next'
+import { IBM_Plex_Mono } from 'next/font/google'
+import { notFound } from 'next/navigation'
+import { NextIntlClientProvider } from 'next-intl'
+import { getMessages } from 'next-intl/server'
+import './globals.css'
+import ClientLayout from '@/components/ClientLayout'
+import { JsonLd } from '@/components/JsonLd'
+import { defaultLocale, type Locale, locales } from '@/i18n/config'
+import { getLanguageAlternates, getOgAlternateLocales, getOgLocale } from '@/lib/seo-helpers'
+import { WebVitals } from './web-vitals'
 
 // Reduced font weights from 4 to 2 for better performance
 const ibmPlexMono = IBM_Plex_Mono({
   weight: ['400', '600'],
-  subsets: ["latin"],
-  variable: "--font-ibm-plex-mono",
+  subsets: ['latin'],
+  variable: '--font-ibm-plex-mono',
   display: 'swap',
   preload: true,
   fallback: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
-});
+})
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-};
+}
 
 type Props = {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-};
+  children: React.ReactNode
+  params: Promise<{ locale: string }>
+}
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+  return locales.map(locale => ({ locale }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = await params
 
   // Load translations for metadata
-  const messages = await getMessages({ locale });
-  const siteMessages = messages.site as Record<string, string> | undefined;
+  const messages = await getMessages({ locale })
+  const siteMessages = messages.site as Record<string, string> | undefined
 
-  const title = siteMessages?.title || "AI Coding Stack - Your AI Coding Ecosystem Hub";
-  const description = siteMessages?.description || "Comprehensive directory for AI coding tools. Discover, compare and explore IDEs, CLIs, MCP servers, models and providers.";
+  const title = siteMessages?.title || 'AI Coding Stack - Your AI Coding Ecosystem Hub'
+  const description =
+    siteMessages?.description ||
+    'Comprehensive directory for AI coding tools. Discover, compare and explore IDEs, CLIs, MCP servers, models and providers.'
 
   // Get canonical path based on locale
-  const canonicalPath = locale === defaultLocale ? '/' : `/${locale}`;
-  const baseUrl = 'https://aicodingstack.io';
+  const canonicalPath = locale === defaultLocale ? '/' : `/${locale}`
+  const baseUrl = 'https://aicodingstack.io'
 
   return {
     metadataBase: new URL(baseUrl),
@@ -107,49 +109,49 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       images: ['/twitter-card.png'],
     },
-  };
+  }
 }
 
 const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "AI Coding Stack",
-  "url": "https://aicodingstack.io",
-  "logo": "https://aicodingstack.io/logo.png",
-  "description": "Comprehensive directory and community-maintained metadata repository for AI-powered coding tools, models, and platforms.",
-  "foundingDate": "2025",
-  "sameAs": [
-    "https://github.com/aicodingstack/aicodingstack"
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "customer support",
-    "url": "https://github.com/aicodingstack/aicodingstack/issues"
-  }
-};
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'AI Coding Stack',
+  url: 'https://aicodingstack.io',
+  logo: 'https://aicodingstack.io/logo.png',
+  description:
+    'Comprehensive directory and community-maintained metadata repository for AI-powered coding tools, models, and platforms.',
+  foundingDate: '2025',
+  sameAs: ['https://github.com/aicodingstack/aicodingstack.io'],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer support',
+    url: 'https://github.com/aicodingstack/aicodingstack.io/issues',
+  },
+}
 
 const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "AI Coding Stack",
-  "url": "https://aicodingstack.io",
-  "description": "Comprehensive directory for AI coding tools across IDEs, CLIs, MCP servers, models and providers.",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://aicodingstack.io/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-};
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'AI Coding Stack',
+  url: 'https://aicodingstack.io',
+  description:
+    'Comprehensive directory for AI coding tools across IDEs, CLIs, MCP servers, models and providers.',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: 'https://aicodingstack.io/search?q={search_term_string}',
+    'query-input': 'required name=search_term_string',
+  },
+}
 
 export default async function RootLayout({ children, params }: Props) {
-  const { locale } = await params;
+  const { locale } = await params
 
   // Validate locale
   if (!locales.includes(locale as Locale)) {
-    notFound();
+    notFound()
   }
 
-  const messages = await getMessages();
+  const messages = await getMessages()
 
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -179,16 +181,12 @@ export default async function RootLayout({ children, params }: Props) {
         className={`${ibmPlexMono.variable} font-mono antialiased bg-[var(--color-bg)] text-[var(--color-text)]`}
       >
         <NextIntlClientProvider messages={messages}>
-          <ClientLayout>
-            {children}
-          </ClientLayout>
+          <ClientLayout>{children}</ClientLayout>
           <WebVitals />
         </NextIntlClientProvider>
       </body>
       {/* Load GA after page interactive for better performance */}
-      {process.env.NODE_ENV === 'production' && (
-        <GoogleAnalytics gaId="G-P6Y3S6L23P" />
-      )}
+      {process.env.NODE_ENV === 'production' && <GoogleAnalytics gaId="G-P6Y3S6L23P" />}
     </html>
-  );
+  )
 }

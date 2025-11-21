@@ -1,31 +1,32 @@
-import React from 'react';
-import { useTranslations } from 'next-intl';
-import { formatPrice, type PricingTier } from '@/lib/pricing';
+import { useTranslations } from 'next-intl'
+import { formatPrice, type PricingTier } from '@/lib/pricing'
 
 export interface ProductPricingProps {
-  pricing: PricingTier[];
-  pricingUrl?: string;
+  pricing: PricingTier[]
+  pricingUrl?: string
 }
 
 export function ProductPricing({ pricing, pricingUrl }: ProductPricingProps) {
-  const t = useTranslations('components.productPricing');
-  
+  const t = useTranslations('components.productPricing')
+
   if (!pricing || pricing.length === 0) {
-    return null;
+    return null
   }
 
   return (
     <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
       <div className="max-w-[1200px] mx-auto px-[var(--spacing-md)]">
         <h2 className="text-[1.5rem] font-semibold tracking-[-0.02em] mb-[var(--spacing-sm)]">
-          <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">{'//'}</span>
+          <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
+            {'//'}
+          </span>
           {t('title')}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--spacing-md)] mt-[var(--spacing-lg)]">
-          {pricing.map((tier, index) => (
+          {pricing.map(tier => (
             <div
-              key={index}
+              key={tier.name}
               className="border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all"
             >
               <div className="mb-[var(--spacing-sm)]">
@@ -57,5 +58,5 @@ export function ProductPricing({ pricing, pricingUrl }: ProductPricingProps) {
         )}
       </div>
     </section>
-  );
+  )
 }

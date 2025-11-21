@@ -1,68 +1,68 @@
-import React from 'react';
-import { useTranslations } from 'next-intl';
-import { renderLicense } from '@/lib/license';
+import { useTranslations } from 'next-intl'
+import React from 'react'
+import { renderLicense } from '@/lib/license'
 
 export interface ProductHeroProps {
   // Product identity
-  name: string;
-  description: string;
-  vendor?: string;
-  category: 'CLI' | 'IDE' | 'MCP' | 'PROVIDER' | 'MODEL' | 'VENDOR';
-  categoryLabel?: string; // Optional custom label for the badge
+  name: string
+  description: string
+  vendor?: string
+  category: 'CLI' | 'IDE' | 'MCP' | 'PROVIDER' | 'MODEL' | 'VENDOR'
+  categoryLabel?: string // Optional custom label for the badge
 
   // Metadata
-  latestVersion?: string;
-  license?: string;
-  githubStars?: number | null;
+  latestVersion?: string
+  license?: string
+  githubStars?: number | null
 
   // Platform support (for CLI/IDE)
-  platforms?: ('macOS' | 'Windows' | 'Linux')[];
-  showAllPlatforms?: boolean; // Whether to show BSD platforms when supported
+  platforms?: ('macOS' | 'Windows' | 'Linux')[]
+  showAllPlatforms?: boolean // Whether to show BSD platforms when supported
 
   // Additional info (for Models)
   additionalInfo?: {
-    label: string;
-    value: string;
-    url?: string;
-  }[];
+    label: string
+    value: string
+    url?: string
+  }[]
 
   // Pricing (for display in hero)
   pricing?: {
-    label: string;
-    value: string;
-  };
+    label: string
+    value: string
+  }
 
   // Type (for Providers)
-  type?: string;
+  type?: string
 
   // Links
-  websiteUrl?: string;
-  githubUrl?: string;
-  docsUrl?: string;
-  downloadUrl?: string;
-  applyKeyUrl?: string; // For providers
+  websiteUrl?: string
+  githubUrl?: string
+  docsUrl?: string
+  downloadUrl?: string
+  applyKeyUrl?: string // For providers
 
   // Additional URLs (for models)
   additionalUrls?: {
-    label: string;
-    url: string;
-    icon?: string;
-  }[];
+    label: string
+    url: string
+    icon?: string
+  }[]
 
   // i18n labels
   labels?: {
-    vendor?: string;
-    version?: string;
-    license?: string;
-    stars?: string;
-    platforms?: string;
-    type?: string;
-    typeValue?: string; // Translated type value (e.g., "Foundation Model Provider")
-    visitWebsite?: string;
-    documentation?: string;
-    download?: string;
-    getApiKey?: string;
-  };
+    vendor?: string
+    version?: string
+    license?: string
+    stars?: string
+    platforms?: string
+    type?: string
+    typeValue?: string // Translated type value (e.g., "Foundation Model Provider")
+    visitWebsite?: string
+    documentation?: string
+    download?: string
+    getApiKey?: string
+  }
 }
 
 export function ProductHero({
@@ -87,16 +87,16 @@ export function ProductHero({
   additionalUrls,
   labels = {},
 }: ProductHeroProps) {
-  const t = useTranslations();
+  const t = useTranslations()
   // Determine which platforms to display
-  const displayPlatforms = platforms ? (
-    showAllPlatforms
+  const displayPlatforms = platforms
+    ? showAllPlatforms
       ? platforms
       : platforms.filter(p => ['macOS', 'Windows', 'Linux'].includes(p))
-  ) : null;
+    : null
 
   // Get the category badge text
-  const badgeText = categoryLabel || category;
+  const badgeText = categoryLabel || category
 
   return (
     <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
@@ -104,9 +104,7 @@ export function ProductHero({
       <div className="max-w-[800px] mx-auto px-[var(--spacing-md)] text-center">
         {/* Title with Badge */}
         <div className="relative inline-block mb-[var(--spacing-sm)]">
-          <h1 className="text-[3rem] font-semibold tracking-[-0.04em]">
-            {name}
-          </h1>
+          <h1 className="text-[3rem] font-semibold tracking-[-0.04em]">{name}</h1>
           <div className="absolute bottom-0 right-0 translate-x-[calc(100%+1rem)]">
             <div className="px-[var(--spacing-xs)] py-[2px] text-[0.5rem] text-[var(--color-text-muted)] border-[1.5px] border-double border-[var(--color-border-strong)] whitespace-nowrap">
               {badgeText}
@@ -131,25 +129,29 @@ export function ProductHero({
               </div>
             )}
 
-            {vendor && latestVersion && (
-              <span className="text-[var(--color-border)]">│</span>
-            )}
+            {vendor && latestVersion && <span className="text-[var(--color-border)]">│</span>}
 
             {latestVersion && (
               <div className="flex gap-1">
-                <span className="text-[var(--color-text-muted)]">{labels.version || 'Version'}:</span>
+                <span className="text-[var(--color-text-muted)]">
+                  {labels.version || 'Version'}:
+                </span>
                 <span className="font-medium">{latestVersion}</span>
               </div>
             )}
 
-            {latestVersion && license && (
-              <span className="text-[var(--color-border)]">│</span>
-            )}
+            {latestVersion && license && <span className="text-[var(--color-border)]">│</span>}
 
             {license && (
               <div className="flex gap-1">
-                <span className="text-[var(--color-text-muted)]">{labels.license || 'License'}:</span>
-                {renderLicense(license, "!font-medium hover:underline hover:decoration-dotted transition-colors underline-offset-2", t)}
+                <span className="text-[var(--color-text-muted)]">
+                  {labels.license || 'License'}:
+                </span>
+                {renderLicense(
+                  license,
+                  '!font-medium hover:underline hover:decoration-dotted transition-colors underline-offset-2',
+                  t
+                )}
               </div>
             )}
 
@@ -164,9 +166,13 @@ export function ProductHero({
               </div>
             )}
 
-            {additionalInfo && additionalInfo.map((info, index) => (
-              <React.Fragment key={index}>
-                {(vendor || latestVersion || license || (githubStars !== null && githubStars !== undefined) || index > 0) && (
+            {additionalInfo?.map(info => (
+              <React.Fragment key={info.label}>
+                {(vendor ||
+                  latestVersion ||
+                  license ||
+                  (githubStars !== null && githubStars !== undefined) ||
+                  additionalInfo.indexOf(info) > 0) && (
                   <span className="text-[var(--color-border)]">│</span>
                 )}
                 <div className="flex gap-1">
@@ -196,11 +202,13 @@ export function ProductHero({
         {displayPlatforms && displayPlatforms.length > 0 && (
           <div className="flex justify-center mb-[var(--spacing-lg)]">
             <div className="inline-flex items-center gap-[var(--spacing-xs)] px-[var(--spacing-md)] py-[var(--spacing-sm)] bg-[var(--color-hover)] border border-[var(--color-border)]">
-              <span className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider font-medium">{labels.platforms || 'Platforms'}:</span>
+              <span className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider font-medium">
+                {labels.platforms || 'Platforms'}:
+              </span>
               <div className="flex gap-[var(--spacing-xs)] flex-wrap">
-                {(['macOS', 'Windows', 'Linux'] as const).map((platform) => {
-                  const isSupported = displayPlatforms.includes(platform);
-                  if (!isSupported && !['macOS', 'Windows', 'Linux'].includes(platform)) return null;
+                {(['macOS', 'Windows', 'Linux'] as const).map(platform => {
+                  const isSupported = displayPlatforms.includes(platform)
+                  if (!isSupported && !['macOS', 'Windows', 'Linux'].includes(platform)) return null
                   return (
                     <span
                       key={platform}
@@ -212,7 +220,7 @@ export function ProductHero({
                     >
                       {platform}
                     </span>
-                  );
+                  )
                 })}
               </div>
             </div>
@@ -223,7 +231,9 @@ export function ProductHero({
         {pricing && (
           <div className="mb-[var(--spacing-lg)]">
             <div className="inline-flex items-center gap-[var(--spacing-xs)] px-[var(--spacing-md)] py-[var(--spacing-sm)] bg-[var(--color-hover)] border border-[var(--color-border)]">
-              <span className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider font-medium">{pricing.label}:</span>
+              <span className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider font-medium">
+                {pricing.label}:
+              </span>
               <span className="text-sm font-medium">{pricing.value}</span>
             </div>
           </div>
@@ -233,7 +243,9 @@ export function ProductHero({
         {type && labels?.typeValue && (
           <div className="flex justify-center mb-[var(--spacing-lg)]">
             <div className="inline-flex items-center gap-[var(--spacing-xs)] px-[var(--spacing-md)] py-[var(--spacing-sm)] bg-[var(--color-hover)] border border-[var(--color-border)]">
-              <span className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider font-medium">{labels.type || 'Type'}:</span>
+              <span className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider font-medium">
+                {labels.type || 'Type'}:
+              </span>
               <span className="text-sm font-medium">{labels.typeValue}</span>
             </div>
           </div>
@@ -296,9 +308,9 @@ export function ProductHero({
             </a>
           )}
 
-          {additionalUrls && additionalUrls.map((urlInfo, index) => (
+          {additionalUrls?.map(urlInfo => (
             <a
-              key={index}
+              key={urlInfo.url}
               href={urlInfo.url}
               target="_blank"
               rel="noopener"
@@ -310,5 +322,5 @@ export function ProductHero({
         </div>
       </div>
     </section>
-  );
+  )
 }

@@ -5,10 +5,10 @@
 
 const RUNTIME_URLS: Record<string, string> = {
   'Node.js': 'https://nodejs.org/',
-  'Python': 'https://www.python.org/',
-  'Docker': 'https://www.docker.com/',
+  Python: 'https://www.python.org/',
+  Docker: 'https://www.docker.com/',
   // Add more runtimes as needed
-};
+}
 
 /**
  * Get the URL for a given runtime
@@ -16,7 +16,7 @@ const RUNTIME_URLS: Record<string, string> = {
  * @returns The URL for the runtime, or undefined if not found
  */
 export function getRuntimeUrl(runtime: string): string | undefined {
-  return RUNTIME_URLS[runtime];
+  return RUNTIME_URLS[runtime]
 }
 
 /**
@@ -25,5 +25,5 @@ export function getRuntimeUrl(runtime: string): string | undefined {
  * @returns True if the runtime has a URL mapping
  */
 export function hasRuntimeUrl(runtime: string): boolean {
-  return runtime in RUNTIME_URLS;
+  return runtime in RUNTIME_URLS
 }

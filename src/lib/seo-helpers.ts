@@ -3,22 +3,22 @@
  * Utilities for generating SEO-friendly URLs and metadata
  */
 
-import { locales, defaultLocale, localeToOgLocale, type Locale } from '@/i18n/config';
+import { defaultLocale, type Locale, locales, localeToOgLocale } from '@/i18n/config'
 
 /**
  * Generate canonical path with locale support
  * Default locale (en) doesn't get a prefix, other locales do
  */
 export function getCanonicalPath(basePath: string, locale: string): string {
-  return locale === defaultLocale ? basePath : `/${locale}${basePath}`;
+  return locale === defaultLocale ? basePath : `/${locale}${basePath}`
 }
 
 /**
  * Generate full URL with locale support
  */
 export function getFullUrl(basePath: string, locale: string): string {
-  const canonicalPath = getCanonicalPath(basePath, locale);
-  return `https://aicodingstack.io${canonicalPath}`;
+  const canonicalPath = getCanonicalPath(basePath, locale)
+  return `https://aicodingstack.io${canonicalPath}`
 }
 
 /**
@@ -26,17 +26,17 @@ export function getFullUrl(basePath: string, locale: string): string {
  * Dynamically builds alternates from configured locales
  */
 export function getLanguageAlternates(basePath: string): Record<string, string> {
-  const alternates: Record<string, string> = {};
+  const alternates: Record<string, string> = {}
 
-  locales.forEach((locale) => {
+  locales.forEach(locale => {
     if (locale === defaultLocale) {
-      alternates[locale] = basePath;
+      alternates[locale] = basePath
     } else {
-      alternates[locale] = `/${locale}${basePath}`;
+      alternates[locale] = `/${locale}${basePath}`
     }
-  });
+  })
 
-  return alternates;
+  return alternates
 }
 
 /**
@@ -44,7 +44,7 @@ export function getLanguageAlternates(basePath: string): Record<string, string> 
  * Maps locale code to OpenGraph format (e.g., 'en' -> 'en_US')
  */
 export function getOgLocale(locale: string): string {
-  return localeToOgLocale[locale as Locale] || localeToOgLocale[defaultLocale];
+  return localeToOgLocale[locale as Locale] || localeToOgLocale[defaultLocale]
 }
 
 /**
@@ -52,9 +52,7 @@ export function getOgLocale(locale: string): string {
  * Returns all other locales in OpenGraph format
  */
 export function getOgAlternateLocales(locale: string): string[] {
-  return locales
-    .filter((l) => l !== locale)
-    .map((l) => localeToOgLocale[l]);
+  return locales.filter(l => l !== locale).map(l => localeToOgLocale[l])
 }
 
 /**
@@ -64,7 +62,7 @@ export function getMetadataAlternates(basePath: string, locale: string) {
   return {
     canonical: getCanonicalPath(basePath, locale),
     languages: getLanguageAlternates(basePath),
-  };
+  }
 }
 
 /**
@@ -94,5 +92,5 @@ export function getOpenGraphMetadata(
       ],
     }),
     type: 'article' as const,
-  };
+  }
 }

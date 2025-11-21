@@ -11,12 +11,12 @@
  * 5. Preserves JSON structure and formatting
  */
 
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 // ANSI color codes for terminal output
 const colors = {
@@ -26,12 +26,12 @@ const colors = {
   yellow: '\x1b[33m',
   blue: '\x1b[34m',
   cyan: '\x1b[36m',
-};
+}
 
 // Get project root (4 levels up from .claude/skills/i18n/scripts/)
-const PROJECT_ROOT = path.resolve(__dirname, '../../../../');
-const MESSAGES_DIR = path.join(PROJECT_ROOT, 'messages');
-const EN_FILE = path.join(MESSAGES_DIR, 'en.json');
+const PROJECT_ROOT = path.resolve(__dirname, '../../../../')
+const MESSAGES_DIR = path.join(PROJECT_ROOT, 'messages')
+const EN_FILE = path.join(MESSAGES_DIR, 'en.json')
 
 /**
  * Recursively get all keys from a nested object
@@ -40,19 +40,19 @@ const EN_FILE = path.join(MESSAGES_DIR, 'en.json');
  * @returns {string[]} Array of dot-notation key paths
  */
 function getAllKeys(obj, prefix = '') {
-  const keys = [];
+  const keys = []
 
   for (const [key, value] of Object.entries(obj)) {
-    const fullKey = prefix ? `${prefix}.${key}` : key;
+    const fullKey = prefix ? `${prefix}.${key}` : key
 
     if (value !== null && typeof value === 'object' && !Array.isArray(value)) {
-      keys.push(...getAllKeys(value, fullKey));
+      keys.push(...getAllKeys(value, fullKey))
     } else {
-      keys.push(fullKey);
+      keys.push(fullKey)
     }
   }
 
-  return keys;
+  return keys
 }
 
 /**
@@ -62,7 +62,7 @@ function getAllKeys(obj, prefix = '') {
  * @returns {*} The value at the path
  */
 function getValueByPath(obj, path) {
-  return path.split('.').reduce((current, key) => current?.[key], obj);
+  return path.split('.').reduce((current, key) => current?.[key], obj)
 }
 
 /**
@@ -72,15 +72,15 @@ function getValueByPath(obj, path) {
  * @param {*} value - Value to set
  */
 function setValueByPath(obj, path, value) {
-  const keys = path.split('.');
-  const lastKey = keys.pop();
+  const keys = path.split('.')
+  const lastKey = keys.pop()
   const target = keys.reduce((current, key) => {
     if (!(key in current)) {
-      current[key] = {};
+      current[key] = {}
     }
-    return current[key];
-  }, obj);
-  target[lastKey] = value;
+    return current[key]
+  }, obj)
+  target[lastKey] = value
 }
 
 /**
@@ -89,16 +89,16 @@ function setValueByPath(obj, path, value) {
  * @param {string} path - Dot notation path
  */
 function deleteValueByPath(obj, path) {
-  const keys = path.split('.');
-  const lastKey = keys.pop();
-  const target = keys.reduce((current, key) => current?.[key], obj);
+  const keys = path.split('.')
+  const lastKey = keys.pop()
+  const target = keys.reduce((current, key) => current?.[key], obj)
 
   if (target && lastKey in target) {
-    delete target[lastKey];
+    delete target[lastKey]
 
     // Clean up empty parent objects
     if (Object.keys(target).length === 0 && keys.length > 0) {
-      deleteValueByPath(obj, keys.join('.'));
+      deleteValueByPath(obj, keys.join('.'))
     }
   }
 }
@@ -110,114 +110,123 @@ function deleteValueByPath(obj, path) {
  * @returns {Object} Sync report
  */
 function syncLanguageFile(targetFile, enData) {
-  const targetData = JSON.parse(fs.readFileSync(targetFile, 'utf-8'));
-  const enKeys = getAllKeys(enData);
-  const targetKeys = getAllKeys(targetData);
+  const targetData = JSON.parse(fs.readFileSync(targetFile, 'utf-8'))
+  const enKeys = getAllKeys(enData)
+  const targetKeys = getAllKeys(targetData)
 
-  const added = [];
-  const removed = [];
+  const added = []
+  const removed = []
 
   // Add missing keys from en.json
   for (const key of enKeys) {
     if (!targetKeys.includes(key)) {
-      const enValue = getValueByPath(enData, key);
-      setValueByPath(targetData, key, enValue);
-      added.push(key);
+      const enValue = getValueByPath(enData, key)
+      setValueByPath(targetData, key, enValue)
+      added.push(key)
     }
   }
 
   // Remove extra keys not in en.json
   for (const key of targetKeys) {
     if (!enKeys.includes(key)) {
-      deleteValueByPath(targetData, key);
-      removed.push(key);
+      deleteValueByPath(targetData, key)
+      removed.push(key)
     }
   }
 
   // Write back with consistent formatting (2 spaces indentation)
   if (added.length > 0 || removed.length > 0) {
-    fs.writeFileSync(targetFile, JSON.stringify(targetData, null, 2) + '\n', 'utf-8');
+    fs.writeFileSync(targetFile, `${JSON.stringify(targetData, null, 2)}\n`, 'utf-8')
   }
 
-  return { added, removed };
+  return { added, removed }
 }
 
 /**
  * Main sync function
  */
 function main() {
-  console.log(`${colors.cyan}🔄 Syncing language files with en.json...${colors.reset}\n`);
+  console.log(`${colors.cyan}🔄 Syncing language files with en.json...${colors.reset}\n`)
 
   // Check if messages directory exists
   if (!fs.existsSync(MESSAGES_DIR)) {
-    console.error(`${colors.red}✗ Messages directory not found: ${MESSAGES_DIR}${colors.reset}`);
-    process.exit(1);
+    console.error(`${colors.red}✗ Messages directory not found: ${MESSAGES_DIR}${colors.reset}`)
+    process.exit(1)
   }
 
   // Read English reference file
   if (!fs.existsSync(EN_FILE)) {
-    console.error(`${colors.red}✗ English reference file not found: ${EN_FILE}${colors.reset}`);
-    process.exit(1);
+    console.error(`${colors.red}✗ English reference file not found: ${EN_FILE}${colors.reset}`)
+    process.exit(1)
   }
 
-  const enData = JSON.parse(fs.readFileSync(EN_FILE, 'utf-8'));
+  const enData = JSON.parse(fs.readFileSync(EN_FILE, 'utf-8'))
 
   // Get all language files except en.json
-  const files = fs.readdirSync(MESSAGES_DIR)
+  const files = fs
+    .readdirSync(MESSAGES_DIR)
     .filter(file => file.endsWith('.json') && file !== 'en.json')
-    .map(file => path.join(MESSAGES_DIR, file));
+    .map(file => path.join(MESSAGES_DIR, file))
 
   if (files.length === 0) {
-    console.log(`${colors.yellow}⚠ No other language files found to sync${colors.reset}`);
-    return;
+    console.log(`${colors.yellow}⚠ No other language files found to sync${colors.reset}`)
+    return
   }
 
-  let totalAdded = 0;
-  let totalRemoved = 0;
-  let filesModified = 0;
+  let totalAdded = 0
+  let totalRemoved = 0
+  let filesModified = 0
 
   // Sync each language file
   for (const file of files) {
-    const locale = path.basename(file, '.json');
-    const { added, removed } = syncLanguageFile(file, enData);
+    const locale = path.basename(file, '.json')
+    const { added, removed } = syncLanguageFile(file, enData)
 
     if (added.length > 0 || removed.length > 0) {
-      filesModified++;
-      console.log(`${colors.green}✓${colors.reset} Synced ${colors.blue}${locale}.json${colors.reset}`);
+      filesModified++
+      console.log(
+        `${colors.green}✓${colors.reset} Synced ${colors.blue}${locale}.json${colors.reset}`
+      )
 
       if (added.length > 0) {
-        console.log(`  ${colors.green}+${colors.reset} Added ${added.length} key${added.length > 1 ? 's' : ''}`);
-        totalAdded += added.length;
+        console.log(
+          `  ${colors.green}+${colors.reset} Added ${added.length} key${added.length > 1 ? 's' : ''}`
+        )
+        totalAdded += added.length
       }
 
       if (removed.length > 0) {
-        console.log(`  ${colors.red}-${colors.reset} Removed ${removed.length} key${removed.length > 1 ? 's' : ''}`);
-        totalRemoved += removed.length;
+        console.log(
+          `  ${colors.red}-${colors.reset} Removed ${removed.length} key${removed.length > 1 ? 's' : ''}`
+        )
+        totalRemoved += removed.length
       }
 
-      console.log('');
+      console.log('')
     } else {
-      console.log(`${colors.green}✓${colors.reset} ${colors.blue}${locale}.json${colors.reset} already in sync`);
+      console.log(
+        `${colors.green}✓${colors.reset} ${colors.blue}${locale}.json${colors.reset} already in sync`
+      )
     }
   }
 
   // Summary
-  console.log(`${colors.cyan}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}`);
+  console.log(`${colors.cyan}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}`)
 
   if (filesModified > 0) {
-    console.log(`${colors.green}✓ Sync complete!${colors.reset}`);
-    console.log(`  Modified: ${filesModified} file${filesModified > 1 ? 's' : ''}`);
-    console.log(`  Added: ${totalAdded} key${totalAdded > 1 ? 's' : ''}`);
-    console.log(`  Removed: ${totalRemoved} key${totalRemoved > 1 ? 's' : ''}`);
+    console.log(`${colors.green}✓ Sync complete!${colors.reset}`)
+    console.log(`  Modified: ${filesModified} file${filesModified > 1 ? 's' : ''}`)
+    console.log(`  Added: ${totalAdded} key${totalAdded > 1 ? 's' : ''}`)
+    console.log(`  Removed: ${totalRemoved} key${totalRemoved > 1 ? 's' : ''}`)
   } else {
-    console.log(`${colors.green}✓ All language files are already in sync${colors.reset}`);
+    console.log(`${colors.green}✓ All language files are already in sync${colors.reset}`)
   }
 }
 
 // Run the script
 try {
-  main();
+  main()
 } catch (error) {
-  console.error(`${colors.red}✗ Error: ${error.message}${colors.reset}`);
-  process.exit(1);
+  console.error(`${colors.red}✗ Error: ${error.message}${colors.reset}`)
+  process.exit(1)
 }

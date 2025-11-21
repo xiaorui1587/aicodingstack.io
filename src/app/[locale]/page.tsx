@@ -1,26 +1,27 @@
-import { Link } from '@/i18n/navigation';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { JsonLd } from '@/components/JsonLd';
-import { getTranslations } from 'next-intl/server';
-import { getFaqItems } from '@/lib/faq';
-import { MarkdownContent } from '@/components/MarkdownContent';
-import { buildCanonicalUrl, buildOpenGraph, buildTwitterCard, buildTitle } from '@/lib/metadata';
+import { getTranslations } from 'next-intl/server'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import { JsonLd } from '@/components/JsonLd'
+import { MarkdownContent } from '@/components/MarkdownContent'
+import { Link } from '@/i18n/navigation'
+import { getFaqItems } from '@/lib/faq'
+import { buildCanonicalUrl, buildOpenGraph, buildTitle, buildTwitterCard } from '@/lib/metadata'
 
-export const revalidate = 3600;
+export const revalidate = 3600
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'pages.home.meta' });
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'pages.home.meta' })
 
-  const canonicalPath = locale === 'en' ? '/' : `/${locale}`;
-  const title = buildTitle({ title: t('title'), includeSiteName: false });
-  const description = t('description');
+  const canonicalPath = locale === 'en' ? '/' : `/${locale}`
+  const title = buildTitle({ title: t('title'), includeSiteName: false })
+  const description = t('description')
 
   return {
     title,
     description,
-    keywords: 'AI coding, AI IDE, AI CLI, AI extensions, LLM models, AI coding tools, Cursor, Claude Code, VS Code',
+    keywords:
+      'AI coding, AI IDE, AI CLI, AI extensions, LLM models, AI coding tools, Cursor, Claude Code, VS Code',
     alternates: {
       canonical: canonicalPath,
       languages: {
@@ -39,36 +40,36 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: t('title'),
       description,
     }),
-  };
+  }
 }
 
 async function getFaqSchema(locale: string) {
-  const faqItems = getFaqItems(locale);
+  const faqItems = getFaqItems(locale)
 
   return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqItems.map(faq => ({
-      "@type": "Question",
-      "name": faq.title,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.content
-      }
-    }))
-  };
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map(faq => ({
+      '@type': 'Question',
+      name: faq.title,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.content,
+      },
+    })),
+  }
 }
 
 type Props = {
-  params: Promise<{ locale: string }>;
-};
+  params: Promise<{ locale: string }>
+}
 
 export default async function Home({ params }: Props) {
-  const { locale } = await params;
-  const tHome = await getTranslations({ locale, namespace: 'pages.home' });
-  const tFeatures = await getTranslations({ locale, namespace: 'pages.home.features' });
-  const faqItems = getFaqItems(locale);
-  const faqSchema = await getFaqSchema(locale);
+  const { locale } = await params
+  const tHome = await getTranslations({ locale, namespace: 'pages.home' })
+  const tFeatures = await getTranslations({ locale, namespace: 'pages.home.features' })
+  const faqItems = getFaqItems(locale)
+  const faqSchema = await getFaqSchema(locale)
 
   return (
     <>
@@ -81,7 +82,7 @@ export default async function Home({ params }: Props) {
           <div className="text-center max-w-[900px] mx-auto">
             <div className="mb-[var(--spacing-md)]">
               <pre className="text-[0.45rem] leading-[1.3] inline-block text-left bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-transparent">
-{`╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+                {`╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 ║                                                                                                                   ║
 ║     █████╗ ██╗     ██████╗ ██████╗ ██████╗ ██╗███╗   ██╗ ██████╗     ███████╗████████╗ █████╗  ██████╗██╗  ██╗    ║
 ║    ██╔══██╗██║    ██╔════╝██╔═══██╗██╔══██╗██║████╗  ██║██╔════╝     ██╔════╝╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝    ║
@@ -124,17 +125,22 @@ export default async function Home({ params }: Props) {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-[var(--spacing-xl)] border-b border-[var(--color-border)]">
+      <section
+        id="features"
+        className="py-[var(--spacing-xl)] border-b border-[var(--color-border)]"
+      >
         <div className="max-w-[1200px] mx-auto px-[var(--spacing-md)]">
           <h2 className="text-[1.5rem] font-semibold tracking-[-0.02em] mb-[var(--spacing-sm)]">
-            <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">{'//'}</span>
+            <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
+              {'//'}
+            </span>
             {tFeatures('title')}
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--spacing-lg)] mt-[var(--spacing-lg)]">
             <div className="border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5">
               <pre className="text-xs leading-tight text-[var(--color-text-muted)] mb-[var(--spacing-md)]">
-{`┌─────┐
+                {`┌─────┐
 │ DIR │
 └─────┘`}
               </pre>
@@ -148,7 +154,7 @@ export default async function Home({ params }: Props) {
 
             <div className="border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5">
               <pre className="text-xs leading-tight text-[var(--color-text-muted)] mb-[var(--spacing-md)]">
-{`┌─────┐
+                {`┌─────┐
 │ CMP │
 └─────┘`}
               </pre>
@@ -162,7 +168,7 @@ export default async function Home({ params }: Props) {
 
             <div className="border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5">
               <pre className="text-xs leading-tight text-[var(--color-text-muted)] mb-[var(--spacing-md)]">
-{`┌─────┐
+                {`┌─────┐
 │ ECO │
 └─────┘`}
               </pre>
@@ -176,7 +182,7 @@ export default async function Home({ params }: Props) {
 
             <div className="border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5">
               <pre className="text-xs leading-tight text-[var(--color-text-muted)] mb-[var(--spacing-md)]">
-{`┌─────┐
+                {`┌─────┐
 │ TRK │
 └─────┘`}
               </pre>
@@ -195,20 +201,40 @@ export default async function Home({ params }: Props) {
       <section id="faq" className="py-[var(--spacing-xl)] border-b border-[var(--color-border)]">
         <div className="max-w-[1200px] mx-auto px-[var(--spacing-md)]">
           <h2 className="text-[1.5rem] font-semibold tracking-[-0.02em] mb-[var(--spacing-sm)]">
-            <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">{'//'}</span>
+            <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
+              {'//'}
+            </span>
             {tHome('faq')}
           </h2>
 
           <div className="mt-[var(--spacing-lg)] space-y-[var(--spacing-md)]">
-            {faqItems.map((faq, index) => (
-              <article key={index} className="border border-[var(--color-border)] p-[var(--spacing-md)]" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+            {faqItems.map(faq => (
+              <article
+                key={faq.title}
+                className="border border-[var(--color-border)] p-[var(--spacing-md)]"
+                itemScope
+                itemProp="mainEntity"
+                itemType="https://schema.org/Question"
+              >
                 <details className="group">
                   <summary className="text-base font-medium tracking-tight cursor-pointer list-none select-none flex items-center gap-[var(--spacing-xs)] text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors">
-                    <span className="text-[var(--color-text-muted)] text-xs group-open:rotate-90 transition-transform">▶</span>
-                    <h3 itemProp="name" className="font-medium">{faq.title}</h3>
+                    <span className="text-[var(--color-text-muted)] text-xs group-open:rotate-90 transition-transform">
+                      ▶
+                    </span>
+                    <h3 itemProp="name" className="font-medium">
+                      {faq.title}
+                    </h3>
                   </summary>
-                  <div className="mt-[var(--spacing-sm)] pl-[var(--spacing-md)]" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                    <div className="text-sm leading-relaxed text-[var(--color-text-secondary)] font-light" itemProp="text">
+                  <div
+                    className="mt-[var(--spacing-sm)] pl-[var(--spacing-md)]"
+                    itemScope
+                    itemProp="acceptedAnswer"
+                    itemType="https://schema.org/Answer"
+                  >
+                    <div
+                      className="text-sm leading-relaxed text-[var(--color-text-secondary)] font-light"
+                      itemProp="text"
+                    >
                       <MarkdownContent content={faq.content} />
                     </div>
                   </div>
@@ -221,5 +247,5 @@ export default async function Home({ params }: Props) {
 
       <Footer />
     </>
-  );
+  )
 }

@@ -1,41 +1,53 @@
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import { getTranslations } from 'next-intl/server';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { BackToNavigation } from '@/components/controls/BackToNavigation';
-import { Breadcrumb } from '@/components/controls/Breadcrumb';
-import { JsonLd } from '@/components/JsonLd';
-import { ProductHero, ProductPricing, ProductLinks, ProductCommands } from '@/components/product';
-import { getSchemaPrice, getSchemaCurrency } from '@/lib/pricing';
-import { localizeManifestItem } from '@/lib/manifest-i18n';
-import { translateLicenseText } from '@/lib/license';
-import { generateSoftwareDetailMetadata } from '@/lib/metadata';
-import type { Locale } from '@/i18n/config';
-import type { ManifestCLI, ManifestPricingTier, ComponentResourceUrls, ComponentCommunityUrls } from '@/types/manifests';
-import { clisData as clis } from '@/lib/generated';
-import { getGithubStars } from '@/lib/generated/github-stars';
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
+import { getTranslations } from 'next-intl/server'
+import { BackToNavigation } from '@/components/controls/BackToNavigation'
+import { Breadcrumb } from '@/components/controls/Breadcrumb'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import { JsonLd } from '@/components/JsonLd'
+import { ProductCommands, ProductHero, ProductLinks, ProductPricing } from '@/components/product'
+import type { Locale } from '@/i18n/config'
+import { clisData as clis } from '@/lib/generated'
+import { getGithubStars } from '@/lib/generated/github-stars'
+import { translateLicenseText } from '@/lib/license'
+import { localizeManifestItem } from '@/lib/manifest-i18n'
+import { generateSoftwareDetailMetadata } from '@/lib/metadata'
+import { getSchemaCurrency, getSchemaPrice } from '@/lib/pricing'
+import type {
+  ComponentCommunityUrls,
+  ComponentResourceUrls,
+  ManifestCLI,
+  ManifestPricingTier,
+} from '@/types/manifests'
 
-export const revalidate = 3600;
+export const revalidate = 3600
 
 export async function generateStaticParams() {
-  return clis.map((cli) => ({
+  return clis.map(cli => ({
     slug: cli.id,
-  }));
+  }))
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {
-  const { locale, slug } = await params;
-  const cliRaw = clis.find((c) => c.id === slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>
+}) {
+  const { locale, slug } = await params
+  const cliRaw = clis.find(c => c.id === slug)
 
   if (!cliRaw) {
-    return { title: 'CLI Not Found | AI Coding Stack' };
+    return { title: 'CLI Not Found | AI Coding Stack' }
   }
 
-  const cli = localizeManifestItem(cliRaw as unknown as Record<string, unknown>, locale as Locale) as unknown as ManifestCLI;
-  const t = await getTranslations({ locale });
+  const cli = localizeManifestItem(
+    cliRaw as unknown as Record<string, unknown>,
+    locale as Locale
+  ) as unknown as ManifestCLI
+  const t = await getTranslations({ locale })
 
-  const licenseStr = cli.license ? translateLicenseText(cli.license, t) : '';
+  const licenseStr = cli.license ? translateLicenseText(cli.license, t) : ''
 
   return await generateSoftwareDetailMetadata({
     locale: locale as 'en' | 'zh-Hans',
@@ -50,25 +62,32 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       license: licenseStr,
     },
     typeDescription: 'AI Coding Assistant CLI',
-  });
+  })
 }
 
-export default async function CLIPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
-  const { locale, slug } = await params;
-  const cliRaw = clis.find((c) => c.id === slug) as ManifestCLI | undefined;
+export default async function CLIPage({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>
+}) {
+  const { locale, slug } = await params
+  const cliRaw = clis.find(c => c.id === slug) as ManifestCLI | undefined
 
   if (!cliRaw) {
-    notFound();
+    notFound()
   }
 
-  const cli = localizeManifestItem(cliRaw as unknown as Record<string, unknown>, locale as Locale) as unknown as ManifestCLI;
-  const t = await getTranslations({ locale });
-  const tHero = await getTranslations({ locale, namespace: 'components.productHero' });
-  const tNav = await getTranslations({ locale, namespace: 'stacksPages.clis' });
-  const tStacks = await getTranslations({ locale, namespace: 'stacks' });
+  const cli = localizeManifestItem(
+    cliRaw as unknown as Record<string, unknown>,
+    locale as Locale
+  ) as unknown as ManifestCLI
+  const t = await getTranslations({ locale })
+  const tHero = await getTranslations({ locale, namespace: 'components.productHero' })
+  const tNav = await getTranslations({ locale, namespace: 'stacksPages.clis' })
+  const tStacks = await getTranslations({ locale, namespace: 'stacks' })
 
-  const websiteUrl = cli.resourceUrls?.download || cli.websiteUrl;
-  const docsUrl = cli.docsUrl;
+  const websiteUrl = cli.resourceUrls?.download || cli.websiteUrl
+  const docsUrl = cli.docsUrl
 
   // Transform resourceUrls to component format (convert null to undefined)
   const resourceUrls: ComponentResourceUrls = {
@@ -77,7 +96,7 @@ export default async function CLIPage({ params }: { params: Promise<{ locale: st
     pricing: cli.resourceUrls?.pricing || undefined,
     mcp: cli.resourceUrls?.mcp || undefined,
     issue: cli.resourceUrls?.issue || undefined,
-  };
+  }
 
   // Transform communityUrls to component format (convert null to undefined)
   const communityUrls: ComponentCommunityUrls = {
@@ -87,35 +106,37 @@ export default async function CLIPage({ params }: { params: Promise<{ locale: st
     youtube: cli.communityUrls?.youtube || undefined,
     discord: cli.communityUrls?.discord || undefined,
     reddit: cli.communityUrls?.reddit || undefined,
-  };
+  }
 
   // Schema.org structured data
   const softwareApplicationSchema = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": cli.name,
-    "applicationCategory": "DeveloperApplication",
-    "operatingSystem": cli.platforms?.map(p => p.os).join(', ') || "Windows, macOS, Linux",
-    "softwareVersion": cli.latestVersion,
-    "description": cli.description,
-    "url": websiteUrl,
-    "downloadUrl": cli.resourceUrls?.download,
-    "installUrl": cli.resourceUrls?.download,
-    "author": {
-      "@type": "Organization",
-      "name": cli.vendor
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: cli.name,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: cli.platforms?.map(p => p.os).join(', ') || 'Windows, macOS, Linux',
+    softwareVersion: cli.latestVersion,
+    description: cli.description,
+    url: websiteUrl,
+    downloadUrl: cli.resourceUrls?.download,
+    installUrl: cli.resourceUrls?.download,
+    author: {
+      '@type': 'Organization',
+      name: cli.vendor,
     },
-    "offers": cli.pricing ? cli.pricing.map((tier: ManifestPricingTier) => {
-      return {
-        "@type": "Offer",
-        "name": tier.name,
-        "price": getSchemaPrice(tier),
-        "priceCurrency": getSchemaCurrency(tier),
-        "category": tier.category
-      };
-    }) : undefined,
-    "license": cli.license ? translateLicenseText(cli.license, t) : undefined,
-  };
+    offers: cli.pricing
+      ? cli.pricing.map((tier: ManifestPricingTier) => {
+          return {
+            '@type': 'Offer',
+            name: tier.name,
+            price: getSchemaPrice(tier),
+            priceCurrency: getSchemaCurrency(tier),
+            category: tier.category,
+          }
+        })
+      : undefined,
+    license: cli.license ? translateLicenseText(cli.license, t) : undefined,
+  }
 
   return (
     <>
@@ -167,7 +188,7 @@ export default async function CLIPage({ params }: { params: Promise<{ locale: st
               <div className="flex items-center justify-between mb-[var(--spacing-sm)]">
                 <div className="flex items-center gap-[var(--spacing-sm)]">
                   <pre className="text-xs leading-tight text-[var(--color-text-muted)]">
-{`┌─────┐
+                    {`┌─────┐
 │ IDE │
 └─────┘`}
                   </pre>
@@ -176,7 +197,10 @@ export default async function CLIPage({ params }: { params: Promise<{ locale: st
                       Related IDE
                     </p>
                     <h3 className="text-lg font-semibold tracking-tight">
-                      {cli.ide.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+                      {cli.ide
+                        .split('-')
+                        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                        .join(' ')}
                     </h3>
                   </div>
                 </div>
@@ -193,27 +217,18 @@ export default async function CLIPage({ params }: { params: Promise<{ locale: st
       )}
 
       {/* Pricing */}
-      <ProductPricing
-        pricing={cli.pricing}
-        pricingUrl={resourceUrls.pricing}
-      />
+      <ProductPricing pricing={cli.pricing} pricingUrl={resourceUrls.pricing} />
 
       {/* Additional Links */}
-      <ProductLinks
-        resourceUrls={resourceUrls}
-        communityUrls={communityUrls}
-      />
+      <ProductLinks resourceUrls={resourceUrls} communityUrls={communityUrls} />
 
       {/* Commands */}
-      <ProductCommands
-        install={cli.install}
-        launch={cli.launch}
-      />
+      <ProductCommands install={cli.install} launch={cli.launch} />
 
       {/* Navigation */}
       <BackToNavigation href="clis" title={tNav('allCLIs')} />
 
       <Footer />
     </>
-  );
+  )
 }

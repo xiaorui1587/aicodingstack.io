@@ -1,17 +1,11 @@
-import {
-  idesData,
-  clisData,
-  extensionsData,
-  modelsData,
-  providersData
-} from './generated';
+import { clisData, extensionsData, idesData, modelsData, providersData } from './generated'
 
 export interface VendorProduct {
-  id: string;
-  name: string;
-  category: 'ide' | 'cli' | 'extension' | 'model' | 'provider';
-  categoryLabel: string;
-  path: string;
+  id: string
+  name: string
+  category: 'ide' | 'cli' | 'extension' | 'model' | 'provider'
+  categoryLabel: string
+  path: string
 }
 
 /**
@@ -20,11 +14,11 @@ export interface VendorProduct {
  * @returns Array of products from this vendor
  */
 export function getProductsByVendor(vendorName: string): VendorProduct[] {
-  const normalizedVendorName = vendorName.toLowerCase();
-  const products: VendorProduct[] = [];
+  const normalizedVendorName = vendorName.toLowerCase()
+  const products: VendorProduct[] = []
 
   // IDEs
-  idesData.forEach((ide) => {
+  idesData.forEach(ide => {
     if (ide.vendor?.toLowerCase() === normalizedVendorName) {
       products.push({
         id: ide.id,
@@ -32,12 +26,12 @@ export function getProductsByVendor(vendorName: string): VendorProduct[] {
         category: 'ide',
         categoryLabel: 'IDE',
         path: `ides/${ide.id}`,
-      });
+      })
     }
-  });
+  })
 
   // CLIs
-  clisData.forEach((cli) => {
+  clisData.forEach(cli => {
     if (cli.vendor?.toLowerCase() === normalizedVendorName) {
       products.push({
         id: cli.id,
@@ -45,12 +39,12 @@ export function getProductsByVendor(vendorName: string): VendorProduct[] {
         category: 'cli',
         categoryLabel: 'CLI',
         path: `clis/${cli.id}`,
-      });
+      })
     }
-  });
+  })
 
   // Extensions
-  extensionsData.forEach((ext) => {
+  extensionsData.forEach(ext => {
     if (ext.vendor?.toLowerCase() === normalizedVendorName) {
       products.push({
         id: ext.id,
@@ -58,12 +52,12 @@ export function getProductsByVendor(vendorName: string): VendorProduct[] {
         category: 'extension',
         categoryLabel: 'Extension',
         path: `extensions/${ext.id}`,
-      });
+      })
     }
-  });
+  })
 
   // Models
-  modelsData.forEach((model) => {
+  modelsData.forEach(model => {
     if (model.vendor?.toLowerCase() === normalizedVendorName) {
       products.push({
         id: model.id,
@@ -71,15 +65,15 @@ export function getProductsByVendor(vendorName: string): VendorProduct[] {
         category: 'model',
         categoryLabel: 'Model',
         path: `models/${model.id}`,
-      });
+      })
     }
-  });
+  })
 
   // Providers
-  providersData.forEach((provider) => {
+  providersData.forEach(provider => {
     // Check both vendor and name
-    const matchesVendor = provider.vendor?.toLowerCase() === normalizedVendorName;
-    const matchesName = provider.name?.toLowerCase() === normalizedVendorName;
+    const matchesVendor = provider.vendor?.toLowerCase() === normalizedVendorName
+    const matchesName = provider.name?.toLowerCase() === normalizedVendorName
 
     if (matchesVendor || matchesName) {
       products.push({
@@ -88,9 +82,9 @@ export function getProductsByVendor(vendorName: string): VendorProduct[] {
         category: 'provider',
         categoryLabel: 'Provider',
         path: `model-providers/${provider.id}`,
-      });
+      })
     }
-  });
+  })
 
-  return products;
+  return products
 }

@@ -18,12 +18,12 @@
  * Based on: /manifests/schemas/ref/entity.schema.json
  */
 export interface ManifestEntity {
-  id: string;
-  name: string;
-  description: string;
-  i18n?: ManifestI18n;
-  websiteUrl?: string;
-  docsUrl?: string;
+  id: string
+  name: string
+  description: string
+  i18n?: ManifestI18n
+  websiteUrl?: string
+  docsUrl?: string
 }
 
 /**
@@ -32,7 +32,7 @@ export interface ManifestEntity {
  * Extends: ManifestEntity
  */
 export interface ManifestVendorEntity extends ManifestEntity {
-  vendor: string;
+  vendor: string
 }
 
 /**
@@ -41,7 +41,7 @@ export interface ManifestVendorEntity extends ManifestEntity {
  * Extends: ManifestEntity
  */
 export interface ManifestApp extends ManifestEntity {
-  verified: boolean;
+  verified: boolean
 }
 
 /**
@@ -50,10 +50,10 @@ export interface ManifestApp extends ManifestEntity {
  */
 export interface ManifestI18n {
   [locale: string]: {
-    name?: string;
-    title?: string;
-    description?: string;
-  };
+    name?: string
+    title?: string
+    description?: string
+  }
 }
 
 /**
@@ -61,14 +61,14 @@ export interface ManifestI18n {
  * Based on: /manifests/schemas/ref/community-urls.schema.json
  */
 export interface ManifestCommunityUrls {
-  linkedin?: string | null;
-  twitter?: string | null;
-  github?: string | null;
-  youtube?: string | null;
-  discord?: string | null;
-  reddit?: string | null;
-  blog?: string | null;
-  [key: string]: string | null | undefined;
+  linkedin?: string | null
+  twitter?: string | null
+  github?: string | null
+  youtube?: string | null
+  discord?: string | null
+  reddit?: string | null
+  blog?: string | null
+  [key: string]: string | null | undefined
 }
 
 /**
@@ -76,9 +76,9 @@ export interface ManifestCommunityUrls {
  * Based on: /manifests/schemas/ref/platform-urls.schema.json
  */
 export interface ManifestPlatformUrls {
-  macos?: string | null;
-  windows?: string | null;
-  linux?: string | null;
+  macos?: string | null
+  windows?: string | null
+  linux?: string | null
 }
 
 /**
@@ -86,11 +86,11 @@ export interface ManifestPlatformUrls {
  * Based on: /manifests/schemas/ref/product.schema.json#$defs/pricingTier
  */
 export interface ManifestPricingTier {
-  name: string;
-  value: number | null; // null for custom pricing, 0 for free
-  currency: string | null; // ISO 4217 currency code (e.g., 'USD', 'CNY', 'EUR')
-  per: string | null; // e.g., 'month', 'year', 'user/month', 'custom'
-  category: string; // 'Individual', 'Business', 'Enterprise'
+  name: string
+  value: number | null // null for custom pricing, 0 for free
+  currency: string | null // ISO 4217 currency code (e.g., 'USD', 'CNY', 'EUR')
+  per: string | null // e.g., 'month', 'year', 'user/month', 'custom'
+  category: string // 'Individual', 'Business', 'Enterprise'
 }
 
 /**
@@ -98,35 +98,35 @@ export interface ManifestPricingTier {
  * Based on: /manifests/schemas/ref/product.schema.json#$defs/resourceUrls
  */
 export interface ManifestResourceUrls {
-  download: string | null;
-  changelog: string | null;
-  pricing: string | null;
-  mcp: string | null;
-  issue: string | null;
+  download: string | null
+  changelog: string | null
+  pricing: string | null
+  mcp: string | null
+  issue: string | null
 }
 
 /**
  * Component-compatible resource URLs
  */
 export interface ComponentResourceUrls {
-  download?: string;
-  changelog?: string;
-  pricing?: string;
-  blog?: string;
-  mcp?: string;
-  issue?: string;
+  download?: string
+  changelog?: string
+  pricing?: string
+  blog?: string
+  mcp?: string
+  issue?: string
 }
 
 /**
  * Component-compatible community URLs
  */
 export interface ComponentCommunityUrls {
-  linkedin?: string;
-  twitter?: string;
-  github?: string;
-  youtube?: string;
-  discord?: string;
-  reddit?: string;
+  linkedin?: string
+  twitter?: string
+  github?: string
+  youtube?: string
+  discord?: string
+  reddit?: string
 }
 
 /**
@@ -134,10 +134,10 @@ export interface ComponentCommunityUrls {
  * Based on: /manifests/schemas/ref/product.schema.json#$defs/platformElement
  */
 export interface ManifestPlatformElement {
-  os: 'macOS' | 'Windows' | 'Linux';
-  installCommand?: string | null;
-  launchCommand?: string | null;
-  installPath?: string | null;
+  os: 'macOS' | 'Windows' | 'Linux'
+  installCommand?: string | null
+  launchCommand?: string | null
+  installPath?: string | null
 }
 
 /**
@@ -145,8 +145,8 @@ export interface ManifestPlatformElement {
  * Based on: /manifests/schemas/ref/product.schema.json#$defs/relatedProducts
  */
 export interface ManifestRelatedProduct {
-  type: 'ide' | 'cli' | 'extension';
-  productId: string;
+  type: 'ide' | 'cli' | 'extension'
+  productId: string
 }
 
 /**
@@ -154,11 +154,11 @@ export interface ManifestRelatedProduct {
  * Based on: /manifests/schemas/ref/github.schema.json
  */
 export interface ManifestGithub {
-  data?: string | null;
-  commit?: string | null;
-  commitMessage?: string | null;
-  branch?: string | null;
-  isByAnthropic?: boolean | null;
+  data?: string | null
+  commit?: string | null
+  commitMessage?: string | null
+  branch?: string | null
+  isByAnthropic?: boolean | null
 }
 
 /**
@@ -166,13 +166,13 @@ export interface ManifestGithub {
  * Based on: /manifests/schemas/ref/vendor.schema.json
  */
 export interface ManifestVendorBase {
-  id: string;
-  name: string;
-  description: string;
-  websiteUrl?: string;
-  docsUrl?: string;
-  location?: string | null;
-  foundingYear?: number | null;
+  id: string
+  name: string
+  description: string
+  websiteUrl?: string
+  docsUrl?: string
+  location?: string | null
+  foundingYear?: number | null
 }
 
 /**
@@ -180,9 +180,9 @@ export interface ManifestVendorBase {
  * Based on: /manifests/schemas/ref/collection-item.schema.json
  */
 export interface ManifestCollectionItem {
-  type: 'cli' | 'ide' | 'extension';
-  productId: string;
-  description?: string;
+  type: 'cli' | 'ide' | 'extension'
+  productId: string
+  description?: string
 }
 
 // =============================================================================
@@ -195,15 +195,15 @@ export interface ManifestCollectionItem {
  * Extends: ManifestVendorEntity
  */
 export interface ManifestBaseProduct extends ManifestVendorEntity {
-  latestVersion: string;
-  githubUrl: string | null;
-  license: string; // SPDX License Identifier or 'Proprietary'
-  pricing?: ManifestPricingTier[];
-  resourceUrls: ManifestResourceUrls;
-  communityUrls: ManifestCommunityUrls;
-  relatedProducts: ManifestRelatedProduct[];
-  platforms?: ManifestPlatformElement[];
-  github?: ManifestGithub;
+  latestVersion: string
+  githubUrl: string | null
+  license: string // SPDX License Identifier or 'Proprietary'
+  pricing?: ManifestPricingTier[]
+  resourceUrls: ManifestResourceUrls
+  communityUrls: ManifestCommunityUrls
+  relatedProducts: ManifestRelatedProduct[]
+  platforms?: ManifestPlatformElement[]
+  github?: ManifestGithub
 }
 
 /**
@@ -212,22 +212,22 @@ export interface ManifestBaseProduct extends ManifestVendorEntity {
  * Extends: ManifestVendorEntity
  */
 export interface ManifestIDE extends ManifestVendorEntity {
-  latestVersion: string;
-  githubUrl: string | null;
-  license: string;
-  pricing: ManifestPricingTier[];
-  resourceUrls: ManifestResourceUrls;
-  communityUrls: ManifestCommunityUrls;
-  relatedProducts: ManifestRelatedProduct[];
-  platforms: ManifestPlatformElement[];
-  websiteUrl?: string;
-  docsUrl?: string;
-  i18n?: ManifestI18n;
+  latestVersion: string
+  githubUrl: string | null
+  license: string
+  pricing: ManifestPricingTier[]
+  resourceUrls: ManifestResourceUrls
+  communityUrls: ManifestCommunityUrls
+  relatedProducts: ManifestRelatedProduct[]
+  platforms: ManifestPlatformElement[]
+  websiteUrl?: string
+  docsUrl?: string
+  i18n?: ManifestI18n
   // Legacy fields that may exist in data
-  cli?: string | null;
-  install?: string | null;
-  launch?: string | null;
-  verified?: boolean;
+  cli?: string | null
+  install?: string | null
+  launch?: string | null
+  verified?: boolean
 }
 
 /**
@@ -236,22 +236,22 @@ export interface ManifestIDE extends ManifestVendorEntity {
  * Extends: ManifestVendorEntity
  */
 export interface ManifestCLI extends ManifestVendorEntity {
-  latestVersion: string;
-  githubUrl: string | null;
-  license: string;
-  pricing: ManifestPricingTier[];
-  resourceUrls: ManifestResourceUrls;
-  communityUrls: ManifestCommunityUrls;
-  relatedProducts: ManifestRelatedProduct[];
-  platforms: ManifestPlatformElement[];
-  websiteUrl?: string;
-  docsUrl?: string;
-  i18n?: ManifestI18n;
+  latestVersion: string
+  githubUrl: string | null
+  license: string
+  pricing: ManifestPricingTier[]
+  resourceUrls: ManifestResourceUrls
+  communityUrls: ManifestCommunityUrls
+  relatedProducts: ManifestRelatedProduct[]
+  platforms: ManifestPlatformElement[]
+  websiteUrl?: string
+  docsUrl?: string
+  i18n?: ManifestI18n
   // Legacy fields that may exist in data
-  ide?: string | null;
-  install?: string | null;
-  launch?: string | null;
-  verified?: boolean;
+  ide?: string | null
+  install?: string | null
+  launch?: string | null
+  verified?: boolean
 }
 
 /**
@@ -260,29 +260,29 @@ export interface ManifestCLI extends ManifestVendorEntity {
  * Extends: ManifestApp
  */
 export interface ManifestExtension extends ManifestApp {
-  vendor: string;
-  type: 'cli' | 'ide';
-  extends: string; // Type of extension
-  latestVersion: string;
-  websiteUrl?: string;
-  docsUrl?: string;
-  license: string;
-  pricing: ManifestPricingTier[];
-  resourceUrls: ManifestResourceUrls;
-  communityUrls: ManifestCommunityUrls;
-  relatedProducts: ManifestRelatedProduct[];
-  platforms?: ManifestPlatformElement[];
+  vendor: string
+  type: 'cli' | 'ide'
+  extends: string // Type of extension
+  latestVersion: string
+  websiteUrl?: string
+  docsUrl?: string
+  license: string
+  pricing: ManifestPricingTier[]
+  resourceUrls: ManifestResourceUrls
+  communityUrls: ManifestCommunityUrls
+  relatedProducts: ManifestRelatedProduct[]
+  platforms?: ManifestPlatformElement[]
   // Legacy fields
-  install?: string | null;
-  launch?: string | null;
+  install?: string | null
+  launch?: string | null
   // Extension-specific fields
   supportedIdes?: Array<{
-    ideId: string;
-    marketplaceUrl?: string | null;
-    installUri?: string | null;
-    installCommand?: string | null;
-  }>;
-  githubUrl?: string | null;
+    ideId: string
+    marketplaceUrl?: string | null
+    installUri?: string | null
+    installCommand?: string | null
+  }>
+  githubUrl?: string | null
 }
 
 // =============================================================================
@@ -294,29 +294,29 @@ export interface ManifestExtension extends ManifestApp {
  * Based on: /manifests/schemas/models.schema.json
  */
 export interface ManifestModel {
-  name: string;
-  vendor: string;
-  id: string;
-  description: string;
-  i18n?: ManifestI18n;
-  websiteUrl?: string | null;
-  docsUrl?: string | null;
-  verified?: boolean;
-  size: string | null;
-  totalContext: string | null;
-  maxOutput: string | null;
+  name: string
+  vendor: string
+  id: string
+  description: string
+  i18n?: ManifestI18n
+  websiteUrl?: string | null
+  docsUrl?: string | null
+  verified?: boolean
+  size: string | null
+  totalContext: string | null
+  maxOutput: string | null
   tokenPricing?: {
-    input?: number | null;
-    output?: number | null;
-    cache?: number | null;
-  } | null;
+    input?: number | null
+    output?: number | null
+    cache?: number | null
+  } | null
   platformUrls?: {
-    huggingface?: string | null;
-    artificialAnalysis?: string | null;
-    openrouter?: string | null;
-  };
-  pricing?: ManifestPricingTier[];
-  [key: string]: unknown;
+    huggingface?: string | null
+    artificialAnalysis?: string | null
+    openrouter?: string | null
+  }
+  pricing?: ManifestPricingTier[]
+  [key: string]: unknown
 }
 
 /**
@@ -325,18 +325,18 @@ export interface ManifestModel {
  * Extends: ManifestVendorEntity
  */
 export interface ManifestProvider extends ManifestVendorEntity {
-  verified?: boolean;
-  type?: string;
-  applyKeyUrl?: string;
+  verified?: boolean
+  type?: string
+  applyKeyUrl?: string
   platformUrls?: {
-    huggingface?: string | null;
-    artificialAnalysis?: string | null;
-    openrouter?: string | null;
-  };
-  communityUrls?: ManifestCommunityUrls;
-  githubUrl?: string | null;
-  pricing?: ManifestPricingTier[];
-  [key: string]: unknown;
+    huggingface?: string | null
+    artificialAnalysis?: string | null
+    openrouter?: string | null
+  }
+  communityUrls?: ManifestCommunityUrls
+  githubUrl?: string | null
+  pricing?: ManifestPricingTier[]
+  [key: string]: unknown
 }
 
 /**
@@ -345,13 +345,13 @@ export interface ManifestProvider extends ManifestVendorEntity {
  * Extends: ManifestVendorBase
  */
 export interface ManifestVendor extends ManifestVendorBase {
-  verified?: boolean;
-  communityUrls?: ManifestCommunityUrls;
+  verified?: boolean
+  communityUrls?: ManifestCommunityUrls
   products?: {
-    type: 'cli' | 'ide' | 'extension';
-    productId: string;
-  }[];
-  [key: string]: unknown;
+    type: 'cli' | 'ide' | 'extension'
+    productId: string
+  }[]
+  [key: string]: unknown
 }
 
 /**
@@ -359,16 +359,16 @@ export interface ManifestVendor extends ManifestVendorBase {
  * Based on: /manifests/schemas/collections.schema.json
  */
 export interface ManifestCollection {
-  title: string;
-  description: string;
-  extractedDate: string;
+  title: string
+  description: string
+  extractedDate: string
   i18n?: {
     [locale: string]: {
-      title?: string;
-      description?: string;
-    };
-  };
-  items: ManifestCollectionItem[];
+      title?: string
+      description?: string
+    }
+  }
+  items: ManifestCollectionItem[]
 }
 
 // =============================================================================
@@ -378,13 +378,13 @@ export interface ManifestCollection {
 /**
  * Manifest file imports return arrays of these types
  */
-export type ManifestIDEArray = ManifestIDE[];
-export type ManifestCLIArray = ManifestCLI[];
-export type ManifestExtensionArray = ManifestExtension[];
-export type ManifestModelArray = ManifestModel[];
-export type ManifestProviderArray = ManifestProvider[];
-export type ManifestVendorArray = ManifestVendor[];
-export type ManifestCollectionArray = ManifestCollection[];
+export type ManifestIDEArray = ManifestIDE[]
+export type ManifestCLIArray = ManifestCLI[]
+export type ManifestExtensionArray = ManifestExtension[]
+export type ManifestModelArray = ManifestModel[]
+export type ManifestProviderArray = ManifestProvider[]
+export type ManifestVendorArray = ManifestVendor[]
+export type ManifestCollectionArray = ManifestCollection[]
 
 // =============================================================================
 // SECTION 5: Utility Types
@@ -393,34 +393,31 @@ export type ManifestCollectionArray = ManifestCollection[];
 /**
  * Union type of all product types
  */
-export type ManifestProductType = ManifestIDE | ManifestCLI | ManifestExtension;
+export type ManifestProductType = ManifestIDE | ManifestCLI | ManifestExtension
 
 /**
  * Union type of all manifest entity types
  */
-export type ManifestEntityType = ManifestEntity | ManifestVendorEntity | ManifestVendor | ManifestProductType;
+export type ManifestEntityType =
+  | ManifestEntity
+  | ManifestVendorEntity
+  | ManifestVendor
+  | ManifestProductType
 
 /**
  * Type guard to check if an object is a ManifestEntity
  */
 export function isManifestEntity(obj: unknown): obj is ManifestEntity {
   return (
-    typeof obj === 'object' &&
-    obj !== null &&
-    'id' in obj &&
-    'name' in obj &&
-    'description' in obj
-  );
+    typeof obj === 'object' && obj !== null && 'id' in obj && 'name' in obj && 'description' in obj
+  )
 }
 
 /**
  * Type guard to check if an object is a ManifestVendorEntity
  */
 export function isManifestVendorEntity(obj: unknown): obj is ManifestVendorEntity {
-  return (
-    isManifestEntity(obj) &&
-    'vendor' in obj
-  );
+  return isManifestEntity(obj) && 'vendor' in obj
 }
 
 /**
@@ -435,5 +432,5 @@ export function isManifestBaseProduct(obj: unknown): obj is ManifestBaseProduct 
     'pricing' in obj &&
     'resourceUrls' in obj &&
     'communityUrls' in obj
-  );
+  )
 }

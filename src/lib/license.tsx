@@ -1,5 +1,5 @@
 // License utility functions
-import type { ReactElement } from 'react';
+import type { ReactElement } from 'react'
 
 /**
  * Translate license value if it's a special case (like "Proprietary")
@@ -9,9 +9,9 @@ import type { ReactElement } from 'react';
  */
 export function translateLicense(license: string, t: (key: string) => string): string {
   if (license.toLowerCase() === 'proprietary') {
-    return t('license.proprietary');
+    return t('license.proprietary')
   }
-  return license;
+  return license
 }
 
 /**
@@ -20,9 +20,12 @@ export function translateLicense(license: string, t: (key: string) => string): s
  * @param t - Translation function for license keys
  * @returns Translated license text or original text
  */
-export function translateLicenseText(license: string | undefined, t: (key: string) => string): string {
-  if (!license) return '';
-  return translateLicense(license, t);
+export function translateLicenseText(
+  license: string | undefined,
+  t: (key: string) => string
+): string {
+  if (!license) return ''
+  return translateLicense(license, t)
 }
 
 /**
@@ -36,48 +39,62 @@ export function translateLicenseText(license: string | undefined, t: (key: strin
  * @param classNameOrItem - Optional custom className for the link (string) or item object (when used as ComparisonTable render function)
  * @param t - Optional translation function for license keys
  */
-export function renderLicense(value: unknown, classNameOrItem?: string | Record<string, unknown>, t?: (key: string) => string): ReactElement | string {
-  const license = value as string | undefined;
+export function renderLicense(
+  value: unknown,
+  classNameOrItem?: string | Record<string, unknown>,
+  t?: (key: string) => string
+): ReactElement | string {
+  const license = value as string | undefined
 
-  if (!license) return '-';
+  if (!license) return '-'
 
-  const defaultClassName = "text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:underline hover:decoration-dotted transition-colors underline-offset-2";
+  const defaultClassName =
+    'text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:underline hover:decoration-dotted transition-colors underline-offset-2'
 
   // If second parameter is a string, use it as className; otherwise use default
-  const className = typeof classNameOrItem === 'string' ? classNameOrItem : defaultClassName;
+  const className = typeof classNameOrItem === 'string' ? classNameOrItem : defaultClassName
 
   // Check if license contains a comma (comma-separated licenses)
   if (license.includes(',')) {
-    const licenses = license.split(',').map(l => l.trim()).filter(l => l.length > 0);
+    const licenses = license
+      .split(',')
+      .map(l => l.trim())
+      .filter(l => l.length > 0)
 
     return (
       <span className="inline-flex gap-1 items-center whitespace-nowrap">
-        {licenses.map((lic, index) => (
-          <span key={index} className="inline-flex items-center gap-1">
+        {licenses.map(lic => (
+          <span key={lic} className="inline-flex items-center gap-1">
             {renderSingleLicense(lic, className, t)}
-            {index < licenses.length - 1 && <span className="text-[var(--color-text-muted)]">,</span>}
+            {licenses.indexOf(lic) < licenses.length - 1 && (
+              <span className="text-[var(--color-text-muted)]">,</span>
+            )}
           </span>
         ))}
       </span>
-    );
+    )
   }
 
   // Single license
-  return renderSingleLicense(license, className, t);
+  return renderSingleLicense(license, className, t)
 }
 
 /**
  * Helper function to render a single license with appropriate link or text
  */
-function renderSingleLicense(license: string, className: string, t?: (key: string) => string): ReactElement {
+function renderSingleLicense(
+  license: string,
+  className: string,
+  t?: (key: string) => string
+): ReactElement {
   // Only link to choosealicense.com for open source licenses
   // Proprietary licenses don't have a page there
   if (license.toLowerCase() === 'proprietary') {
-    const displayText = t ? translateLicense(license, t) : license;
-    return <span>{displayText}</span>;
+    const displayText = t ? translateLicense(license, t) : license
+    return <span>{displayText}</span>
   }
 
-  const licenseLower = license.toLowerCase();
+  const licenseLower = license.toLowerCase()
 
   return (
     <a
@@ -88,5 +105,5 @@ function renderSingleLicense(license: string, className: string, t?: (key: strin
     >
       {license}
     </a>
-  );
+  )
 }

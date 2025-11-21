@@ -1,19 +1,19 @@
-import { defaultLocale, type Locale } from '@/i18n/config';
+import { defaultLocale, type Locale } from '@/i18n/config'
 
 /**
  * Interface for manifest items with i18n support
  */
 export interface ManifestItemWithI18n {
-  description?: string;
-  name?: string;
+  description?: string
+  name?: string
   i18n?: {
     [locale: string]: {
-      description?: string;
-      name?: string;
-      [key: string]: string | undefined;
-    };
-  };
-  [key: string]: unknown;
+      description?: string
+      name?: string
+      [key: string]: string | undefined
+    }
+  }
+  [key: string]: unknown
 }
 
 /**
@@ -30,17 +30,17 @@ export function getLocalizedField<T extends ManifestItemWithI18n>(
 ): string {
   // If locale is default, return the original field
   if (locale === defaultLocale) {
-    return item[field] as string;
+    return item[field] as string
   }
 
   // Check if i18n translations exist for this locale
-  const translation = item.i18n?.[locale];
+  const translation = item.i18n?.[locale]
   if (translation && field in translation && translation[field as string]) {
-    return translation[field as string] as string;
+    return translation[field as string] as string
   }
 
   // Fallback to original field
-  return item[field] as string;
+  return item[field] as string
 }
 
 /**
@@ -57,28 +57,28 @@ export function localizeManifestItem<T extends Record<string, unknown>>(
 ): T {
   // If locale is default, return the original item
   if (locale === defaultLocale) {
-    return item;
+    return item
   }
 
   // Create a new object with localized fields
-  const localizedItem = { ...item };
+  const localizedItem = { ...item }
 
   // Check if item has i18n translations
-  const i18nData = item.i18n as Record<string, Record<string, string>> | undefined;
+  const i18nData = item.i18n as Record<string, Record<string, string>> | undefined
   if (!i18nData || !i18nData[locale]) {
-    return item;
+    return item
   }
 
   // Apply translations for requested fields
-  const translations = i18nData[locale];
+  const translations = i18nData[locale]
   for (const field of fields) {
-    const fieldStr = String(field);
+    const fieldStr = String(field)
     if (fieldStr in translations && translations[fieldStr]) {
-      (localizedItem as Record<string, unknown>)[fieldStr] = translations[fieldStr];
+      ;(localizedItem as Record<string, unknown>)[fieldStr] = translations[fieldStr]
     }
   }
 
-  return localizedItem;
+  return localizedItem
 }
 
 /**
@@ -93,5 +93,5 @@ export function localizeManifestItems<T extends Record<string, unknown>>(
   locale: Locale,
   fields?: (keyof T)[]
 ): T[] {
-  return items.map(item => localizeManifestItem(item, locale, fields));
+  return items.map(item => localizeManifestItem(item, locale, fields))
 }

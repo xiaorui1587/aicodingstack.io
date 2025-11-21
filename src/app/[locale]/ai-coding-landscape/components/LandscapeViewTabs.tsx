@@ -1,52 +1,52 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import dynamic from 'next/dynamic';
-import VendorMatrix from './VendorMatrix';
-import ProductCategories from './ProductCategories';
-import StatisticsDashboard from './StatisticsDashboard';
+import dynamic from 'next/dynamic'
+import { useState } from 'react'
 import type {
-  VendorMatrixRow,
-  LandscapeStats,
-  RelationshipNode,
-  RelationshipEdge,
   LandscapeProduct,
-} from '@/lib/landscape-data';
+  LandscapeStats,
+  RelationshipEdge,
+  RelationshipNode,
+  VendorMatrixRow,
+} from '@/lib/landscape-data'
+import ProductCategories from './ProductCategories'
+import StatisticsDashboard from './StatisticsDashboard'
+import VendorMatrix from './VendorMatrix'
 
 // Dynamically import RelationshipGraph to avoid SSR issues with React Flow
-const RelationshipGraph = dynamic(() => import('./RelationshipGraph').then((mod) => mod.default), {
+const RelationshipGraph = dynamic(() => import('./RelationshipGraph').then(mod => mod.default), {
   ssr: false,
   loading: () => (
     <div className="h-[700px] border border-[var(--color-border)] bg-[var(--color-bg-subtle)] rounded-lg flex items-center justify-center">
       <div className="text-[var(--color-text-muted)]">Loading relationship graph...</div>
     </div>
   ),
-});
+})
 
 interface LandscapeViewTabsProps {
-  matrixData: VendorMatrixRow[];
+  matrixData: VendorMatrixRow[]
   graphData: {
-    nodes: RelationshipNode[];
-    edges: RelationshipEdge[];
-  };
+    nodes: RelationshipNode[]
+    edges: RelationshipEdge[]
+  }
   productsByCategory: {
-    ides: LandscapeProduct[];
-    clis: LandscapeProduct[];
-    extensions: LandscapeProduct[];
-    models: LandscapeProduct[];
-    providers: LandscapeProduct[];
-  };
-  stats: LandscapeStats;
-  locale: string;
+    ides: LandscapeProduct[]
+    clis: LandscapeProduct[]
+    extensions: LandscapeProduct[]
+    models: LandscapeProduct[]
+    providers: LandscapeProduct[]
+  }
+  stats: LandscapeStats
+  locale: string
 }
 
-type TabKey = 'matrix' | 'graph' | 'categories' | 'stats';
+type TabKey = 'matrix' | 'graph' | 'categories' | 'stats'
 
 interface Tab {
-  key: TabKey;
-  label: string;
-  icon: string;
-  description: string;
+  key: TabKey
+  label: string
+  icon: string
+  description: string
 }
 
 const TABS: Tab[] = [
@@ -74,7 +74,7 @@ const TABS: Tab[] = [
     icon: '📈',
     description: 'Ecosystem statistics and insights',
   },
-];
+]
 
 export default function LandscapeViewTabs({
   matrixData,
@@ -83,16 +83,17 @@ export default function LandscapeViewTabs({
   stats,
   locale,
 }: LandscapeViewTabsProps) {
-  const [activeTab, setActiveTab] = useState<TabKey>('matrix');
+  const [activeTab, setActiveTab] = useState<TabKey>('matrix')
 
   return (
     <div className="space-y-[var(--spacing-lg)]">
       {/* Tab Navigation */}
       <div className="border-b border-[var(--color-border)]">
         <div className="flex flex-wrap gap-2 pb-2">
-          {TABS.map((tab) => (
+          {TABS.map(tab => (
             <button
               key={tab.key}
+              type="button"
               onClick={() => setActiveTab(tab.key)}
               className={`px-4 py-2 border transition-all flex items-center gap-2 ${
                 activeTab === tab.key
@@ -116,10 +117,12 @@ export default function LandscapeViewTabs({
 
         {activeTab === 'graph' && <RelationshipGraph graphData={graphData} />}
 
-        {activeTab === 'categories' && <ProductCategories productsByCategory={productsByCategory} />}
+        {activeTab === 'categories' && (
+          <ProductCategories productsByCategory={productsByCategory} />
+        )}
 
         {activeTab === 'stats' && <StatisticsDashboard stats={stats} />}
       </div>
     </div>
-  );
+  )
 }

@@ -1,24 +1,24 @@
-'use client';
+'use client'
 
-import { useState, ReactNode, useCallback, useMemo, memo } from 'react';
-import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+import { memo, type ReactNode, useCallback, useMemo, useState } from 'react'
 
 export type SidebarItem = {
-  id: string;
-  title: string;
-  href: string;
-  count?: number;
-};
+  id: string
+  title: string
+  href: string
+  count?: number
+}
 
 type SidebarProps = {
-  items: SidebarItem[];
-  activeId?: string;
-  title: string;
-  label: string;
-  icon: ReactNode;
-  desktopWidth?: string;
-};
+  items: SidebarItem[]
+  activeId?: string
+  title: string
+  label: string
+  icon: ReactNode
+  desktopWidth?: string
+}
 
 function Sidebar({
   items,
@@ -28,26 +28,23 @@ function Sidebar({
   icon,
   desktopWidth = 'lg:w-[250px]',
 }: SidebarProps) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const t = useTranslations('components.sidebar');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const t = useTranslations('components.sidebar')
 
-  const activeItem = useMemo(() =>
-    items.find(item => item.id === activeId),
-    [items, activeId]
-  );
-  const currentTitle = activeItem?.title || t('selectItem');
+  const activeItem = useMemo(() => items.find(item => item.id === activeId), [items, activeId])
+  const currentTitle = activeItem?.title || t('selectItem')
 
   const scrollToTop = useCallback(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [])
 
   const toggleSidebar = useCallback(() => {
-    setIsSidebarOpen(prev => !prev);
-  }, []);
+    setIsSidebarOpen(prev => !prev)
+  }, [])
 
   const closeSidebar = useCallback(() => {
-    setIsSidebarOpen(false);
-  }, []);
+    setIsSidebarOpen(false)
+  }, [])
 
   return (
     <>
@@ -56,15 +53,14 @@ function Sidebar({
         <div className="flex items-center justify-between px-[var(--spacing-md)] py-[var(--spacing-sm)]">
           {/* Current Item Button */}
           <button
+            type="button"
             onClick={toggleSidebar}
             className="flex items-center gap-[var(--spacing-xs)] flex-1 text-left"
           >
             {icon}
             <div className="flex-1 min-w-0">
               <div className="text-xs text-[var(--color-text-muted)]">{label}</div>
-              <div className="text-sm font-medium truncate">
-                {currentTitle}
-              </div>
+              <div className="text-sm font-medium truncate">{currentTitle}</div>
             </div>
             <svg
               className={`w-5 h-5 text-[var(--color-text-muted)] transition-transform ${
@@ -73,7 +69,9 @@ function Sidebar({
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              role="img"
             >
+              <title>{isSidebarOpen ? 'Close sidebar' : 'Open sidebar'}</title>
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -85,6 +83,7 @@ function Sidebar({
 
           {/* Back to Top Button */}
           <button
+            type="button"
             onClick={scrollToTop}
             className="ml-[var(--spacing-sm)] p-[var(--spacing-xs)] hover:bg-[var(--color-hover)] transition-colors rounded"
             aria-label={t('backToTop')}
@@ -94,7 +93,9 @@ function Sidebar({
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              role="img"
             >
+              <title>Back to top</title>
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -108,9 +109,11 @@ function Sidebar({
 
       {/* Mobile Overlay */}
       {isSidebarOpen && (
-        <div
-          className="lg:hidden fixed inset-0 bg-black/50 z-30"
+        <button
+          type="button"
+          className="lg:hidden fixed inset-0 bg-black/50 z-30 border-0 p-0 m-0 cursor-default"
           onClick={closeSidebar}
+          aria-label="Close sidebar"
         />
       )}
 
@@ -138,7 +141,7 @@ function Sidebar({
             {title}
           </h2>
           <ul className="space-y-[var(--spacing-xs)]">
-            {items.map((item) => (
+            {items.map(item => (
               <li key={item.id}>
                 <Link
                   href={item.href}
@@ -162,7 +165,7 @@ function Sidebar({
         </nav>
       </aside>
     </>
-  );
+  )
 }
 
-export default memo(Sidebar);
+export default memo(Sidebar)

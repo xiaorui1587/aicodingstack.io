@@ -1,33 +1,33 @@
-import { generateListPageMetadata } from '@/lib/metadata';
-import { getTranslations } from 'next-intl/server';
-import Link from 'next/link';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import StackSidebar from '@/components/sidebar/StackSidebar';
-import type { ManifestModel } from '@/types/manifests';
-import { modelsData } from '@/lib/generated';
+import Link from 'next/link'
+import { getTranslations } from 'next-intl/server'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import StackSidebar from '@/components/sidebar/StackSidebar'
+import { modelsData } from '@/lib/generated'
+import { generateListPageMetadata } from '@/lib/metadata'
+import type { ManifestModel } from '@/types/manifests'
 
-export const revalidate = 3600;
+export const revalidate = 3600
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
+  const { locale } = await params
 
   return await generateListPageMetadata({
     locale: locale as 'en' | 'zh-Hans',
     category: 'models',
     translationNamespace: 'stacksPages.models',
     additionalKeywords: ['LLM for coding', 'Claude Sonnet', 'GPT-4', 'coding AI models 2025'],
-  });
+  })
 }
 
 type Props = {
-  params: Promise<{ locale: string }>;
-};
+  params: Promise<{ locale: string }>
+}
 
 export default async function ModelsPage({ params }: Props) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'stacksPages.models' });
-  const models = modelsData as unknown as ManifestModel[];
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'stacksPages.models' })
+  const models = modelsData as unknown as ManifestModel[]
   return (
     <>
       <Header />
@@ -41,7 +41,9 @@ export default async function ModelsPage({ params }: Props) {
             <div className="mb-[var(--spacing-lg)]">
               <div className="flex items-start justify-between mb-[var(--spacing-sm)]">
                 <h1 className="text-[2rem] font-semibold tracking-[-0.03em]">
-                  <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">{'//'}</span>
+                  <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
+                    {'//'}
+                  </span>
                   {t('title')}
                 </h1>
                 <Link
@@ -57,7 +59,7 @@ export default async function ModelsPage({ params }: Props) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--spacing-md)]">
-              {models.map((model) => (
+              {models.map(model => (
                 <Link
                   key={model.name}
                   href={`/${locale}/models/${model.id}`}
@@ -76,12 +78,15 @@ export default async function ModelsPage({ params }: Props) {
                     </div>
                     <div className="flex items-center gap-[var(--spacing-sm)] text-xs">
                       <span className="text-[var(--color-text-muted)]">{t('context')}</span>
-                      <span className="text-[var(--color-text-secondary)]">{model.totalContext}</span>
+                      <span className="text-[var(--color-text-secondary)]">
+                        {model.totalContext}
+                      </span>
                     </div>
                     <div className="flex items-center gap-[var(--spacing-sm)] text-xs">
                       <span className="text-[var(--color-text-muted)]">{t('pricing')}</span>
                       <span className="text-[var(--color-text-secondary)]">
-                        {model.tokenPricing?.input !== null && model.tokenPricing?.input !== undefined
+                        {model.tokenPricing?.input !== null &&
+                        model.tokenPricing?.input !== undefined
                           ? `$${model.tokenPricing.input}/M`
                           : '-'}
                       </span>
@@ -99,5 +104,5 @@ export default async function ModelsPage({ params }: Props) {
 
       <Footer />
     </>
-  );
+  )
 }

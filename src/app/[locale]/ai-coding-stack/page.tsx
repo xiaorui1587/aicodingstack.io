@@ -1,23 +1,24 @@
-import { getTranslations } from 'next-intl/server';
-import { Link } from '@/i18n/navigation';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import StackSidebar from '@/components/sidebar/StackSidebar';
-import { getManifestoComponent } from '@/lib/manifesto';
-import { buildCanonicalUrl, buildOpenGraph, buildTwitterCard, buildTitle } from '@/lib/metadata';
+import { getTranslations } from 'next-intl/server'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import StackSidebar from '@/components/sidebar/StackSidebar'
+import { Link } from '@/i18n/navigation'
+import { getManifestoComponent } from '@/lib/manifesto'
+import { buildCanonicalUrl, buildOpenGraph, buildTitle, buildTwitterCard } from '@/lib/metadata'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'stacksPages.overview' });
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'stacksPages.overview' })
 
-  const canonicalPath = locale === 'en' ? '/ai-coding-stack' : `/${locale}/ai-coding-stack`;
-  const title = buildTitle({ title: t('title') });
-  const description = t('subtitle');
+  const canonicalPath = locale === 'en' ? '/ai-coding-stack' : `/${locale}/ai-coding-stack`
+  const title = buildTitle({ title: t('title') })
+  const description = t('subtitle')
 
   return {
     title,
     description,
-    keywords: 'AI Coding Stack, AI development tools, AI IDE, AI CLI, LLM models, AI coding ecosystem',
+    keywords:
+      'AI Coding Stack, AI development tools, AI IDE, AI CLI, LLM models, AI coding ecosystem',
     alternates: {
       canonical: canonicalPath,
       languages: {
@@ -36,17 +37,17 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: t('title'),
       description,
     }),
-  };
+  }
 }
 
 type Props = {
-  params: Promise<{ locale: string }>;
-};
+  params: Promise<{ locale: string }>
+}
 
 export default async function AICodingStackPage({ params }: Props) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'stacksPages.overview' });
-  const ManifestoContent = await getManifestoComponent(locale);
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'stacksPages.overview' })
+  const ManifestoContent = await getManifestoComponent(locale)
 
   return (
     <>
@@ -74,7 +75,9 @@ export default async function AICodingStackPage({ params }: Props) {
             {/* Stacks Grid Section */}
             <section className="mb-[var(--spacing-xl)]">
               <h2 className="text-[1.5rem] font-semibold tracking-[-0.02em] my-[var(--spacing-md)]">
-                <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">{'//'}</span>
+                <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
+                  {'//'}
+                </span>
                 {t('exploreStack')}
               </h2>
 
@@ -85,15 +88,17 @@ export default async function AICodingStackPage({ params }: Props) {
                   { key: 'extensions', path: 'extensions' },
                   { key: 'models', path: 'models' },
                   { key: 'modelProviders', path: 'model-providers' },
-                  { key: 'vendors', path: 'vendors' }
-                ].map((stack) => (
+                  { key: 'vendors', path: 'vendors' },
+                ].map(stack => (
                   <Link
                     key={stack.key}
                     href={`/${stack.path}`}
                     className="block border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5 group"
                   >
                     <div className="flex justify-between items-start mb-[var(--spacing-md)]">
-                      <h3 className="text-[1.5rem] font-semibold tracking-tight">{t(`${stack.key}.title`)}</h3>
+                      <h3 className="text-[1.5rem] font-semibold tracking-tight">
+                        {t(`${stack.key}.title`)}
+                      </h3>
                       <span className="text-2xl text-[var(--color-text-muted)] group-hover:text-[var(--color-text)] group-hover:translate-x-1 transition-all">
                         →
                       </span>
@@ -116,5 +121,5 @@ export default async function AICodingStackPage({ params }: Props) {
 
       <Footer />
     </>
-  );
+  )
 }

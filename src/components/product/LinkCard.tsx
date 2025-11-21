@@ -1,23 +1,23 @@
 /**
  * LinkCard Component
- * 
+ *
  * A reusable card component for displaying external links with consistent styling.
  * Supports horizontal and vertical layouts.
  */
 
 interface LinkCardProps {
-  href: string;
-  title: string;
-  description: string;
-  layout?: 'horizontal' | 'vertical';
+  href: string
+  title: string
+  description: string
+  layout?: 'horizontal' | 'vertical'
 }
 
 /**
  * Individual link card component
  */
 export function LinkCard({ href, title, description, layout = 'horizontal' }: LinkCardProps) {
-  const isHorizontal = layout === 'horizontal';
-  
+  const isHorizontal = layout === 'horizontal'
+
   return (
     <a
       href={href}
@@ -42,48 +42,50 @@ export function LinkCard({ href, title, description, layout = 'horizontal' }: Li
         </>
       )}
     </a>
-  );
+  )
 }
 
 interface LinkCardGridProps {
-  title: string;
+  title: string
   links: Array<{
-    key: string;
-    title: string;
-    description: string;
-  }>;
-  urls: Record<string, unknown>;
-  layout?: 'horizontal' | 'vertical';
-  gridCols?: string;
+    key: string
+    title: string
+    description: string
+  }>
+  urls: Record<string, unknown>
+  layout?: 'horizontal' | 'vertical'
+  gridCols?: string
 }
 
 /**
  * Grid container for link cards
  * Automatically filters out links with empty URLs
  */
-export function LinkCardGrid({ 
-  title, 
-  links, 
-  urls, 
+export function LinkCardGrid({
+  title,
+  links,
+  urls,
   layout = 'horizontal',
-  gridCols = 'grid-cols-1 md:grid-cols-3'
+  gridCols = 'grid-cols-1 md:grid-cols-3',
 }: LinkCardGridProps) {
   // Filter out links where the URL is missing or not a string
   const availableLinks = links.filter(link => {
-    const url = urls[link.key];
-    return url && typeof url === 'string';
-  });
-  
+    const url = urls[link.key]
+    return url && typeof url === 'string'
+  })
+
   // Don't render if no links are available
   if (availableLinks.length === 0) {
-    return null;
+    return null
   }
-  
+
   return (
     <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
       <div className="max-w-[900px] mx-auto px-[var(--spacing-md)]">
         <h2 className="text-[1.5rem] font-semibold tracking-[-0.02em] mb-[var(--spacing-sm)]">
-          <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">{'//'}</span>
+          <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
+            {'//'}
+          </span>
           {title}
         </h2>
 
@@ -100,6 +102,5 @@ export function LinkCardGrid({
         </div>
       </div>
     </section>
-  );
+  )
 }
-

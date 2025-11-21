@@ -1,22 +1,23 @@
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import CollectionScrollbar from '@/components/CollectionScrollbar';
-import { getTranslations } from 'next-intl/server';
-import { getCollections } from '@/lib/collections';
-import { buildCanonicalUrl, buildOpenGraph, buildTwitterCard, buildTitle } from '@/lib/metadata';
+import { getTranslations } from 'next-intl/server'
+import CollectionScrollbar from '@/components/CollectionScrollbar'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import { getCollections } from '@/lib/collections'
+import { buildCanonicalUrl, buildOpenGraph, buildTitle, buildTwitterCard } from '@/lib/metadata'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'pages.curatedCollections' });
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'pages.curatedCollections' })
 
-  const canonicalPath = locale === 'en' ? '/curated-collections' : `/${locale}/curated-collections`;
-  const title = buildTitle({ title: `${t('title')} - AI Coding Specs, Protocols & Tools` });
-  const description = t('subtitle');
+  const canonicalPath = locale === 'en' ? '/curated-collections' : `/${locale}/curated-collections`
+  const title = buildTitle({ title: `${t('title')} - AI Coding Specs, Protocols & Tools` })
+  const description = t('subtitle')
 
   return {
     title,
     description,
-    keywords: 'AI coding resources, MCP protocol, Agent2Agent, development standards, AI coding articles, semantic versioning, conventional commits',
+    keywords:
+      'AI coding resources, MCP protocol, Agent2Agent, development standards, AI coding articles, semantic versioning, conventional commits',
     alternates: {
       canonical: canonicalPath,
       languages: {
@@ -35,17 +36,17 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: `${t('title')} - AI Coding Specs, Protocols & Tools`,
       description,
     }),
-  };
+  }
 }
 
 type Props = {
-  params: Promise<{ locale: string }>;
-};
+  params: Promise<{ locale: string }>
+}
 
 export default async function CuratedCollectionsPage({ params }: Props) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'pages.curatedCollections' });
-  const collections = getCollections(locale);
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'pages.curatedCollections' })
+  const collections = getCollections(locale)
 
   return (
     <>
@@ -55,12 +56,12 @@ export default async function CuratedCollectionsPage({ params }: Props) {
         {/* Page Header */}
         <div className="text-center mb-[var(--spacing-xl)]">
           <h1 className="text-[2rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
-            <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">{'//'}</span>
+            <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
+              {'//'}
+            </span>
             {t('title')}
           </h1>
-          <p className="text-base text-[var(--color-text-secondary)] font-light">
-            {t('subtitle')}
-          </p>
+          <p className="text-base text-[var(--color-text-secondary)] font-light">{t('subtitle')}</p>
         </div>
 
         {/* Main Content with Sidebar */}
@@ -81,23 +82,18 @@ export default async function CuratedCollectionsPage({ params }: Props) {
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-[var(--spacing-md)]">
-                {collections.specifications.cards.map((card, idx) => (
+                {collections.specifications.cards.map(card => (
                   <div
-                    key={idx}
+                    key={card.title}
                     className="border border-[var(--color-border)] p-[var(--spacing-md)]"
                   >
                     <h3 className="text-lg font-semibold tracking-tight mb-[var(--spacing-md)]">
                       {card.title}
                     </h3>
                     <ul className="space-y-[var(--spacing-md)]">
-                      {card.items.map((item, itemIdx) => (
-                        <li key={itemIdx}>
-                          <a
-                            href={item.url}
-                            target="_blank"
-                            rel="noopener"
-                            className="group block"
-                          >
+                      {card.items.map(item => (
+                        <li key={item.url}>
+                          <a href={item.url} target="_blank" rel="noopener" className="group block">
                             <div className="text-base font-medium text-[var(--color-text)] group-hover:underline">
                               {item.name}
                             </div>
@@ -125,23 +121,18 @@ export default async function CuratedCollectionsPage({ params }: Props) {
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-[var(--spacing-md)]">
-                {collections.articles.cards.map((card, idx) => (
+                {collections.articles.cards.map(card => (
                   <div
-                    key={idx}
+                    key={card.title}
                     className="border border-[var(--color-border)] p-[var(--spacing-md)]"
                   >
                     <h3 className="text-lg font-semibold tracking-tight mb-[var(--spacing-md)]">
                       {card.title}
                     </h3>
                     <ul className="space-y-[var(--spacing-md)]">
-                      {card.items.map((item, itemIdx) => (
-                        <li key={itemIdx}>
-                          <a
-                            href={item.url}
-                            target="_blank"
-                            rel="noopener"
-                            className="group block"
-                          >
+                      {card.items.map(item => (
+                        <li key={item.url}>
+                          <a href={item.url} target="_blank" rel="noopener" className="group block">
                             <div className="text-base font-medium text-[var(--color-text)] group-hover:underline">
                               {item.name}
                             </div>
@@ -169,23 +160,18 @@ export default async function CuratedCollectionsPage({ params }: Props) {
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-[var(--spacing-md)]">
-                {collections.tools.cards.map((card, idx) => (
+                {collections.tools.cards.map(card => (
                   <div
-                    key={idx}
+                    key={card.title}
                     className="border border-[var(--color-border)] p-[var(--spacing-md)]"
                   >
                     <h3 className="text-lg font-semibold tracking-tight mb-[var(--spacing-md)]">
                       {card.title}
                     </h3>
                     <ul className="space-y-[var(--spacing-md)]">
-                      {card.items.map((item, itemIdx) => (
-                        <li key={itemIdx}>
-                          <a
-                            href={item.url}
-                            target="_blank"
-                            rel="noopener"
-                            className="group block"
-                          >
+                      {card.items.map(item => (
+                        <li key={item.url}>
+                          <a href={item.url} target="_blank" rel="noopener" className="group block">
                             <div className="text-base font-medium text-[var(--color-text)] group-hover:underline">
                               {item.name}
                             </div>
@@ -206,5 +192,5 @@ export default async function CuratedCollectionsPage({ params }: Props) {
 
       <Footer />
     </>
-  );
+  )
 }

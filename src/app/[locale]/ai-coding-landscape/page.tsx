@@ -1,27 +1,28 @@
-import { getTranslations } from 'next-intl/server';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { buildCanonicalUrl, buildOpenGraph, buildTwitterCard, buildTitle } from '@/lib/metadata';
-import LandscapePage from './components/LandscapePage';
+import { getTranslations } from 'next-intl/server'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
 import {
-  buildVendorMatrix,
   buildRelationshipGraph,
-  getProductsByCategory,
+  buildVendorMatrix,
   calculateLandscapeStats,
-} from '@/lib/landscape-data';
+  getProductsByCategory,
+} from '@/lib/landscape-data'
+import { buildCanonicalUrl, buildOpenGraph, buildTitle, buildTwitterCard } from '@/lib/metadata'
+import LandscapePage from './components/LandscapePage'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  const tNav = await getTranslations({ locale, namespace: 'header' });
+  const { locale } = await params
+  const tNav = await getTranslations({ locale, namespace: 'header' })
 
-  const canonicalPath = locale === 'en' ? '/ai-coding-landscape' : `/${locale}/ai-coding-landscape`;
-  const title = buildTitle({ title: tNav('aiCodingLandscape') });
-  const description = tNav('aiCodingLandscapeDesc');
+  const canonicalPath = locale === 'en' ? '/ai-coding-landscape' : `/${locale}/ai-coding-landscape`
+  const title = buildTitle({ title: tNav('aiCodingLandscape') })
+  const description = tNav('aiCodingLandscapeDesc')
 
   return {
     title,
     description,
-    keywords: 'AI coding ecosystem, AI development landscape, AI tools, coding tools visualization, vendor comparison, product matrix',
+    keywords:
+      'AI coding ecosystem, AI development landscape, AI tools, coding tools visualization, vendor comparison, product matrix',
     alternates: {
       canonical: canonicalPath,
       languages: {
@@ -40,29 +41,29 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: tNav('aiCodingLandscape'),
       description,
     }),
-  };
+  }
 }
 
 type Props = {
-  params: Promise<{ locale: string }>;
-};
+  params: Promise<{ locale: string }>
+}
 
 export default async function Page({ params }: Props) {
-  const { locale } = await params;
-  const tNav = await getTranslations({ locale, namespace: 'header' });
-  const tOverview = await getTranslations({ locale, namespace: 'stacksPages.overview' });
+  const { locale } = await params
+  const tNav = await getTranslations({ locale, namespace: 'header' })
+  const tOverview = await getTranslations({ locale, namespace: 'stacksPages.overview' })
 
   // Build all data for the landscape page
-  const matrixData = buildVendorMatrix();
-  const graphData = buildRelationshipGraph();
-  const productsByCategory = getProductsByCategory();
-  const stats = calculateLandscapeStats();
+  const matrixData = buildVendorMatrix()
+  const graphData = buildRelationshipGraph()
+  const productsByCategory = getProductsByCategory()
+  const stats = calculateLandscapeStats()
 
   const translations = {
     title: tNav('aiCodingLandscape'),
     description: tNav('aiCodingLandscapeDesc'),
     backTitle: tOverview('overviewTitle'),
-  };
+  }
 
   return (
     <>
@@ -77,5 +78,5 @@ export default async function Page({ params }: Props) {
       />
       <Footer />
     </>
-  );
+  )
 }

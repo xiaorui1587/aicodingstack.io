@@ -1,18 +1,18 @@
 // Pricing utility functions
 
 export interface PricingTier {
-  name: string;
-  value: number | null;
-  currency: string | null;
-  per: string | null;
-  category: string;
+  name: string
+  value: number | null
+  currency: string | null
+  per: string | null
+  category: string
 }
 
 const CURRENCY_SYMBOLS: Record<string, string> = {
   USD: '$',
   CNY: '¥',
   EUR: '€',
-};
+}
 
 /**
  * Format pricing tier for display
@@ -25,19 +25,19 @@ const CURRENCY_SYMBOLS: Record<string, string> = {
 export function formatPrice(tier: PricingTier): string {
   // Free pricing
   if (tier.value === 0) {
-    return 'Free';
+    return 'Free'
   }
 
   // Custom pricing
   if (tier.value === null || tier.per === 'custom') {
-    return 'Contact sales';
+    return 'Contact sales'
   }
 
   // Regular pricing
-  const currencySymbol = tier.currency ? CURRENCY_SYMBOLS[tier.currency] || tier.currency : '';
-  const perText = tier.per ? ` per ${tier.per}` : '';
+  const currencySymbol = tier.currency ? CURRENCY_SYMBOLS[tier.currency] || tier.currency : ''
+  const perText = tier.per ? ` per ${tier.per}` : ''
 
-  return `${currencySymbol}${tier.value}${perText}`;
+  return `${currencySymbol}${tier.value}${perText}`
 }
 
 /**
@@ -46,9 +46,9 @@ export function formatPrice(tier: PricingTier): string {
  */
 export function getSchemaPrice(tier: PricingTier): string {
   if (tier.value === null || tier.value === 0) {
-    return '0';
+    return '0'
   }
-  return tier.value.toString();
+  return tier.value.toString()
 }
 
 /**
@@ -56,5 +56,5 @@ export function getSchemaPrice(tier: PricingTier): string {
  * Defaults to USD if not specified
  */
 export function getSchemaCurrency(tier: PricingTier): string {
-  return tier.currency || 'USD';
+  return tier.currency || 'USD'
 }

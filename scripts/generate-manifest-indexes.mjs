@@ -9,33 +9,26 @@
  * Usage: node scripts/generate-manifest-indexes.mjs
  */
 
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
-const MANIFESTS_DIR = path.join(__dirname, '../manifests');
-const OUTPUT_DIR = path.join(__dirname, '../src/lib/generated');
+const MANIFESTS_DIR = path.join(__dirname, '../manifests')
+const OUTPUT_DIR = path.join(__dirname, '../src/lib/generated')
 
 // Manifest types to process
-const MANIFEST_TYPES = [
-  'ides',
-  'clis',
-  'models',
-  'providers',
-  'extensions',
-  'vendors'
-];
+const MANIFEST_TYPES = ['ides', 'clis', 'models', 'providers', 'extensions', 'vendors']
 
 /**
  * Ensure directory exists
  */
 function ensureDir(dirPath) {
   if (!fs.existsSync(dirPath)) {
-    fs.mkdirSync(dirPath, { recursive: true });
-    console.log(`✓ Created directory: ${dirPath}`);
+    fs.mkdirSync(dirPath, { recursive: true })
+    console.log(`✓ Created directory: ${dirPath}`)
   }
 }
 
@@ -46,7 +39,7 @@ function toPascalCase(str) {
   return str
     .split('-')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join('');
+    .join('')
 }
 
 /**
@@ -54,59 +47,66 @@ function toPascalCase(str) {
  */
 function getJsonFiles(dirPath) {
   if (!fs.existsSync(dirPath)) {
-    return [];
+    return []
   }
-  return fs.readdirSync(dirPath)
+  return fs
+    .readdirSync(dirPath)
     .filter(file => file.endsWith('.json'))
-    .sort();
+    .sort()
 }
 
 /**
  * Generate index file for a manifest type
  */
 function generateIndexFile(typeName) {
-  const typeDir = path.join(MANIFESTS_DIR, typeName);
-  const files = getJsonFiles(typeDir);
+  const typeDir = path.join(MANIFESTS_DIR, typeName)
+  const files = getJsonFiles(typeDir)
 
   if (files.length === 0) {
-    console.log(`⚠ No JSON files found in ${typeName}/`);
-    return;
+    console.log(`⚠ No JSON files found in ${typeName}/`)
+    return
   }
 
   // Generate import statements
-  const imports = files.map(file => {
-    const id = file.replace('.json', '');
-    const varName = toPascalCase(id);
-    const relativePath = `../../../manifests/${typeName}/${file}`;
-    return `import ${varName} from '${relativePath}';`;
-  }).join('\n');
+  const imports = files
+    .map(file => {
+      const id = file.replace('.json', '')
+      const varName = toPascalCase(id)
+      const relativePath = `../../../manifests/${typeName}/${file}`
+      return `import ${varName} from '${relativePath}';`
+    })
+    .join('\n')
 
   // Generate array export
-  const arrayItems = files.map(file => {
-    const id = file.replace('.json', '');
-    return toPascalCase(id);
-  }).join(',\n  ');
+  const arrayItems = files
+    .map(file => {
+      const id = file.replace('.json', '')
+      return toPascalCase(id)
+    })
+    .join(',\n  ')
 
   // Generate type name (singular)
-  const typeSingular = typeName.replace(/s$/, '');
-  const TypeName = toPascalCase(typeSingular);
+  const typeSingular = typeName.replace(/s$/, '')
+  const TypeName = toPascalCase(typeSingular)
 
   // Get the first file to extract type
-  const firstFile = files[0].replace('.json', '');
-  const firstVarName = toPascalCase(firstFile);
+  const firstFile = files[0].replace('.json', '')
+  const firstVarName = toPascalCase(firstFile)
 
   // Add appropriate type import based on manifest type
   const typeImportMap = {
-    'ides': 'ManifestIDE',
-    'clis': 'ManifestCLI',
-    'models': 'ManifestModel',
-    'providers': 'ManifestProvider',
-    'extensions': 'ManifestExtension',
-    'vendors': 'ManifestVendor'
-  };
+    ides: 'ManifestIDE',
+    clis: 'ManifestCLI',
+    models: 'ManifestModel',
+    providers: 'ManifestProvider',
+    extensions: 'ManifestExtension',
+    vendors: 'ManifestVendor',
+  }
 
-  const manifestType = typeImportMap[typeName];
-  const typeImport = manifestType ? `import type { ${manifestType} } from '../../types/manifests';\n\n` : '';
+  const manifestType = typeImportMap[typeName]
+  const typeImport = manifestType
+    ? `import type { ${manifestType} } from '../../types/manifests';\n\n`
+    : ''
 
   const content = `/**
  * Auto-generated manifest index for ${typeName}
@@ -123,11 +123,11 @@ export const ${typeName}Data = [
 export type ${TypeName} = typeof ${firstVarName};
 
 export default ${typeName}Data;
-`;
+`
 
-  const outputPath = path.join(OUTPUT_DIR, `${typeName}.ts`);
-  fs.writeFileSync(outputPath, content, 'utf8');
-  console.log(`✓ Generated ${typeName}.ts (${files.length} entries)`);
+  const outputPath = path.join(OUTPUT_DIR, `${typeName}.ts`)
+  fs.writeFileSync(outputPath, content, 'utf8')
+  console.log(`✓ Generated ${typeName}.ts (${files.length} entries)`)
 }
 
 /**
@@ -136,8 +136,8 @@ export default ${typeName}Data;
 function generateMainIndex() {
   const exports = MANIFEST_TYPES.map(typeName => {
     return `export { ${typeName}Data } from './${typeName}';
-export type { ${toPascalCase(typeName.replace(/s$/, ''))} } from './${typeName}';`;
-  }).join('\n');
+export type { ${toPascalCase(typeName.replace(/s$/, ''))} } from './${typeName}';`
+  }).join('\n')
 
   const content = `/**
  * Auto-generated main manifest index
@@ -146,25 +146,25 @@ export type { ${toPascalCase(typeName.replace(/s$/, ''))} } from './${typeName}'
  */
 
 ${exports}
-`;
+`
 
-  const outputPath = path.join(OUTPUT_DIR, 'index.ts');
-  fs.writeFileSync(outputPath, content, 'utf8');
-  console.log(`✓ Generated index.ts`);
+  const outputPath = path.join(OUTPUT_DIR, 'index.ts')
+  fs.writeFileSync(outputPath, content, 'utf8')
+  console.log(`✓ Generated index.ts`)
 }
 
 /**
  * Generate GitHub stars TypeScript file from centralized JSON
  */
 function generateGithubStarsFile() {
-  const githubStarsPath = path.join(__dirname, '..', 'data', 'github-stars.json');
+  const githubStarsPath = path.join(__dirname, '..', 'data', 'github-stars.json')
 
   if (!fs.existsSync(githubStarsPath)) {
-    console.log('⚠ github-stars.json not found, skipping stars generation');
-    return;
+    console.log('⚠ github-stars.json not found, skipping stars generation')
+    return
   }
 
-  const starsData = JSON.parse(fs.readFileSync(githubStarsPath, 'utf8'));
+  const starsData = JSON.parse(fs.readFileSync(githubStarsPath, 'utf8'))
 
   const content = `/**
  * Auto-generated GitHub stars data
@@ -189,55 +189,55 @@ export function getGithubStars(category: string, id: string): number | null {
 }
 
 export default githubStarsData;
-`;
+`
 
-  const outputPath = path.join(OUTPUT_DIR, 'github-stars.ts');
-  fs.writeFileSync(outputPath, content, 'utf8');
+  const outputPath = path.join(OUTPUT_DIR, 'github-stars.ts')
+  fs.writeFileSync(outputPath, content, 'utf8')
 
   // Count total entries
   const totalEntries = Object.values(starsData).reduce((sum, category) => {
-    return sum + Object.keys(category).length;
-  }, 0);
+    return sum + Object.keys(category).length
+  }, 0)
 
-  console.log(`✓ Generated github-stars.ts (${totalEntries} entries)`);
+  console.log(`✓ Generated github-stars.ts (${totalEntries} entries)`)
 }
 
 /**
  * Main execution
  */
 function main() {
-  console.log('='.repeat(60));
-  console.log('Generate Manifest Index Files');
-  console.log('='.repeat(60));
+  console.log('='.repeat(60))
+  console.log('Generate Manifest Index Files')
+  console.log('='.repeat(60))
 
   // Ensure output directory exists
-  ensureDir(OUTPUT_DIR);
+  ensureDir(OUTPUT_DIR)
 
-  console.log('\n📝 Generating index files...\n');
+  console.log('\n📝 Generating index files...\n')
 
   // Generate index file for each type
   for (const typeName of MANIFEST_TYPES) {
-    generateIndexFile(typeName);
+    generateIndexFile(typeName)
   }
 
   // Generate main index
-  console.log('');
-  generateMainIndex();
+  console.log('')
+  generateMainIndex()
 
   // Generate GitHub stars file
-  console.log('');
-  generateGithubStarsFile();
+  console.log('')
+  generateGithubStarsFile()
 
-  console.log('\n' + '='.repeat(60));
-  console.log('✅ All index files generated successfully!');
-  console.log('='.repeat(60));
+  console.log(`\n${'='.repeat(60)}`)
+  console.log('✅ All index files generated successfully!')
+  console.log('='.repeat(60))
 }
 
 // Run the script
 try {
-  main();
+  main()
 } catch (error) {
-  console.error('\n❌ Error generating index files:', error.message);
-  console.error(error.stack);
-  process.exit(1);
+  console.error('\n❌ Error generating index files:', error.message)
+  console.error(error.stack)
+  process.exit(1)
 }

@@ -1,7 +1,13 @@
 // Product detail page components
-export { ProductHero, type ProductHeroProps } from './ProductHero';
-export { ProductPricing, type ProductPricingProps } from './ProductPricing';
-export { ProductLinks, type ProductLinksProps, type resourceUrls, type CommunityUrls } from './ProductLinks';
-export { ProductCommands, type ProductCommandsProps } from './ProductCommands';
-export { GitHubStarHistory, type GitHubStarHistoryProps } from './GitHubStarHistory';
-export { LinkCard, LinkCardGrid } from './LinkCard';
+
+export { GitHubStarHistory, type GitHubStarHistoryProps } from './GitHubStarHistory'
+export { LinkCard, LinkCardGrid } from './LinkCard'
+export { ProductCommands, type ProductCommandsProps } from './ProductCommands'
+export { ProductHero, type ProductHeroProps } from './ProductHero'
+export {
+  type CommunityUrls,
+  ProductLinks,
+  type ProductLinksProps,
+  type resourceUrls,
+} from './ProductLinks'
+export { ProductPricing, type ProductPricingProps } from './ProductPricing'

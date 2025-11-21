@@ -1,1 +1,1 @@
-export { getManifestoComponent } from '@/lib/generated/manifesto';
+export { getManifestoComponent } from '@/lib/generated/manifesto'

@@ -1,23 +1,23 @@
-'use client';
+'use client'
 
-import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
+import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
 
 export interface ComparisonColumn {
-  key: string;
-  label: string;
-  minWidth?: string;
-  maxWidth?: string;
-  render?: (value: unknown, item: Record<string, unknown>) => React.ReactNode;
+  key: string
+  label: string
+  minWidth?: string
+  maxWidth?: string
+  render?: (value: unknown, item: Record<string, unknown>) => React.ReactNode
 }
 
 export interface ComparisonTableProps {
-  items: Record<string, unknown>[];
-  columns: ComparisonColumn[];
-  itemLinkPrefix: string;
-  itemNameKey?: string;
-  itemIdKey?: string;
-  stickyTopOffset?: number;
+  items: Record<string, unknown>[]
+  columns: ComparisonColumn[]
+  itemLinkPrefix: string
+  itemNameKey?: string
+  itemIdKey?: string
+  stickyTopOffset?: number
 }
 
 export default function ComparisonTable({
@@ -28,58 +28,58 @@ export default function ComparisonTable({
   itemIdKey = 'id',
   stickyTopOffset = 60,
 }: ComparisonTableProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const tableRef = useRef<HTMLTableElement>(null);
-  const theadRef = useRef<HTMLTableSectionElement>(null);
-  const [isFixed, setIsFixed] = useState(false);
-  const [theadWidth, setTheadWidth] = useState<number>(0);
-  const [theadHeight, setTheadHeight] = useState<number>(0);
-  const [columnWidths, setColumnWidths] = useState<number[]>([]);
-  const [scrollLeft, setScrollLeft] = useState<number>(0);
-  const columnWidthsMeasured = useRef(false);
+  const containerRef = useRef<HTMLDivElement>(null)
+  const tableRef = useRef<HTMLTableElement>(null)
+  const theadRef = useRef<HTMLTableSectionElement>(null)
+  const [isFixed, setIsFixed] = useState(false)
+  const [theadWidth, setTheadWidth] = useState<number>(0)
+  const [theadHeight, setTheadHeight] = useState<number>(0)
+  const [columnWidths, setColumnWidths] = useState<number[]>([])
+  const [scrollLeft, setScrollLeft] = useState<number>(0)
+  const columnWidthsMeasured = useRef(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!tableRef.current || !theadRef.current || !containerRef.current) return;
+      if (!tableRef.current || !theadRef.current || !containerRef.current) return
 
-      const tableRect = tableRef.current.getBoundingClientRect();
-      const containerRect = containerRef.current.getBoundingClientRect();
-      const theadHeight = theadRef.current.offsetHeight;
+      const tableRect = tableRef.current.getBoundingClientRect()
+      const containerRect = containerRef.current.getBoundingClientRect()
+      const theadHeight = theadRef.current.offsetHeight
 
       // Check if table has scrolled past the sticky offset
       if (tableRect.top <= stickyTopOffset && tableRect.bottom > stickyTopOffset + theadHeight) {
         // Only measure widths once, before first fixing
         if (!columnWidthsMeasured.current) {
-          const ths = theadRef.current.querySelectorAll('th');
-          const widths = Array.from(ths).map(th => th.offsetWidth);
-          setColumnWidths(widths);
-          setTheadWidth(containerRect.width);
-          setTheadHeight(theadHeight);
-          columnWidthsMeasured.current = true;
+          const ths = theadRef.current.querySelectorAll('th')
+          const widths = Array.from(ths).map(th => th.offsetWidth)
+          setColumnWidths(widths)
+          setTheadWidth(containerRect.width)
+          setTheadHeight(theadHeight)
+          columnWidthsMeasured.current = true
         }
-        setIsFixed(true);
+        setIsFixed(true)
       } else {
-        setIsFixed(false);
+        setIsFixed(false)
       }
-    };
+    }
 
     const handleContainerScroll = () => {
-      if (!containerRef.current) return;
-      setScrollLeft(containerRef.current.scrollLeft);
-    };
+      if (!containerRef.current) return
+      setScrollLeft(containerRef.current.scrollLeft)
+    }
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
-    containerRef.current?.addEventListener('scroll', handleContainerScroll);
-    handleScroll(); // Check initial position
+    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleScroll)
+    containerRef.current?.addEventListener('scroll', handleContainerScroll)
+    handleScroll() // Check initial position
 
-    const container = containerRef.current;
+    const container = containerRef.current
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
-      container?.removeEventListener('scroll', handleContainerScroll);
-    };
-  }, [stickyTopOffset]);
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+      container?.removeEventListener('scroll', handleContainerScroll)
+    }
+  }, [stickyTopOffset])
 
   return (
     <>
@@ -162,7 +162,10 @@ export default function ComparisonTable({
                       style={
                         columnWidths[index + 1]
                           ? {
-                              width: column.minWidth || column.maxWidth || `${columnWidths[index + 1]}px`,
+                              width:
+                                column.minWidth ||
+                                column.maxWidth ||
+                                `${columnWidths[index + 1]}px`,
                               minWidth: column.minWidth || `${columnWidths[index + 1]}px`,
                               maxWidth: column.maxWidth || `${columnWidths[index + 1]}px`,
                             }
@@ -182,7 +185,7 @@ export default function ComparisonTable({
                 <th className="sticky left-0 z-50 bg-[var(--color-bg)] px-[var(--spacing-md)] py-[var(--spacing-sm)] text-left text-sm font-semibold uppercase tracking-wider text-[var(--color-text-muted)] border-r border-[var(--color-border)]">
                   Name
                 </th>
-                {columns.map((column) => (
+                {columns.map(column => (
                   <th
                     key={column.key}
                     className="pl-[var(--spacing-md)] pr-0 py-[var(--spacing-sm)] text-left text-sm font-semibold uppercase tracking-wider text-[var(--color-text-muted)] whitespace-nowrap"
@@ -213,7 +216,7 @@ export default function ComparisonTable({
                       {item[itemNameKey] as string}
                     </Link>
                   </td>
-                  {columns.map((column) => (
+                  {columns.map(column => (
                     <td
                       key={column.key}
                       className="pl-[var(--spacing-md)] pr-0 py-[var(--spacing-sm)] text-sm text-[var(--color-text-secondary)]"
@@ -221,7 +224,9 @@ export default function ComparisonTable({
                         ...(column.minWidth && { minWidth: column.minWidth }),
                         ...(column.maxWidth && { maxWidth: column.maxWidth }),
                         ...(column.minWidth && { width: column.minWidth }),
-                        ...(column.maxWidth ? { wordBreak: 'break-all', whiteSpace: 'normal' } : { whiteSpace: 'nowrap' }),
+                        ...(column.maxWidth
+                          ? { wordBreak: 'break-all', whiteSpace: 'normal' }
+                          : { whiteSpace: 'nowrap' }),
                       }}
                     >
                       {column.render
@@ -236,5 +241,5 @@ export default function ComparisonTable({
         </div>
       </div>
     </>
-  );
+  )
 }

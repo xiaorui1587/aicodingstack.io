@@ -1,29 +1,33 @@
-import { notFound } from 'next/navigation';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { BackToNavigation } from '@/components/controls/BackToNavigation';
-import { Breadcrumb } from '@/components/controls/Breadcrumb';
-import { JsonLd } from '@/components/JsonLd';
-import { ProductHero } from '@/components/product';
-import { getTranslations } from 'next-intl/server';
-import { generateModelDetailMetadata } from '@/lib/metadata';
-import type { ManifestModel } from '@/types/manifests';
-import { modelsData as models } from '@/lib/generated';
+import { notFound } from 'next/navigation'
+import { getTranslations } from 'next-intl/server'
+import { BackToNavigation } from '@/components/controls/BackToNavigation'
+import { Breadcrumb } from '@/components/controls/Breadcrumb'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import { JsonLd } from '@/components/JsonLd'
+import { ProductHero } from '@/components/product'
+import { modelsData as models } from '@/lib/generated'
+import { generateModelDetailMetadata } from '@/lib/metadata'
+import type { ManifestModel } from '@/types/manifests'
 
-export const revalidate = 3600;
+export const revalidate = 3600
 
 export async function generateStaticParams() {
-  return models.map((model) => ({
+  return models.map(model => ({
     slug: model.id,
-  }));
+  }))
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {
-  const { locale, slug } = await params;
-  const model = models.find((m) => m.id === slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>
+}) {
+  const { locale, slug } = await params
+  const model = models.find(m => m.id === slug)
 
   if (!model) {
-    return { title: 'Model Not Found | AI Coding Stack' };
+    return { title: 'Model Not Found | AI Coding Stack' }
   }
 
   return await generateModelDetailMetadata({
@@ -34,50 +38,69 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description: model.description || '',
       vendor: model.vendor,
       size: model.size ?? undefined,
-      totalContext: typeof model.totalContext === 'string' ? parseInt(model.totalContext.replace(/[KM]/g, '')) * (model.totalContext.includes('K') ? 1000 : 1) : (model.totalContext ?? undefined),
-      maxOutput: typeof model.maxOutput === 'string' ? parseInt(model.maxOutput.replace(/[KM]/g, '')) * (model.maxOutput.includes('K') ? 1000 : 1) : (model.maxOutput ?? undefined),
-      tokenPricing: model.tokenPricing ? {
-        input: model.tokenPricing.input ?? undefined,
-        output: model.tokenPricing.output ?? undefined,
-      } : undefined,
+      totalContext:
+        typeof model.totalContext === 'string'
+          ? parseInt(model.totalContext.replace(/[KM]/g, ''), 10) *
+            (model.totalContext.includes('K') ? 1000 : 1)
+          : (model.totalContext ?? undefined),
+      maxOutput:
+        typeof model.maxOutput === 'string'
+          ? parseInt(model.maxOutput.replace(/[KM]/g, ''), 10) *
+            (model.maxOutput.includes('K') ? 1000 : 1)
+          : (model.maxOutput ?? undefined),
+      tokenPricing: model.tokenPricing
+        ? {
+            input: model.tokenPricing.input ?? undefined,
+            output: model.tokenPricing.output ?? undefined,
+          }
+        : undefined,
     },
     translationNamespace: 'stackDetailPages.modelDetail',
-  });
+  })
 }
 
-export default async function ModelPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
-  const { locale, slug } = await params;
-  const model = models.find((m) => m.id === slug) as unknown as ManifestModel | undefined;
-  const t = await getTranslations({ locale, namespace: 'stackDetailPages.modelDetail' });
-  const tStacks = await getTranslations({ locale, namespace: 'stacks' });
-  const tHero = await getTranslations({ locale, namespace: 'components.productHero' });
-  const tLabels = await getTranslations({ locale, namespace: 'stackDetailPages.modelDetail.labels' });
+export default async function ModelPage({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>
+}) {
+  const { locale, slug } = await params
+  const model = models.find(m => m.id === slug) as unknown as ManifestModel | undefined
+  const t = await getTranslations({ locale, namespace: 'stackDetailPages.modelDetail' })
+  const tStacks = await getTranslations({ locale, namespace: 'stacks' })
+  const tHero = await getTranslations({ locale, namespace: 'components.productHero' })
+  const tLabels = await getTranslations({
+    locale,
+    namespace: 'stackDetailPages.modelDetail.labels',
+  })
 
   if (!model) {
-    notFound();
+    notFound()
   }
 
   // Schema.org structured data
-  const pricingDisplayForSchema = model.tokenPricing?.input 
+  const pricingDisplayForSchema = model.tokenPricing?.input
     ? model.tokenPricing.input.toString()
-    : model.tokenPricing?.output 
-    ? model.tokenPricing.output.toString()
-    : null;
+    : model.tokenPricing?.output
+      ? model.tokenPricing.output.toString()
+      : null
   const productSchema = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": model.name,
-    "description": `${model.name} by ${model.vendor}`,
-    "brand": {
-      "@type": "Organization",
-      "name": model.vendor
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: model.name,
+    description: `${model.name} by ${model.vendor}`,
+    brand: {
+      '@type': 'Organization',
+      name: model.vendor,
     },
-    "offers": pricingDisplayForSchema ? {
-      "@type": "Offer",
-      "price": pricingDisplayForSchema,
-      "priceCurrency": "USD"
-    } : undefined,
-  };
+    offers: pricingDisplayForSchema
+      ? {
+          '@type': 'Offer',
+          price: pricingDisplayForSchema,
+          priceCurrency: 'USD',
+        }
+      : undefined,
+  }
 
   return (
     <>
@@ -99,18 +122,38 @@ export default async function ModelPage({ params }: { params: Promise<{ locale: 
         vendor={model.vendor}
         category="MODEL"
         categoryLabel={tHero('categories.MODEL')}
-        additionalInfo={[
-          model.size && { label: tLabels('size'), value: model.size },
-          model.totalContext && { label: tLabels('context'), value: model.totalContext },
-          model.maxOutput && { label: tLabels('maxOutput'), value: model.maxOutput }
-        ].filter(Boolean) as { label: string; value: string }[]}
-        pricing={pricingDisplayForSchema ? { label: tLabels('pricing'), value: pricingDisplayForSchema } : undefined}
-        additionalUrls={[
-          model.websiteUrl && { label: tLabels('website'), url: model.websiteUrl, icon: '↗' },
-          model.platformUrls?.huggingface && { label: tLabels('huggingface'), url: model.platformUrls.huggingface, icon: '→' },
-          model.platformUrls?.artificialAnalysis && { label: tLabels('artificialAnalysis'), url: model.platformUrls.artificialAnalysis, icon: '→' },
-          model.platformUrls?.openrouter && { label: tLabels('openrouter'), url: model.platformUrls.openrouter, icon: '→' }
-        ].filter(Boolean) as { label: string; url: string; icon?: string }[]}
+        additionalInfo={
+          [
+            model.size && { label: tLabels('size'), value: model.size },
+            model.totalContext && { label: tLabels('context'), value: model.totalContext },
+            model.maxOutput && { label: tLabels('maxOutput'), value: model.maxOutput },
+          ].filter(Boolean) as { label: string; value: string }[]
+        }
+        pricing={
+          pricingDisplayForSchema
+            ? { label: tLabels('pricing'), value: pricingDisplayForSchema }
+            : undefined
+        }
+        additionalUrls={
+          [
+            model.websiteUrl && { label: tLabels('website'), url: model.websiteUrl, icon: '↗' },
+            model.platformUrls?.huggingface && {
+              label: tLabels('huggingface'),
+              url: model.platformUrls.huggingface,
+              icon: '→',
+            },
+            model.platformUrls?.artificialAnalysis && {
+              label: tLabels('artificialAnalysis'),
+              url: model.platformUrls.artificialAnalysis,
+              icon: '→',
+            },
+            model.platformUrls?.openrouter && {
+              label: tLabels('openrouter'),
+              url: model.platformUrls.openrouter,
+              icon: '→',
+            },
+          ].filter(Boolean) as { label: string; url: string; icon?: string }[]
+        }
         labels={{
           vendor: tHero('vendor'),
           version: tHero('version'),
@@ -125,7 +168,9 @@ export default async function ModelPage({ params }: { params: Promise<{ locale: 
       <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
         <div className="max-w-[800px] mx-auto px-[var(--spacing-md)]">
           <h2 className="text-[1.5rem] font-semibold tracking-[-0.02em] mb-[var(--spacing-sm)]">
-            <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">{'//'}</span>
+            <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
+              {'//'}
+            </span>
             {t('specifications')}
           </h2>
 
@@ -166,19 +211,26 @@ export default async function ModelPage({ params }: { params: Promise<{ locale: 
                   {model.tokenPricing.input !== null && model.tokenPricing.input !== undefined && (
                     <p className="text-sm">
                       <span className="text-[var(--color-text-muted)] text-xs">Input: </span>
-                      <span className="font-semibold tracking-tight">${model.tokenPricing.input}/M</span>
+                      <span className="font-semibold tracking-tight">
+                        ${model.tokenPricing.input}/M
+                      </span>
                     </p>
                   )}
-                  {model.tokenPricing.output !== null && model.tokenPricing.output !== undefined && (
-                    <p className="text-sm">
-                      <span className="text-[var(--color-text-muted)] text-xs">Output: </span>
-                      <span className="font-semibold tracking-tight">${model.tokenPricing.output}/M</span>
-                    </p>
-                  )}
+                  {model.tokenPricing.output !== null &&
+                    model.tokenPricing.output !== undefined && (
+                      <p className="text-sm">
+                        <span className="text-[var(--color-text-muted)] text-xs">Output: </span>
+                        <span className="font-semibold tracking-tight">
+                          ${model.tokenPricing.output}/M
+                        </span>
+                      </p>
+                    )}
                   {model.tokenPricing.cache !== null && model.tokenPricing.cache !== undefined && (
                     <p className="text-sm">
                       <span className="text-[var(--color-text-muted)] text-xs">Cache: </span>
-                      <span className="font-semibold tracking-tight">${model.tokenPricing.cache}/M</span>
+                      <span className="font-semibold tracking-tight">
+                        ${model.tokenPricing.cache}/M
+                      </span>
                     </p>
                   )}
                 </div>
@@ -193,5 +245,5 @@ export default async function ModelPage({ params }: { params: Promise<{ locale: 
 
       <Footer />
     </>
-  );
+  )
 }

@@ -9,56 +9,56 @@
  * - Extension-IDE compatibility mappings
  */
 
-import {
-  idesData,
-  clisData,
-  extensionsData,
-  modelsData,
-  providersData,
-  vendorsData,
-} from './generated';
-import { getGithubStars } from './generated/github-stars';
 import type {
-  ManifestIDE,
   ManifestCLI,
   ManifestExtension,
+  ManifestIDE,
   ManifestModel,
   ManifestProvider,
   ManifestVendor,
-} from '@/types/manifests';
+} from '@/types/manifests'
+import {
+  clisData,
+  extensionsData,
+  idesData,
+  modelsData,
+  providersData,
+  vendorsData,
+} from './generated'
+import { getGithubStars } from './generated/github-stars'
 
 // =============================================================================
 // TYPE DEFINITIONS
 // =============================================================================
 
-export type ProductCategory = 'ide' | 'cli' | 'extension' | 'model' | 'provider';
+export type ProductCategory = 'ide' | 'cli' | 'extension' | 'model' | 'provider'
 
 export interface LandscapeProduct {
-  id: string;
-  name: string;
-  vendor: string;
-  category: ProductCategory;
-  description: string;
-  websiteUrl?: string;
-  docsUrl?: string;
-  githubUrl?: string | null;
-  githubStars?: number | null;
-  license?: string;
-  latestVersion?: string;
-  path: string;
+  id: string
+  name: string
+  vendor: string
+  category: ProductCategory
+  description: string
+  websiteUrl?: string
+  docsUrl?: string
+  githubUrl?: string | null
+  githubStars?: number | null
+  license?: string
+  latestVersion?: string
+  path: string
 }
 
 export interface VendorEcosystem {
-  vendor: ManifestVendor;
+  vendor: ManifestVendor
   products: {
-    ides: LandscapeProduct[];
-    clis: LandscapeProduct[];
-    extensions: LandscapeProduct[];
-    models: LandscapeProduct[];
-    providers: LandscapeProduct[];
-  };
-  totalProducts: number;
-  type: VendorType;
+    ides: LandscapeProduct[]
+    clis: LandscapeProduct[]
+    extensions: LandscapeProduct[]
+    models: LandscapeProduct[]
+    providers: LandscapeProduct[]
+  }
+  totalProducts: number
+  type: VendorType
 }
 
 export type VendorType =
@@ -66,67 +66,67 @@ export type VendorType =
   | 'ai-native' // Has Model + (IDE or CLI or Extension)
   | 'tool-only' // Only has IDE/CLI/Extension
   | 'model-only' // Only has Model/Provider
-  | 'provider-only'; // Only has Provider
+  | 'provider-only' // Only has Provider
 
 export interface ExtensionIDECompatibility {
-  extensionId: string;
-  extensionName: string;
+  extensionId: string
+  extensionName: string
   supportedIdes: Array<{
-    ideId: string;
-    ideName: string;
-    marketplaceUrl?: string | null;
-    installUri?: string | null;
-    installCommand?: string | null;
-  }>;
+    ideId: string
+    ideName: string
+    marketplaceUrl?: string | null
+    installUri?: string | null
+    installCommand?: string | null
+  }>
 }
 
 export interface LandscapeStats {
-  totalProducts: number;
-  totalVendors: number;
+  totalProducts: number
+  totalVendors: number
   counts: {
-    ides: number;
-    clis: number;
-    extensions: number;
-    models: number;
-    providers: number;
-  };
-  openSourceCount: number;
-  proprietaryCount: number;
+    ides: number
+    clis: number
+    extensions: number
+    models: number
+    providers: number
+  }
+  openSourceCount: number
+  proprietaryCount: number
   platformSupport: {
-    macOS: number;
-    windows: number;
-    linux: number;
-  };
+    macOS: number
+    windows: number
+    linux: number
+  }
   topByStars: Array<{
-    id: string;
-    name: string;
-    category: ProductCategory;
-    stars: number;
-  }>;
+    id: string
+    name: string
+    category: ProductCategory
+    stars: number
+  }>
   vendorsByProductCount: Array<{
-    vendorId: string;
-    vendorName: string;
-    productCount: number;
-  }>;
+    vendorId: string
+    vendorName: string
+    productCount: number
+  }>
 }
 
 export interface RelationshipNode {
-  id: string;
-  type: 'vendor' | ProductCategory;
+  id: string
+  type: 'vendor' | ProductCategory
   data: {
-    label: string;
-    description?: string;
-    category?: ProductCategory;
-    vendorId?: string;
-  };
+    label: string
+    description?: string
+    category?: ProductCategory
+    vendorId?: string
+  }
 }
 
 export interface RelationshipEdge {
-  id: string;
-  source: string;
-  target: string;
-  type: 'vendor-product' | 'extension-ide' | 'related-product';
-  label?: string;
+  id: string
+  source: string
+  target: string
+  type: 'vendor-product' | 'extension-ide' | 'related-product'
+  label?: string
 }
 
 // =============================================================================
@@ -147,7 +147,7 @@ function ideToProduct(ide: ManifestIDE): LandscapeProduct {
     license: ide.license,
     latestVersion: ide.latestVersion,
     path: `/ides/${ide.id}`,
-  };
+  }
 }
 
 function cliToProduct(cli: ManifestCLI): LandscapeProduct {
@@ -164,7 +164,7 @@ function cliToProduct(cli: ManifestCLI): LandscapeProduct {
     license: cli.license,
     latestVersion: cli.latestVersion,
     path: `/clis/${cli.id}`,
-  };
+  }
 }
 
 function extensionToProduct(ext: ManifestExtension): LandscapeProduct {
@@ -181,7 +181,7 @@ function extensionToProduct(ext: ManifestExtension): LandscapeProduct {
     license: ext.license,
     latestVersion: ext.latestVersion,
     path: `/extensions/${ext.id}`,
-  };
+  }
 }
 
 function modelToProduct(model: ManifestModel): LandscapeProduct {
@@ -194,7 +194,7 @@ function modelToProduct(model: ManifestModel): LandscapeProduct {
     websiteUrl: model.websiteUrl || undefined,
     docsUrl: model.docsUrl || undefined,
     path: `/models/${model.id}`,
-  };
+  }
 }
 
 function providerToProduct(provider: ManifestProvider): LandscapeProduct {
@@ -209,7 +209,7 @@ function providerToProduct(provider: ManifestProvider): LandscapeProduct {
     githubUrl: provider.githubUrl,
     githubStars: null, // Providers don't have GitHub stars tracking
     path: `/model-providers/${provider.id}`,
-  };
+  }
 }
 
 // =============================================================================
@@ -220,15 +220,15 @@ function providerToProduct(provider: ManifestProvider): LandscapeProduct {
  * Get all products as a unified array
  */
 export function getAllProducts(): LandscapeProduct[] {
-  const products: LandscapeProduct[] = [];
+  const products: LandscapeProduct[] = [
+    ...idesData.map(ideToProduct),
+    ...clisData.map(cliToProduct),
+    ...extensionsData.map(extensionToProduct),
+    ...modelsData.map(modelToProduct),
+    ...providersData.map(providerToProduct),
+  ]
 
-  idesData.forEach((ide) => products.push(ideToProduct(ide)));
-  clisData.forEach((cli) => products.push(cliToProduct(cli)));
-  extensionsData.forEach((ext) => products.push(extensionToProduct(ext)));
-  modelsData.forEach((model) => products.push(modelToProduct(model)));
-  providersData.forEach((provider) => products.push(providerToProduct(provider)));
-
-  return products;
+  return products
 }
 
 /**
@@ -241,108 +241,108 @@ export function getProductsByCategory() {
     extensions: extensionsData.map(extensionToProduct),
     models: modelsData.map(modelToProduct),
     providers: providersData.map(providerToProduct),
-  };
+  }
 }
 
 /**
  * Get products by a specific vendor
  */
 export function getProductsByVendor(vendorName: string): LandscapeProduct[] {
-  const normalizedVendorName = vendorName.toLowerCase();
-  const products: LandscapeProduct[] = [];
+  const normalizedVendorName = vendorName.toLowerCase()
+  const products: LandscapeProduct[] = []
 
-  idesData.forEach((ide) => {
+  idesData.forEach(ide => {
     if (ide.vendor?.toLowerCase() === normalizedVendorName) {
-      products.push(ideToProduct(ide));
+      products.push(ideToProduct(ide))
     }
-  });
+  })
 
-  clisData.forEach((cli) => {
+  clisData.forEach(cli => {
     if (cli.vendor?.toLowerCase() === normalizedVendorName) {
-      products.push(cliToProduct(cli));
+      products.push(cliToProduct(cli))
     }
-  });
+  })
 
-  extensionsData.forEach((ext) => {
+  extensionsData.forEach(ext => {
     if (ext.vendor?.toLowerCase() === normalizedVendorName) {
-      products.push(extensionToProduct(ext));
+      products.push(extensionToProduct(ext))
     }
-  });
+  })
 
-  modelsData.forEach((model) => {
+  modelsData.forEach(model => {
     if (model.vendor?.toLowerCase() === normalizedVendorName) {
-      products.push(modelToProduct(model));
+      products.push(modelToProduct(model))
     }
-  });
+  })
 
-  providersData.forEach((provider) => {
-    const matchesVendor = provider.vendor?.toLowerCase() === normalizedVendorName;
-    const matchesName = provider.name?.toLowerCase() === normalizedVendorName;
+  providersData.forEach(provider => {
+    const matchesVendor = provider.vendor?.toLowerCase() === normalizedVendorName
+    const matchesName = provider.name?.toLowerCase() === normalizedVendorName
 
     if (matchesVendor || matchesName) {
-      products.push(providerToProduct(provider));
+      products.push(providerToProduct(provider))
     }
-  });
+  })
 
-  return products;
+  return products
 }
 
 /**
  * Determine vendor type based on products
  */
 function determineVendorType(products: {
-  ides: LandscapeProduct[];
-  clis: LandscapeProduct[];
-  extensions: LandscapeProduct[];
-  models: LandscapeProduct[];
-  providers: LandscapeProduct[];
+  ides: LandscapeProduct[]
+  clis: LandscapeProduct[]
+  extensions: LandscapeProduct[]
+  models: LandscapeProduct[]
+  providers: LandscapeProduct[]
 }): VendorType {
-  const hasIDE = products.ides.length > 0;
-  const hasCLI = products.clis.length > 0;
-  const hasExtension = products.extensions.length > 0;
-  const hasModel = products.models.length > 0;
-  const hasProvider = products.providers.length > 0;
+  const hasIDE = products.ides.length > 0
+  const hasCLI = products.clis.length > 0
+  const hasExtension = products.extensions.length > 0
+  const hasModel = products.models.length > 0
+  const hasProvider = products.providers.length > 0
 
-  const hasTools = hasIDE || hasCLI || hasExtension;
-  const hasAI = hasModel || hasProvider;
+  const hasTools = hasIDE || hasCLI || hasExtension
+  const hasAI = hasModel || hasProvider
 
   if (hasIDE && hasCLI && hasExtension) {
-    return 'full-stack';
+    return 'full-stack'
   }
 
   if (hasAI && hasTools) {
-    return 'ai-native';
+    return 'ai-native'
   }
 
   if (hasTools && !hasAI) {
-    return 'tool-only';
+    return 'tool-only'
   }
 
   if (hasModel && !hasProvider && !hasTools) {
-    return 'model-only';
+    return 'model-only'
   }
 
-  return 'provider-only';
+  return 'provider-only'
 }
 
 /**
  * Build vendor ecosystem map
  */
 export function buildVendorEcosystems(): VendorEcosystem[] {
-  const ecosystems: VendorEcosystem[] = [];
+  const ecosystems: VendorEcosystem[] = []
 
-  vendorsData.forEach((vendor) => {
-    const allProducts = getProductsByVendor(vendor.name);
+  vendorsData.forEach(vendor => {
+    const allProducts = getProductsByVendor(vendor.name)
 
     const products = {
-      ides: allProducts.filter((p) => p.category === 'ide'),
-      clis: allProducts.filter((p) => p.category === 'cli'),
-      extensions: allProducts.filter((p) => p.category === 'extension'),
-      models: allProducts.filter((p) => p.category === 'model'),
-      providers: allProducts.filter((p) => p.category === 'provider'),
-    };
+      ides: allProducts.filter(p => p.category === 'ide'),
+      clis: allProducts.filter(p => p.category === 'cli'),
+      extensions: allProducts.filter(p => p.category === 'extension'),
+      models: allProducts.filter(p => p.category === 'model'),
+      providers: allProducts.filter(p => p.category === 'provider'),
+    }
 
-    const totalProducts = allProducts.length;
+    const totalProducts = allProducts.length
 
     if (totalProducts > 0) {
       ecosystems.push({
@@ -350,25 +350,25 @@ export function buildVendorEcosystems(): VendorEcosystem[] {
         products,
         totalProducts,
         type: determineVendorType(products),
-      });
+      })
     }
-  });
+  })
 
-  return ecosystems.sort((a, b) => b.totalProducts - a.totalProducts);
+  return ecosystems.sort((a, b) => b.totalProducts - a.totalProducts)
 }
 
 /**
  * Build Extension-IDE compatibility mappings
  */
 export function buildExtensionIDECompatibility(): ExtensionIDECompatibility[] {
-  const compatibilities: ExtensionIDECompatibility[] = [];
+  const compatibilities: ExtensionIDECompatibility[] = []
 
-  extensionsData.forEach((ext) => {
+  extensionsData.forEach(ext => {
     if (ext.supportedIdes && ext.supportedIdes.length > 0) {
       const supportedIdes = ext.supportedIdes
-        .map((supported) => {
-          const ide = idesData.find((i) => i.id === supported.ideId);
-          if (!ide) return null;
+        .map(supported => {
+          const ide = idesData.find(i => i.id === supported.ideId)
+          if (!ide) return null
 
           return {
             ideId: ide.id,
@@ -376,26 +376,26 @@ export function buildExtensionIDECompatibility(): ExtensionIDECompatibility[] {
             marketplaceUrl: supported.marketplaceUrl,
             installUri: supported.installUri,
             installCommand: supported.installCommand,
-          };
+          }
         })
-        .filter((item): item is NonNullable<typeof item> => item !== null);
+        .filter((item): item is NonNullable<typeof item> => item !== null)
 
       compatibilities.push({
         extensionId: ext.id,
         extensionName: ext.name,
         supportedIdes,
-      });
+      })
     }
-  });
+  })
 
-  return compatibilities;
+  return compatibilities
 }
 
 /**
  * Calculate ecosystem statistics
  */
 export function calculateLandscapeStats(): LandscapeStats {
-  const allProducts = getAllProducts();
+  const allProducts = getAllProducts()
 
   // Count by category
   const counts = {
@@ -404,63 +404,63 @@ export function calculateLandscapeStats(): LandscapeStats {
     extensions: extensionsData.length,
     models: modelsData.length,
     providers: providersData.length,
-  };
+  }
 
   // License statistics
-  let openSourceCount = 0;
-  let proprietaryCount = 0;
+  let openSourceCount = 0
+  let proprietaryCount = 0
 
-  [...idesData, ...clisData, ...extensionsData].forEach((product) => {
+  ;[...idesData, ...clisData, ...extensionsData].forEach(product => {
     if (product.license && product.license.toLowerCase() !== 'proprietary') {
-      openSourceCount++;
+      openSourceCount++
     } else {
-      proprietaryCount++;
+      proprietaryCount++
     }
-  });
+  })
 
   // Platform support
   const platformSupport = {
     macOS: 0,
     windows: 0,
     linux: 0,
-  };
+  }
 
-  [...idesData, ...clisData].forEach((product) => {
+  ;[...idesData, ...clisData].forEach(product => {
     if (product.platforms) {
-      product.platforms.forEach((platform) => {
-        if (platform.os === 'macOS') platformSupport.macOS++;
-        if (platform.os === 'Windows') platformSupport.windows++;
-        if (platform.os === 'Linux') platformSupport.linux++;
-      });
+      product.platforms.forEach(platform => {
+        if (platform.os === 'macOS') platformSupport.macOS++
+        if (platform.os === 'Windows') platformSupport.windows++
+        if (platform.os === 'Linux') platformSupport.linux++
+      })
     }
-  });
+  })
 
   // Top by GitHub stars
   const productsWithStars = allProducts
-    .filter((p) => p.githubStars && p.githubStars > 0)
-    .map((p) => ({
+    .filter(p => p.githubStars && p.githubStars > 0)
+    .map(p => ({
       id: p.id,
       name: p.name,
       category: p.category,
       stars: p.githubStars!,
     }))
     .sort((a, b) => b.stars - a.stars)
-    .slice(0, 10);
+    .slice(0, 10)
 
   // Vendors by product count
-  const vendorProductCounts = new Map<string, { name: string; count: number }>();
+  const vendorProductCounts = new Map<string, { name: string; count: number }>()
 
-  allProducts.forEach((product) => {
-    const existing = vendorProductCounts.get(product.vendor);
+  allProducts.forEach(product => {
+    const existing = vendorProductCounts.get(product.vendor)
     if (existing) {
-      existing.count++;
+      existing.count++
     } else {
       vendorProductCounts.set(product.vendor, {
         name: product.vendor,
         count: 1,
-      });
+      })
     }
-  });
+  })
 
   const vendorsByProductCount = Array.from(vendorProductCounts.entries())
     .map(([id, data]) => ({
@@ -468,7 +468,7 @@ export function calculateLandscapeStats(): LandscapeStats {
       vendorName: data.name,
       productCount: data.count,
     }))
-    .sort((a, b) => b.productCount - a.productCount);
+    .sort((a, b) => b.productCount - a.productCount)
 
   return {
     totalProducts: allProducts.length,
@@ -479,23 +479,23 @@ export function calculateLandscapeStats(): LandscapeStats {
     platformSupport,
     topByStars: productsWithStars,
     vendorsByProductCount,
-  };
+  }
 }
 
 /**
  * Build relationship graph data for visualization
  */
 export function buildRelationshipGraph(): {
-  nodes: RelationshipNode[];
-  edges: RelationshipEdge[];
+  nodes: RelationshipNode[]
+  edges: RelationshipEdge[]
 } {
-  const nodes: RelationshipNode[] = [];
-  const edges: RelationshipEdge[] = [];
-  const nodeIds = new Set<string>();
+  const nodes: RelationshipNode[] = []
+  const edges: RelationshipEdge[] = []
+  const nodeIds = new Set<string>()
 
   // Add vendor nodes
-  vendorsData.forEach((vendor) => {
-    const vendorNodeId = `vendor-${vendor.id}`;
+  vendorsData.forEach(vendor => {
+    const vendorNodeId = `vendor-${vendor.id}`
     nodes.push({
       id: vendorNodeId,
       type: 'vendor',
@@ -503,15 +503,15 @@ export function buildRelationshipGraph(): {
         label: vendor.name,
         description: vendor.description,
       },
-    });
-    nodeIds.add(vendorNodeId);
-  });
+    })
+    nodeIds.add(vendorNodeId)
+  })
 
   // Add product nodes and vendor-product edges
-  const allProducts = getAllProducts();
+  const allProducts = getAllProducts()
 
-  allProducts.forEach((product) => {
-    const productNodeId = `${product.category}-${product.id}`;
+  allProducts.forEach(product => {
+    const productNodeId = `${product.category}-${product.id}`
 
     // Add product node
     if (!nodeIds.has(productNodeId)) {
@@ -524,30 +524,30 @@ export function buildRelationshipGraph(): {
           category: product.category,
           vendorId: product.vendor.toLowerCase().replace(/\s+/g, '-'),
         },
-      });
-      nodeIds.add(productNodeId);
+      })
+      nodeIds.add(productNodeId)
     }
 
     // Add vendor-product edge
-    const vendorNodeId = `vendor-${product.vendor.toLowerCase().replace(/\s+/g, '-')}`;
+    const vendorNodeId = `vendor-${product.vendor.toLowerCase().replace(/\s+/g, '-')}`
     if (nodeIds.has(vendorNodeId)) {
       edges.push({
         id: `edge-${vendorNodeId}-${productNodeId}`,
         source: vendorNodeId,
         target: productNodeId,
         type: 'vendor-product',
-      });
+      })
     }
-  });
+  })
 
   // Add extension-IDE compatibility edges
-  const compatibilities = buildExtensionIDECompatibility();
+  const compatibilities = buildExtensionIDECompatibility()
 
-  compatibilities.forEach((compat) => {
-    const extensionNodeId = `extension-${compat.extensionId}`;
+  compatibilities.forEach(compat => {
+    const extensionNodeId = `extension-${compat.extensionId}`
 
-    compat.supportedIdes.forEach((ide) => {
-      const ideNodeId = `ide-${ide.ideId}`;
+    compat.supportedIdes.forEach(ide => {
+      const ideNodeId = `ide-${ide.ideId}`
 
       if (nodeIds.has(extensionNodeId) && nodeIds.has(ideNodeId)) {
         edges.push({
@@ -556,18 +556,18 @@ export function buildRelationshipGraph(): {
           target: ideNodeId,
           type: 'extension-ide',
           label: 'supports',
-        });
+        })
       }
-    });
-  });
+    })
+  })
 
   // Add related product edges
-  [...idesData, ...clisData, ...extensionsData].forEach((product) => {
+  ;[...idesData, ...clisData, ...extensionsData].forEach(product => {
     if (product.relatedProducts && product.relatedProducts.length > 0) {
-      const sourceNodeId = `${product.id.includes('ide') ? 'ide' : product.id.includes('cli') ? 'cli' : 'extension'}-${product.id}`;
+      const sourceNodeId = `${product.id.includes('ide') ? 'ide' : product.id.includes('cli') ? 'cli' : 'extension'}-${product.id}`
 
-      product.relatedProducts.forEach((related) => {
-        const targetNodeId = `${related.type}-${related.productId}`;
+      product.relatedProducts.forEach(related => {
+        const targetNodeId = `${related.type}-${related.productId}`
 
         if (nodeIds.has(sourceNodeId) && nodeIds.has(targetNodeId)) {
           edges.push({
@@ -576,13 +576,13 @@ export function buildRelationshipGraph(): {
             target: targetNodeId,
             type: 'related-product',
             label: 'related to',
-          });
+          })
         }
-      });
+      })
     }
-  });
+  })
 
-  return { nodes, edges };
+  return { nodes, edges }
 }
 
 // =============================================================================
@@ -590,25 +590,25 @@ export function buildRelationshipGraph(): {
 // =============================================================================
 
 export interface VendorMatrixRow {
-  vendorId: string;
-  vendorName: string;
-  vendorType: VendorType;
+  vendorId: string
+  vendorName: string
+  vendorType: VendorType
   cells: {
-    ide: LandscapeProduct[];
-    cli: LandscapeProduct[];
-    extension: LandscapeProduct[];
-    model: LandscapeProduct[];
-    provider: LandscapeProduct[];
-  };
+    ide: LandscapeProduct[]
+    cli: LandscapeProduct[]
+    extension: LandscapeProduct[]
+    model: LandscapeProduct[]
+    provider: LandscapeProduct[]
+  }
 }
 
 /**
  * Build vendor-product matrix data
  */
 export function buildVendorMatrix(): VendorMatrixRow[] {
-  const ecosystems = buildVendorEcosystems();
+  const ecosystems = buildVendorEcosystems()
 
-  return ecosystems.map((eco) => ({
+  return ecosystems.map(eco => ({
     vendorId: eco.vendor.id,
     vendorName: eco.vendor.name,
     vendorType: eco.type,
@@ -619,5 +619,5 @@ export function buildVendorMatrix(): VendorMatrixRow[] {
       model: eco.products.models,
       provider: eco.products.providers,
     },
-  }));
+  }))
 }

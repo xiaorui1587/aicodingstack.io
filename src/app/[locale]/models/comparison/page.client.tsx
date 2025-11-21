@@ -1,51 +1,51 @@
-'use client';
+'use client'
 
-import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
-import { useTranslations } from 'next-intl';
-import { Home, FileText, Github, Twitter } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import ComparisonTable, { type ComparisonColumn } from '@/components/ComparisonTable';
-import { modelsData as models } from '@/lib/generated';
+import { FileText, Github, Home, Twitter } from 'lucide-react'
+import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+import { useEffect, useRef, useState } from 'react'
+import ComparisonTable, { type ComparisonColumn } from '@/components/ComparisonTable'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import { modelsData as models } from '@/lib/generated'
 
 type Props = {
-  locale: string;
-};
+  locale: string
+}
 
 export default function ModelComparisonPageClient({ locale }: Props) {
-  const tComparison = useTranslations('comparison');
-  const tCommunity = useTranslations('community');
-  const breadcrumbRef = useRef<HTMLElement>(null);
-  const [isBreadcrumbFixed, setIsBreadcrumbFixed] = useState(false);
-  const [breadcrumbHeight, setBreadcrumbHeight] = useState(0);
+  const tComparison = useTranslations('comparison')
+  const tCommunity = useTranslations('community')
+  const breadcrumbRef = useRef<HTMLElement>(null)
+  const [isBreadcrumbFixed, setIsBreadcrumbFixed] = useState(false)
+  const [breadcrumbHeight, setBreadcrumbHeight] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!breadcrumbRef.current) return;
+      if (!breadcrumbRef.current) return
 
-      const headerHeight = 60; // Height of the site header
-      const breadcrumbTop = breadcrumbRef.current.offsetTop;
+      const headerHeight = 60 // Height of the site header
+      const breadcrumbTop = breadcrumbRef.current.offsetTop
 
       if (window.scrollY > breadcrumbTop - headerHeight) {
         if (!isBreadcrumbFixed) {
-          setBreadcrumbHeight(breadcrumbRef.current.offsetHeight);
+          setBreadcrumbHeight(breadcrumbRef.current.offsetHeight)
         }
-        setIsBreadcrumbFixed(true);
+        setIsBreadcrumbFixed(true)
       } else {
-        setIsBreadcrumbFixed(false);
+        setIsBreadcrumbFixed(false)
       }
-    };
+    }
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
-    handleScroll();
+    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleScroll)
+    handleScroll()
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
-    };
-  }, [isBreadcrumbFixed]);
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
+  }, [isBreadcrumbFixed])
 
   const columns: ComparisonColumn[] = [
     {
@@ -68,27 +68,33 @@ export default function ModelComparisonPageClient({ locale }: Props) {
       key: 'tokenPricing',
       label: tComparison('columns.pricing'),
       render: (value: unknown) => {
-        if (!value || typeof value !== 'object') return '-';
-        const pricing = value as { input?: number | null; output?: number | null; cache?: number | null };
+        if (!value || typeof value !== 'object') return '-'
+        const pricing = value as {
+          input?: number | null
+          output?: number | null
+          cache?: number | null
+        }
         if (pricing.input !== null && pricing.input !== undefined) {
-          return `$${pricing.input}/M`;
+          return `$${pricing.input}/M`
         }
         if (pricing.output !== null && pricing.output !== undefined) {
-          return `$${pricing.output}/M`;
+          return `$${pricing.output}/M`
         }
-        return '-';
+        return '-'
       },
     },
     {
       key: 'links',
       label: tComparison('columns.links'),
       render: (_: unknown, item: Record<string, unknown>) => {
-        const websiteUrl = item.websiteUrl as string | null | undefined;
-        const platformUrls = item.platformUrls as {
-          huggingface?: string | null;
-          artificialAnalysis?: string | null;
-          openrouter?: string | null;
-        } | undefined;
+        const websiteUrl = item.websiteUrl as string | null | undefined
+        const platformUrls = item.platformUrls as
+          | {
+              huggingface?: string | null
+              artificialAnalysis?: string | null
+              openrouter?: string | null
+            }
+          | undefined
 
         return (
           <div className="flex gap-2 items-center">
@@ -153,10 +159,10 @@ export default function ModelComparisonPageClient({ locale }: Props) {
               </span>
             )}
           </div>
-        );
+        )
       },
     },
-  ];
+  ]
 
   return (
     <>
@@ -181,7 +187,9 @@ export default function ModelComparisonPageClient({ locale }: Props) {
                 {tComparison('breadcrumb.models')}
               </Link>
               <span className="text-[var(--color-text-muted)]">/</span>
-              <span className="text-[var(--color-text)] font-medium">{tComparison('breadcrumb.comparison')}</span>
+              <span className="text-[var(--color-text)] font-medium">
+                {tComparison('breadcrumb.comparison')}
+              </span>
             </nav>
           </div>
         </section>
@@ -193,7 +201,9 @@ export default function ModelComparisonPageClient({ locale }: Props) {
         className="py-[var(--spacing-sm)] bg-[var(--color-hover)] border-b border-[var(--color-border)]"
       >
         <div className="max-w-[1200px] mx-auto px-[var(--spacing-md)]">
-          <nav className={`flex items-center gap-[var(--spacing-xs)] text-[0.8125rem] ${isBreadcrumbFixed ? 'invisible' : ''}`}>
+          <nav
+            className={`flex items-center gap-[var(--spacing-xs)] text-[0.8125rem] ${isBreadcrumbFixed ? 'invisible' : ''}`}
+          >
             <Link
               href={`/${locale}/ai-coding-stack`}
               className="text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors"
@@ -208,7 +218,9 @@ export default function ModelComparisonPageClient({ locale }: Props) {
               {tComparison('breadcrumb.models')}
             </Link>
             <span className="text-[var(--color-text-muted)]">/</span>
-            <span className="text-[var(--color-text)] font-medium">{tComparison('breadcrumb.comparison')}</span>
+            <span className="text-[var(--color-text)] font-medium">
+              {tComparison('breadcrumb.comparison')}
+            </span>
           </nav>
         </div>
       </section>
@@ -251,5 +263,5 @@ export default function ModelComparisonPageClient({ locale }: Props) {
 
       <Footer />
     </>
-  );
+  )
 }

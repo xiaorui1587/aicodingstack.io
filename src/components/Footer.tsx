@@ -1,21 +1,21 @@
-'use client';
+'use client'
 
-import { memo, useCallback } from 'react';
-import { Link } from '@/i18n/navigation';
-import { useTheme } from './ThemeProvider';
-import LanguageSwitcher from './controls/LanguageSwitcher';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
+import { memo, useCallback } from 'react'
+import { Link } from '@/i18n/navigation'
+import LanguageSwitcher from './controls/LanguageSwitcher'
+import { useTheme } from './ThemeProvider'
 
 function Footer() {
-  const { theme, toggleTheme } = useTheme();
-  const tFooter = useTranslations('footer');
-  const tCommunity = useTranslations('community');
-  const tStacks = useTranslations('stacks');
-  const tNav = useTranslations('header');
+  const { theme, toggleTheme } = useTheme()
+  const tFooter = useTranslations('footer')
+  const tCommunity = useTranslations('community')
+  const tStacks = useTranslations('stacks')
+  const tNav = useTranslations('header')
 
   const handleToggleTheme = useCallback(() => {
-    toggleTheme();
-  }, [toggleTheme]);
+    toggleTheme()
+  }, [toggleTheme])
 
   // Define resource links
   const resourceLinks = [
@@ -25,7 +25,7 @@ function Footer() {
     { href: '/models', label: tStacks('models') },
     { href: '/model-providers', label: tStacks('modelProviders') },
     { href: '/vendors', label: tStacks('vendors') },
-  ];
+  ]
 
   // Define documentation links
   const documentationLinks = [
@@ -33,7 +33,7 @@ function Footer() {
     { href: '/articles', label: tNav('articles') },
     { href: '/curated-collections', label: tNav('curatedCollections') },
     { href: '/#faq', label: tFooter('faq') },
-  ];
+  ]
 
   return (
     <footer className="bg-[var(--color-bg)] border-t border-[var(--color-border)] py-[var(--spacing-xl)] pb-[var(--spacing-md)]">
@@ -43,11 +43,13 @@ function Footer() {
             <h4 className="text-sm font-semibold tracking-tight">{tFooter('aicodingstack')}</h4>
             <p className="text-sm pb-[var(--spacing-sm)] leading-relaxed text-[var(--color-text-secondary)] font-light">
               {tFooter('tagline')}
-              <br /><br />
+              <br />
+              <br />
               {tFooter('openSource')}
             </p>
             <div className="flex gap-[var(--spacing-xs)]">
               <button
+                type="button"
                 onClick={handleToggleTheme}
                 className="inline-block w-auto px-[var(--spacing-sm)] py-[var(--spacing-xs)] border border-[var(--color-border)] hover:bg-[var(--color-hover)] transition-colors text-xs font-light tracking-tight text-left"
                 aria-label="Toggle theme"
@@ -61,9 +63,12 @@ function Footer() {
           <div className="flex flex-col gap-[var(--spacing-sm)] lg:col-span-2">
             <h4 className="text-sm font-semibold tracking-tight">{tFooter('resources')}</h4>
             <ul className="flex flex-col gap-[var(--spacing-xs)] list-none">
-              {resourceLinks.map((item) => (
+              {resourceLinks.map(item => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors font-light">
+                  <Link
+                    href={item.href}
+                    className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors font-light"
+                  >
                     {item.label}
                   </Link>
                 </li>
@@ -74,9 +79,12 @@ function Footer() {
           <div className="flex flex-col gap-[var(--spacing-sm)] lg:col-span-2">
             <h4 className="text-sm font-semibold tracking-tight">{tFooter('documentation')}</h4>
             <ul className="flex flex-col gap-[var(--spacing-xs)] list-none">
-              {documentationLinks.map((item) => (
+              {documentationLinks.map(item => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors font-light">
+                  <Link
+                    href={item.href}
+                    className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors font-light"
+                  >
                     {item.label}
                   </Link>
                 </li>
@@ -88,23 +96,35 @@ function Footer() {
             <h4 className="text-sm font-semibold tracking-tight">{tFooter('community')}</h4>
             <ul className="flex flex-col gap-[var(--spacing-xs)] list-none">
               <li>
-                <a href="https://github.com/aicodingstack/aicodingstack" target="_blank" rel="noopener" className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors font-light">
+                <a
+                  href="https://github.com/aicodingstack/aicodingstack.io"
+                  target="_blank"
+                  rel="noopener"
+                  className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors font-light"
+                >
                   {tCommunity('github')}
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors font-light">
+                <a
+                  href="https://discord.gg/aicodingstack"
+                  className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors font-light"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {tCommunity('discord')}
                 </a>
               </li>
               <li>
-                <Link href="#" className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors font-light">
+                <Link
+                  href="#"
+                  className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors font-light"
+                >
                   {tCommunity('twitter')}
                 </Link>
               </li>
             </ul>
           </div>
-
         </div>
 
         <div className="border-t border-[var(--color-border)] pt-[var(--spacing-md)]">
@@ -116,7 +136,7 @@ function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }
 
-export default memo(Footer);
+export default memo(Footer)

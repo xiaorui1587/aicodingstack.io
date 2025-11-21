@@ -1,17 +1,17 @@
-'use client';
+'use client'
 
-import { useState, useRef, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
+import { useEffect, useRef, useState } from 'react'
 
 export interface FilterSortBarProps {
-  sortOrder: 'default' | 'name-asc' | 'name-desc';
-  onSortChange: (order: 'default' | 'name-asc' | 'name-desc') => void;
-  licenseFilters: string[];
-  onLicenseFiltersChange: (filters: string[]) => void;
-  platformFilters: string[];
-  onPlatformFiltersChange: (platforms: string[]) => void;
-  availablePlatforms?: string[];
-  platformLabel?: string; // Custom label for platform filter (e.g., "IDE", "Compatibility")
+  sortOrder: 'default' | 'name-asc' | 'name-desc'
+  onSortChange: (order: 'default' | 'name-asc' | 'name-desc') => void
+  licenseFilters: string[]
+  onLicenseFiltersChange: (filters: string[]) => void
+  platformFilters: string[]
+  onPlatformFiltersChange: (platforms: string[]) => void
+  availablePlatforms?: string[]
+  platformLabel?: string // Custom label for platform filter (e.g., "IDE", "Compatibility")
 }
 
 export default function FilterSortBar({
@@ -22,65 +22,65 @@ export default function FilterSortBar({
   platformFilters,
   onPlatformFiltersChange,
   availablePlatforms = ['macOS', 'Windows', 'Linux'],
-  platformLabel
+  platformLabel,
 }: FilterSortBarProps) {
-  const t = useTranslations('components.filterSortBar');
-  const [isSortOpen, setIsSortOpen] = useState(false);
-  const sortRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations('components.filterSortBar')
+  const [isSortOpen, setIsSortOpen] = useState(false)
+  const sortRef = useRef<HTMLDivElement>(null)
 
   const sortOptions = [
     { value: 'default', label: t('sortDefault') },
     { value: 'name-asc', label: t('sortNameAsc') },
-    { value: 'name-desc', label: t('sortNameDesc') }
-  ];
+    { value: 'name-desc', label: t('sortNameDesc') },
+  ]
 
-  const currentSortLabel = sortOptions.find(opt => opt.value === sortOrder)?.label || t('sortDefault');
+  const currentSortLabel =
+    sortOptions.find(opt => opt.value === sortOrder)?.label || t('sortDefault')
 
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
-        setIsSortOpen(false);
+        setIsSortOpen(false)
       }
-    };
+    }
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   const toggleLicense = (license: string) => {
     if (licenseFilters.includes(license)) {
-      onLicenseFiltersChange(licenseFilters.filter(l => l !== license));
+      onLicenseFiltersChange(licenseFilters.filter(l => l !== license))
     } else {
-      onLicenseFiltersChange([...licenseFilters, license]);
+      onLicenseFiltersChange([...licenseFilters, license])
     }
-  };
+  }
 
   const togglePlatform = (platform: string) => {
     if (platformFilters.includes(platform)) {
-      onPlatformFiltersChange(platformFilters.filter(p => p !== platform));
+      onPlatformFiltersChange(platformFilters.filter(p => p !== platform))
     } else {
-      onPlatformFiltersChange([...platformFilters, platform]);
+      onPlatformFiltersChange([...platformFilters, platform])
     }
-  };
+  }
 
-  const hasActiveFilters = licenseFilters.length > 0 || platformFilters.length > 0;
+  const hasActiveFilters = licenseFilters.length > 0 || platformFilters.length > 0
 
   const clearFilters = () => {
-    onLicenseFiltersChange([]);
-    onPlatformFiltersChange([]);
-  };
+    onLicenseFiltersChange([])
+    onPlatformFiltersChange([])
+  }
 
   return (
     <div className="mb-[var(--spacing-md)]">
       <div className="flex flex-wrap items-center gap-[var(--spacing-sm)]">
         {/* Sort Custom Dropdown */}
         <div className="flex items-center gap-[var(--spacing-xs)]">
-          <label className="text-xs text-[var(--color-text-muted)]">
-            {t('sort')}
-          </label>
+          <span className="text-xs text-[var(--color-text-muted)]">{t('sort')}</span>
           <div className="relative" ref={sortRef}>
             <button
+              type="button"
               onClick={() => setIsSortOpen(!isSortOpen)}
               className="px-[var(--spacing-sm)] py-1 text-sm border border-[var(--color-border)] bg-[var(--color-background)] text-[var(--color-text)] hover:border-[var(--color-border-strong)] transition-colors flex items-center gap-1"
             >
@@ -90,12 +90,13 @@ export default function FilterSortBar({
 
             {isSortOpen && (
               <div className="absolute top-full mt-1 left-0 z-10 bg-[var(--color-bg)] border border-[var(--color-border)] shadow-lg min-w-[140px]">
-                {sortOptions.map((option) => (
+                {sortOptions.map(option => (
                   <button
+                    type="button"
                     key={option.value}
                     onClick={() => {
-                      onSortChange(option.value as 'default' | 'name-asc' | 'name-desc');
-                      setIsSortOpen(false);
+                      onSortChange(option.value as 'default' | 'name-asc' | 'name-desc')
+                      setIsSortOpen(false)
                     }}
                     className={`w-full text-left px-[var(--spacing-sm)] py-1.5 text-sm transition-colors ${
                       sortOrder === option.value
@@ -113,10 +114,9 @@ export default function FilterSortBar({
 
         {/* License Filter Buttons */}
         <div className="flex items-center gap-[var(--spacing-xs)]">
-          <label className="text-xs text-[var(--color-text-muted)]">
-            {t('license')}
-          </label>
+          <span className="text-xs text-[var(--color-text-muted)]">{t('license')}</span>
           <button
+            type="button"
             onClick={() => toggleLicense('open-source')}
             className={`px-[var(--spacing-sm)] py-1 text-sm border transition-colors ${
               licenseFilters.includes('open-source')
@@ -127,6 +127,7 @@ export default function FilterSortBar({
             {t('openSource')}
           </button>
           <button
+            type="button"
             onClick={() => toggleLicense('proprietary')}
             className={`px-[var(--spacing-sm)] py-1 text-sm border transition-colors ${
               licenseFilters.includes('proprietary')
@@ -140,11 +141,12 @@ export default function FilterSortBar({
 
         {/* Platform Filter Buttons */}
         <div className="flex items-center gap-[var(--spacing-xs)]">
-          <label className="text-xs text-[var(--color-text-muted)]">
+          <span className="text-xs text-[var(--color-text-muted)]">
             {platformLabel || t('platform')}
-          </label>
-          {availablePlatforms.map((platform) => (
+          </span>
+          {availablePlatforms.map(platform => (
             <button
+              type="button"
               key={platform}
               onClick={() => togglePlatform(platform)}
               className={`px-[var(--spacing-sm)] py-1 text-sm border transition-colors ${
@@ -161,6 +163,7 @@ export default function FilterSortBar({
         {/* Clear Filters Button */}
         {hasActiveFilters && (
           <button
+            type="button"
             onClick={clearFilters}
             className="ml-auto px-[var(--spacing-sm)] py-1 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
           >
@@ -169,5 +172,5 @@ export default function FilterSortBar({
         )}
       </div>
     </div>
-  );
+  )
 }

@@ -1,37 +1,37 @@
-import { Link } from '@/i18n/navigation';
-import { notFound } from 'next/navigation';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { getArticles, getArticleBySlug, getArticleComponent } from '@/lib/generated/articles';
-import { generateArticleMetadata } from '@/lib/metadata';
+import { notFound } from 'next/navigation'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import { Link } from '@/i18n/navigation'
+import { getArticleBySlug, getArticleComponent, getArticles } from '@/lib/generated/articles'
+import { generateArticleMetadata } from '@/lib/metadata'
 
 type Props = {
-  params: Promise<{ slug: string; locale: string }>;
-};
+  params: Promise<{ slug: string; locale: string }>
+}
 
 export async function generateStaticParams() {
-  const { locales } = await import('@/i18n/config');
-  const params: { slug: string; locale: string }[] = [];
+  const { locales } = await import('@/i18n/config')
+  const params: { slug: string; locale: string }[] = []
 
   for (const locale of locales) {
-    const articles = getArticles(locale);
+    const articles = getArticles(locale)
     for (const article of articles) {
       params.push({
         slug: article.slug,
         locale,
-      });
+      })
     }
   }
 
-  return params;
+  return params
 }
 
 export async function generateMetadata({ params }: Props) {
-  const { slug, locale } = await params;
-  const article = getArticleBySlug(slug, locale);
+  const { slug, locale } = await params
+  const article = getArticleBySlug(slug, locale)
 
   if (!article) {
-    return { title: 'Article Not Found | AI Coding Stack' };
+    return { title: 'Article Not Found | AI Coding Stack' }
   }
 
   return await generateArticleMetadata({
@@ -42,18 +42,18 @@ export async function generateMetadata({ params }: Props) {
       description: article.description,
       date: article.date,
     },
-  });
+  })
 }
 
 export default async function ArticlePage({ params }: Props) {
-  const { slug, locale } = await params;
-  const article = getArticleBySlug(slug, locale);
+  const { slug, locale } = await params
+  const article = getArticleBySlug(slug, locale)
 
   if (!article) {
-    notFound();
+    notFound()
   }
 
-  const ArticleContent = await getArticleComponent(locale, slug);
+  const ArticleContent = await getArticleComponent(locale, slug)
 
   if (!ArticleContent) {
     return (
@@ -76,7 +76,7 @@ export default async function ArticlePage({ params }: Props) {
         </div>
         <Footer />
       </>
-    );
+    )
   }
 
   return (
@@ -134,5 +134,5 @@ export default async function ArticlePage({ params }: Props) {
 
       <Footer />
     </>
-  );
+  )
 }

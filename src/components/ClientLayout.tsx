@@ -1,11 +1,7 @@
-'use client';
+'use client'
 
-import { ThemeProvider } from './ThemeProvider';
+import { ThemeProvider } from './ThemeProvider'
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <ThemeProvider>
-      {children}
-    </ThemeProvider>
-  );
+  return <ThemeProvider>{children}</ThemeProvider>
 }

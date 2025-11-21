@@ -1,12 +1,12 @@
-'use client';
+'use client'
 
-import { useReportWebVitals } from 'next/web-vitals';
+import { useReportWebVitals } from 'next/web-vitals'
 
 export function WebVitals() {
-  useReportWebVitals((metric) => {
+  useReportWebVitals(metric => {
     // Log to console in development
     if (process.env.NODE_ENV === 'development') {
-      console.log('[Web Vitals]', metric);
+      console.log('[Web Vitals]', metric)
     }
 
     // Send to analytics endpoint in production
@@ -31,9 +31,9 @@ export function WebVitals() {
       */
 
       // For now, just use console in production too
-      console.log('[Web Vitals]', metric.name, metric.value, metric.rating);
+      console.log('[Web Vitals]', metric.name, metric.value, metric.rating)
     }
-  });
+  })
 
-  return null;
+  return null
 }

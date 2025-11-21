@@ -1,37 +1,37 @@
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import DocsSidebar from '@/components/sidebar/DocsSidebar';
-import { getDocSections, getDocBySlug, getDocComponent } from '@/lib/generated/docs';
-import { generateDocsMetadata } from '@/lib/metadata';
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import DocsSidebar from '@/components/sidebar/DocsSidebar'
+import { getDocBySlug, getDocComponent, getDocSections } from '@/lib/generated/docs'
+import { generateDocsMetadata } from '@/lib/metadata'
 
 type Props = {
-  params: Promise<{ locale: string; slug: string }>;
-};
+  params: Promise<{ locale: string; slug: string }>
+}
 
 export async function generateStaticParams() {
-  const { locales } = await import('@/i18n/config');
-  const staticParams: Array<{ locale: string; slug: string }> = [];
+  const { locales } = await import('@/i18n/config')
+  const staticParams: Array<{ locale: string; slug: string }> = []
 
   for (const locale of locales) {
-    const docSections = getDocSections(locale);
+    const docSections = getDocSections(locale)
     for (const doc of docSections) {
-      staticParams.push({ locale, slug: doc.slug });
+      staticParams.push({ locale, slug: doc.slug })
     }
   }
 
-  return staticParams;
+  return staticParams
 }
 
 export async function generateMetadata({ params }: Props) {
-  const { locale, slug } = await params;
-  const doc = getDocBySlug(slug, locale);
+  const { locale, slug } = await params
+  const doc = getDocBySlug(slug, locale)
 
   if (!doc) {
     return {
       title: 'Documentation Not Found | AI Coding Stack',
-    };
+    }
   }
 
   return await generateDocsMetadata({
@@ -41,19 +41,19 @@ export async function generateMetadata({ params }: Props) {
       title: doc.title,
       description: `Learn about ${doc.title} in AI Coding Stack documentation.`,
     },
-  });
+  })
 }
 
 export default async function DocPage({ params }: Props) {
-  const { locale, slug } = await params;
-  const doc = getDocBySlug(slug, locale);
+  const { locale, slug } = await params
+  const doc = getDocBySlug(slug, locale)
 
   if (!doc) {
-    notFound();
+    notFound()
   }
 
-  const docSections = getDocSections(locale);
-  const DocContent = await getDocComponent(locale, slug);
+  const docSections = getDocSections(locale)
+  const DocContent = await getDocComponent(locale, slug)
 
   if (!DocContent) {
     return (
@@ -76,7 +76,7 @@ export default async function DocPage({ params }: Props) {
         </div>
         <Footer />
       </>
-    );
+    )
   }
 
   return (
@@ -98,5 +98,5 @@ export default async function DocPage({ params }: Props) {
 
       <Footer />
     </>
-  );
+  )
 }

@@ -1,66 +1,72 @@
-import React from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
 
 export interface resourceUrls {
-  download?: string;
-  changelog?: string;
-  pricing?: string;
-  blog?: string;
-  mcp?: string;
-  issue?: string;
+  download?: string
+  changelog?: string
+  pricing?: string
+  blog?: string
+  mcp?: string
+  issue?: string
 }
 
 export interface CommunityUrls {
-  linkedin?: string;
-  twitter?: string;
-  github?: string;
-  youtube?: string;
-  discord?: string;
-  reddit?: string;
+  linkedin?: string
+  twitter?: string
+  github?: string
+  youtube?: string
+  discord?: string
+  reddit?: string
 }
 
 export interface ProductLinksProps {
-  resourceUrls?: resourceUrls;
-  communityUrls?: CommunityUrls;
+  resourceUrls?: resourceUrls
+  communityUrls?: CommunityUrls
 }
 
 export function ProductLinks({ resourceUrls, communityUrls }: ProductLinksProps) {
-  const t = useTranslations('components.productLinks');
+  const t = useTranslations('components.productLinks')
 
   // Check if there's any content to display
-  const hasresourceUrls = resourceUrls && Object.values(resourceUrls).some(url => url);
-  const hasCommunityUrls = communityUrls && Object.values(communityUrls).some(url => url);
+  const hasresourceUrls = resourceUrls && Object.values(resourceUrls).some(url => url)
+  const hasCommunityUrls = communityUrls && Object.values(communityUrls).some(url => url)
 
   // If both resourceUrls and communityUrls have no values, don't render the component
   if (!hasresourceUrls && !hasCommunityUrls) {
-    return null;
+    return null
   }
 
   // Define the order of links for resourceUrls
-  const pageUrlKeys = ['download', 'changelog', 'pricing', 'blog', 'mcp', 'issue'] as const;
+  const pageUrlKeys = ['download', 'changelog', 'pricing', 'blog', 'mcp', 'issue'] as const
 
   // Define the order of links for communityUrls
-  const communityUrlKeys = ['linkedin', 'twitter', 'github', 'youtube', 'discord', 'reddit'] as const;
+  const communityUrlKeys = [
+    'linkedin',
+    'twitter',
+    'github',
+    'youtube',
+    'discord',
+    'reddit',
+  ] as const
 
   // Generate link configurations for resourceUrls by iterating over keys
-  const pageUrlLinks = pageUrlKeys.map((key) => ({
+  const pageUrlLinks = pageUrlKeys.map(key => ({
     key,
     url: resourceUrls?.[key],
     label: t(key),
-  }));
+  }))
 
   // Generate link configurations for communityUrls by iterating over keys
-  const communityUrlLinks = communityUrlKeys.map((key) => ({
+  const communityUrlLinks = communityUrlKeys.map(key => ({
     key,
     url: communityUrls?.[key],
     label: t(key),
-  }));
+  }))
 
   // Define sections configuration
   const sections = [
     { title: t('resources'), links: pageUrlLinks, show: hasresourceUrls },
     { title: t('community'), links: communityUrlLinks, show: hasCommunityUrls },
-  ];
+  ]
 
   return (
     <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
@@ -96,5 +102,5 @@ export function ProductLinks({ resourceUrls, communityUrls }: ProductLinksProps)
         </div>
       </div>
     </section>
-  );
+  )
 }

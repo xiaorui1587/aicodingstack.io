@@ -3,87 +3,89 @@
  * High-level functions for generating complete metadata for different page types
  */
 
-import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
+import { defaultLocale } from '@/i18n/config'
 import {
-  CATEGORY_SEO_KEYWORDS,
   CATEGORY_DISPLAY_NAMES,
   CATEGORY_EXAMPLES,
-  METADATA_DEFAULTS,
+  CATEGORY_SEO_KEYWORDS,
   type Category,
   type Locale,
-} from './config';
+  METADATA_DEFAULTS,
+} from './config'
 import {
-  buildListPageTitle,
+  buildAlternates,
   buildDetailPageTitle,
   buildKeywords,
-  buildAlternates,
+  buildListPageTitle,
   buildOpenGraph,
+  buildProductDescription,
   buildTwitterCard,
-  getOGImagePath,
   formatPlatforms,
   formatPriceForDescription,
-  buildProductDescription,
-} from './helpers';
-import { defaultLocale } from '@/i18n/config';
+  getOGImagePath,
+} from './helpers'
 
 /**
  * Generate metadata for category list pages (IDEs, CLIs, etc.)
  */
 export async function generateListPageMetadata(options: {
-  locale: Locale;
-  category: Category;
-  translationNamespace: string;
-  additionalKeywords?: string[];
+  locale: Locale
+  category: Category
+  translationNamespace: string
+  additionalKeywords?: string[]
 }): Promise<Metadata> {
-  const { locale, category, translationNamespace, additionalKeywords = [] } = options;
+  const { locale, category, translationNamespace, additionalKeywords = [] } = options
 
-  const t = await getTranslations({ locale, namespace: translationNamespace });
+  const t = await getTranslations({ locale, namespace: translationNamespace })
 
-  const translatedTitle = t('title');
-  const description = t('subtitle');
+  const translatedTitle = t('title')
+  const description = t('subtitle')
 
   // Build SEO-optimized title
-  const categoryExamples = CATEGORY_EXAMPLES[category as keyof typeof CATEGORY_EXAMPLES];
-  const categoryKeywords = CATEGORY_SEO_KEYWORDS[category as keyof typeof CATEGORY_SEO_KEYWORDS];
+  const categoryExamples = CATEGORY_EXAMPLES[category as keyof typeof CATEGORY_EXAMPLES]
+  const categoryKeywords = CATEGORY_SEO_KEYWORDS[category as keyof typeof CATEGORY_SEO_KEYWORDS]
 
   const title = buildListPageTitle({
     translatedTitle,
-    categoryName: CATEGORY_DISPLAY_NAMES[category as keyof typeof CATEGORY_DISPLAY_NAMES] || translatedTitle,
-    examples: (categoryExamples ? [...categoryExamples] : []),
+    categoryName:
+      CATEGORY_DISPLAY_NAMES[category as keyof typeof CATEGORY_DISPLAY_NAMES] || translatedTitle,
+    examples: categoryExamples ? [...categoryExamples] : [],
     year: METADATA_DEFAULTS.currentYear,
-  });
+  })
 
   // Build keywords
   const keywords = buildKeywords([
-    (categoryKeywords ? [...categoryKeywords] : []),
+    categoryKeywords ? [...categoryKeywords] : [],
     additionalKeywords,
-  ]);
+  ])
 
   // Build canonical path
-  const basePath = category;
+  const basePath = category
   const alternates = buildAlternates({
     canonicalPath: basePath,
     locale,
     languageBasePath: basePath,
-  });
+  })
 
   // Build OpenGraph
-  const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`;
-  const displayName = CATEGORY_DISPLAY_NAMES[category as keyof typeof CATEGORY_DISPLAY_NAMES] || translatedTitle;
+  const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`
+  const displayName =
+    CATEGORY_DISPLAY_NAMES[category as keyof typeof CATEGORY_DISPLAY_NAMES] || translatedTitle
   const openGraph = buildOpenGraph({
     title: `${translatedTitle} - Best ${displayName} ${METADATA_DEFAULTS.currentYear}`,
     description,
     url: canonicalPath,
     locale,
     type: 'website',
-  });
+  })
 
   // Build Twitter Card
   const twitter = buildTwitterCard({
     title: `${translatedTitle} - Best ${displayName} ${METADATA_DEFAULTS.currentYear}`,
     description,
-  });
+  })
 
   return {
     title,
@@ -92,38 +94,38 @@ export async function generateListPageMetadata(options: {
     alternates,
     openGraph,
     twitter,
-  };
+  }
 }
 
 /**
  * Generate metadata for software product detail pages (IDEs, CLIs, Extensions)
  */
 export async function generateSoftwareDetailMetadata(options: {
-  locale: Locale;
-  category: Category;
-  slug: string;
+  locale: Locale
+  category: Category
+  slug: string
   product: {
-    name: string;
-    description: string;
-    vendor: string;
-    platforms?: Array<{ os: string }> | string[];
-    pricing?: Array<{ value: number | null; currency: string | null; per: string | null }>;
-    license?: string;
-  };
-  typeDescription: string;
+    name: string
+    description: string
+    vendor: string
+    platforms?: Array<{ os: string }> | string[]
+    pricing?: Array<{ value: number | null; currency: string | null; per: string | null }>
+    license?: string
+  }
+  typeDescription: string
 }): Promise<Metadata> {
-  const { locale, category, slug, product, typeDescription } = options;
+  const { locale, category, slug, product, typeDescription } = options
 
   // Build title
   const title = buildDetailPageTitle({
     productName: product.name,
     typeDescription,
     year: METADATA_DEFAULTS.currentYear,
-  });
+  })
 
   // Build description with product specs
-  const platformsStr = formatPlatforms(product.platforms);
-  const pricingStr = formatPriceForDescription(product.pricing);
+  const platformsStr = formatPlatforms(product.platforms)
+  const pricingStr = formatPriceForDescription(product.pricing)
 
   const description = buildProductDescription({
     baseDescription: product.description,
@@ -131,27 +133,27 @@ export async function generateSoftwareDetailMetadata(options: {
     platforms: platformsStr,
     pricing: pricingStr || undefined,
     license: product.license,
-  });
+  })
 
   // Build keywords
   const keywords = buildKeywords([
     product.name,
     product.vendor,
-    [...CATEGORY_SEO_KEYWORDS[category as keyof typeof CATEGORY_SEO_KEYWORDS] || []],
+    [...(CATEGORY_SEO_KEYWORDS[category as keyof typeof CATEGORY_SEO_KEYWORDS] || [])],
     platformsStr,
-  ]);
+  ])
 
   // Build canonical path
-  const basePath = `${category}/${slug}`;
+  const basePath = `${category}/${slug}`
   const alternates = buildAlternates({
     canonicalPath: basePath,
     locale,
     languageBasePath: basePath,
-  });
+  })
 
   // Build OpenGraph with product image
-  const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`;
-  const imagePath = getOGImagePath(category, slug);
+  const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`
+  const imagePath = getOGImagePath(category, slug)
 
   const openGraph = buildOpenGraph({
     title: `${product.name} - ${typeDescription}`,
@@ -160,14 +162,14 @@ export async function generateSoftwareDetailMetadata(options: {
     locale,
     type: 'article',
     images: [{ url: imagePath, alt: `${product.name} Screenshot` }],
-  });
+  })
 
   // Build Twitter Card with product image
   const twitter = buildTwitterCard({
     title: `${product.name} - ${typeDescription}`,
     description: product.description,
     images: [imagePath],
-  });
+  })
 
   return {
     title,
@@ -176,51 +178,52 @@ export async function generateSoftwareDetailMetadata(options: {
     alternates,
     openGraph,
     twitter,
-  };
+  }
 }
 
 /**
  * Generate metadata for model detail pages
  */
 export async function generateModelDetailMetadata(options: {
-  locale: Locale;
-  slug: string;
+  locale: Locale
+  slug: string
   model: {
-    name: string;
-    description: string;
-    vendor: string;
-    size?: string;
-    totalContext?: number;
-    maxOutput?: number;
+    name: string
+    description: string
+    vendor: string
+    size?: string
+    totalContext?: number
+    maxOutput?: number
     tokenPricing?: {
-      input?: number;
-      output?: number;
-    };
-  };
-  translationNamespace: string;
+      input?: number
+      output?: number
+    }
+  }
+  translationNamespace: string
 }): Promise<Metadata> {
-  const { locale, slug, model, translationNamespace } = options;
+  const { locale, slug, model, translationNamespace } = options
 
-  const t = await getTranslations({ locale, namespace: translationNamespace });
+  const t = await getTranslations({ locale, namespace: translationNamespace })
 
   // Build title with model-specific translation
-  const title = `${model.name} - ${t('metaTitle')}`;
+  const title = `${model.name} - ${t('metaTitle')}`
 
   // Build description with model specs
-  const specs: string[] = [];
-  if (model.size) specs.push(`${t('modelSize')}: ${model.size}`);
-  if (model.totalContext) specs.push(`${t('totalContext')}: ${model.totalContext.toLocaleString()} tokens`);
-  if (model.maxOutput) specs.push(`${t('maxOutput')}: ${model.maxOutput.toLocaleString()} tokens`);
+  const specs: string[] = []
+  if (model.size) specs.push(`${t('modelSize')}: ${model.size}`)
+  if (model.totalContext)
+    specs.push(`${t('totalContext')}: ${model.totalContext.toLocaleString()} tokens`)
+  if (model.maxOutput) specs.push(`${t('maxOutput')}: ${model.maxOutput.toLocaleString()} tokens`)
 
   const pricingDisplay = model.tokenPricing?.input
     ? `$${model.tokenPricing.input}/M tokens`
     : model.tokenPricing?.output
-    ? `$${model.tokenPricing.output}/M tokens`
-    : null;
+      ? `$${model.tokenPricing.output}/M tokens`
+      : null
 
-  if (pricingDisplay) specs.push(`${t('pricing')}: ${pricingDisplay}`);
+  if (pricingDisplay) specs.push(`${t('pricing')}: ${pricingDisplay}`)
 
-  const description = `${model.name} by ${model.vendor}. ${specs.join('. ')}. ${model.description}`;
+  const description = `${model.name} by ${model.vendor}. ${specs.join('. ')}. ${model.description}`
 
   // Build keywords
   const keywords = buildKeywords([
@@ -228,19 +231,19 @@ export async function generateModelDetailMetadata(options: {
     model.vendor,
     model.size || '',
     [...CATEGORY_SEO_KEYWORDS.models],
-  ]);
+  ])
 
   // Build canonical path
-  const basePath = `models/${slug}`;
+  const basePath = `models/${slug}`
   const alternates = buildAlternates({
     canonicalPath: basePath,
     locale,
     languageBasePath: basePath,
-  });
+  })
 
   // Build OpenGraph
-  const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`;
-  const imagePath = getOGImagePath('models', slug);
+  const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`
+  const imagePath = getOGImagePath('models', slug)
 
   const openGraph = buildOpenGraph({
     title: `${model.name} - ${t('metaTitle')}`,
@@ -249,14 +252,14 @@ export async function generateModelDetailMetadata(options: {
     locale,
     type: 'article',
     images: [{ url: imagePath, alt: `${model.name} Information` }],
-  });
+  })
 
   // Build Twitter Card
   const twitter = buildTwitterCard({
     title: `${model.name} - ${t('metaTitle')}`,
     description: model.description,
     images: [imagePath],
-  });
+  })
 
   return {
     title,
@@ -265,42 +268,42 @@ export async function generateModelDetailMetadata(options: {
     alternates,
     openGraph,
     twitter,
-  };
+  }
 }
 
 /**
  * Generate metadata for comparison pages
  */
 export async function generateComparisonMetadata(options: {
-  locale: Locale;
-  category: Category;
-  translationNamespace?: string;
+  locale: Locale
+  category: Category
+  translationNamespace?: string
 }): Promise<Metadata> {
-  const { locale, category, translationNamespace } = options;
+  const { locale, category, translationNamespace } = options
 
-  const categoryExamples = CATEGORY_EXAMPLES[category as keyof typeof CATEGORY_EXAMPLES];
-  const categoryName = CATEGORY_DISPLAY_NAMES[category as keyof typeof CATEGORY_DISPLAY_NAMES] || '';
-  const examples = categoryExamples ? [...categoryExamples] : [];
+  const categoryExamples = CATEGORY_EXAMPLES[category as keyof typeof CATEGORY_EXAMPLES]
+  const categoryName = CATEGORY_DISPLAY_NAMES[category as keyof typeof CATEGORY_DISPLAY_NAMES] || ''
+  const examples = categoryExamples ? [...categoryExamples] : []
 
   // Build title and description
   // Use translations if available, otherwise use default English text
-  let title: string;
-  let description: string;
+  let title: string
+  let description: string
 
   if (translationNamespace) {
     try {
-      const t = await getTranslations({ locale, namespace: translationNamespace });
-      title = `${t('title')} - ${categoryName} Comparison | ${METADATA_DEFAULTS.siteName}`;
-      description = t('description');
+      const t = await getTranslations({ locale, namespace: translationNamespace })
+      title = `${t('title')} - ${categoryName} Comparison | ${METADATA_DEFAULTS.siteName}`
+      description = t('description')
     } catch {
       // Fallback to default English text if translations not available
-      title = `Compare ${categoryName} - Side-by-Side Comparison | ${METADATA_DEFAULTS.siteName}`;
-      description = `Compare specifications, features, and pricing of popular ${categoryName.toLowerCase()}. ${examples.length > 0 ? examples.join(', ') + ', and more.' : ''}`;
+      title = `Compare ${categoryName} - Side-by-Side Comparison | ${METADATA_DEFAULTS.siteName}`
+      description = `Compare specifications, features, and pricing of popular ${categoryName.toLowerCase()}. ${examples.length > 0 ? `${examples.join(', ')}, and more.` : ''}`
     }
   } else {
     // Use default English text
-    title = `Compare ${categoryName} - Side-by-Side Comparison | ${METADATA_DEFAULTS.siteName}`;
-    description = `Compare specifications, features, and pricing of popular ${categoryName.toLowerCase()}. ${examples.length > 0 ? examples.join(', ') + ', and more.' : ''}`;
+    title = `Compare ${categoryName} - Side-by-Side Comparison | ${METADATA_DEFAULTS.siteName}`
+    description = `Compare specifications, features, and pricing of popular ${categoryName.toLowerCase()}. ${examples.length > 0 ? `${examples.join(', ')}, and more.` : ''}`
   }
 
   // Build keywords
@@ -310,19 +313,19 @@ export async function generateComparisonMetadata(options: {
     'specifications',
     'pricing',
     'side-by-side',
-    [...CATEGORY_SEO_KEYWORDS[category as keyof typeof CATEGORY_SEO_KEYWORDS] || []],
-  ]);
+    [...(CATEGORY_SEO_KEYWORDS[category as keyof typeof CATEGORY_SEO_KEYWORDS] || [])],
+  ])
 
   // Build canonical path
-  const basePath = `${category}/comparison`;
+  const basePath = `${category}/comparison`
   const alternates = buildAlternates({
     canonicalPath: basePath,
     locale,
     languageBasePath: basePath,
-  });
+  })
 
   // Build OpenGraph
-  const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`;
+  const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`
 
   const openGraph = buildOpenGraph({
     title: `${categoryName} Comparison`,
@@ -330,13 +333,13 @@ export async function generateComparisonMetadata(options: {
     url: canonicalPath,
     locale,
     type: 'website',
-  });
+  })
 
   // Build Twitter Card
   const twitter = buildTwitterCard({
     title: `${categoryName} Comparison`,
     description,
-  });
+  })
 
   return {
     title,
@@ -345,47 +348,44 @@ export async function generateComparisonMetadata(options: {
     alternates,
     openGraph,
     twitter,
-  };
+  }
 }
 
 /**
  * Generate metadata for article pages
  */
 export async function generateArticleMetadata(options: {
-  locale: Locale;
-  slug: string;
+  locale: Locale
+  slug: string
   article: {
-    title: string;
-    description: string;
-    date: string;
-    author?: string;
-  };
+    title: string
+    description: string
+    date: string
+    author?: string
+  }
 }): Promise<Metadata> {
-  const { locale, slug, article } = options;
+  const { locale, slug, article } = options
 
   // Build title
-  const title = `${article.title} | ${METADATA_DEFAULTS.siteName} Articles`;
+  const title = `${article.title} | ${METADATA_DEFAULTS.siteName} Articles`
 
   // Build description
-  const description = article.description;
+  const description = article.description
 
   // Build keywords
-  const keywords = buildKeywords([
-    article.title,
-    [...CATEGORY_SEO_KEYWORDS.articles],
-  ]);
+  const keywords = buildKeywords([article.title, [...CATEGORY_SEO_KEYWORDS.articles]])
 
   // Build canonical path
-  const basePath = `articles/${slug}`;
+  const basePath = `articles/${slug}`
   const alternates = buildAlternates({
     canonicalPath: basePath,
     locale,
     languageBasePath: basePath,
-  });
+  })
 
   // Build OpenGraph with article metadata
-  const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`;
-  const imagePath = getOGImagePath('articles', slug);
+  const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`
+  const imagePath = getOGImagePath('articles', slug)
 
   const openGraph = buildOpenGraph({
     title: article.title,
@@ -395,7 +395,7 @@ export async function generateArticleMetadata(options: {
     type: 'article',
     images: [{ url: imagePath, alt: article.title }],
     publishedTime: article.date,
-  });
+  })
 
   // Build Twitter Card with creator
   const twitter = buildTwitterCard({
@@ -403,7 +403,7 @@ export async function generateArticleMetadata(options: {
     description,
     images: [imagePath],
     includeCreator: true,
-  });
+  })
 
   return {
     title,
@@ -412,44 +412,41 @@ export async function generateArticleMetadata(options: {
     alternates,
     openGraph,
     twitter,
-  };
+  }
 }
 
 /**
  * Generate metadata for documentation pages
  */
 export async function generateDocsMetadata(options: {
-  locale: Locale;
-  slug: string;
+  locale: Locale
+  slug: string
   doc: {
-    title: string;
-    description: string;
-  };
+    title: string
+    description: string
+  }
 }): Promise<Metadata> {
-  const { locale, slug, doc } = options;
+  const { locale, slug, doc } = options
 
   // Build title
-  const title = `${doc.title} | ${METADATA_DEFAULTS.siteName} Documentation`;
+  const title = `${doc.title} | ${METADATA_DEFAULTS.siteName} Documentation`
 
   // Build description
-  const description = doc.description;
+  const description = doc.description
 
   // Build keywords
-  const keywords = buildKeywords([
-    doc.title,
-    [...CATEGORY_SEO_KEYWORDS.docs],
-  ]);
+  const keywords = buildKeywords([doc.title, [...CATEGORY_SEO_KEYWORDS.docs]])
 
   // Build canonical path
-  const basePath = `docs/${slug}`;
+  const basePath = `docs/${slug}`
   const alternates = buildAlternates({
     canonicalPath: basePath,
     locale,
     languageBasePath: basePath,
-  });
+  })
 
   // Build OpenGraph
-  const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`;
+  const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`
 
   const openGraph = buildOpenGraph({
     title: doc.title,
@@ -457,13 +454,13 @@ export async function generateDocsMetadata(options: {
     url: canonicalPath,
     locale,
     type: 'article',
-  });
+  })
 
   // Build Twitter Card
   const twitter = buildTwitterCard({
     title: doc.title,
     description,
-  });
+  })
 
   return {
     title,
@@ -472,5 +469,5 @@ export async function generateDocsMetadata(options: {
     alternates,
     openGraph,
     twitter,
-  };
+  }
 }

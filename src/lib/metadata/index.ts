@@ -16,45 +16,43 @@
  * }
  */
 
-// Export all generators
-export {
-  generateListPageMetadata,
-  generateSoftwareDetailMetadata,
-  generateModelDetailMetadata,
-  generateComparisonMetadata,
-  generateArticleMetadata,
-  generateDocsMetadata,
-} from './generators';
-
-// Export all helpers
-export {
-  mapLocaleToOG,
-  getAlternateOGLocale,
-  buildTitle,
-  buildListPageTitle,
-  buildDetailPageTitle,
-  buildKeywords,
-  buildCanonicalUrl,
-  buildLanguageAlternates,
-  buildFullUrl,
-  buildOGImage,
-  getOGImagePath,
-  buildOpenGraph,
-  buildTwitterCard,
-  buildAlternates,
-  formatPriceForDescription,
-  formatPlatforms,
-  buildProductDescription,
-} from './helpers';
-
 // Export configuration
 export {
-  SITE_CONFIG,
-  OG_IMAGE_CONFIG,
-  METADATA_DEFAULTS,
-  CATEGORY_SEO_KEYWORDS,
   CATEGORY_DISPLAY_NAMES,
   CATEGORY_EXAMPLES,
+  CATEGORY_SEO_KEYWORDS,
   type Category,
   type Locale,
-} from './config';
+  METADATA_DEFAULTS,
+  OG_IMAGE_CONFIG,
+  SITE_CONFIG,
+} from './config'
+// Export all generators
+export {
+  generateArticleMetadata,
+  generateComparisonMetadata,
+  generateDocsMetadata,
+  generateListPageMetadata,
+  generateModelDetailMetadata,
+  generateSoftwareDetailMetadata,
+} from './generators'
+// Export all helpers
+export {
+  buildAlternates,
+  buildCanonicalUrl,
+  buildDetailPageTitle,
+  buildFullUrl,
+  buildKeywords,
+  buildLanguageAlternates,
+  buildListPageTitle,
+  buildOGImage,
+  buildOpenGraph,
+  buildProductDescription,
+  buildTitle,
+  buildTwitterCard,
+  formatPlatforms,
+  formatPriceForDescription,
+  getAlternateOGLocale,
+  getOGImagePath,
+  mapLocaleToOG,
+} from './helpers'

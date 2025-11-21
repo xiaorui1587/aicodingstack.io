@@ -1,33 +1,30 @@
-import { Link } from '@/i18n/navigation';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 
 interface BackToNavigationProps {
   /**
    * Destination URL for the back link
    */
-  href: string;
+  href: string
 
   /**
    * Title text to display (e.g., "All IDEs", "All Models")
    */
-  title: string;
+  title: string
 }
 
 /**
  * BackToNavigation component
- * 
+ *
  * Provides a consistent "Back to" navigation pattern across product detail pages.
  * Displays a full-width bordered card with hover effects.
  * Automatically handles internationalization for common text like "Back to" and "[INDEX]".
- * 
+ *
  * @example
  * <BackToNavigation href="ides" title="All IDEs" />
  */
-export function BackToNavigation({
-  href,
-  title,
-}: BackToNavigationProps) {
-  const t = useTranslations('components.backToNavigation');
+export function BackToNavigation({ href, title }: BackToNavigationProps) {
+  const t = useTranslations('components.backToNavigation')
 
   return (
     <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
@@ -41,13 +38,10 @@ export function BackToNavigation({
               ← {t('backTo')}
             </span>
             <span className="text-lg font-semibold tracking-tight">{title}</span>
-            <span className="text-xs text-[var(--color-text-muted)]">
-              [{t('indexLabel')}]
-            </span>
+            <span className="text-xs text-[var(--color-text-muted)]">[{t('indexLabel')}]</span>
           </Link>
         </div>
       </div>
     </section>
-  );
+  )
 }
-

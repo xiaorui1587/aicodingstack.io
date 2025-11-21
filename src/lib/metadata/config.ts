@@ -3,7 +3,7 @@
  * Centralized configuration for site-wide metadata constants and category-specific SEO keywords
  */
 
-import { locales, defaultLocale } from '@/i18n/config';
+import { defaultLocale, locales } from '@/i18n/config'
 
 export const SITE_CONFIG = {
   name: 'AI Coding Stack',
@@ -15,7 +15,7 @@ export const SITE_CONFIG = {
   },
   defaultLocale,
   supportedLocales: locales,
-} as const;
+} as const
 
 export const OG_IMAGE_CONFIG = {
   width: 1200,
@@ -30,7 +30,7 @@ export const OG_IMAGE_CONFIG = {
     vendors: '/og-images/vendors',
     articles: '/og-images/articles',
   },
-} as const;
+} as const
 
 export const METADATA_DEFAULTS = {
   currentYear: 2025,
@@ -38,7 +38,7 @@ export const METADATA_DEFAULTS = {
   listSeparator: ' | ',
   siteName: 'AI Coding Stack',
   revalidate: 3600, // 1 hour ISR
-} as const;
+} as const
 
 /**
  * Category-specific SEO keywords
@@ -92,25 +92,10 @@ export const CATEGORY_SEO_KEYWORDS = {
     'SiliconFlow',
     'OpenRouter',
   ],
-  vendors: [
-    'AI vendor',
-    'tool vendor',
-    'software vendor',
-    'AI company',
-  ],
-  articles: [
-    'AI coding',
-    'development guide',
-    'tutorial',
-    'tech article',
-  ],
-  docs: [
-    'documentation',
-    'guide',
-    'how-to',
-    'reference',
-  ],
-} as const;
+  vendors: ['AI vendor', 'tool vendor', 'software vendor', 'AI company'],
+  articles: ['AI coding', 'development guide', 'tutorial', 'tech article'],
+  docs: ['documentation', 'guide', 'how-to', 'reference'],
+} as const
 
 /**
  * Category display names for SEO titles
@@ -122,7 +107,7 @@ export const CATEGORY_DISPLAY_NAMES = {
   models: 'Coding LLM Models',
   modelProviders: 'LLM API Providers',
   vendors: 'Tool Vendors',
-} as const;
+} as const
 
 /**
  * Category example tools for SEO titles
@@ -134,7 +119,7 @@ export const CATEGORY_EXAMPLES = {
   models: ['DeepSeek V3.1', 'Kimi K2', 'GLM 4.5', 'Qwen3 Coder'],
   modelProviders: ['DeepSeek', 'Moonshot', 'SiliconFlow', 'OpenRouter'],
   vendors: [],
-} as const;
+} as const
 
-export type Category = keyof typeof CATEGORY_SEO_KEYWORDS;
-export type Locale = typeof SITE_CONFIG.supportedLocales[number];
+export type Category = keyof typeof CATEGORY_SEO_KEYWORDS
+export type Locale = (typeof SITE_CONFIG.supportedLocales)[number]

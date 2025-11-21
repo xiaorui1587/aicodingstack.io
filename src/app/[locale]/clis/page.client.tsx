@@ -1,70 +1,73 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { useState, useMemo } from 'react';
-import { useTranslations } from 'next-intl';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import StackSidebar from '@/components/sidebar/StackSidebar';
-import FilterSortBar from '@/components/controls/FilterSortBar';
-import { localizeManifestItems } from '@/lib/manifest-i18n';
-import { translateLicenseText } from '@/lib/license';
-import type { Locale } from '@/i18n/config';
-import { clisData } from '@/lib/generated';
+import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+import { useMemo, useState } from 'react'
+import FilterSortBar from '@/components/controls/FilterSortBar'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import StackSidebar from '@/components/sidebar/StackSidebar'
+import type { Locale } from '@/i18n/config'
+import { clisData } from '@/lib/generated'
+import { translateLicenseText } from '@/lib/license'
+import { localizeManifestItems } from '@/lib/manifest-i18n'
 
 type Props = {
-  locale: string;
-};
+  locale: string
+}
 
 export default function CLIsPageClient({ locale }: Props) {
-  const t = useTranslations('stacksPages.clis');
-  const tGlobal = useTranslations();
-  const [sortOrder, setSortOrder] = useState<'default' | 'name-asc' | 'name-desc'>('default');
-  const [licenseFilters, setLicenseFilters] = useState<string[]>([]);
-  const [platformFilters, setPlatformFilters] = useState<string[]>([]);
+  const t = useTranslations('stacksPages.clis')
+  const tGlobal = useTranslations()
+  const [sortOrder, setSortOrder] = useState<'default' | 'name-asc' | 'name-desc'>('default')
+  const [licenseFilters, setLicenseFilters] = useState<string[]>([])
+  const [platformFilters, setPlatformFilters] = useState<string[]>([])
 
   // Localize CLIs
   const localizedClis = useMemo(() => {
-    return localizeManifestItems(clisData as unknown as Record<string, unknown>[], locale as Locale) as unknown as typeof clisData;
-  }, [locale]);
+    return localizeManifestItems(
+      clisData as unknown as Record<string, unknown>[],
+      locale as Locale
+    ) as unknown as typeof clisData
+  }, [locale])
 
   // Filter and sort CLIs
   const filteredAndSortedClis = useMemo(() => {
-    let result = [...localizedClis];
+    let result = [...localizedClis]
 
     // Apply license filter
     if (licenseFilters.length > 0) {
       result = result.filter(cli => {
-        const isOpenSource = cli.license !== 'Proprietary';
-        const isProprietary = cli.license === 'Proprietary';
+        const isOpenSource = cli.license !== 'Proprietary'
+        const isProprietary = cli.license === 'Proprietary'
 
         if (licenseFilters.includes('open-source') && isOpenSource) {
-          return true;
+          return true
         }
         if (licenseFilters.includes('proprietary') && isProprietary) {
-          return true;
+          return true
         }
-        return false;
-      });
+        return false
+      })
     }
 
     // Apply platform filter
     if (platformFilters.length > 0) {
       result = result.filter(cli =>
         platformFilters.some(platform => cli.platforms.some(p => p.os === platform))
-      );
+      )
     }
 
     // Apply sorting
     if (sortOrder === 'name-asc') {
-      result.sort((a, b) => a.name.localeCompare(b.name));
+      result.sort((a, b) => a.name.localeCompare(b.name))
     } else if (sortOrder === 'name-desc') {
-      result.sort((a, b) => b.name.localeCompare(a.name));
+      result.sort((a, b) => b.name.localeCompare(a.name))
     }
     // 'default' keeps the original order
 
-    return result;
-  }, [localizedClis, sortOrder, licenseFilters, platformFilters]);
+    return result
+  }, [localizedClis, sortOrder, licenseFilters, platformFilters])
 
   return (
     <>
@@ -79,7 +82,9 @@ export default function CLIsPageClient({ locale }: Props) {
             <div className="mb-[var(--spacing-lg)]">
               <div className="flex items-start justify-between mb-[var(--spacing-sm)]">
                 <h1 className="text-[2rem] font-semibold tracking-[-0.03em]">
-                  <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">{'//'}</span>
+                  <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
+                    {'//'}
+                  </span>
                   {t('title')}
                 </h1>
                 <Link
@@ -109,7 +114,7 @@ export default function CLIsPageClient({ locale }: Props) {
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--spacing-md)]">
-                {filteredAndSortedClis.map((cli) => (
+                {filteredAndSortedClis.map(cli => (
                   <Link
                     key={cli.name}
                     href={`/${locale}/clis/${cli.id}`}
@@ -139,5 +144,5 @@ export default function CLIsPageClient({ locale }: Props) {
 
       <Footer />
     </>
-  );
+  )
 }

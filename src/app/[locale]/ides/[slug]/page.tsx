@@ -1,41 +1,53 @@
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import { getTranslations } from 'next-intl/server';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { BackToNavigation } from '@/components/controls/BackToNavigation';
-import { Breadcrumb } from '@/components/controls/Breadcrumb';
-import { JsonLd } from '@/components/JsonLd';
-import { ProductHero, ProductPricing, ProductLinks, ProductCommands } from '@/components/product';
-import { getSchemaPrice, getSchemaCurrency } from '@/lib/pricing';
-import { localizeManifestItem } from '@/lib/manifest-i18n';
-import { translateLicenseText } from '@/lib/license';
-import { generateSoftwareDetailMetadata } from '@/lib/metadata';
-import type { Locale } from '@/i18n/config';
-import type { ManifestIDE, ManifestPricingTier, ComponentResourceUrls, ComponentCommunityUrls } from '@/types/manifests';
-import { idesData as ides } from '@/lib/generated';
-import { getGithubStars } from '@/lib/generated/github-stars';
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
+import { getTranslations } from 'next-intl/server'
+import { BackToNavigation } from '@/components/controls/BackToNavigation'
+import { Breadcrumb } from '@/components/controls/Breadcrumb'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import { JsonLd } from '@/components/JsonLd'
+import { ProductCommands, ProductHero, ProductLinks, ProductPricing } from '@/components/product'
+import type { Locale } from '@/i18n/config'
+import { idesData as ides } from '@/lib/generated'
+import { getGithubStars } from '@/lib/generated/github-stars'
+import { translateLicenseText } from '@/lib/license'
+import { localizeManifestItem } from '@/lib/manifest-i18n'
+import { generateSoftwareDetailMetadata } from '@/lib/metadata'
+import { getSchemaCurrency, getSchemaPrice } from '@/lib/pricing'
+import type {
+  ComponentCommunityUrls,
+  ComponentResourceUrls,
+  ManifestIDE,
+  ManifestPricingTier,
+} from '@/types/manifests'
 
-export const revalidate = 3600;
+export const revalidate = 3600
 
 export async function generateStaticParams() {
-  return ides.map((ide) => ({
+  return ides.map(ide => ({
     slug: ide.id,
-  }));
+  }))
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {
-  const { locale, slug } = await params;
-  const ideRaw = ides.find((i) => i.id === slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>
+}) {
+  const { locale, slug } = await params
+  const ideRaw = ides.find(i => i.id === slug)
 
   if (!ideRaw) {
-    return { title: 'IDE Not Found | AI Coding Stack' };
+    return { title: 'IDE Not Found | AI Coding Stack' }
   }
 
-  const ide = localizeManifestItem(ideRaw as unknown as Record<string, unknown>, locale as Locale) as unknown as ManifestIDE;
-  const t = await getTranslations({ locale });
+  const ide = localizeManifestItem(
+    ideRaw as unknown as Record<string, unknown>,
+    locale as Locale
+  ) as unknown as ManifestIDE
+  const t = await getTranslations({ locale })
 
-  const licenseStr = ide.license ? translateLicenseText(ide.license, t) : '';
+  const licenseStr = ide.license ? translateLicenseText(ide.license, t) : ''
 
   return await generateSoftwareDetailMetadata({
     locale: locale as 'en' | 'zh-Hans',
@@ -50,25 +62,32 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       license: licenseStr,
     },
     typeDescription: 'AI-Powered IDE for Developers',
-  });
+  })
 }
 
-export default async function IDEPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
-  const { locale, slug } = await params;
-  const ideRaw = ides.find((i) => i.id === slug) as ManifestIDE | undefined;
+export default async function IDEPage({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>
+}) {
+  const { locale, slug } = await params
+  const ideRaw = ides.find(i => i.id === slug) as ManifestIDE | undefined
 
   if (!ideRaw) {
-    notFound();
+    notFound()
   }
 
-  const ide = localizeManifestItem(ideRaw as unknown as Record<string, unknown>, locale as Locale) as unknown as ManifestIDE;
-  const t = await getTranslations({ locale });
-  const tHero = await getTranslations({ locale, namespace: 'components.productHero' });
-  const tNav = await getTranslations({ locale, namespace: 'stacksPages.ides' });
-  const tStacks = await getTranslations({ locale, namespace: 'stacks' });
+  const ide = localizeManifestItem(
+    ideRaw as unknown as Record<string, unknown>,
+    locale as Locale
+  ) as unknown as ManifestIDE
+  const t = await getTranslations({ locale })
+  const tHero = await getTranslations({ locale, namespace: 'components.productHero' })
+  const tNav = await getTranslations({ locale, namespace: 'stacksPages.ides' })
+  const tStacks = await getTranslations({ locale, namespace: 'stacks' })
 
-  const websiteUrl = ide.resourceUrls?.download || ide.websiteUrl;
-  const docsUrl = ide.docsUrl;
+  const websiteUrl = ide.resourceUrls?.download || ide.websiteUrl
+  const docsUrl = ide.docsUrl
 
   // Transform resourceUrls to component format (convert null to undefined)
   const resourceUrls: ComponentResourceUrls = {
@@ -77,7 +96,7 @@ export default async function IDEPage({ params }: { params: Promise<{ locale: st
     pricing: ide.resourceUrls?.pricing || undefined,
     mcp: ide.resourceUrls?.mcp || undefined,
     issue: ide.resourceUrls?.issue || undefined,
-  };
+  }
 
   // Transform communityUrls to component format (convert null to undefined)
   const communityUrls: ComponentCommunityUrls = {
@@ -87,35 +106,39 @@ export default async function IDEPage({ params }: { params: Promise<{ locale: st
     youtube: ide.communityUrls?.youtube || undefined,
     discord: ide.communityUrls?.discord || undefined,
     reddit: ide.communityUrls?.reddit || undefined,
-  };
+  }
 
   // Schema.org structured data
   const softwareApplicationSchema = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": ide.name,
-    "applicationCategory": "DeveloperApplication",
-    "operatingSystem": ide.platforms?.map(p => p.os).join(', ') || "Windows, macOS, Linux",
-    "softwareVersion": ide.latestVersion,
-    "description": ide.description,
-    "url": websiteUrl,
-    "downloadUrl": ide.resourceUrls?.download,
-    "installUrl": ide.resourceUrls?.download,
-    "author": {
-      "@type": "Organization",
-      "name": ide.vendor
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: ide.name,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: ide.platforms?.map(p => p.os).join(', ') || 'Windows, macOS, Linux',
+    softwareVersion: ide.latestVersion,
+    description: ide.description,
+    url: websiteUrl,
+    downloadUrl: ide.resourceUrls?.download,
+    installUrl: ide.resourceUrls?.download,
+    author: {
+      '@type': 'Organization',
+      name: ide.vendor,
     },
-    "offers": ide.pricing ? ide.pricing.map((tier: ManifestPricingTier) => {
-      return {
-        "@type": "Offer",
-        "name": tier.name,
-        "price": getSchemaPrice(tier),
-        "priceCurrency": getSchemaCurrency(tier),
-        "category": tier.category
-      };
-    }) : undefined,
-    "license": (ide as unknown as ManifestIDE).license ? translateLicenseText((ide as unknown as ManifestIDE).license, t) : undefined,
-  };
+    offers: ide.pricing
+      ? ide.pricing.map((tier: ManifestPricingTier) => {
+          return {
+            '@type': 'Offer',
+            name: tier.name,
+            price: getSchemaPrice(tier),
+            priceCurrency: getSchemaCurrency(tier),
+            category: tier.category,
+          }
+        })
+      : undefined,
+    license: (ide as unknown as ManifestIDE).license
+      ? translateLicenseText((ide as unknown as ManifestIDE).license, t)
+      : undefined,
+  }
 
   // Breadcrumb is now rendered by shared component and structured data injected there
 
@@ -169,7 +192,7 @@ export default async function IDEPage({ params }: { params: Promise<{ locale: st
               <div className="flex items-center justify-between mb-[var(--spacing-sm)]">
                 <div className="flex items-center gap-[var(--spacing-sm)]">
                   <pre className="text-xs leading-tight text-[var(--color-text-muted)]">
-{`┌─────┐
+                    {`┌─────┐
 │ CLI │
 └─────┘`}
                   </pre>
@@ -178,7 +201,10 @@ export default async function IDEPage({ params }: { params: Promise<{ locale: st
                       Related CLI Tool
                     </p>
                     <h3 className="text-lg font-semibold tracking-tight">
-                      {ide.cli.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+                      {ide.cli
+                        .split('-')
+                        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                        .join(' ')}
                     </h3>
                   </div>
                 </div>
@@ -195,27 +221,18 @@ export default async function IDEPage({ params }: { params: Promise<{ locale: st
       )}
 
       {/* Pricing */}
-      <ProductPricing
-        pricing={ide.pricing}
-        pricingUrl={ide.resourceUrls?.pricing || undefined}
-      />
+      <ProductPricing pricing={ide.pricing} pricingUrl={ide.resourceUrls?.pricing || undefined} />
 
       {/* Additional Links */}
-      <ProductLinks
-        resourceUrls={resourceUrls}
-        communityUrls={communityUrls}
-      />
+      <ProductLinks resourceUrls={resourceUrls} communityUrls={communityUrls} />
 
       {/* Commands */}
-      <ProductCommands
-        install={ide.install}
-        launch={ide.launch}
-      />
+      <ProductCommands install={ide.install} launch={ide.launch} />
 
       {/* Navigation */}
       <BackToNavigation href="ides" title={tNav('allIDEs')} />
 
       <Footer />
     </>
-  );
+  )
 }
