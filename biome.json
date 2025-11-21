@@ -11,6 +11,7 @@
   },
   "formatter": {
     "enabled": true,
+    "formatWithErrors": false,
     "indentStyle": "space",
     "indentWidth": 2,
     "lineWidth": 100
@@ -34,7 +35,16 @@
       },
       "correctness": {
         "useExhaustiveDependencies": "warn",
-        "noUnusedVariables": "warn"
+        "noUnusedVariables": "warn",
+        "noUndeclaredVariables": "error"
+      },
+      "performance": {
+        "noDelete": "warn",
+        "noAccumulatingSpread": "warn"
+      },
+      "complexity": {
+        "noBannedTypes": "warn",
+        "noUselessFragments": "warn"
       }
     }
   },
