@@ -4,20 +4,19 @@
  * Do not edit manually - run the script to regenerate
  */
 
-import type { ManifestVendor } from '../../types/manifests';
-
-import Anthropic from '../../../manifests/vendors/anthropic.json';
-import Augment from '../../../manifests/vendors/augment.json';
-import Deepseek from '../../../manifests/vendors/deepseek.json';
-import Google from '../../../manifests/vendors/google.json';
-import Microsoft from '../../../manifests/vendors/microsoft.json';
-import Minimax from '../../../manifests/vendors/minimax.json';
-import Moonshot from '../../../manifests/vendors/moonshot.json';
-import Openai from '../../../manifests/vendors/openai.json';
-import Openrouter from '../../../manifests/vendors/openrouter.json';
-import Siliconflow from '../../../manifests/vendors/siliconflow.json';
-import Sourcegraph from '../../../manifests/vendors/sourcegraph.json';
-import ZAi from '../../../manifests/vendors/z-ai.json';
+import Anthropic from '../../../manifests/vendors/anthropic.json'
+import Augment from '../../../manifests/vendors/augment.json'
+import Deepseek from '../../../manifests/vendors/deepseek.json'
+import Google from '../../../manifests/vendors/google.json'
+import Microsoft from '../../../manifests/vendors/microsoft.json'
+import Minimax from '../../../manifests/vendors/minimax.json'
+import Moonshot from '../../../manifests/vendors/moonshot.json'
+import Openai from '../../../manifests/vendors/openai.json'
+import Openrouter from '../../../manifests/vendors/openrouter.json'
+import Siliconflow from '../../../manifests/vendors/siliconflow.json'
+import Sourcegraph from '../../../manifests/vendors/sourcegraph.json'
+import ZAi from '../../../manifests/vendors/z-ai.json'
+import type { ManifestVendor } from '../../types/manifests'
 
 export const vendorsData = [
   Anthropic,
@@ -31,9 +30,9 @@ export const vendorsData = [
   Openrouter,
   Siliconflow,
   Sourcegraph,
-  ZAi
-] as unknown as ManifestVendor[];
+  ZAi,
+] as unknown as ManifestVendor[]
 
-export type Vendor = typeof Anthropic;
+export type Vendor = typeof Anthropic
 
-export default vendorsData;
+export default vendorsData

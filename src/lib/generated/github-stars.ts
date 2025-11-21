@@ -4,11 +4,11 @@
  * Do not edit manually - run the script to regenerate
  */
 
-import githubStarsJson from '../../../data/github-stars.json';
+import githubStarsJson from '../../../data/github-stars.json'
 
-export type GithubStarsData = Record<string, Record<string, number | null>>;
+export type GithubStarsData = Record<string, Record<string, number | null>>
 
-export const githubStarsData = githubStarsJson as GithubStarsData;
+export const githubStarsData = githubStarsJson as GithubStarsData
 
 /**
  * Get GitHub stars for a specific product
@@ -17,7 +17,7 @@ export const githubStarsData = githubStarsJson as GithubStarsData;
  * @returns The number of stars (in thousands) or null if not available
  */
 export function getGithubStars(category: string, id: string): number | null {
-  return githubStarsData[category]?.[id] ?? null;
+  return githubStarsData[category]?.[id] ?? null
 }
 
-export default githubStarsData;
+export default githubStarsData

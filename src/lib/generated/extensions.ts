@@ -4,18 +4,17 @@
  * Do not edit manually - run the script to regenerate
  */
 
-import type { ManifestExtension } from '../../types/manifests';
-
-import Amp from '../../../manifests/extensions/amp.json';
-import AugmentCode from '../../../manifests/extensions/augment-code.json';
-import ClaudeCode from '../../../manifests/extensions/claude-code.json';
-import Cline from '../../../manifests/extensions/cline.json';
-import Continue from '../../../manifests/extensions/continue.json';
-import GithubCopilot from '../../../manifests/extensions/github-copilot.json';
-import JetbrainsJunie from '../../../manifests/extensions/jetbrains-junie.json';
-import KiloCode from '../../../manifests/extensions/kilo-code.json';
-import RooCode from '../../../manifests/extensions/roo-code.json';
-import Tabnine from '../../../manifests/extensions/tabnine.json';
+import Amp from '../../../manifests/extensions/amp.json'
+import AugmentCode from '../../../manifests/extensions/augment-code.json'
+import ClaudeCode from '../../../manifests/extensions/claude-code.json'
+import Cline from '../../../manifests/extensions/cline.json'
+import Continue from '../../../manifests/extensions/continue.json'
+import GithubCopilot from '../../../manifests/extensions/github-copilot.json'
+import JetbrainsJunie from '../../../manifests/extensions/jetbrains-junie.json'
+import KiloCode from '../../../manifests/extensions/kilo-code.json'
+import RooCode from '../../../manifests/extensions/roo-code.json'
+import Tabnine from '../../../manifests/extensions/tabnine.json'
+import type { ManifestExtension } from '../../types/manifests'
 
 export const extensionsData = [
   Amp,
@@ -27,9 +26,9 @@ export const extensionsData = [
   JetbrainsJunie,
   KiloCode,
   RooCode,
-  Tabnine
-] as unknown as ManifestExtension[];
+  Tabnine,
+] as unknown as ManifestExtension[]
 
-export type Extension = typeof Amp;
+export type Extension = typeof Amp
 
-export default extensionsData;
+export default extensionsData

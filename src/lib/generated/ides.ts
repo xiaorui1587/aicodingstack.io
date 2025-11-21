@@ -4,19 +4,18 @@
  * Do not edit manually - run the script to regenerate
  */
 
-import type { ManifestIDE } from '../../types/manifests';
-
-import Codebuddy from '../../../manifests/ides/codebuddy.json';
-import Codeflicker from '../../../manifests/ides/codeflicker.json';
-import Cursor from '../../../manifests/ides/cursor.json';
-import Droid from '../../../manifests/ides/droid.json';
-import IntellijIdea from '../../../manifests/ides/intellij-idea.json';
-import Kiro from '../../../manifests/ides/kiro.json';
-import Qoder from '../../../manifests/ides/qoder.json';
-import Trae from '../../../manifests/ides/trae.json';
-import Vscode from '../../../manifests/ides/vscode.json';
-import Windsurf from '../../../manifests/ides/windsurf.json';
-import Zed from '../../../manifests/ides/zed.json';
+import Codebuddy from '../../../manifests/ides/codebuddy.json'
+import Codeflicker from '../../../manifests/ides/codeflicker.json'
+import Cursor from '../../../manifests/ides/cursor.json'
+import Droid from '../../../manifests/ides/droid.json'
+import IntellijIdea from '../../../manifests/ides/intellij-idea.json'
+import Kiro from '../../../manifests/ides/kiro.json'
+import Qoder from '../../../manifests/ides/qoder.json'
+import Trae from '../../../manifests/ides/trae.json'
+import Vscode from '../../../manifests/ides/vscode.json'
+import Windsurf from '../../../manifests/ides/windsurf.json'
+import Zed from '../../../manifests/ides/zed.json'
+import type { ManifestIDE } from '../../types/manifests'
 
 export const idesData = [
   Codebuddy,
@@ -29,9 +28,9 @@ export const idesData = [
   Trae,
   Vscode,
   Windsurf,
-  Zed
-] as unknown as ManifestIDE[];
+  Zed,
+] as unknown as ManifestIDE[]
 
-export type Ide = typeof Codebuddy;
+export type Ide = typeof Codebuddy
 
-export default idesData;
+export default idesData

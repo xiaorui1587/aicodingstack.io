@@ -7,12 +7,12 @@
  */
 export async function getManifestoComponent(locale: string = 'en'): Promise<React.ComponentType> {
   const components: Record<string, () => Promise<{ default: React.ComponentType }>> = {
-    'en': () => import('@content/manifesto/en/index.mdx'),
+    en: () => import('@content/manifesto/en/index.mdx'),
     'zh-Hans': () => import('@content/manifesto/zh-Hans/index.mdx'),
-    'de': () => import('@content/manifesto/de/index.mdx'),
-  };
+    de: () => import('@content/manifesto/de/index.mdx'),
+  }
 
-  const loader = components[locale] || components['en'];
-  const mdxModule = await loader();
-  return mdxModule.default;
+  const loader = components[locale] || components.en
+  const mdxModule = await loader()
+  return mdxModule.default
 }

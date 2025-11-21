@@ -4,25 +4,24 @@
  * Do not edit manually - run the script to regenerate
  */
 
-import type { ManifestCLI } from '../../types/manifests';
-
-import AmazonQDeveloperCli from '../../../manifests/clis/amazon-q-developer-cli.json';
-import AmpCli from '../../../manifests/clis/amp-cli.json';
-import AugmentCodeCli from '../../../manifests/clis/augment-code-cli.json';
-import ClaudeCode from '../../../manifests/clis/claude-code.json';
-import ClineCli from '../../../manifests/clis/cline-cli.json';
-import CodebuddyCli from '../../../manifests/clis/codebuddy-cli.json';
-import Codex from '../../../manifests/clis/codex.json';
-import ContinueCli from '../../../manifests/clis/continue-cli.json';
-import DroidCli from '../../../manifests/clis/droid-cli.json';
-import GeminiCli from '../../../manifests/clis/gemini-cli.json';
-import GithubCopilotCli from '../../../manifests/clis/github-copilot-cli.json';
-import KilocodeCli from '../../../manifests/clis/kilocode-cli.json';
-import KimiCli from '../../../manifests/clis/kimi-cli.json';
-import Kode from '../../../manifests/clis/kode.json';
-import NeovateCode from '../../../manifests/clis/neovate-code.json';
-import Opencode from '../../../manifests/clis/opencode.json';
-import QoderCli from '../../../manifests/clis/qoder-cli.json';
+import AmazonQDeveloperCli from '../../../manifests/clis/amazon-q-developer-cli.json'
+import AmpCli from '../../../manifests/clis/amp-cli.json'
+import AugmentCodeCli from '../../../manifests/clis/augment-code-cli.json'
+import ClaudeCode from '../../../manifests/clis/claude-code.json'
+import ClineCli from '../../../manifests/clis/cline-cli.json'
+import CodebuddyCli from '../../../manifests/clis/codebuddy-cli.json'
+import Codex from '../../../manifests/clis/codex.json'
+import ContinueCli from '../../../manifests/clis/continue-cli.json'
+import DroidCli from '../../../manifests/clis/droid-cli.json'
+import GeminiCli from '../../../manifests/clis/gemini-cli.json'
+import GithubCopilotCli from '../../../manifests/clis/github-copilot-cli.json'
+import KilocodeCli from '../../../manifests/clis/kilocode-cli.json'
+import KimiCli from '../../../manifests/clis/kimi-cli.json'
+import Kode from '../../../manifests/clis/kode.json'
+import NeovateCode from '../../../manifests/clis/neovate-code.json'
+import Opencode from '../../../manifests/clis/opencode.json'
+import QoderCli from '../../../manifests/clis/qoder-cli.json'
+import type { ManifestCLI } from '../../types/manifests'
 
 export const clisData = [
   AmazonQDeveloperCli,
@@ -41,9 +40,9 @@ export const clisData = [
   Kode,
   NeovateCode,
   Opencode,
-  QoderCli
-] as unknown as ManifestCLI[];
+  QoderCli,
+] as unknown as ManifestCLI[]
 
-export type Cli = typeof AmazonQDeveloperCli;
+export type Cli = typeof AmazonQDeveloperCli
 
-export default clisData;
+export default clisData

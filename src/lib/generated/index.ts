@@ -4,15 +4,15 @@
  * Do not edit manually - run the script to regenerate
  */
 
-export { idesData } from './ides';
-export type { Ide } from './ides';
-export { clisData } from './clis';
-export type { Cli } from './clis';
-export { modelsData } from './models';
-export type { Model } from './models';
-export { providersData } from './providers';
-export type { Provider } from './providers';
-export { extensionsData } from './extensions';
-export type { Extension } from './extensions';
-export { vendorsData } from './vendors';
-export type { Vendor } from './vendors';
+export type { Cli } from './clis'
+export { clisData } from './clis'
+export type { Extension } from './extensions'
+export { extensionsData } from './extensions'
+export type { Ide } from './ides'
+export { idesData } from './ides'
+export type { Model } from './models'
+export { modelsData } from './models'
+export type { Provider } from './providers'
+export { providersData } from './providers'
+export type { Vendor } from './vendors'
+export { vendorsData } from './vendors'
