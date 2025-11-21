@@ -7,6 +7,10 @@ on:
   workflow_dispatch:
     # Allow manual triggering
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   update-stars:
     runs-on: ubuntu-latest
@@ -43,6 +47,7 @@ jobs:
         if: steps.git-check.outputs.changes == 'true'
         uses: peter-evans/create-pull-request@v5
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: 'chore: update GitHub stars data'
           title: 'chore: update GitHub stars data'
           body: |

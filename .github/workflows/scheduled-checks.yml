@@ -8,6 +8,11 @@ on:
     - cron: '0 6 * * *'
   workflow_dispatch: # Allow manual triggering
 
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
 jobs:
   validate-urls:
     name: Validate URLs
