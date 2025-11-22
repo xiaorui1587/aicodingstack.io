@@ -67,6 +67,26 @@ Die meisten MCP-Server werden als npm-Pakete oder Python-Module verteilt. Befolg
 
 Fügen Sie die MCP-Server-Konfiguration zu den Einstellungen Ihrer IDE hinzu. Das genaue Format variiert je nach Tool, umfasst aber typischerweise die Angabe des Serverbefehls und aller erforderlichen Argumente.
 
+Hier ist ein Beispiel für die Konfiguration von Claude Code:
+
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/your/project"]
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}
+```
+
 ### 4. Testen Sie die Integration
 
 Bitten Sie Ihren KI-Agenten, die neu verbundenen Tools zu verwenden. Wenn Sie beispielsweise einen Dateisystem-MCP installiert haben, versuchen Sie, ihn zu bitten, eine bestimmte Datei aus Ihrem Projekt zu lesen.

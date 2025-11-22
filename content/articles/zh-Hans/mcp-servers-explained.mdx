@@ -67,6 +67,26 @@ MCP 从根本上改变了这一点。有了 MCP 服务器，你的 AI Agent 可�
 
 将 MCP 服务器配置添加到 IDE 的设置中。确切的格式因工具而异，但通常涉及指定服务器的命令和任何必需的参数。
 
+以下是 Claude Code 的配置示例：
+
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/your/project"]
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}
+```
+
 ### 4. 测试集成
 
 让你的 AI Agent 使用新连接的工具。例如，如果你安装了文件系统 MCP，尝试让它从你的项目中读取特定文件。
