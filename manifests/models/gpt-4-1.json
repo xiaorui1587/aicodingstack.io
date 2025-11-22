@@ -15,8 +15,8 @@
   "totalContext": "1M",
   "maxOutput": "16K",
   "tokenPricing": {
-    "input": 3.0,
-    "output": 15.0,
+    "input": 3,
+    "output": 15,
     "cache": null
   },
   "platformUrls": {

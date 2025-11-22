@@ -16,7 +16,7 @@
   "maxOutput": "16K",
   "tokenPricing": {
     "input": 2.5,
-    "output": 10.0,
+    "output": 10,
     "cache": null
   },
   "platformUrls": {
