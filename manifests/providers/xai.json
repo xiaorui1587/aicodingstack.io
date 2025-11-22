@@ -2,13 +2,29 @@
   "id": "xai",
   "name": "xAI",
   "description": "xAI is a company that makes AI models.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "xAI 是一家专注于开发 AI 模型的公司。"
+    }
+  },
   "websiteUrl": "https://x.ai",
   "docsUrl": "https://x.ai/api",
   "verified": false,
   "vendor": "xAI",
+  "type": "foundation-model-provider",
+  "applyKeyUrl": "https://x.ai/api",
   "platformUrls": {
     "huggingface": null,
     "artificialAnalysis": null,
     "openrouter": null
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": "https://x.com/xai",
+    "github": null,
+    "youtube": null,
+    "discord": null,
+    "reddit": null,
+    "blog": null
   }
 }
