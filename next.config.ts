@@ -2,6 +2,7 @@ import bundleAnalyzer from '@next/bundle-analyzer'
 import createMDX from '@next/mdx'
 import type { NextConfig } from 'next'
 import createNextIntlPlugin from 'next-intl/plugin'
+import rehypeHighlight from 'rehype-highlight'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkGfm from 'remark-gfm'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
@@ -70,7 +71,13 @@ const nextConfig: NextConfig = {
 
   // Experimental features for better performance
   experimental: {
-    optimizePackageImports: ['lucide-react', 'next-intl', '@mdx-js/react', 'gray-matter'],
+    optimizePackageImports: [
+      'lucide-react',
+      'next-intl',
+      '@mdx-js/react',
+      'recharts',
+      '@xyflow/react',
+    ],
   },
 
   // Compiler optimizations
@@ -152,7 +159,7 @@ const withMDX = createMDX({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkGfm],
-    rehypePlugins: [],
+    rehypePlugins: [rehypeHighlight],
   },
 })
 

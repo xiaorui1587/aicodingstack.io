@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "highlight.js/styles/github.css" layer(highlight-light);
+@import "highlight.js/styles/github-dark.css" layer(highlight-dark);
 
 :root {
   /* Color Palette - Light Mode */
@@ -96,4 +98,92 @@ strong {
 
 .animate-fadeIn {
   animation: fadeIn 200ms ease-out;
+}
+
+/* Code syntax highlighting theme switching */
+:root {
+  @layer highlight-light;
+}
+
+[data-theme="dark"] {
+  @layer highlight-dark;
+}
+
+/* Code block styling */
+pre {
+  background-color: #f6f8fa;
+  border: 1px solid var(--color-border);
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+[data-theme="dark"] pre {
+  background-color: #161b22;
+  border-color: var(--color-border);
+}
+
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0;
+  background: transparent;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* Inline code - no border, just background */
+code.hljs:not(pre code.hljs) {
+  padding: 0.2em 0.5em;
+  font-size: 0.875em;
+  background-color: #f6f8fa;
+}
+
+[data-theme="dark"] code.hljs:not(pre code.hljs) {
+  background-color: #161b22;
+}
+
+/* Enhanced syntax highlighting */
+.hljs-comment,
+.hljs-quote {
+  color: #6a737d;
+  font-style: italic;
+}
+
+[data-theme="dark"] .hljs-comment,
+[data-theme="dark"] .hljs-quote {
+  color: #8b949e;
+}
+
+.hljs-string,
+.hljs-attr {
+  color: #032f62;
+}
+
+[data-theme="dark"] .hljs-string,
+[data-theme="dark"] .hljs-attr {
+  color: #a5d6ff;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-built_in {
+  color: #005cc5;
+}
+
+[data-theme="dark"] .hljs-number,
+[data-theme="dark"] .hljs-literal,
+[data-theme="dark"] .hljs-built_in {
+  color: #79c0ff;
+}
+
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #d73a49;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .hljs-keyword,
+[data-theme="dark"] .hljs-selector-tag {
+  color: #ff7b72;
 }
