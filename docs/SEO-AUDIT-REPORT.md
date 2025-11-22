@@ -1086,7 +1086,7 @@ const organizationSchema = {
   "foundingDate": "2025",
   "sameAs": [
     "https://github.com/aicodingstack/aicodingstack.io",
-    "https://twitter.com/aicodingstack"
+    "https://x.com/aicodingstack"
   ],
   "contactPoint": {
     "@type": "ContactPoint",
