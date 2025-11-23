@@ -1,69 +1,62 @@
 {
   "id": "kilo-code",
   "name": "Kilo Code",
-  "description": "Kilo Code is an open-source VS Code AI agent supporting 400+ models. Features multi-mode workflow (Architect, Coder, Debugger), transparent pricing, and MCP server marketplace integration.",
+  "description": "Open-source AI coding agent supporting 500+ models from 60+ providers with transparent pricing. Features multi-mode orchestration, automatic failure recovery, parallel agents, and MCP marketplace.",
   "i18n": {
     "zh-Hans": {
-      "description": "Kilo Code 是一个开源的 VS Code AI Agent，支持 400+ 模型。具备多模式工作流（架构师、编码器、调试器）、透明定价和 MCP 服务器市场集成功能。"
+      "description": "开源 AI 编码代理，支持来自 60+ 提供商的 500+ 模型，提供透明定价。具备多模式编排、自动错误恢复、并行代理和 MCP 市场。"
     }
   },
-  "websiteUrl": "https://kilocode.ai",
-  "docsUrl": "https://kilocode.ai/docs",
-  "verified": false,
-  "vendor": "Kilo Code",
-  "latestVersion": "4.110.0",
+  "websiteUrl": "https://kilo.ai",
+  "docsUrl": "https://kilo.ai/docs",
+  "verified": true,
+  "vendor": "Kilo",
+  "latestVersion": "4.121.2",
   "githubUrl": "https://github.com/Kilo-Org/kilocode",
   "license": "Apache-2.0",
   "pricing": [
     {
-      "name": "Free (Open Source)",
+      "name": "Free",
       "value": 0,
       "currency": null,
       "per": null,
       "category": "Individual"
     },
     {
-      "name": "Pay As You Go",
-      "value": null,
-      "currency": "USD",
-      "per": "usage",
-      "category": "Individual"
-    },
-    {
       "name": "Teams",
-      "value": null,
-      "currency": null,
-      "per": "custom",
-      "category": "Business"
+      "value": 15,
+      "currency": "USD",
+      "per": "month",
+      "category": "Team"
     },
     {
       "name": "Enterprise",
       "value": null,
       "currency": null,
-      "per": "custom",
+      "per": "Custom",
       "category": "Enterprise"
     }
   ],
   "resourceUrls": {
-    "download": "https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code",
+    "download": "https://kilo.ai",
     "changelog": "https://github.com/Kilo-Org/kilocode/releases",
-    "pricing": "https://kilocode.ai/pricing",
+    "pricing": "https://kilo.ai/pricing",
     "mcp": null,
     "issue": "https://github.com/Kilo-Org/kilocode/issues"
   },
   "communityUrls": {
-    "linkedin": null,
+    "linkedin": "https://www.linkedin.com/company/kilo-code",
     "twitter": "https://x.com/kilocode",
     "github": "https://github.com/Kilo-Org/kilocode",
-    "youtube": "https://www.youtube.com/@kilocode",
-    "discord": "https://kilocode.ai/discord",
+    "youtube": "https://www.youtube.com/@Kilo-Code",
+    "discord": "https://kilo.ai/discord",
     "reddit": "https://www.reddit.com/r/kilocode",
-    "blog": "https://kilocode.ai/blog"
+    "blog": "https://blog.kilo.ai"
   },
   "relatedProducts": [
     {
       "type": "cli",
-      "productId": "kilo-code"
+      "productId": "kilo-code-cli"
     }
   ],
   "supportedIdes": [
@@ -76,6 +69,21 @@
       "ideId": "jetbrains",
       "marketplaceUrl": "https://plugins.jetbrains.com/plugin/28350-kilo-code",
       "installUri": null
+    },
+    {
+      "ideId": "cursor",
+      "marketplaceUrl": null,
+      "installUri": "cursor:extension/kilocode.kilo-code"
+    },
+    {
+      "ideId": "windsurf",
+      "marketplaceUrl": null,
+      "installUri": "windsurf:extension/kilocode.kilo-code"
+    },
+    {
+      "ideId": "trae",
+      "marketplaceUrl": null,
+      "installUri": "trae:extension/kilocode.kilo-code"
     }
   ]
 }

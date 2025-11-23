@@ -77,7 +77,7 @@
   "relatedProducts": [
     {
       "type": "cli",
-      "productId": "claude-code"
+      "productId": "claude-code-cli"
     }
   ],
   "supportedIdes": [

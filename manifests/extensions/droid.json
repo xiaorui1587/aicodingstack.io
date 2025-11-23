@@ -66,24 +66,11 @@
       "productId": "factory"
     }
   ],
-  "platforms": [
+  "supportedIdes": [
     {
-      "os": "macOS",
-      "installCommand": null,
-      "launchCommand": null,
-      "installPath": null
-    },
-    {
-      "os": "Windows",
-      "installCommand": null,
-      "launchCommand": null,
-      "installPath": null
-    },
-    {
-      "os": "Linux",
-      "installCommand": null,
-      "launchCommand": null,
-      "installPath": null
+      "ideId": "vscode",
+      "marketplaceUrl": null,
+      "installUri": null
     }
   ]
 }

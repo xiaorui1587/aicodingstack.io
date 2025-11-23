@@ -31,7 +31,7 @@
       "properties": {
         "ideId": {
           "type": "string",
-          "enum": ["vscode", "jetbrains", "zed"],
+          "enum": ["vscode", "jetbrains", "cursor", "windsurf", "trae", "zed"],
           "description": "IDE identifier (e.g., 'vscode', 'jetbrains')"
         },
         "marketplaceUrl": {
