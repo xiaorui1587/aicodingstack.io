@@ -492,6 +492,7 @@
       "filter": {
         "all": "Alle"
       },
+      "note": "Hinweis: Diese Seite zeigt nur Projekte mit GitHub-Repositories. Einige Projekte, obwohl nicht Open Source, unterhalten GitHub-Repositories als Feedback-Kanäle für Benutzer.",
       "productType": {
         "ide": "IDE",
         "cli": "CLI",

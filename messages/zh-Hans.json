@@ -482,6 +482,7 @@
       "filter": {
         "all": "全部"
       },
+      "note": "注意：此页面仅显示有 GitHub 地址的项目。部分项目虽未开源，但会创建 GitHub 仓库作为用户反馈入口。",
       "productType": {
         "ide": "IDE",
         "cli": "CLI",
