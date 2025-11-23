@@ -1,13 +1,13 @@
 {
   "id": "codex",
   "name": "Codex",
-  "description": "OpenAI's Codex CLI is a local coding agent that reads, modifies, and runs code through natural language commands. Enables building, debugging, and automating coding tasks.",
+  "description": "OpenAI's Codex is an AI coding assistant extension for your IDE. It reads, modifies, and runs code through natural language commands, enabling building, debugging, and automating coding tasks.",
   "i18n": {
     "zh-Hans": {
-      "description": "OpenAI 的 Codex CLI 是本地编码 Agent，通过自然语言命令读取、修改和运行代码。支持构建、调试和自动化编码任务。"
+      "description": "OpenAI 的 Codex 是一个集成到 IDE 中的 AI 编码助手扩展。通过自然语言命令读取、修改和运行代码，支持构建、调试和自动化编码任务。"
     }
   },
-  "websiteUrl": "https://openai.com/codex/",
+  "websiteUrl": "https://openai.com/codex",
   "docsUrl": "https://developers.openai.com/codex/cli",
   "verified": false,
   "vendor": "OpenAI",
@@ -58,27 +58,19 @@
     "youtube": null,
     "discord": null,
     "reddit": null,
-    "blog": "https://openai.com/blog/introducing-codex-cli"
+    "blog": "https://openai.com/news"
   },
-  "relatedProducts": [],
-  "platforms": [
+  "relatedProducts": [
     {
-      "os": "macOS",
-      "installCommand": "npm install -g @openai/codex",
-      "launchCommand": "codex",
-      "installPath": null
-    },
+      "type": "cli",
+      "productId": "codex-cli"
+    }
+  ],
+  "supportedIdes": [
     {
-      "os": "Windows",
-      "installCommand": "npm install -g @openai/codex",
-      "launchCommand": "codex",
-      "installPath": null
-    },
-    {
-      "os": "Linux",
-      "installCommand": "npm install -g @openai/codex",
-      "launchCommand": "codex",
-      "installPath": null
+      "ideId": "vscode",
+      "marketplaceUrl": null,
+      "installUri": null
     }
   ]
 }

@@ -1,0 +1,84 @@
+{
+  "id": "codex-cli",
+  "name": "Codex CLI",
+  "description": "OpenAI's Codex CLI is a local coding agent that reads, modifies, and runs code through natural language commands. Enables building, debugging, and automating coding tasks.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "OpenAI 的 Codex CLI 是本地编码 Agent，通过自然语言命令读取、修改和运行代码。支持构建、调试和自动化编码任务。"
+    }
+  },
+  "websiteUrl": "https://openai.com/codex",
+  "docsUrl": "https://developers.openai.com/codex/cli",
+  "verified": false,
+  "vendor": "OpenAI",
+  "latestVersion": "0.44.0",
+  "githubUrl": "https://github.com/openai/codex",
+  "license": "Apache-2.0",
+  "pricing": [
+    {
+      "name": "ChatGPT Plus",
+      "value": 20,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    },
+    {
+      "name": "ChatGPT Pro",
+      "value": 200,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    },
+    {
+      "name": "ChatGPT Business",
+      "value": 30,
+      "currency": "USD",
+      "per": "user/month",
+      "category": "Business"
+    },
+    {
+      "name": "ChatGPT Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://github.com/openai/codex/releases",
+    "changelog": "https://github.com/openai/codex/blob/main/CHANGELOG.md",
+    "pricing": "https://openai.com/pricing",
+    "mcp": null,
+    "issue": "https://github.com/openai/codex/issues"
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": "https://x.com/OpenAI",
+    "github": "https://github.com/openai/codex",
+    "youtube": null,
+    "discord": null,
+    "reddit": null,
+    "blog": "https://openai.com/news"
+  },
+  "relatedProducts": [],
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": "npm install -g @openai/codex",
+      "launchCommand": "codex",
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": "npm install -g @openai/codex",
+      "launchCommand": "codex",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": "npm install -g @openai/codex",
+      "launchCommand": "codex",
+      "installPath": null
+    }
+  ]
+}

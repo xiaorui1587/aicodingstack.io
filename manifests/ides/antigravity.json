@@ -1,0 +1,77 @@
+{
+  "id": "antigravity",
+  "name": "Antigravity",
+  "description": "Google's AI-powered integrated development environment (IDE) for modern software development with advanced AI capabilities.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "Google 的 AI 驱动集成开发环境（IDE），用于现代软件开发，具有先进的 AI 功能。"
+    }
+  },
+  "websiteUrl": "https://antigravity.google",
+  "docsUrl": "https://antigravity.google/docs",
+  "verified": false,
+  "vendor": "Google",
+  "latestVersion": "1.11.5",
+  "githubUrl": null,
+  "license": "Proprietary",
+  "pricing": [
+    {
+      "name": "Individual",
+      "value": 0,
+      "currency": null,
+      "per": null,
+      "category": "Individual"
+    },
+    {
+      "name": "Team",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Business"
+    },
+    {
+      "name": "Enterprise",
+      "value": null,
+      "currency": null,
+      "per": "custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://antigravity.google/download",
+    "changelog": "https://antigravity.google/changelog",
+    "pricing": "https://antigravity.google/pricing",
+    "mcp": null,
+    "issue": null
+  },
+  "communityUrls": {
+    "linkedin": "https://www.linkedin.com/company/google-antigravity",
+    "twitter": "https://x.com/antigravity",
+    "github": null,
+    "youtube": "https://www.youtube.com/@googleantigravity",
+    "discord": null,
+    "reddit": "https://www.reddit.com/r/google_antigravity",
+    "blog": "https://antigravity.google/blog"
+  },
+  "relatedProducts": [],
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": null,
+      "launchCommand": null,
+      "installPath": null
+    },
+    {
+      "os": "Windows",
+      "installCommand": null,
+      "launchCommand": null,
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": null,
+      "launchCommand": null,
+      "installPath": null
+    }
+  ]
+}
