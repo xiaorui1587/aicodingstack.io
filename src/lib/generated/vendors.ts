@@ -4,37 +4,85 @@
  * Do not edit manually - run the script to regenerate
  */
 
+import Alibaba from '../../../manifests/vendors/alibaba.json'
+import AmazonWebServices from '../../../manifests/vendors/amazon-web-services.json'
+import AntGroup from '../../../manifests/vendors/ant-group.json'
 import Anthropic from '../../../manifests/vendors/anthropic.json'
+import Anysphere from '../../../manifests/vendors/anysphere.json'
 import Augment from '../../../manifests/vendors/augment.json'
+import Bytedance from '../../../manifests/vendors/bytedance.json'
+import ClineBot from '../../../manifests/vendors/cline-bot.json'
+import Cognition from '../../../manifests/vendors/cognition.json'
+import ContinueDev from '../../../manifests/vendors/continue-dev.json'
 import Deepseek from '../../../manifests/vendors/deepseek.json'
+import FactoryAi from '../../../manifests/vendors/factory-ai.json'
+import Github from '../../../manifests/vendors/github.json'
 import Google from '../../../manifests/vendors/google.json'
+import Jetbrains from '../../../manifests/vendors/jetbrains.json'
 import Kilo from '../../../manifests/vendors/kilo.json'
+import Meta from '../../../manifests/vendors/meta.json'
 import Microsoft from '../../../manifests/vendors/microsoft.json'
 import Minimax from '../../../manifests/vendors/minimax.json'
 import Moonshot from '../../../manifests/vendors/moonshot.json'
+import MoonshotAi from '../../../manifests/vendors/moonshot-ai.json'
 import Openai from '../../../manifests/vendors/openai.json'
 import Openrouter from '../../../manifests/vendors/openrouter.json'
+import Qoder from '../../../manifests/vendors/qoder.json'
+import Qwen from '../../../manifests/vendors/qwen.json'
+import RooCode from '../../../manifests/vendors/roo-code.json'
+import ShareaiLab from '../../../manifests/vendors/shareai-lab.json'
 import Siliconflow from '../../../manifests/vendors/siliconflow.json'
 import Sourcegraph from '../../../manifests/vendors/sourcegraph.json'
+import Sst from '../../../manifests/vendors/sst.json'
+import Streamlake from '../../../manifests/vendors/streamlake.json'
+import Tabnine from '../../../manifests/vendors/tabnine.json'
+import Tencent from '../../../manifests/vendors/tencent.json'
+import TencentCloud from '../../../manifests/vendors/tencent-cloud.json'
+import Xai from '../../../manifests/vendors/xai.json'
 import ZAi from '../../../manifests/vendors/z-ai.json'
+import ZedIndustries from '../../../manifests/vendors/zed-industries.json'
 import type { ManifestVendor } from '../../types/manifests'
 
 export const vendorsData = [
+  Alibaba,
+  AmazonWebServices,
+  AntGroup,
   Anthropic,
+  Anysphere,
   Augment,
+  Bytedance,
+  ClineBot,
+  Cognition,
+  ContinueDev,
   Deepseek,
+  FactoryAi,
+  Github,
   Google,
+  Jetbrains,
   Kilo,
+  Meta,
   Microsoft,
   Minimax,
   Moonshot,
+  MoonshotAi,
   Openai,
   Openrouter,
+  Qoder,
+  Qwen,
+  RooCode,
+  ShareaiLab,
   Siliconflow,
   Sourcegraph,
+  Sst,
+  Streamlake,
+  Tabnine,
+  Tencent,
+  TencentCloud,
+  Xai,
   ZAi,
+  ZedIndustries,
 ] as unknown as ManifestVendor[]
 
-export type Vendor = typeof Anthropic
+export type Vendor = typeof Alibaba
 
 export default vendorsData

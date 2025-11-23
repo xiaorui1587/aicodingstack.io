@@ -123,7 +123,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
               },
             },
             name: 'Semantic Versioning',
-            url: 'https://semver.org/',
+            url: 'https://semver.org',
             description:
               'Versioning scheme using MAJOR.MINOR.PATCH format to communicate compatibility and impact of updates',
           },
@@ -135,7 +135,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
               },
             },
             name: 'Conventional Commits',
-            url: 'https://www.conventionalcommits.org/',
+            url: 'https://www.conventionalcommits.org',
             description:
               'Lightweight convention for structured commit messages that enable automated changelog generation and semantic versioning',
           },
@@ -147,7 +147,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
               },
             },
             name: 'AGENTS.md',
-            url: 'https://agents.md/',
+            url: 'https://agents.md',
             description:
               'Open-format markdown file providing coding agents with project-specific instructions and context',
           },
@@ -169,7 +169,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
               },
             },
             name: 'Model Context Protocol (MCP)',
-            url: 'https://modelcontextprotocol.io/',
+            url: 'https://modelcontextprotocol.io',
             description:
               'Open standard connecting AI applications to external systems like data sources, tools, and workflows',
           },
@@ -181,7 +181,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
               },
             },
             name: 'Agent2Agent (A2A)',
-            url: 'https://a2a-protocol.org/',
+            url: 'https://a2a-protocol.org',
             description:
               'Open protocol enabling secure communication and collaboration between AI agents across different platforms',
           },
@@ -193,7 +193,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
               },
             },
             name: 'Agent Payments Protocol (AP2)',
-            url: 'https://ap2-protocol.org/',
+            url: 'https://ap2-protocol.org',
             description:
               'Open protocol for secure agent-led payments using verifiable digital credentials and authorization mandates',
           },
@@ -205,7 +205,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
               },
             },
             name: 'Agent Network Protocol (ANP)',
-            url: 'https://agent-network-protocol.com/',
+            url: 'https://agent-network-protocol.com',
             description:
               'Decentralized protocol for trustless agent communication with DID-based identity and automatic protocol negotiation',
           },
@@ -217,7 +217,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
               },
             },
             name: 'Agent Client Protocol (ACP)',
-            url: 'https://agentclientprotocol.com/',
+            url: 'https://agentclientprotocol.com',
             description:
               'Open protocol standardizing communication between code editors and coding agents for autonomous code modification',
           },
@@ -391,7 +391,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
               },
             },
             name: 'OpenSpec',
-            url: 'https://openspec.dev/',
+            url: 'https://openspec.dev',
             description:
               'Spec-driven development framework for AI coding assistants with organized change management and living documentation',
           },
@@ -544,10 +544,10 @@ export const faqMetadata: Record<string, FaqItem[]> = {
 }
 
 export const stackCounts: Record<string, number> = {
-  ides: 10,
+  ides: 11,
   clis: 17,
-  extensions: 11,
+  extensions: 12,
   models: 24,
   'model-providers': 7,
-  vendors: 13,
+  vendors: 37,
 }

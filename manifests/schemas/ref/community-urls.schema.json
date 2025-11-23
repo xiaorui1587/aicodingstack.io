@@ -7,25 +7,25 @@
     "linkedin": {
       "type": ["string", "null"],
       "format": "uri",
-      "pattern": "^https://",
+      "pattern": "^https://www\\.linkedin\\.com/company/",
       "description": "LinkedIn company page URL"
     },
     "twitter": {
       "type": ["string", "null"],
       "format": "uri",
-      "pattern": "^https://",
+      "pattern": "^https://x\\.com/",
       "description": "Twitter/X profile URL"
     },
     "github": {
       "type": ["string", "null"],
       "format": "uri",
-      "pattern": "^https://",
+      "pattern": "^https://github\\.com/",
       "description": "GitHub organization URL"
     },
     "youtube": {
       "type": ["string", "null"],
       "format": "uri",
-      "pattern": "^https://",
+      "pattern": "^https://www\\.youtube\\.com/@",
       "description": "YouTube channel URL"
     },
     "discord": {
@@ -37,7 +37,7 @@
     "reddit": {
       "type": ["string", "null"],
       "format": "uri",
-      "pattern": "^https://",
+      "pattern": "^https://www\\.reddit\\.com/r/",
       "description": "Reddit community URL"
     },
     "blog": {

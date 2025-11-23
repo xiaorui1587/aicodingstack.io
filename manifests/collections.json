@@ -25,7 +25,7 @@
               }
             },
             "name": "Semantic Versioning",
-            "url": "https://semver.org/",
+            "url": "https://semver.org",
             "description": "Versioning scheme using MAJOR.MINOR.PATCH format to communicate compatibility and impact of updates"
           },
           {
@@ -36,7 +36,7 @@
               }
             },
             "name": "Conventional Commits",
-            "url": "https://www.conventionalcommits.org/",
+            "url": "https://www.conventionalcommits.org",
             "description": "Lightweight convention for structured commit messages that enable automated changelog generation and semantic versioning"
           },
           {
@@ -47,7 +47,7 @@
               }
             },
             "name": "AGENTS.md",
-            "url": "https://agents.md/",
+            "url": "https://agents.md",
             "description": "Open-format markdown file providing coding agents with project-specific instructions and context"
           }
         ]
@@ -68,7 +68,7 @@
               }
             },
             "name": "Model Context Protocol (MCP)",
-            "url": "https://modelcontextprotocol.io/",
+            "url": "https://modelcontextprotocol.io",
             "description": "Open standard connecting AI applications to external systems like data sources, tools, and workflows"
           },
           {
@@ -79,7 +79,7 @@
               }
             },
             "name": "Agent2Agent (A2A)",
-            "url": "https://a2a-protocol.org/",
+            "url": "https://a2a-protocol.org",
             "description": "Open protocol enabling secure communication and collaboration between AI agents across different platforms"
           },
           {
@@ -90,7 +90,7 @@
               }
             },
             "name": "Agent Payments Protocol (AP2)",
-            "url": "https://ap2-protocol.org/",
+            "url": "https://ap2-protocol.org",
             "description": "Open protocol for secure agent-led payments using verifiable digital credentials and authorization mandates"
           },
           {
@@ -101,7 +101,7 @@
               }
             },
             "name": "Agent Network Protocol (ANP)",
-            "url": "https://agent-network-protocol.com/",
+            "url": "https://agent-network-protocol.com",
             "description": "Decentralized protocol for trustless agent communication with DID-based identity and automatic protocol negotiation"
           },
           {
@@ -112,7 +112,7 @@
               }
             },
             "name": "Agent Client Protocol (ACP)",
-            "url": "https://agentclientprotocol.com/",
+            "url": "https://agentclientprotocol.com",
             "description": "Open protocol standardizing communication between code editors and coding agents for autonomous code modification"
           }
         ]
@@ -285,7 +285,7 @@
               }
             },
             "name": "OpenSpec",
-            "url": "https://openspec.dev/",
+            "url": "https://openspec.dev",
             "description": "Spec-driven development framework for AI coding assistants with organized change management and living documentation"
           },
           {

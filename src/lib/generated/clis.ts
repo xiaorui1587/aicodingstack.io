@@ -10,7 +10,7 @@ import AugmentCodeCli from '../../../manifests/clis/augment-code-cli.json'
 import ClaudeCodeCli from '../../../manifests/clis/claude-code-cli.json'
 import ClineCli from '../../../manifests/clis/cline-cli.json'
 import CodebuddyCli from '../../../manifests/clis/codebuddy-cli.json'
-import Codex from '../../../manifests/clis/codex.json'
+import CodexCli from '../../../manifests/clis/codex-cli.json'
 import ContinueCli from '../../../manifests/clis/continue-cli.json'
 import DroidCli from '../../../manifests/clis/droid-cli.json'
 import GeminiCli from '../../../manifests/clis/gemini-cli.json'
@@ -30,7 +30,7 @@ export const clisData = [
   ClaudeCodeCli,
   ClineCli,
   CodebuddyCli,
-  Codex,
+  CodexCli,
   ContinueCli,
   DroidCli,
   GeminiCli,

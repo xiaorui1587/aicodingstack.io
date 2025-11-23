@@ -4,6 +4,7 @@
     "augment-code": null,
     "claude-code": 43.1,
     "cline": 52.6,
+    "codex": 51.1,
     "continue": 30,
     "droid": null,
     "github-copilot": null,
@@ -19,7 +20,7 @@
     "claude-code-cli": 43.1,
     "cline-cli": null,
     "codebuddy-cli": null,
-    "codex": 51.1,
+    "codex-cli": 51.1,
     "continue-cli": 30,
     "droid-cli": null,
     "gemini-cli": 84.1,
@@ -32,6 +33,7 @@
     "qoder-cli": null
   },
   "ides": {
+    "antigravity": null,
     "codebuddy": null,
     "codeflicker": null,
     "cursor": 31.7,

@@ -8,6 +8,7 @@ import Amp from '../../../manifests/extensions/amp.json'
 import AugmentCode from '../../../manifests/extensions/augment-code.json'
 import ClaudeCode from '../../../manifests/extensions/claude-code.json'
 import Cline from '../../../manifests/extensions/cline.json'
+import Codex from '../../../manifests/extensions/codex.json'
 import Continue from '../../../manifests/extensions/continue.json'
 import Droid from '../../../manifests/extensions/droid.json'
 import GithubCopilot from '../../../manifests/extensions/github-copilot.json'
@@ -22,6 +23,7 @@ export const extensionsData = [
   AugmentCode,
   ClaudeCode,
   Cline,
+  Codex,
   Continue,
   Droid,
   GithubCopilot,
