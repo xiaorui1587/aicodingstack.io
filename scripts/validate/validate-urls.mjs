@@ -22,27 +22,21 @@ const REQUEST_TIMEOUT = 10000 // 10 seconds
 const RETRY_COUNT = 3
 const VALIDATED_URLS_LOG = path.join(__dirname, '../validated-urls.log')
 
-// Manifest files to validate
-const MANIFEST_FILES = [
-  'clis.json',
-  'ides.json',
-  'extensions.json',
-  'providers.json',
-  'models.json',
-  'collections.json',
-  'vendors.json',
+// Domain prefixes to skip validation (e.g., ['https://example.com', 'http://localhost'])
+const SKIP_DOMAIN_PREFIXES = [
+  'https://huggingface.co',
+  'https://discord.com/invite/',
+  'https://discord.gg/',
+  'https://www.npmjs.com/package/',
+  'https://www.reddit.com/r/',
+  'https://www.youtube.com/',
 ]
 
-// URL field patterns to extract from different manifest types
-const URL_FIELDS = [
-  'websiteUrl',
-  'docsUrl',
-  'applyKeyUrl',
-  'website',
-  'docs',
-  'marketplaceUrl',
-  'url',
-]
+// Manifest directories to validate (each contains multiple JSON files)
+const MANIFEST_DIRS = ['clis', 'ides', 'extensions', 'providers', 'models', 'vendors']
+
+// Single manifest file (not in a directory)
+const COLLECTIONS_FILE = 'collections.json'
 
 /**
  * Save validation results to log file
@@ -50,12 +44,15 @@ const URL_FIELDS = [
 function saveValidationLog(results) {
   try {
     const validated = []
+    const skipped = []
     const failed = []
     const notFound = []
 
     // Categorize results
     results.forEach(result => {
-      if (result.valid) {
+      if (result.skipped) {
+        skipped.push(result.url)
+      } else if (result.valid) {
         validated.push(result.url)
       } else if (result.status === 404) {
         notFound.push(result.url)
@@ -75,6 +72,15 @@ function saveValidationLog(results) {
       }
     }
     lines.push('')
+
+    // Skipped section
+    if (skipped.length > 0) {
+      lines.push('// Skipped (domain prefix in skip list)')
+      for (const url of skipped.sort()) {
+        lines.push(url)
+      }
+      lines.push('')
+    }
 
     // Validation Failed section
     lines.push('// Validation Failed')
@@ -103,69 +109,120 @@ function saveValidationLog(results) {
 }
 
 /**
- * Extract all URLs from a manifest item
+ * Extract a URL field value if it exists and is a non-null string
+ */
+function extractUrlField(item, field, manifestFile, itemId, fieldPath) {
+  const value = item[field]
+  if (value && value !== null && typeof value === 'string') {
+    return {
+      url: value,
+      source: `${manifestFile} → ${itemId} → ${fieldPath || field}`,
+      itemId,
+      field: fieldPath || field,
+    }
+  }
+  return null
+}
+
+/**
+ * Extract URLs from nested object (resourceUrls, communityUrls, platformUrls)
+ */
+function extractNestedUrls(item, nestedField, manifestFile, itemId) {
+  const urls = []
+  const nestedObj = item[nestedField]
+  if (nestedObj && typeof nestedObj === 'object') {
+    Object.entries(nestedObj).forEach(([key, value]) => {
+      if (value && value !== null && typeof value === 'string') {
+        urls.push({
+          url: value,
+          source: `${manifestFile} → ${itemId} → ${nestedField}.${key}`,
+          itemId,
+          field: `${nestedField}.${key}`,
+        })
+      }
+    })
+  }
+  return urls
+}
+
+/**
+ * Extract all URLs from a manifest item based on schema definitions
  */
 function extractUrls(item, manifestFile) {
   const urls = []
   const itemId = item.id || item.name || 'unknown'
 
-  // Direct URL fields
-  URL_FIELDS.forEach(field => {
-    // Skip null or undefined values
-    if (item[field] && item[field] !== null && typeof item[field] === 'string') {
-      urls.push({
-        url: item[field],
-        source: `${manifestFile} → ${itemId} → ${field}`,
-        itemId,
-        field,
+  // Determine manifest type from file path
+  // manifestFile format: "clis/codex-cli.json" or "collections.json"
+  const manifestType = manifestFile.includes('/')
+    ? manifestFile.split('/')[0] // Extract directory name (e.g., "clis" from "clis/codex-cli.json")
+    : manifestFile.replace('.json', '') // For single files like "collections.json"
+
+  // Common fields from entity.schema.json (all entities have these)
+  // websiteUrl and docsUrl are required in entity schema
+  const websiteUrl = extractUrlField(item, 'websiteUrl', manifestFile, itemId)
+  if (websiteUrl) urls.push(websiteUrl)
+
+  const docsUrl = extractUrlField(item, 'docsUrl', manifestFile, itemId)
+  if (docsUrl) urls.push(docsUrl)
+
+  // Fields from product.schema.json (clis, ides, extensions)
+  if (['clis', 'ides', 'extensions'].includes(manifestType)) {
+    // githubUrl from product schema
+    const githubUrl = extractUrlField(item, 'githubUrl', manifestFile, itemId)
+    if (githubUrl) urls.push(githubUrl)
+
+    // resourceUrls from product schema
+    urls.push(...extractNestedUrls(item, 'resourceUrls', manifestFile, itemId))
+
+    // communityUrls from product schema
+    urls.push(...extractNestedUrls(item, 'communityUrls', manifestFile, itemId))
+  }
+
+  // Fields specific to extensions.schema.json
+  if (manifestType === 'extensions') {
+    // supportedIdes array with marketplaceUrl
+    if (item.supportedIdes && Array.isArray(item.supportedIdes)) {
+      item.supportedIdes.forEach((ideSupport, index) => {
+        if (ideSupport.marketplaceUrl) {
+          urls.push({
+            url: ideSupport.marketplaceUrl,
+            source: `${manifestFile} → ${itemId} → supportedIdes[${index}].marketplaceUrl`,
+            itemId,
+            field: `supportedIdes[${index}].marketplaceUrl`,
+          })
+        }
       })
     }
-  })
-
-  // Nested resourceUrls object (for base-product schema)
-  if (item.resourceUrls && typeof item.resourceUrls === 'object') {
-    Object.entries(item.resourceUrls).forEach(([key, value]) => {
-      // Skip null or undefined values
-      if (value && value !== null && typeof value === 'string') {
-        urls.push({
-          url: value,
-          source: `${manifestFile} → ${itemId} → resourceUrls.${key}`,
-          itemId,
-          field: `resourceUrls.${key}`,
-        })
-      }
-    })
   }
 
-  // Nested communityUrls object (for base-product schema)
-  if (item.communityUrls && typeof item.communityUrls === 'object') {
-    Object.entries(item.communityUrls).forEach(([key, value]) => {
-      // Skip null or undefined values
-      if (value && value !== null && typeof value === 'string') {
-        urls.push({
-          url: value,
-          source: `${manifestFile} → ${itemId} → communityUrls.${key}`,
-          itemId,
-          field: `communityUrls.${key}`,
-        })
-      }
-    })
+  // Fields from providers.schema.json
+  if (manifestType === 'providers') {
+    // applyKeyUrl from providers schema
+    const applyKeyUrl = extractUrlField(item, 'applyKeyUrl', manifestFile, itemId)
+    if (applyKeyUrl) urls.push(applyKeyUrl)
+
+    // platformUrls from providers schema
+    urls.push(...extractNestedUrls(item, 'platformUrls', manifestFile, itemId))
+
+    // communityUrls from providers schema
+    urls.push(...extractNestedUrls(item, 'communityUrls', manifestFile, itemId))
   }
 
-  // Nested platformUrls object (for providers schema)
-  if (item.platformUrls && typeof item.platformUrls === 'object') {
-    Object.entries(item.platformUrls).forEach(([key, value]) => {
-      // Skip null or undefined values
-      if (value && value !== null && typeof value === 'string') {
-        urls.push({
-          url: value,
-          source: `${manifestFile} → ${itemId} → platformUrls.${key}`,
-          itemId,
-          field: `platformUrls.${key}`,
-        })
-      }
-    })
+  // Fields from models.schema.json
+  if (manifestType === 'models') {
+    // platformUrls from models schema
+    urls.push(...extractNestedUrls(item, 'platformUrls', manifestFile, itemId))
   }
+
+  // Fields from vendors.schema.json
+  if (manifestType === 'vendors') {
+    // communityUrls from vendors schema
+    urls.push(...extractNestedUrls(item, 'communityUrls', manifestFile, itemId))
+  }
+
+  // Note: collections.json is handled separately in loadAllUrls function
+  // because it has a different nested structure
 
   return urls
 }
@@ -177,52 +234,97 @@ function loadAllUrls() {
   const allUrls = []
   const manifestsDir = path.join(rootDir, 'manifests')
 
-  for (const manifestFile of MANIFEST_FILES) {
-    const manifestPath = path.join(manifestsDir, manifestFile)
+  // Process manifest directories (clis, ides, extensions, etc.)
+  for (const manifestDir of MANIFEST_DIRS) {
+    const manifestDirPath = path.join(manifestsDir, manifestDir)
 
-    if (!fs.existsSync(manifestPath)) {
-      console.warn(`⚠️  Manifest file not found: ${manifestFile}`)
+    if (!fs.existsSync(manifestDirPath)) {
+      console.warn(`⚠️  Manifest directory not found: ${manifestDir}`)
       continue
     }
 
     try {
-      const content = fs.readFileSync(manifestPath, 'utf8')
-      const data = JSON.parse(content)
+      // Read all JSON files in the directory
+      const files = fs.readdirSync(manifestDirPath)
+      const jsonFiles = files.filter(file => file.endsWith('.json'))
 
-      // Handle collections.json special structure
-      if (manifestFile === 'collections.json') {
-        if (typeof data === 'object' && data !== null) {
-          // Process each section (specifications, articles, tools)
-          Object.entries(data).forEach(([sectionName, section]) => {
-            if (section?.cards && Array.isArray(section.cards)) {
-              section.cards.forEach(card => {
-                if (card?.items && Array.isArray(card.items)) {
-                  card.items.forEach(item => {
-                    const urls = extractUrls(
-                      item,
-                      `${manifestFile} → ${sectionName} → ${card.title}`
-                    )
-                    allUrls.push(...urls)
-                  })
-                }
-              })
-            }
-          })
+      if (jsonFiles.length === 0) {
+        console.warn(`⚠️  No JSON files found in ${manifestDir}`)
+        continue
+      }
+
+      for (const jsonFile of jsonFiles) {
+        const manifestPath = path.join(manifestDirPath, jsonFile)
+        const manifestFile = `${manifestDir}/${jsonFile}` // Use dir/file.json format for extractUrls
+
+        try {
+          const content = fs.readFileSync(manifestPath, 'utf8')
+          const data = JSON.parse(content)
+
+          // Each file should contain a single item object
+          if (typeof data === 'object' && data !== null && !Array.isArray(data)) {
+            const urls = extractUrls(data, manifestFile)
+            allUrls.push(...urls)
+          } else {
+            console.warn(`⚠️  ${manifestFile} is not an object, skipping`)
+          }
+        } catch (error) {
+          console.error(`❌ Error reading ${manifestFile}: ${error.message}`)
         }
-      } else if (Array.isArray(data)) {
-        data.forEach(item => {
-          const urls = extractUrls(item, manifestFile)
-          allUrls.push(...urls)
-        })
-      } else {
-        console.warn(`⚠️  ${manifestFile} is not an array or collections object, skipping`)
       }
     } catch (error) {
-      console.error(`❌ Error reading ${manifestFile}: ${error.message}`)
+      console.error(`❌ Error reading directory ${manifestDir}: ${error.message}`)
     }
   }
 
+  // Handle collections.json special structure
+  const collectionsPath = path.join(manifestsDir, COLLECTIONS_FILE)
+  if (fs.existsSync(collectionsPath)) {
+    try {
+      const content = fs.readFileSync(collectionsPath, 'utf8')
+      const data = JSON.parse(content)
+
+      if (typeof data === 'object' && data !== null) {
+        // Process each section (specifications, articles, tools)
+        Object.entries(data).forEach(([sectionName, section]) => {
+          if (section?.cards && Array.isArray(section.cards)) {
+            section.cards.forEach(card => {
+              if (card?.items && Array.isArray(card.items)) {
+                card.items.forEach(item => {
+                  // Collections items only have 'url' field according to schema
+                  if (item.url && typeof item.url === 'string') {
+                    const itemId = item.name || 'unknown'
+                    allUrls.push({
+                      url: item.url,
+                      source: `${COLLECTIONS_FILE} → ${sectionName} → ${card.title} → ${itemId} → url`,
+                      itemId,
+                      field: 'url',
+                    })
+                  }
+                })
+              }
+            })
+          }
+        })
+      }
+    } catch (error) {
+      console.error(`❌ Error reading ${COLLECTIONS_FILE}: ${error.message}`)
+    }
+  } else {
+    console.warn(`⚠️  Manifest file not found: ${COLLECTIONS_FILE}`)
+  }
+
   return allUrls
+}
+
+/**
+ * Check if a URL should be skipped based on domain prefix
+ */
+function shouldSkipUrl(url) {
+  if (SKIP_DOMAIN_PREFIXES.length === 0) {
+    return false
+  }
+  return SKIP_DOMAIN_PREFIXES.some(prefix => url.startsWith(prefix))
 }
 
 /**
@@ -377,6 +479,7 @@ async function validateUrls(urls) {
   let completed = 0
   let valid = 0
   let invalid = 0
+  let skipped = 0
   let currentIndex = 0
 
   console.log(
@@ -389,7 +492,7 @@ async function validateUrls(urls) {
     const processNext = () => {
       // Check if we're done
       if (completed === total) {
-        resolve({ results, total, valid, invalid })
+        resolve({ results, total, valid, invalid, skipped })
         return
       }
 
@@ -397,6 +500,23 @@ async function validateUrls(urls) {
       while (activeRequests < MAX_CONCURRENT_REQUESTS && currentIndex < total) {
         const urlInfo = urls[currentIndex++]
         activeRequests++
+
+        // Check if URL should be skipped
+        if (shouldSkipUrl(urlInfo.url)) {
+          results.push({
+            ...urlInfo,
+            valid: true,
+            status: 'skipped',
+            skipped: true,
+          })
+          completed++
+          activeRequests--
+          skipped++
+          valid++
+          process.stdout.write(`⏭️  [${completed}/${total}] ${urlInfo.url} (skipped)\n`)
+          processNext()
+          continue
+        }
 
         // Process URL and handle completion
         checkUrl(urlInfo)
@@ -437,6 +557,30 @@ async function validateUrls(urls) {
     // Start initial batch
     processNext()
   })
+}
+
+/**
+ * Validate URL format (e.g., check for trailing slashes)
+ * Returns array of validation errors
+ */
+function validateUrlFormat(urls) {
+  const errors = []
+
+  urls.forEach(urlInfo => {
+    const { url } = urlInfo
+
+    // Check if URL ends with a trailing slash
+    if (url.endsWith('/')) {
+      errors.push({
+        ...urlInfo,
+        valid: false,
+        error: 'URL ends with trailing slash (/)',
+        formatError: true,
+      })
+    }
+  })
+
+  return errors
 }
 
 /**
@@ -532,8 +676,21 @@ async function main() {
 
   console.log(`📊 Found ${urls.length} URL references (${uniqueUrls.length} unique)`)
 
+  // Validate URL format first (e.g., check for trailing slashes)
+  const formatErrors = validateUrlFormat(uniqueUrls)
+  if (formatErrors.length > 0) {
+    console.error('\n❌ URL format validation failed:\n')
+    formatErrors.forEach(error => {
+      console.error(`   • ${error.url}`)
+      console.error(`     Location: ${error.itemId} → ${error.field}`)
+      console.error(`     Error: ${error.error}`)
+    })
+    console.error('\n❌ URL validation failed! Please fix the format errors above.')
+    process.exit(1)
+  }
+
   // Validate all URLs
-  const { results, total, valid, invalid } = await validateUrls(uniqueUrls)
+  const { results, total, valid, invalid, skipped } = await validateUrls(uniqueUrls)
 
   // Save results to log file
   saveValidationLog(results)
@@ -543,8 +700,14 @@ async function main() {
   console.log(`\n📊 Summary:`)
   console.log(`   Total URLs: ${total}`)
   console.log(`   Valid: ${valid} ✅`)
+  if (skipped > 0) {
+    console.log(`   Skipped: ${skipped} ⏭️`)
+  }
   console.log(`   Invalid: ${invalid} ❌`)
-  console.log(`   Success rate: ${((valid / total) * 100).toFixed(1)}%`)
+  const validatedCount = total - skipped
+  if (validatedCount > 0) {
+    console.log(`   Success rate: ${((valid / validatedCount) * 100).toFixed(1)}%`)
+  }
 
   formatResults(results)
 

@@ -2,53 +2,44 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Project Overview
+## Internationalization (i18n)
 
-AI Coding Stack is a comprehensive directory and metadata repository for the AI coding ecosystem. The project serves two purposes:
-1. A public website at aicodingstack.io for discovering and comparing AI coding tools
-2. A community-maintained metadata repository containing curated information about coding tools, models, and platforms
+**CRITICAL REQUIREMENTS:**
 
-## Metadata Architecture
+When creating or modifying any page, module, or data:
+- **MUST support at least 3 languages:** English, Simplified Chinese (zh-Hans), and German (de)
+- **MUST use the localized Link component:** Always import and use `import { Link } from '@/i18n/navigation'` instead of Next.js default Link
 
-The core of this project is the `manifests/` directory containing JSON files that define metadata for various coding tools:
+### Localization Best Practices
 
-### Manifest Files Structure
+- **Metadata localization:** All meta information (titles, descriptions, keywords, OG tags, etc.) in pages MUST be properly localized
+- **DRY principle for translations:** Before creating new translation keys, search existing translation modules thoroughly to reuse existing terms and phrases
+- **Consistency:** Use the same translation keys across similar contexts
 
-Each manifest file follows a consistent schema pattern:
+## Design System
 
-**ides.json** - Integrated Development Environments
-- Fields: `name`, `id`, `vendor`, `description`, `websiteUrl`, `docsUrl`, `latestVersion`
-- Examples: Visual Studio Code, Cursor, TRAE
+**Global Design Principles:**
 
-**clis.json** - Command-line AI coding assistants
-- Fields: `name`, `id`, `vendor`, `description`, `websiteUrl`, `docsUrl`, `latestVersion`
-- Examples: Codex, Claude Code
+- **Minimalist approach:** Follow a unified, extremely minimalist design style throughout the entire application
+- **No rounded corners:** All controls, components, labels, and UI elements MUST use sharp corners (border-radius: 0)
+- **Restrained color usage:** Use colors extremely sparingly and intentionally. Prefer grayscale and limit accent colors to essential UI elements only. If colors must be used, prefer low-saturation designs.
+- **Icon usage:** Avoid using emoji or any other characters as icons. Prioritize SVG for icons.
 
-**models.json** - Large Language Models for coding
-- Fields: `name`, `vendor`, `id`, `size`, `totalContext`, `maxOutput`, `pricing`, `urls` (object containing `website`, `huggingface`, `artificialAnalysis`, `openrouter`)
-- Examples: Kimi K2 0905, DeepSeek V3.1, GLM 4.5, Qwen3 Coder
+## Coding Principles
 
-**providers.json** - LLM API Providers
-- Fields: `name`, `id`, `description`, `websiteUrl`, `docsUrl`
-- Examples: DeepSeek, Moonshot, SiliconFlow, OpenRouter, Z.ai
+**CRITICAL: Follow these principles rigorously in all code:**
 
-## Development Commands
+### KISS - Keep It Simple & Stupid
+- Prefer simple, straightforward solutions over clever or complex ones
+- Write code that is easy to read and understand
+- Avoid unnecessary abstractions and premature optimization
 
-Currently, there are no build commands configured. The project is in early stages with only manifest data files.
+### DRY - Don't Repeat Yourself
+- Eliminate code duplication by extracting common logic
+- Reuse existing components, functions, and translation keys
+- Create shared utilities when patterns emerge
 
-## Contributing to Metadata
+## Development Workflow
 
-When adding or updating entries in manifest files:
-1. Maintain the JSON format
-2. Follow the exact field schema for each manifest type
-3. Verify URLs are accessible before committing
-4. Use consistent naming conventions (official product names)
-5. Keep `id` values lowercase with hyphens for multi-word names
-
-## Development Server
-
-**IMPORTANT:** Do not start the development server (`npm run dev`) on your own. The user will start it manually when needed.
-
-## Git Workflow
-
-**IMPORTANT:** Do not autonomously create git commits unless explicitly requested by the user. Always ask the user before committing changes. The user prefers to review and commit changes manually.
+- **Development server:** Do not start `npm run dev` automatically. User will start it manually when needed.
+- **Git commits:** Do not create commits autonomously. Always ask the user before committing changes.
