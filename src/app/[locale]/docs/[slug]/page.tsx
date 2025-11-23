@@ -1,8 +1,8 @@
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import DocsSidebar from '@/components/sidebar/DocsSidebar'
+import { Link } from '@/i18n/navigation'
 import { getDocBySlug, getDocComponent, getDocSections } from '@/lib/generated/docs'
 import { generateDocsMetadata } from '@/lib/metadata'
 
@@ -88,7 +88,7 @@ export default async function DocPage({ params }: Props) {
           <DocsSidebar sections={docSections} activeSlug={slug} />
 
           {/* Main Content */}
-          <main className="flex-1 max-w-[800px]">
+          <main className="flex-1 max-w-[1400px]">
             <article className="space-y-[var(--spacing-lg)] text-base leading-[1.8] text-[var(--color-text-secondary)] font-light">
               <DocContent />
             </article>

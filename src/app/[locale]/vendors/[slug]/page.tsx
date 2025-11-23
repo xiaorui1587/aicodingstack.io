@@ -6,11 +6,19 @@ import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import { JsonLd } from '@/components/JsonLd'
 import { LinkCardGrid, ProductHero } from '@/components/product'
+import { VendorModels } from '@/components/vendor/VendorModels'
+import { VendorProducts } from '@/components/vendor/VendorProducts'
 import type { Locale } from '@/i18n/config'
-import { vendorsData as vendors } from '@/lib/generated'
-import { localizeManifestItem } from '@/lib/manifest-i18n'
+import {
+  clisData as clis,
+  extensionsData as extensions,
+  idesData as ides,
+  modelsData as models,
+  vendorsData as vendors,
+} from '@/lib/generated'
+import { localizeManifestItem, localizeManifestItems } from '@/lib/manifest-i18n'
 import { generateSoftwareDetailMetadata } from '@/lib/metadata'
-import type { ManifestVendor } from '@/types/manifests'
+import type { ManifestCLI, ManifestExtension, ManifestIDE, ManifestVendor } from '@/types/manifests'
 
 export const revalidate = 3600
 
@@ -82,6 +90,38 @@ export default async function VendorPage({
 
   const websiteUrl = vendor.websiteUrl
 
+  // Find all products by this vendor
+  // Note: Products store vendor.name, not vendor.id, so we match against vendor.name
+  const vendorIdes = ides
+    .filter(ide => ide.vendor === vendor.name)
+    .map(ide => ({
+      ...localizeManifestItem(ide as unknown as Record<string, unknown>, locale as Locale),
+      type: 'ide' as const,
+    })) as (ManifestIDE & { type: 'ide' })[]
+
+  const vendorClis = clis
+    .filter(cli => cli.vendor === vendor.name)
+    .map(cli => ({
+      ...localizeManifestItem(cli as unknown as Record<string, unknown>, locale as Locale),
+      type: 'cli' as const,
+    })) as (ManifestCLI & { type: 'cli' })[]
+
+  const vendorExtensions = extensions
+    .filter(ext => ext.vendor === vendor.name)
+    .map(ext => ({
+      ...localizeManifestItem(ext as unknown as Record<string, unknown>, locale as Locale),
+      type: 'extension' as const,
+    })) as (ManifestExtension & { type: 'extension' })[]
+
+  const vendorProducts = [...vendorIdes, ...vendorClis, ...vendorExtensions]
+
+  // Find all models by this vendor
+  // Note: Models also store vendor.name, not vendor.id
+  const vendorModels = localizeManifestItems(
+    models.filter(model => model.vendor === vendor.name) as unknown as Record<string, unknown>[],
+    locale as Locale
+  )
+
   // Schema.org structured data
   const organizationSchema = {
     '@context': 'https://schema.org',
@@ -133,6 +173,12 @@ export default async function VendorPage({
             gridCols="grid-cols-2 md:grid-cols-4"
           />
         )}
+
+      {/* Vendor Products (IDEs, CLIs, Extensions) */}
+      <VendorProducts products={vendorProducts} locale={locale} title={t('products')} />
+
+      {/* Vendor Models */}
+      <VendorModels models={vendorModels as any} locale={locale} title={t('models')} />
 
       {/* Navigation */}
       <BackToNavigation href="vendors" title={t('allVendors')} />

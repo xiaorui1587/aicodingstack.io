@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
 import { BackToNavigation } from '@/components/controls/BackToNavigation'
@@ -8,6 +7,7 @@ import Header from '@/components/Header'
 import { JsonLd } from '@/components/JsonLd'
 import { ProductCommands, ProductHero, ProductLinks, ProductPricing } from '@/components/product'
 import type { Locale } from '@/i18n/config'
+import { Link } from '@/i18n/navigation'
 import { clisData as clis } from '@/lib/generated'
 import { getGithubStars } from '@/lib/generated/github-stars'
 import { translateLicenseText } from '@/lib/license'
@@ -180,7 +180,7 @@ export default async function CLIPage({
       {/* Related IDE */}
       {cli.ide && (
         <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
-          <div className="max-w-[800px] mx-auto px-[var(--spacing-md)]">
+          <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
             <Link
               href={`ides/${cli.ide}`}
               className="block border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5 group"

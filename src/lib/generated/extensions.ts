@@ -9,6 +9,7 @@ import AugmentCode from '../../../manifests/extensions/augment-code.json'
 import ClaudeCode from '../../../manifests/extensions/claude-code.json'
 import Cline from '../../../manifests/extensions/cline.json'
 import Continue from '../../../manifests/extensions/continue.json'
+import Droid from '../../../manifests/extensions/droid.json'
 import GithubCopilot from '../../../manifests/extensions/github-copilot.json'
 import JetbrainsJunie from '../../../manifests/extensions/jetbrains-junie.json'
 import KiloCode from '../../../manifests/extensions/kilo-code.json'
@@ -22,6 +23,7 @@ export const extensionsData = [
   ClaudeCode,
   Cline,
   Continue,
+  Droid,
   GithubCopilot,
   JetbrainsJunie,
   KiloCode,

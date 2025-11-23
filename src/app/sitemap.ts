@@ -3,6 +3,7 @@ import { locales } from '@/i18n/config'
 import { clisData, idesData, modelsData, providersData } from '@/lib/generated'
 import { articles } from '@/lib/generated/articles'
 import { docSections } from '@/lib/generated/docs'
+import { SITE_CONFIG } from '@/lib/metadata/config'
 
 type ManifestItem = {
   id: string
@@ -31,7 +32,7 @@ function generateLocalizedPages(
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://aicodingstack.io'
+  const baseUrl = SITE_CONFIG.url
   const currentDate = new Date()
 
   // Use build time for more accurate lastModified

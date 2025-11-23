@@ -7,7 +7,7 @@
 import AmazonQDeveloperCli from '../../../manifests/clis/amazon-q-developer-cli.json'
 import AmpCli from '../../../manifests/clis/amp-cli.json'
 import AugmentCodeCli from '../../../manifests/clis/augment-code-cli.json'
-import ClaudeCode from '../../../manifests/clis/claude-code.json'
+import ClaudeCodeCli from '../../../manifests/clis/claude-code-cli.json'
 import ClineCli from '../../../manifests/clis/cline-cli.json'
 import CodebuddyCli from '../../../manifests/clis/codebuddy-cli.json'
 import Codex from '../../../manifests/clis/codex.json'
@@ -15,7 +15,7 @@ import ContinueCli from '../../../manifests/clis/continue-cli.json'
 import DroidCli from '../../../manifests/clis/droid-cli.json'
 import GeminiCli from '../../../manifests/clis/gemini-cli.json'
 import GithubCopilotCli from '../../../manifests/clis/github-copilot-cli.json'
-import KilocodeCli from '../../../manifests/clis/kilocode-cli.json'
+import KiloCodeCli from '../../../manifests/clis/kilo-code-cli.json'
 import KimiCli from '../../../manifests/clis/kimi-cli.json'
 import Kode from '../../../manifests/clis/kode.json'
 import NeovateCode from '../../../manifests/clis/neovate-code.json'
@@ -27,7 +27,7 @@ export const clisData = [
   AmazonQDeveloperCli,
   AmpCli,
   AugmentCodeCli,
-  ClaudeCode,
+  ClaudeCodeCli,
   ClineCli,
   CodebuddyCli,
   Codex,
@@ -35,7 +35,7 @@ export const clisData = [
   DroidCli,
   GeminiCli,
   GithubCopilotCli,
-  KilocodeCli,
+  KiloCodeCli,
   KimiCli,
   Kode,
   NeovateCode,

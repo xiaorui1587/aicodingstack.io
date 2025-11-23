@@ -78,8 +78,8 @@ export default async function Home({ params }: Props) {
 
       {/* Hero Section */}
       <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
-        <div className="max-w-[1200px] mx-auto px-[var(--spacing-md)]">
-          <div className="text-center max-w-[900px] mx-auto">
+        <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
+          <div className="text-center max-w-[1400px] mx-auto">
             <div className="mb-[var(--spacing-md)]">
               <pre className="text-[0.45rem] leading-[1.3] inline-block text-left bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-transparent">
                 {`╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
@@ -129,7 +129,7 @@ export default async function Home({ params }: Props) {
         id="features"
         className="py-[var(--spacing-xl)] border-b border-[var(--color-border)]"
       >
-        <div className="max-w-[1200px] mx-auto px-[var(--spacing-md)]">
+        <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
           <h2 className="text-[1.5rem] font-semibold tracking-[-0.02em] mb-[var(--spacing-sm)]">
             <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
               {'//'}
@@ -199,7 +199,7 @@ export default async function Home({ params }: Props) {
 
       {/* FAQ Section */}
       <section id="faq" className="py-[var(--spacing-xl)] border-b border-[var(--color-border)]">
-        <div className="max-w-[1200px] mx-auto px-[var(--spacing-md)]">
+        <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
           <h2 className="text-[1.5rem] font-semibold tracking-[-0.02em] mb-[var(--spacing-sm)]">
             <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
               {'//'}

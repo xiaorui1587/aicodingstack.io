@@ -1,12 +1,12 @@
 'use client'
 
 import { FileText, Github, Home, Twitter } from 'lucide-react'
-import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef, useState } from 'react'
 import ComparisonTable, { type ComparisonColumn } from '@/components/ComparisonTable'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import { Link } from '@/i18n/navigation'
 import { modelsData as models } from '@/lib/generated'
 
 type Props = {
@@ -171,7 +171,7 @@ export default function ModelComparisonPageClient({ locale }: Props) {
       {/* Fixed Breadcrumb (when scrolled) */}
       {isBreadcrumbFixed && (
         <section className="fixed top-[60px] left-0 right-0 z-30 py-[var(--spacing-sm)] bg-[var(--color-hover)] border-b border-[var(--color-border)] shadow-sm">
-          <div className="max-w-[1200px] mx-auto px-[var(--spacing-md)]">
+          <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
             <nav className="flex items-center gap-[var(--spacing-xs)] text-[0.8125rem]">
               <Link
                 href={`/${locale}/ai-coding-stack`}
@@ -200,7 +200,7 @@ export default function ModelComparisonPageClient({ locale }: Props) {
         ref={breadcrumbRef}
         className="py-[var(--spacing-sm)] bg-[var(--color-hover)] border-b border-[var(--color-border)]"
       >
-        <div className="max-w-[1200px] mx-auto px-[var(--spacing-md)]">
+        <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
           <nav
             className={`flex items-center gap-[var(--spacing-xs)] text-[0.8125rem] ${isBreadcrumbFixed ? 'invisible' : ''}`}
           >
@@ -227,7 +227,7 @@ export default function ModelComparisonPageClient({ locale }: Props) {
 
       {/* Page Header */}
       <section className="py-[var(--spacing-lg)] border-[var(--color-border)]">
-        <div className="max-w-[1200px] mx-auto px-[var(--spacing-md)]">
+        <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
           <h1 className="text-[2.5rem] font-semibold tracking-[-0.04em] mb-[var(--spacing-sm)]">
             {tComparison('models.title')}
           </h1>
@@ -239,7 +239,7 @@ export default function ModelComparisonPageClient({ locale }: Props) {
 
       {/* Comparison Table */}
       <section className="pb-[var(--spacing-lg)] border-b border-[var(--color-border)]">
-        <div className="max-w-[1200px] mx-auto px-[var(--spacing-md)]">
+        <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
           <ComparisonTable
             items={models as unknown as Record<string, unknown>[]}
             columns={columns}
@@ -251,7 +251,7 @@ export default function ModelComparisonPageClient({ locale }: Props) {
 
       {/* Back Navigation */}
       <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
-        <div className="max-w-[1200px] mx-auto px-[var(--spacing-md)]">
+        <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
           <Link
             href={`/${locale}/models`}
             className="inline-flex items-center gap-[var(--spacing-xs)] text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors"

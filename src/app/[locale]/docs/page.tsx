@@ -55,7 +55,7 @@ export default async function DocsPage({ params }: Props) {
           <DocsSidebar sections={docSections} activeSlug="welcome" />
 
           {/* Main Content */}
-          <main className="flex-1 max-w-[800px]">
+          <main className="flex-1 max-w-[1400px]">
             <article className="space-y-[var(--spacing-lg)] text-base leading-[1.8] text-[var(--color-text-secondary)] font-light">
               {WelcomeDoc && <WelcomeDoc />}
             </article>

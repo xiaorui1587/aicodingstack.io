@@ -39,12 +39,12 @@ With authentication, you get 5,000 requests per hour.
 
 #### Without GitHub Token
 ```bash
-node scripts/fetch-github-stars.mjs
+node scripts/fetch/index.mjs github-stars
 ```
 
 #### With GitHub Token
 ```bash
-GITHUB_TOKEN=your_github_token_here node scripts/fetch-github-stars.mjs
+GITHUB_TOKEN=your_github_token_here node scripts/fetch/index.mjs github-stars
 ```
 
 ## Getting a GitHub Token

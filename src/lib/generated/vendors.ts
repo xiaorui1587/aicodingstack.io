@@ -8,6 +8,7 @@ import Anthropic from '../../../manifests/vendors/anthropic.json'
 import Augment from '../../../manifests/vendors/augment.json'
 import Deepseek from '../../../manifests/vendors/deepseek.json'
 import Google from '../../../manifests/vendors/google.json'
+import Kilo from '../../../manifests/vendors/kilo.json'
 import Microsoft from '../../../manifests/vendors/microsoft.json'
 import Minimax from '../../../manifests/vendors/minimax.json'
 import Moonshot from '../../../manifests/vendors/moonshot.json'
@@ -23,6 +24,7 @@ export const vendorsData = [
   Augment,
   Deepseek,
   Google,
+  Kilo,
   Microsoft,
   Minimax,
   Moonshot,

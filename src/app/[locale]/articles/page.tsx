@@ -1,7 +1,7 @@
-import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import { Link } from '@/i18n/navigation'
 import { getArticles } from '@/lib/generated/articles'
 import { buildCanonicalUrl, buildOpenGraph, buildTitle, buildTwitterCard } from '@/lib/metadata'
 

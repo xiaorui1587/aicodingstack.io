@@ -4,6 +4,7 @@
  */
 
 import { defaultLocale, type Locale, locales, localeToOgLocale } from '@/i18n/config'
+import { SITE_CONFIG } from '@/lib/metadata/config'
 
 /**
  * Generate canonical path with locale support
@@ -18,7 +19,7 @@ export function getCanonicalPath(basePath: string, locale: string): string {
  */
 export function getFullUrl(basePath: string, locale: string): string {
   const canonicalPath = getCanonicalPath(basePath, locale)
-  return `https://aicodingstack.io${canonicalPath}`
+  return `${SITE_CONFIG.url}${canonicalPath}`
 }
 
 /**

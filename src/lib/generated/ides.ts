@@ -7,7 +7,6 @@
 import Codebuddy from '../../../manifests/ides/codebuddy.json'
 import Codeflicker from '../../../manifests/ides/codeflicker.json'
 import Cursor from '../../../manifests/ides/cursor.json'
-import Droid from '../../../manifests/ides/droid.json'
 import IntellijIdea from '../../../manifests/ides/intellij-idea.json'
 import Kiro from '../../../manifests/ides/kiro.json'
 import Qoder from '../../../manifests/ides/qoder.json'
@@ -21,7 +20,6 @@ export const idesData = [
   Codebuddy,
   Codeflicker,
   Cursor,
-  Droid,
   IntellijIdea,
   Kiro,
   Qoder,

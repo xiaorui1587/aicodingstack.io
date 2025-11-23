@@ -59,7 +59,7 @@ export default async function ArticlePage({ params }: Props) {
     return (
       <>
         <Header />
-        <div className="max-w-[900px] mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
+        <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
           <h1 className="text-[2.5rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
             {article.title}
           </h1>
@@ -85,7 +85,7 @@ export default async function ArticlePage({ params }: Props) {
 
       {/* Breadcrumb */}
       <section className="py-[var(--spacing-sm)] bg-[var(--color-hover)] border-b border-[var(--color-border)]">
-        <div className="max-w-[900px] mx-auto px-[var(--spacing-md)]">
+        <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
           <nav className="flex items-center gap-[var(--spacing-xs)] text-[0.8125rem]">
             <Link
               href="/articles"
@@ -100,7 +100,7 @@ export default async function ArticlePage({ params }: Props) {
       </section>
 
       {/* Article Content */}
-      <article className="max-w-[900px] mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
+      <article className="max-w-[1400px] mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
         {/* Article Header */}
         <header className="mb-[var(--spacing-xl)]">
           <h1 className="text-[2.5rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)] leading-tight">
