@@ -17,8 +17,8 @@ import { fileURLToPath } from 'node:url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const MANIFESTS_DIR = path.join(__dirname, '../manifests')
-const OUTPUT_DIR = path.join(__dirname, '../src/lib/generated')
+const MANIFESTS_DIR = path.join(__dirname, '../../manifests')
+const OUTPUT_DIR = path.join(__dirname, '../../src/lib/generated')
 
 // Manifest types to process
 const MANIFEST_TYPES = ['ides', 'clis', 'models', 'providers', 'extensions', 'vendors']
@@ -169,7 +169,7 @@ ${sortedExports}
  * Generate GitHub stars TypeScript file from centralized JSON
  */
 function generateGithubStarsFile() {
-  const githubStarsPath = path.join(__dirname, '..', 'data', 'github-stars.json')
+  const githubStarsPath = path.join(__dirname, '..', '..', 'data', 'github-stars.json')
 
   if (!fs.existsSync(githubStarsPath)) {
     console.log('⚠ github-stars.json not found, skipping stars generation')
@@ -248,7 +248,7 @@ function main() {
   console.log(`\n🎨 Formatting generated files with Biome...`)
   try {
     execSync(`npx biome format --write ${OUTPUT_DIR}`, {
-      cwd: path.join(__dirname, '..'),
+      cwd: path.join(__dirname, '../..'),
       stdio: 'inherit',
     })
     console.log(`✅ Formatting complete`)

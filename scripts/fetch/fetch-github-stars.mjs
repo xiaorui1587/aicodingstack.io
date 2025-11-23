@@ -12,7 +12,7 @@ const __dirname = dirname(__filename)
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN
 
 // Path to the centralized GitHub stars data file
-const GITHUB_STARS_FILE = path.join(__dirname, '..', 'data', 'github-stars.json')
+const GITHUB_STARS_FILE = path.join(__dirname, '..', '..', 'data', 'github-stars.json')
 
 // Directories configuration - mapping manifest directories to categories
 const dirsConfig = [
@@ -143,7 +143,7 @@ async function processFile(filePath, fileName) {
 // Process all files in a directory
 // Maps file names (without .json) to stars data based on githubUrl field
 async function processDirectory(dirConfig) {
-  const dirPath = path.join(__dirname, '..', dirConfig.directory)
+  const dirPath = path.join(__dirname, '..', '..', dirConfig.directory)
   console.log(`\n📁 Processing ${dirConfig.directory}...`)
 
   if (!fs.existsSync(dirPath)) {

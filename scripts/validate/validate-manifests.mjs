@@ -15,7 +15,7 @@ import addFormats from 'ajv-formats'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-const rootDir = path.join(__dirname, '..')
+const rootDir = path.join(__dirname, '../..')
 
 // Configuration: map manifest directories to their schema files
 const MANIFEST_SCHEMA_MAP = {

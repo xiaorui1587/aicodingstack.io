@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-const ROOT_DIR = path.resolve(__dirname, '..')
+const ROOT_DIR = path.resolve(__dirname, '../..')
 const MANIFESTS_DIR = path.join(ROOT_DIR, 'manifests')
 const SCHEMAS_DIR = path.join(MANIFESTS_DIR, 'schemas')
 

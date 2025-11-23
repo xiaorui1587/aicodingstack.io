@@ -14,13 +14,13 @@ import UserAgent from 'user-agents'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-const rootDir = path.join(__dirname, '..')
+const rootDir = path.join(__dirname, '../..')
 
 // Configuration
 const MAX_CONCURRENT_REQUESTS = 10
 const REQUEST_TIMEOUT = 10000 // 10 seconds
 const RETRY_COUNT = 3
-const VALIDATED_URLS_LOG = path.join(__dirname, 'validated-urls.log')
+const VALIDATED_URLS_LOG = path.join(__dirname, '../validated-urls.log')
 
 // Manifest files to validate
 const MANIFEST_FILES = [
