@@ -29,8 +29,13 @@
     "collections": "Collections",
     "aiCodingLandscape": "AI Coding Landscape",
     "aiCodingLandscapeDesc": "Visualize the complete AI coding ecosystem",
+    "openSourceRank": "Open Source Ranking",
+    "openSourceRankDesc": "Explore open source AI coding projects by GitHub stars",
     "developmentTools": "Development Tools",
-    "intelligence": "Intelligence"
+    "intelligence": "Intelligence",
+    "toggleMenu": "Toggle menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "footer": {
     "aicodingstack": "AI Coding Stack",
@@ -43,7 +48,8 @@
     "darkMode": "Dark Mode",
     "lightMode": "Light Mode",
     "faq": "FAQ",
-    "selectLanguage": "Select Language"
+    "selectLanguage": "Select Language",
+    "toggleTheme": "Toggle theme"
   },
 
   "pages": {
@@ -164,6 +170,7 @@
       "title": "Models",
       "subtitle": "Large language models optimized for code generation and analysis",
       "compareAll": "Compare All",
+      "search": "Search by name...",
       "size": "Size:",
       "context": "Context:",
       "pricing": "Pricing:"
@@ -171,12 +178,14 @@
     "modelProviders": {
       "title": "Model Providers",
       "subtitle": "LLM API providers offering access to various AI models",
+      "search": "Search by name...",
       "foundationProviders": "Foundation Model Providers",
       "serviceProviders": "Model Service Providers"
     },
     "vendors": {
       "title": "Vendors",
-      "subtitle": "Leading companies and organizations building AI technologies"
+      "subtitle": "Leading companies and organizations building AI technologies",
+      "search": "Search by name..."
     }
   },
 
@@ -255,7 +264,9 @@
       "joinReddit": "Join Reddit community",
       "backTo": "Back to",
       "allVendors": "All Vendors",
-      "indexLabel": "INDEX"
+      "indexLabel": "INDEX",
+      "products": "Products",
+      "models": "Models"
     },
     "modelProviderDetail": {
       "breadcrumb": {
@@ -390,6 +401,7 @@
       "overview": "Overview"
     },
     "filterSortBar": {
+      "search": "Search by name...",
       "sort": "Sort:",
       "sortDefault": "Default",
       "sortNameAsc": "Name (A-Z)",
@@ -454,6 +466,43 @@
     "productPricing": {
       "title": "Pricing",
       "viewFullDetails": "View full pricing details →"
+    },
+    "openSourceRank": {
+      "meta": {
+        "title": "Open Source Projects Ranking",
+        "description": "Ranking of all open source projects in AI Coding Stack, sorted by GitHub stars. View statistics and trends of open source vs proprietary tools."
+      },
+      "title": "Open Source Projects Ranking",
+      "description": "Discover and explore open source AI coding tools ranked by GitHub stars. Compare IDEs, CLIs, and extensions to find the perfect tools for your development workflow.",
+      "statistics": {
+        "title": "Open Source vs Proprietary Distribution",
+        "totalProjects": "Total Projects",
+        "openSource": "Open Source",
+        "openSourceCount": "Open Source Projects",
+        "closedSource": "Proprietary",
+        "closedSourceCount": "Proprietary Projects",
+        "closedSourcePercentage": "Proprietary Percentage",
+        "licenseBreakdown": "License Distribution",
+        "projects": "projects"
+      },
+      "filter": {
+        "all": "All"
+      },
+      "productType": {
+        "ide": "IDE",
+        "cli": "CLI",
+        "extension": "Extension"
+      },
+      "table": {
+        "rank": "Rank",
+        "name": "Name",
+        "type": "Type",
+        "license": "License",
+        "stars": "Stars",
+        "openSourceTitle": "Open Source Projects ({count})",
+        "proprietaryTitle": "Proprietary Projects ({count})"
+      },
+      "noResults": "No open source projects found for this category."
     }
   }
 }

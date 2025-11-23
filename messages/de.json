@@ -33,8 +33,13 @@
     "collections": "Sammlungen",
     "aiCodingLandscape": "KI-Coding-Landschaft",
     "aiCodingLandscapeDesc": "Visualisieren Sie das gesamte KI-Coding-Ökosystem",
+    "openSourceRank": "Open Source Ranking",
+    "openSourceRankDesc": "Erkunden Sie Open-Source-KI-Coding-Projekte nach GitHub-Sternen",
     "developmentTools": "Entwicklungstools",
-    "intelligence": "Intelligenz"
+    "intelligence": "Intelligenz",
+    "toggleMenu": "Menü umschalten",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen"
   },
   "footer": {
     "aicodingstack": "AI Coding Stack",
@@ -47,7 +52,8 @@
     "darkMode": "Dunkelmodus",
     "lightMode": "Hellmodus",
     "faq": "FAQ",
-    "selectLanguage": "Sprache auswählen"
+    "selectLanguage": "Sprache auswählen",
+    "toggleTheme": "Thema umschalten"
   },
 
   "pages": {
@@ -168,6 +174,7 @@
       "title": "Modelle",
       "subtitle": "Große Sprachmodelle optimiert für Code-Generierung und Analyse",
       "compareAll": "Alle Vergleichen",
+      "search": "Nach Namen suchen...",
       "size": "Größe:",
       "context": "Kontext:",
       "pricing": "Preise:"
@@ -175,12 +182,14 @@
     "modelProviders": {
       "title": "Modellanbieter",
       "subtitle": "LLM-API-Anbieter, die Zugang zu verschiedenen KI-Modellen bieten",
+      "search": "Nach Namen suchen...",
       "foundationProviders": "Foundation-Modellanbieter",
       "serviceProviders": "Modell-Service-Anbieter"
     },
     "vendors": {
       "title": "Anbieter",
-      "subtitle": "Führende Unternehmen und Organisationen, die KI-Technologien entwickeln"
+      "subtitle": "Führende Unternehmen und Organisationen, die KI-Technologien entwickeln",
+      "search": "Nach Namen suchen..."
     }
   },
 
@@ -259,7 +268,9 @@
       "joinReddit": "Reddit-Community beitreten",
       "backTo": "Zurück zu",
       "allVendors": "Alle Anbieter",
-      "indexLabel": "INDEX"
+      "indexLabel": "INDEX",
+      "products": "Produkte",
+      "models": "Modelle"
     },
     "modelProviderDetail": {
       "breadcrumb": {
@@ -394,6 +405,7 @@
       "overview": "Übersicht"
     },
     "filterSortBar": {
+      "search": "Nach Namen suchen...",
       "sort": "Sortieren:",
       "sortDefault": "Standard",
       "sortNameAsc": "Name (A-Z)",
@@ -458,6 +470,43 @@
     "productPricing": {
       "title": "Preise",
       "viewFullDetails": "Vollständige Preisdetails anzeigen →"
+    },
+    "openSourceRank": {
+      "meta": {
+        "title": "Open-Source-Projekte-Ranking",
+        "description": "Ranking aller Open-Source-Projekte in AI Coding Stack, sortiert nach GitHub Stars. Statistiken und Trends von Open-Source- vs. proprietären Tools anzeigen."
+      },
+      "title": "Open-Source-Projekte-Ranking",
+      "description": "Entdecken und erkunden Sie Open-Source-KI-Coding-Tools, sortiert nach GitHub Stars. Vergleichen Sie IDEs, CLIs und Erweiterungen, um die perfekten Tools für Ihren Entwicklungs-Workflow zu finden.",
+      "statistics": {
+        "title": "Open-Source vs. Proprietär Verteilung",
+        "totalProjects": "Gesamtprojekte",
+        "openSource": "Open Source",
+        "openSourceCount": "Open-Source-Projekte",
+        "closedSource": "Proprietär",
+        "closedSourceCount": "Proprietäre Projekte",
+        "closedSourcePercentage": "Proprietärer Prozentsatz",
+        "licenseBreakdown": "Lizenzverteilung",
+        "projects": "Projekte"
+      },
+      "filter": {
+        "all": "Alle"
+      },
+      "productType": {
+        "ide": "IDE",
+        "cli": "CLI",
+        "extension": "Erweiterung"
+      },
+      "table": {
+        "rank": "Rang",
+        "name": "Name",
+        "type": "Typ",
+        "license": "Lizenz",
+        "stars": "Stars",
+        "openSourceTitle": "Open-Source-Projekte ({count})",
+        "proprietaryTitle": "Proprietäre Projekte ({count})"
+      },
+      "noResults": "Keine Open-Source-Projekte für diese Kategorie gefunden."
     }
   }
 }
