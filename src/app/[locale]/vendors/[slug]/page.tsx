@@ -18,7 +18,13 @@ import {
 } from '@/lib/generated'
 import { localizeManifestItem, localizeManifestItems } from '@/lib/manifest-i18n'
 import { generateSoftwareDetailMetadata } from '@/lib/metadata'
-import type { ManifestCLI, ManifestExtension, ManifestIDE, ManifestVendor } from '@/types/manifests'
+import type {
+  ManifestCLI,
+  ManifestExtension,
+  ManifestIDE,
+  ManifestModel,
+  ManifestVendor,
+} from '@/types/manifests'
 
 export const revalidate = 3600
 
@@ -120,7 +126,7 @@ export default async function VendorPage({
   const vendorModels = localizeManifestItems(
     models.filter(model => model.vendor === vendor.name) as unknown as Record<string, unknown>[],
     locale as Locale
-  )
+  ) as ManifestModel[]
 
   // Schema.org structured data
   const organizationSchema = {
@@ -178,7 +184,7 @@ export default async function VendorPage({
       <VendorProducts products={vendorProducts} locale={locale} title={t('products')} />
 
       {/* Vendor Models */}
-      <VendorModels models={vendorModels as any} locale={locale} title={t('models')} />
+      <VendorModels models={vendorModels} locale={locale} title={t('models')} />
 
       {/* Navigation */}
       <BackToNavigation href="vendors" title={t('allVendors')} />

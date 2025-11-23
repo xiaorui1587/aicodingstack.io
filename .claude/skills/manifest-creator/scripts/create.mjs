@@ -51,7 +51,7 @@ try {
     console.error('❌ Error: URL must use HTTPS protocol')
     process.exit(1)
   }
-} catch (error) {
+} catch (_error) {
   console.error(`❌ Error: Invalid URL format: ${url}`)
   process.exit(1)
 }
