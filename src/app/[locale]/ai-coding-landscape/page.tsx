@@ -1,9 +1,10 @@
 import { getTranslations } from 'next-intl/server'
+import { BackToNavigation } from '@/components/controls/BackToNavigation'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import { buildVendorMatrix } from '@/lib/landscape-data'
 import { buildCanonicalUrl, buildOpenGraph, buildTitle, buildTwitterCard } from '@/lib/metadata'
-import LandscapePage from './components/LandscapePage'
+import VendorMatrix from './components/VendorMatrix'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -51,16 +52,31 @@ export default async function Page({ params }: Props) {
   // Build vendor matrix data
   const matrixData = buildVendorMatrix()
 
-  const translations = {
-    title: tNav('aiCodingLandscape'),
-    description: tNav('aiCodingLandscapeDesc'),
-    backTitle: tOverview('overviewTitle'),
-  }
-
   return (
     <>
       <Header />
-      <LandscapePage matrixData={matrixData} locale={locale} translations={translations} />
+      <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
+        {/* Page Header */}
+        <div className="mb-[var(--spacing-lg)]">
+          <h1 className="text-[2rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
+            <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
+              {'//'}
+            </span>
+            {tNav('aiCodingLandscape')}
+          </h1>
+          <p className="text-base text-[var(--color-text-secondary)] font-light">
+            {tNav('aiCodingLandscapeDesc')}
+          </p>
+        </div>
+
+        {/* Vendor Matrix */}
+        <VendorMatrix matrixData={matrixData} locale={locale} />
+
+        {/* Back to Overview */}
+        <div className="mt-[var(--spacing-xl)]">
+          <BackToNavigation href="/ai-coding-stack" title={tOverview('overviewTitle')} />
+        </div>
+      </div>
       <Footer />
     </>
   )

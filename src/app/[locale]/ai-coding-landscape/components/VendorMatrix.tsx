@@ -9,12 +9,12 @@ interface VendorMatrixProps {
   locale: string
 }
 
-const PRODUCT_CATEGORIES: { key: ProductCategory; label: string; color: string }[] = [
-  { key: 'ide', label: 'IDE', color: 'from-blue-500/20 to-purple-500/20' },
-  { key: 'cli', label: 'CLI', color: 'from-green-500/20 to-emerald-500/20' },
-  { key: 'extension', label: 'Extension', color: 'from-pink-500/20 to-rose-500/20' },
-  { key: 'model', label: 'Model', color: 'from-purple-500/20 to-indigo-500/20' },
-  { key: 'provider', label: 'Provider', color: 'from-indigo-500/20 to-violet-500/20' },
+const PRODUCT_CATEGORIES: { key: ProductCategory; label: string }[] = [
+  { key: 'ide', label: 'IDE' },
+  { key: 'cli', label: 'CLI' },
+  { key: 'extension', label: 'Extension' },
+  { key: 'model', label: 'Model' },
+  { key: 'provider', label: 'Provider' },
 ]
 
 const VENDOR_TYPE_LABELS: Record<string, string> = {
@@ -25,26 +25,17 @@ const VENDOR_TYPE_LABELS: Record<string, string> = {
   'provider-only': 'Provider Only',
 }
 
-const VENDOR_TYPE_COLORS: Record<string, string> = {
-  'full-stack': 'text-blue-400',
-  'ai-native': 'text-purple-400',
-  'tool-only': 'text-green-400',
-  'model-only': 'text-orange-400',
-  'provider-only': 'text-pink-400',
-}
-
 interface MatrixCellProps {
   products: LandscapeProduct[]
   category: ProductCategory
-  categoryColor: string
 }
 
-function MatrixCell({ products, category, categoryColor }: MatrixCellProps) {
+function MatrixCell({ products, category }: MatrixCellProps) {
   const [isExpanded, setIsExpanded] = useState(false)
 
   if (products.length === 0) {
     return (
-      <div className="h-full min-h-[80px] border border-dashed border-[var(--color-border)] bg-[var(--color-bg-subtle)] flex items-center justify-center rounded">
+      <div className="h-full min-h-[80px] border border-dashed border-[var(--color-border)] bg-[var(--color-bg-subtle)] flex items-center justify-center">
         <span className="text-[var(--color-text-muted)] text-sm">-</span>
       </div>
     )
@@ -56,25 +47,14 @@ function MatrixCell({ products, category, categoryColor }: MatrixCellProps) {
     return (
       <Link
         href={product.path}
-        className={`block h-full min-h-[80px] border border-[var(--color-border)] hover:border-[var(--color-border-strong)] transition-all p-[var(--spacing-sm)] bg-gradient-to-br ${categoryColor} group rounded`}
+        className="block h-full min-h-[80px] border border-[var(--color-border)] hover:border-[var(--color-border-strong)] transition-all p-[var(--spacing-sm)] bg-[var(--color-bg-subtle)] hover:bg-[var(--color-hover)] group"
       >
         <div className="flex flex-col h-full justify-between">
           <div>
             <h4 className="font-medium text-sm tracking-tight mb-1 group-hover:text-[var(--color-text)] transition-colors line-clamp-2">
               {product.name}
             </h4>
-            {product.latestVersion && (
-              <span className="text-xs text-[var(--color-text-muted)]">
-                v{product.latestVersion}
-              </span>
-            )}
           </div>
-          {product.githubStars && product.githubStars > 0 && (
-            <div className="flex items-center gap-1 text-xs text-[var(--color-text-secondary)] mt-2">
-              <span>⭐</span>
-              <span>{product.githubStars.toLocaleString()}</span>
-            </div>
-          )}
         </div>
       </Link>
     )
@@ -86,7 +66,7 @@ function MatrixCell({ products, category, categoryColor }: MatrixCellProps) {
       <button
         type="button"
         onClick={() => setIsExpanded(!isExpanded)}
-        className={`w-full h-full border border-[var(--color-border)] hover:border-[var(--color-border-strong)] transition-all p-[var(--spacing-sm)] bg-gradient-to-br ${categoryColor} text-left rounded`}
+        className="w-full h-full border border-[var(--color-border)] hover:border-[var(--color-border-strong)] transition-all p-[var(--spacing-sm)] bg-[var(--color-bg-subtle)] hover:bg-[var(--color-hover)] text-left"
       >
         <div className="flex flex-col h-full justify-between">
           <div>
@@ -106,7 +86,7 @@ function MatrixCell({ products, category, categoryColor }: MatrixCellProps) {
       </button>
 
       {isExpanded && (
-        <div className="absolute top-full left-0 w-full mt-1 bg-[var(--color-bg)] border border-[var(--color-border-strong)] shadow-lg z-10 max-h-[300px] overflow-y-auto rounded">
+        <div className="absolute top-full left-0 w-full mt-1 bg-[var(--color-bg)] border border-[var(--color-border-strong)] shadow-lg z-10 max-h-[300px] overflow-y-auto">
           {products.map(product => (
             <Link
               key={product.id}
@@ -116,17 +96,7 @@ function MatrixCell({ products, category, categoryColor }: MatrixCellProps) {
               <div className="flex items-center justify-between">
                 <div className="flex-1 min-w-0">
                   <h5 className="font-medium text-sm tracking-tight truncate">{product.name}</h5>
-                  {product.latestVersion && (
-                    <span className="text-xs text-[var(--color-text-muted)]">
-                      v{product.latestVersion}
-                    </span>
-                  )}
                 </div>
-                {product.githubStars && product.githubStars > 0 && (
-                  <span className="text-xs text-[var(--color-text-secondary)] ml-2">
-                    ⭐ {product.githubStars.toLocaleString()}
-                  </span>
-                )}
               </div>
             </Link>
           ))}
@@ -177,29 +147,33 @@ export default function VendorMatrix({ matrixData }: VendorMatrixProps) {
   return (
     <div className="space-y-[var(--spacing-lg)]">
       {/* Controls */}
-      <div className="flex flex-col md:flex-row gap-[var(--spacing-md)] items-start md:items-center justify-between p-[var(--spacing-md)] bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded">
+      <div className="flex flex-col md:flex-row gap-[var(--spacing-md)] items-start md:items-center justify-between p-[var(--spacing-md)] bg-[var(--color-bg-subtle)] border border-[var(--color-border)]">
         {/* Vendor Type Filters */}
         <div className="flex flex-wrap gap-2 items-center">
-          <span className="text-sm text-[var(--color-text-secondary)]">Vendor Type:</span>
+          <span className="text-sm text-[var(--color-text-secondary)] font-light">
+            Vendor Type:
+          </span>
           {vendorTypes.map(type => (
             <button
               key={type}
               type="button"
               onClick={() => toggleVendorType(type)}
-              className={`px-3 py-1 text-xs border transition-all rounded ${
+              className={`px-3 py-1 text-xs border transition-all ${
                 selectedVendorTypes.size === 0 || selectedVendorTypes.has(type)
                   ? 'border-[var(--color-border-strong)] bg-[var(--color-bg)]'
-                  : 'border-[var(--color-border)] opacity-50'
+                  : 'border-[var(--color-border)] opacity-50 hover:opacity-100'
               }`}
             >
-              <span className={VENDOR_TYPE_COLORS[type]}>{VENDOR_TYPE_LABELS[type] || type}</span>
+              <span className="text-[var(--color-text-secondary)]">
+                {VENDOR_TYPE_LABELS[type] || type}
+              </span>
             </button>
           ))}
           {selectedVendorTypes.size > 0 && (
             <button
               type="button"
               onClick={() => setSelectedVendorTypes(new Set())}
-              className="px-3 py-1 text-xs border border-[var(--color-border)] hover:border-[var(--color-border-strong)] text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-all rounded"
+              className="px-3 py-1 text-xs border border-[var(--color-border)] hover:border-[var(--color-border-strong)] hover:bg-[var(--color-hover)] text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-all"
             >
               Clear
             </button>
@@ -208,14 +182,14 @@ export default function VendorMatrix({ matrixData }: VendorMatrixProps) {
 
         {/* Sort Controls */}
         <div className="flex gap-2 items-center">
-          <span className="text-sm text-[var(--color-text-secondary)]">Sort by:</span>
+          <span className="text-sm text-[var(--color-text-secondary)] font-light">Sort by:</span>
           <button
             type="button"
             onClick={() => setSortBy('name')}
-            className={`px-3 py-1 text-xs border transition-all rounded ${
+            className={`px-3 py-1 text-xs border transition-all ${
               sortBy === 'name'
                 ? 'border-[var(--color-border-strong)] bg-[var(--color-bg)]'
-                : 'border-[var(--color-border)]'
+                : 'border-[var(--color-border)] hover:bg-[var(--color-hover)]'
             }`}
           >
             Name
@@ -223,10 +197,10 @@ export default function VendorMatrix({ matrixData }: VendorMatrixProps) {
           <button
             type="button"
             onClick={() => setSortBy('products')}
-            className={`px-3 py-1 text-xs border transition-all rounded ${
+            className={`px-3 py-1 text-xs border transition-all ${
               sortBy === 'products'
                 ? 'border-[var(--color-border-strong)] bg-[var(--color-bg)]'
-                : 'border-[var(--color-border)]'
+                : 'border-[var(--color-border)] hover:bg-[var(--color-hover)]'
             }`}
           >
             Products
@@ -235,7 +209,7 @@ export default function VendorMatrix({ matrixData }: VendorMatrixProps) {
       </div>
 
       {/* Matrix Table */}
-      <div className="border border-[var(--color-border)] rounded overflow-hidden">
+      <div className="border border-[var(--color-border)] overflow-hidden">
         <div className="overflow-x-auto">
           <div className="min-w-[800px]">
             {/* Table Header */}
@@ -268,7 +242,7 @@ export default function VendorMatrix({ matrixData }: VendorMatrixProps) {
                         >
                           {row.vendorName}
                         </Link>
-                        <span className={`text-xs ${VENDOR_TYPE_COLORS[row.vendorType]}`}>
+                        <span className="text-xs text-[var(--color-text-muted)]">
                           {VENDOR_TYPE_LABELS[row.vendorType] || row.vendorType}
                         </span>
                       </div>
@@ -276,11 +250,7 @@ export default function VendorMatrix({ matrixData }: VendorMatrixProps) {
                       {/* Product Cells */}
                       {PRODUCT_CATEGORIES.map(cat => (
                         <div key={cat.key}>
-                          <MatrixCell
-                            products={row.cells[cat.key]}
-                            category={cat.key}
-                            categoryColor={cat.color}
-                          />
+                          <MatrixCell products={row.cells[cat.key]} category={cat.key} />
                         </div>
                       ))}
                     </div>
@@ -293,22 +263,22 @@ export default function VendorMatrix({ matrixData }: VendorMatrixProps) {
       </div>
 
       {/* Legend */}
-      <div className="p-[var(--spacing-md)] bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded">
+      <div className="p-[var(--spacing-md)] bg-[var(--color-bg-subtle)] border border-[var(--color-border)]">
         <p className="text-xs font-medium text-[var(--color-text-secondary)] mb-2">Vendor Types:</p>
-        <div className="flex flex-wrap gap-4 text-xs">
-          <span className={VENDOR_TYPE_COLORS['full-stack']}>
+        <div className="flex flex-wrap gap-4 text-xs font-light text-[var(--color-text-secondary)]">
+          <span>
             <span className="font-medium">Full Stack:</span> IDE + CLI + Extension
           </span>
-          <span className={VENDOR_TYPE_COLORS['ai-native']}>
+          <span>
             <span className="font-medium">AI Native:</span> Model + Development Tools
           </span>
-          <span className={VENDOR_TYPE_COLORS['tool-only']}>
+          <span>
             <span className="font-medium">Tool Only:</span> IDE/CLI/Extension
           </span>
-          <span className={VENDOR_TYPE_COLORS['model-only']}>
+          <span>
             <span className="font-medium">Model Only:</span> Model Provider
           </span>
-          <span className={VENDOR_TYPE_COLORS['provider-only']}>
+          <span>
             <span className="font-medium">Provider Only:</span> API Provider
           </span>
         </div>
