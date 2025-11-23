@@ -47,7 +47,7 @@
   "resourceUrls": {
     "download": "https://www.npmjs.com/package/@github/copilot",
     "changelog": "https://github.com/github/copilot-cli/releases",
-    "pricing": "https://docs.github.com/en/billing/product-billing/github-copilot",
+    "pricing": "https://github.com/features/copilot/plans",
     "mcp": null,
     "issue": "https://github.com/github/copilot-cli/issues"
   },
@@ -58,7 +58,7 @@
     "youtube": "https://www.youtube.com/@github",
     "discord": null,
     "reddit": null,
-    "blog": "https://github.blog/changelog/2025-04-20-github-copilot-cli-public-preview/"
+    "blog": "https://github.blog"
   },
   "relatedProducts": [],
   "platforms": [

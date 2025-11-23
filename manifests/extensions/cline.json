@@ -38,10 +38,10 @@
     }
   ],
   "resourceUrls": {
-    "download": "https://marketplace.visualstudio.com/items?itemName=Cline.cline",
+    "download": "https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev",
     "changelog": "https://github.com/clinebot/cline/releases",
     "pricing": "https://cline.bot/pricing",
-    "mcp": "https://cline.bot/mcp",
+    "mcp": "https://cline.bot/mcp-marketplace",
     "issue": "https://github.com/clinebot/cline/issues"
   },
   "communityUrls": {
@@ -50,19 +50,19 @@
     "github": "https://github.com/cline/cline",
     "youtube": null,
     "discord": null,
-    "reddit": "https://reddit.com/r/Cline",
+    "reddit": "https://www.reddit.com/r/Cline",
     "blog": "https://cline.bot/blog"
   },
   "relatedProducts": [],
   "supportedIdes": [
     {
       "ideId": "vscode",
-      "marketplaceUrl": "https://marketplace.visualstudio.com/items?itemName=Cline.cline",
+      "marketplaceUrl": "https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev",
       "installUri": null
     },
     {
       "ideId": "jetbrains",
-      "marketplaceUrl": "https://marketplace.visualstudio.com/items?itemName=Cline.cline",
+      "marketplaceUrl": "https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev",
       "installUri": null
     }
   ]

@@ -7,7 +7,7 @@
       "description": "Anthropic 迄今为止最先进的 Sonnet 模型，针对真实世界的代理和编码工作流程进行了优化。在 SWE-bench Verified 等编码基准测试中表现出色，在系统设计、代码安全和规范遵循方面有所提升。"
     }
   },
-  "websiteUrl": "https://www.anthropic.com/",
+  "websiteUrl": "https://www.anthropic.com",
   "docsUrl": "https://docs.anthropic.com/claude/docs/models-overview",
   "verified": false,
   "vendor": "Anthropic",
@@ -21,7 +21,7 @@
   },
   "platformUrls": {
     "huggingface": null,
-    "artificialAnalysis": "https://artificialanalysis.ai/models/claude-sonnet-4.5",
+    "artificialAnalysis": "https://artificialanalysis.ai/models/claude-4-5-sonnet",
     "openrouter": "https://openrouter.ai/anthropic/claude-sonnet-4.5"
   }
 }

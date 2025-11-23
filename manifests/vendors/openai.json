@@ -7,14 +7,14 @@
       "description": "领先的 AI 研究公司，专注于开发安全且有益的通用人工智能。"
     }
   },
-  "websiteUrl": "https://openai.com/",
+  "websiteUrl": "https://openai.com",
   "docsUrl": null,
   "verified": false,
   "communityUrls": {
     "linkedin": "https://www.linkedin.com/company/openai",
     "twitter": "https://x.com/OpenAI",
     "github": "https://github.com/openai",
-    "youtube": "https://www.youtube.com/c/OpenAI",
+    "youtube": "https://www.youtube.com/@OpenAI",
     "discord": "https://discord.gg/openai",
     "reddit": "https://www.reddit.com/r/OpenAI",
     "blog": null

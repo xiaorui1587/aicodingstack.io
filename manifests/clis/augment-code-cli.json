@@ -38,14 +38,14 @@
     }
   ],
   "resourceUrls": {
-    "download": "https://www.augmentcode.com/",
+    "download": "https://www.augmentcode.com",
     "changelog": null,
     "pricing": "https://www.augmentcode.com/pricing",
     "mcp": "https://www.augmentcode.com/mcp",
     "issue": null
   },
   "communityUrls": {
-    "linkedin": "https://www.linkedin.com/company/augment-code",
+    "linkedin": "https://www.linkedin.com/company/augmentinc",
     "twitter": "https://x.com/augmentcode",
     "github": "https://github.com/augmentcode/auggie",
     "youtube": null,

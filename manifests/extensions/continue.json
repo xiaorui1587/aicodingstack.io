@@ -40,7 +40,7 @@
   "resourceUrls": {
     "download": "https://marketplace.visualstudio.com/items?itemName=Continue.continue",
     "changelog": "https://github.com/continuedev/continue/releases",
-    "pricing": "https://www.continue.dev/pricing",
+    "pricing": "https://hub.continue.dev/pricing",
     "mcp": null,
     "issue": "https://github.com/continuedev/continue/issues"
   },
@@ -62,7 +62,7 @@
     },
     {
       "ideId": "jetbrains",
-      "marketplaceUrl": "https://marketplace.visualstudio.com/items?itemName=Continue.continue",
+      "marketplaceUrl": null,
       "installUri": null
     }
   ]

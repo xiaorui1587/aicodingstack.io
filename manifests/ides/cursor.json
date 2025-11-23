@@ -7,7 +7,7 @@
       "description": "基于 VS Code 构建的 AI 驱动代码编辑器，具有高级 AI 功能，用于代码生成、编辑和理解。"
     }
   },
-  "websiteUrl": "https://cursor.com/",
+  "websiteUrl": "https://cursor.com",
   "docsUrl": "https://cursor.com/docs",
   "verified": false,
   "vendor": "Anysphere",
@@ -66,7 +66,7 @@
     "issue": "https://github.com/getcursor/cursor/issues"
   },
   "communityUrls": {
-    "linkedin": "https://www.linkedin.com/company/cursorai/",
+    "linkedin": "https://www.linkedin.com/company/cursorai",
     "twitter": "https://x.com/cursor_ai",
     "github": "https://github.com/cursor/cursor",
     "youtube": "https://www.youtube.com/@cursor_ai",

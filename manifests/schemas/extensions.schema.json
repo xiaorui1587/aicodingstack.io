@@ -37,13 +37,14 @@
         "marketplaceUrl": {
           "type": ["string", "null"],
           "format": "uri",
-          "pattern": "^https://",
-          "description": "Extension marketplace URL for this IDE"
+          "pattern": "^(https://marketplace\\.visualstudio\\.com/items\\?itemName=|https://plugins\\.jetbrains\\.com/plugin/)",
+          "description": "Extension marketplace URL for this IDE (must start with VS Code Marketplace or JetBrains Plugins prefix)"
         },
         "installUri": {
           "type": ["string", "null"],
           "format": "uri",
-          "description": "Deep link URI for one-click installation"
+          "pattern": "^[a-zA-Z0-9-]+:extension/",
+          "description": "Deep link URI for one-click installation (must start with scheme:extension/ format, e.g., 'vscode:extension/')"
         }
       },
       "required": ["ideId", "marketplaceUrl", "installUri"],

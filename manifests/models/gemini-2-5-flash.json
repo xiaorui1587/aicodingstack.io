@@ -7,7 +7,7 @@
       "description": "Google 最先进的主力模型，专为高级推理、编码、数学和科学任务设计。包含内置\"思考\"能力，能够提供更准确和细致的上下文处理响应。"
     }
   },
-  "websiteUrl": "https://deepmind.google/",
+  "websiteUrl": "https://deepmind.google",
   "docsUrl": "https://ai.google.dev/docs",
   "verified": false,
   "vendor": "Google",
@@ -21,7 +21,7 @@
   },
   "platformUrls": {
     "huggingface": null,
-    "artificialAnalysis": "https://artificialanalysis.ai/models/gemini-2.5-flash",
+    "artificialAnalysis": "https://artificialanalysis.ai/models/gemini-2-5-flash",
     "openrouter": "https://openrouter.ai/google/gemini-2.5-flash"
   }
 }

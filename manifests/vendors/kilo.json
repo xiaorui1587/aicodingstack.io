@@ -7,7 +7,7 @@
       "description": "提供 AI 驱动的编码平台，通过 CLI 工具和 IDE 扩展提供先进的代码生成、调试和开发工作流。"
     }
   },
-  "websiteUrl": "https://kilo.ai/",
+  "websiteUrl": "https://kilo.ai",
   "docsUrl": "https://kilo.ai/docs",
   "verified": true,
   "communityUrls": {

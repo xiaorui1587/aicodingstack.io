@@ -40,7 +40,7 @@
   "resourceUrls": {
     "download": "https://marketplace.visualstudio.com/items?itemName=GitHub.copilot",
     "changelog": null,
-    "pricing": "https://github.com/features/copilot/pricing",
+    "pricing": "https://github.com/features/copilot/plans",
     "mcp": null,
     "issue": null
   },
@@ -51,7 +51,7 @@
     "youtube": "https://www.youtube.com/@github",
     "discord": null,
     "reddit": null,
-    "blog": "https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/"
+    "blog": "https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer"
   },
   "relatedProducts": [],
   "supportedIdes": [

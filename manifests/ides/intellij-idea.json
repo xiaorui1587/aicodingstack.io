@@ -7,8 +7,8 @@
       "description": "功能强大的 Java IDE，具有智能代码辅助、重构工具和多语言支持。提供社区版（免费）和旗舰版（付费）两个版本。"
     }
   },
-  "websiteUrl": "https://www.jetbrains.com/idea/",
-  "docsUrl": "https://www.jetbrains.com/help/idea/",
+  "websiteUrl": "https://www.jetbrains.com/idea",
+  "docsUrl": "https://www.jetbrains.com/help/idea",
   "verified": false,
   "vendor": "JetBrains",
   "latestVersion": "2024.3",
@@ -38,9 +38,9 @@
     }
   ],
   "resourceUrls": {
-    "download": "https://www.jetbrains.com/idea/download/",
-    "changelog": "https://www.jetbrains.com/idea/whatsnew/",
-    "pricing": "https://www.jetbrains.com/idea/buy/",
+    "download": "https://www.jetbrains.com/idea/download",
+    "changelog": "https://www.jetbrains.com/idea/whatsnew",
+    "pricing": "https://www.jetbrains.com/idea/buy",
     "mcp": null,
     "issue": "https://youtrack.jetbrains.com/issues/IDEA"
   },
@@ -48,10 +48,10 @@
     "linkedin": "https://www.linkedin.com/company/jetbrains",
     "twitter": "https://x.com/intellijidea",
     "github": "https://github.com/JetBrains/intellij-community",
-    "youtube": "https://www.youtube.com/user/JetBrainsTV",
+    "youtube": "https://www.youtube.com/@JetBrainsTV",
     "discord": null,
     "reddit": "https://www.reddit.com/r/IntelliJIDEA",
-    "blog": "https://blog.jetbrains.com/idea/"
+    "blog": "https://blog.jetbrains.com/idea"
   },
   "relatedProducts": [
     {
@@ -62,19 +62,19 @@
   "platforms": [
     {
       "os": "macOS",
-      "installCommand": "https://www.jetbrains.com/idea/download/",
+      "installCommand": "https://www.jetbrains.com/idea/download",
       "launchCommand": "idea",
       "installPath": null
     },
     {
       "os": "Windows",
-      "installCommand": "https://www.jetbrains.com/idea/download/",
+      "installCommand": "https://www.jetbrains.com/idea/download",
       "launchCommand": "idea",
       "installPath": null
     },
     {
       "os": "Linux",
-      "installCommand": "https://www.jetbrains.com/idea/download/",
+      "installCommand": "https://www.jetbrains.com/idea/download",
       "launchCommand": "idea",
       "installPath": null
     }

@@ -40,7 +40,7 @@
   "resourceUrls": {
     "download": "https://github.com/continuedev/continue/releases",
     "changelog": "https://github.com/continuedev/continue/releases",
-    "pricing": "https://www.continue.dev/pricing",
+    "pricing": "https://hub.continue.dev/pricing",
     "mcp": null,
     "issue": "https://github.com/continuedev/continue/issues"
   },

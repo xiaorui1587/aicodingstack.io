@@ -7,7 +7,7 @@
       "description": "Claude Opus 4 是 Anthropic 推出的 200K 上下文窗口语言模型，专为复杂的代码生成任务设计。"
     }
   },
-  "websiteUrl": "https://www.anthropic.com/",
+  "websiteUrl": "https://www.anthropic.com",
   "docsUrl": "https://docs.anthropic.com/claude/docs/models-overview",
   "verified": false,
   "vendor": "Anthropic",
@@ -21,7 +21,7 @@
   },
   "platformUrls": {
     "huggingface": null,
-    "artificialAnalysis": "https://artificialanalysis.ai/models/claude-opus-4",
+    "artificialAnalysis": "https://artificialanalysis.ai/models/claude-4-opus",
     "openrouter": "https://openrouter.ai/anthropic/claude-opus-4"
   }
 }

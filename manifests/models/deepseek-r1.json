@@ -7,7 +7,7 @@
       "description": "DeepSeek R1 是 1.3B 参数的语言模型，具备 128K 上下文窗口，专为高级推理和代码生成任务设计。"
     }
   },
-  "websiteUrl": "https://www.deepseek.com/",
+  "websiteUrl": "https://www.deepseek.com",
   "docsUrl": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
   "verified": false,
   "vendor": "DeepSeek",

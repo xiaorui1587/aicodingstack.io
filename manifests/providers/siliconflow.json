@@ -7,8 +7,8 @@
       "description": "统一的 AI 推理平台，通过单一 API 提供对 LLM 及多模态模型的高速访问，支持无服务器、微调和专用 GPU 等灵活部署选项。"
     }
   },
-  "websiteUrl": "https://siliconflow.com/",
-  "docsUrl": "https://docs.siliconflow.com/",
+  "websiteUrl": "https://siliconflow.com",
+  "docsUrl": "https://docs.siliconflow.com",
   "verified": true,
   "vendor": "siliconflow",
   "type": "model-service-provider",

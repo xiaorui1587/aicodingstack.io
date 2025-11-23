@@ -7,7 +7,7 @@
       "description": "AI 驱动的 IDE，充当 10 倍效率 AI 工程师，提供实时代码补全、聊天式辅助和自主代码生成（Builder/SOLO 模式）用于端到端开发。"
     }
   },
-  "websiteUrl": "https://www.trae.ai/",
+  "websiteUrl": "https://www.trae.ai",
   "docsUrl": "https://docs.trae.ai",
   "verified": false,
   "vendor": "ByteDance",
@@ -43,7 +43,7 @@
     "github": null,
     "youtube": null,
     "discord": null,
-    "reddit": "https://www.reddit.com/r/Trae_ai/",
+    "reddit": "https://www.reddit.com/r/Trae_ai",
     "blog": "https://www.trae.ai/blog"
   },
   "relatedProducts": [],

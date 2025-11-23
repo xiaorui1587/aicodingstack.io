@@ -7,8 +7,8 @@
       "description": "JetBrains Junie 是一个 AI 编码 Agent，可以自主执行任务或与开发者协作。它独立处理常规任务，同时协助复杂工作。"
     }
   },
-  "websiteUrl": "https://www.jetbrains.com/junie/",
-  "docsUrl": "https://www.jetbrains.com/help/junie/",
+  "websiteUrl": "https://www.jetbrains.com/junie",
+  "docsUrl": "https://www.jetbrains.com/help/junie",
   "verified": false,
   "vendor": "JetBrains",
   "latestVersion": "1.0.0",
@@ -38,9 +38,9 @@
     }
   ],
   "resourceUrls": {
-    "download": "https://plugins.jetbrains.com/plugin/junie",
-    "changelog": "https://www.jetbrains.com/idea/whatsnew/",
-    "pricing": "https://www.jetbrains.com/idea/buy/",
+    "download": "https://plugins.jetbrains.com/plugin/26104-junie-the-ai-coding-agent-by-jetbrains",
+    "changelog": "https://www.jetbrains.com/idea/whatsnew",
+    "pricing": "https://www.jetbrains.com/idea/buy",
     "mcp": null,
     "issue": "https://youtrack.jetbrains.com/issues"
   },
@@ -48,16 +48,16 @@
     "linkedin": "https://www.linkedin.com/company/jetbrains",
     "twitter": "https://x.com/jetbrains",
     "github": null,
-    "youtube": "https://www.youtube.com/c/JetBrainsTV",
+    "youtube": "https://www.youtube.com/@JetBrainsTV",
     "discord": null,
     "reddit": "https://www.reddit.com/r/JetBrains",
-    "blog": "https://blog.jetbrains.com/junie/"
+    "blog": "https://blog.jetbrains.com/junie"
   },
   "relatedProducts": [],
   "supportedIdes": [
     {
       "ideId": "jetbrains",
-      "marketplaceUrl": "https://plugins.jetbrains.com/plugin/junie",
+      "marketplaceUrl": "https://plugins.jetbrains.com/plugin/26104-junie-the-ai-coding-agent-by-jetbrains",
       "installUri": null
     }
   ]

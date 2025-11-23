@@ -7,12 +7,12 @@
       "description": "专注于多模态通用大模型研发的 AI 公司，提供包括文本、语音、音乐、图像和视频生成在内的先进 AI 服务。"
     }
   },
-  "websiteUrl": "https://platform.minimaxi.com/",
+  "websiteUrl": "https://platform.minimaxi.com",
   "docsUrl": "https://platform.minimaxi.com/docs/api-reference/text-openai-api",
   "verified": false,
   "vendor": "minimax",
   "type": "foundation-model-provider",
-  "applyKeyUrl": "https://platform.minimaxi.com/",
+  "applyKeyUrl": "https://platform.minimaxi.com",
   "platformUrls": {
     "huggingface": null,
     "artificialAnalysis": null,

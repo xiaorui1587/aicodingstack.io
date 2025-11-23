@@ -8,7 +8,7 @@
     }
   },
   "websiteUrl": "https://geminicli.com",
-  "docsUrl": "https://geminicli.com/docs/",
+  "docsUrl": "https://geminicli.com/docs",
   "verified": false,
   "vendor": "Google",
   "latestVersion": "0.5.4",
@@ -39,8 +39,8 @@
   ],
   "resourceUrls": {
     "download": "https://www.npmjs.com/package/@google/gemini-cli",
-    "changelog": "https://geminicli.com/docs/changelogs/",
-    "pricing": "https://codeassist.google/",
+    "changelog": "https://geminicli.com/docs/changelogs",
+    "pricing": "https://codeassist.google",
     "mcp": null,
     "issue": "https://github.com/google-gemini/gemini-cli/issues"
   },

@@ -10,7 +10,7 @@
   "websiteUrl": "https://cline.bot/cline-cli",
   "docsUrl": "https://cline.bot/docs",
   "verified": false,
-  "vendor": "Cline Bot Inc",
+  "vendor": "Cline Bot",
   "latestVersion": "Preview",
   "githubUrl": null,
   "license": "Proprietary",
@@ -31,7 +31,7 @@
     "issue": null
   },
   "communityUrls": {
-    "linkedin": "https://www.linkedin.com/company/cline-bot",
+    "linkedin": "https://www.linkedin.com/company/clinebot",
     "twitter": "https://x.com/clinebot",
     "github": null,
     "youtube": null,
