@@ -1,0 +1,22 @@
+{
+  "id": "shareai-lab",
+  "name": "shareAI Lab",
+  "description": "shareAI Lab is a vendor.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "Kode 是开源 AI 编码助手，理解您的代码库、编辑文件、运行命令并处理完整的开发工作流。通过多模型支持扩展 Claude Code。"
+    }
+  },
+  "websiteUrl": "https://github.com/shareAI-lab/Kode",
+  "docsUrl": "https://github.com/shareAI-lab/Kode/blob/main/README.md",
+  "verified": false,
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": null,
+    "github": "https://github.com/shareAI-lab/Kode-cli",
+    "youtube": null,
+    "discord": null,
+    "reddit": null,
+    "blog": null
+  }
+}

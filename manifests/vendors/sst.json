@@ -1,0 +1,22 @@
+{
+  "id": "sst",
+  "name": "SST",
+  "description": "SST is a vendor.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "OpenCode 是一个为终端构建的开源 AI 编码 Agent。具有原生 TUI、LSP 支持、多会话功能，支持 75+ 个 LLM 提供商，包括本地模型。"
+    }
+  },
+  "websiteUrl": "https://opencode.ai",
+  "docsUrl": "https://opencode.ai",
+  "verified": false,
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": "https://x.com/opencode",
+    "github": "https://github.com/sst/opencode",
+    "youtube": null,
+    "discord": "https://discord.gg/opencode",
+    "reddit": null,
+    "blog": null
+  }
+}

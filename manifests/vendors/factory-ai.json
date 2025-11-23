@@ -1,0 +1,22 @@
+{
+  "id": "factory-ai",
+  "name": "Factory AI",
+  "description": "Factory AI is a vendor.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "Factory AI 的 Droid CLI 是基于终端的编码 Agent，处理从规划到测试的完整功能开发。与企业工具集成并提供透明的差异审查。"
+    }
+  },
+  "websiteUrl": "https://factory.ai",
+  "docsUrl": "https://docs.factory.ai/cli/getting-started/overview",
+  "verified": false,
+  "communityUrls": {
+    "linkedin": "https://www.linkedin.com/company/factoryai",
+    "twitter": "https://x.com/FactoryAI",
+    "github": null,
+    "youtube": null,
+    "discord": null,
+    "reddit": null,
+    "blog": "https://factory.ai/news"
+  }
+}

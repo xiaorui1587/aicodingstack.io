@@ -1,0 +1,22 @@
+{
+  "id": "cognition",
+  "name": "Cognition",
+  "description": "Cognition is a vendor.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "AI 原生 IDE，具有智能助手 Cascade，可自主生成、编辑、测试和部署代码。集成 MCP 服务器和插件钩子，让开发者保持心流状态。"
+    }
+  },
+  "websiteUrl": "https://windsurf.com",
+  "docsUrl": "https://docs.windsurf.com",
+  "verified": false,
+  "communityUrls": {
+    "linkedin": "https://www.linkedin.com/company/windsurf",
+    "twitter": "https://x.com/windsurf",
+    "github": null,
+    "youtube": "https://www.youtube.com/@windsurf",
+    "discord": null,
+    "reddit": null,
+    "blog": "https://windsurf.com/blog"
+  }
+}

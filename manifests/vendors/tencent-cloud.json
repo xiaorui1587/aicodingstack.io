@@ -1,0 +1,22 @@
+{
+  "id": "tencent-cloud",
+  "name": "Tencent Cloud",
+  "description": "Tencent Cloud is a vendor.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "CodeBuddy CLI 是 AI 驱动的代码编辑器，将智能代码生成、调试和开发工作流集成到您的终端。具有 TUI 模式和内联聊天功能。"
+    }
+  },
+  "websiteUrl": "https://www.codebuddy.ai/cli",
+  "docsUrl": "https://www.codebuddy.ai/docs/cli",
+  "verified": false,
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": null,
+    "github": null,
+    "youtube": null,
+    "discord": null,
+    "reddit": null,
+    "blog": null
+  }
+}

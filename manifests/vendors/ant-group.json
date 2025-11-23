@@ -1,0 +1,22 @@
+{
+  "id": "ant-group",
+  "name": "Ant Group",
+  "description": "Ant Group is a vendor.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "蚂蚁集团的 Neovate Code 是开源智能编程助手。生成代码、修复错误、审查代码并添加测试，具有灵活的多客户端架构。"
+    }
+  },
+  "websiteUrl": "https://neovateai.dev",
+  "docsUrl": "https://neovateai.dev/en/docs/overview",
+  "verified": false,
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": null,
+    "github": "https://github.com/neovateai/neovate-code",
+    "youtube": null,
+    "discord": null,
+    "reddit": null,
+    "blog": "https://neovateai.dev/en/blog"
+  }
+}

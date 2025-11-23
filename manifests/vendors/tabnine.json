@@ -1,0 +1,22 @@
+{
+  "id": "tabnine",
+  "name": "Tabnine",
+  "description": "Tabnine is a vendor.",
+  "i18n": {
+    "zh-Hans": {
+      "description": "Tabnine 是一个 AI 代码补全工具，帮助开发者更快、更准确地编写代码。它基于上下文提供智能代码建议，并从您的代码库中学习。"
+    }
+  },
+  "websiteUrl": "https://www.tabnine.com",
+  "docsUrl": "https://docs.tabnine.com",
+  "verified": false,
+  "communityUrls": {
+    "linkedin": "https://www.linkedin.com/company/tabnine",
+    "twitter": "https://x.com/TabNine",
+    "github": "https://github.com/codota/TabNine",
+    "youtube": "https://www.youtube.com/@TabNine",
+    "discord": null,
+    "reddit": null,
+    "blog": "https://www.tabnine.com/blog"
+  }
+}
