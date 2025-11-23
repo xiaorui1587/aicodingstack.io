@@ -77,7 +77,7 @@ async function discoverScripts(categoryDir) {
 
         // Remove category prefix if present (e.g., "generate-", "validate-", "fetch-")
         // If filename doesn't start with prefix, use full name without extension
-        const categoryPrefix = path.basename(categoryDir) + '-'
+        const categoryPrefix = `${path.basename(categoryDir)}-`
         const scriptName = baseName.startsWith(categoryPrefix)
           ? baseName.slice(categoryPrefix.length)
           : baseName
