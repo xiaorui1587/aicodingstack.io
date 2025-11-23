@@ -8,6 +8,7 @@ import './globals.css'
 import ClientLayout from '@/components/ClientLayout'
 import { JsonLd } from '@/components/JsonLd'
 import { defaultLocale, type Locale, locales } from '@/i18n/config'
+import { SITE_CONFIG } from '@/lib/metadata/config'
 import { getLanguageAlternates, getOgAlternateLocales, getOgLocale } from '@/lib/seo-helpers'
 import { WebVitals } from './web-vitals'
 
@@ -50,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   // Get canonical path based on locale
   const canonicalPath = locale === defaultLocale ? '/' : `/${locale}`
-  const baseUrl = 'https://aicodingstack.io'
+  const baseUrl = SITE_CONFIG.url
 
   return {
     metadataBase: new URL(baseUrl),
@@ -116,8 +117,8 @@ const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'AI Coding Stack',
-  url: 'https://aicodingstack.io',
-  logo: 'https://aicodingstack.io/logo.png',
+  url: SITE_CONFIG.url,
+  logo: `${SITE_CONFIG.url}/logo.png`,
   description:
     'Comprehensive directory and community-maintained metadata repository for AI-powered coding tools, models, and platforms.',
   foundingDate: '2025',
@@ -133,12 +134,12 @@ const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'AI Coding Stack',
-  url: 'https://aicodingstack.io',
+  url: SITE_CONFIG.url,
   description:
     'Comprehensive directory for AI coding tools across IDEs, CLIs, MCP servers, models and providers.',
   potentialAction: {
     '@type': 'SearchAction',
-    target: 'https://aicodingstack.io/search?q={search_term_string}',
+    target: `${SITE_CONFIG.url}/search?q={search_term_string}`,
     'query-input': 'required name=search_term_string',
   },
 }

@@ -1,6 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { memo, useMemo } from 'react'
 import { Link } from '@/i18n/navigation'
 
 interface MegaMenuProps {
@@ -13,22 +14,119 @@ interface MenuItem {
   href: string
 }
 
-export function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
+interface FeaturedLink {
+  href: string
+  titleKey: string
+  descKey: string
+  marginBottom?: 'sm' | 'md'
+}
+
+interface MenuColumn {
+  titleKey: string
+  items: MenuItem[]
+}
+
+// Shared CSS classes for reusability
+const featuredLinkClass =
+  'block p-[var(--spacing-sm)] border border-[var(--color-border)] hover:border-[var(--color-border-strong)] hover:bg-[var(--color-hover)] transition-all'
+const menuItemLinkClass =
+  'block px-[var(--spacing-xs)] py-1 text-sm hover:bg-[var(--color-hover)] transition-colors'
+const columnTitleClass =
+  'text-xs text-[var(--color-text-muted)] uppercase tracking-wider font-medium mb-[var(--spacing-xs)]'
+
+/**
+ * Featured link component for prominent menu items
+ */
+const FeaturedLink = memo(function FeaturedLink({
+  href,
+  titleKey,
+  descKey,
+  marginBottom = 'sm',
+  onClose,
+  tNav,
+}: FeaturedLink & { onClose: () => void; tNav: ReturnType<typeof useTranslations<'header'>> }) {
+  const marginClass = marginBottom === 'md' ? 'mb-[var(--spacing-md)]' : 'mb-[var(--spacing-sm)]'
+
+  return (
+    <Link href={href} onClick={onClose} className={`${featuredLinkClass} ${marginClass}`}>
+      <div className="font-medium mb-[var(--spacing-xs)]">{tNav(titleKey)}</div>
+      <div className="text-xs text-[var(--color-text-secondary)]">{tNav(descKey)}</div>
+    </Link>
+  )
+})
+
+/**
+ * Menu column component for grouped menu items
+ */
+const MenuColumn = memo(function MenuColumn({
+  titleKey,
+  items,
+  onClose,
+  tNav,
+}: MenuColumn & { onClose: () => void; tNav: ReturnType<typeof useTranslations<'header'>> }) {
+  return (
+    <div>
+      <h4 className={columnTitleClass}>{tNav(titleKey)}</h4>
+      <ul className="space-y-1">
+        {items.map(item => (
+          <li key={item.href}>
+            <Link href={item.href} onClick={onClose} className={menuItemLinkClass}>
+              {item.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+})
+
+export const MegaMenu = memo(function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
   const tStacks = useTranslations('stacks')
   const tNav = useTranslations('header')
 
-  // Translate directly when defining menu sections
-  const menuSections = {
-    development: [
-      { name: tStacks('ides'), href: '/ides' },
-      { name: tStacks('clis'), href: '/clis' },
-      { name: tStacks('extensions'), href: '/extensions' },
-    ] as MenuItem[],
-    intelligence: [
-      { name: tStacks('models'), href: '/models' },
-      { name: tStacks('modelProviders'), href: '/model-providers' },
-    ] as MenuItem[],
-  }
+  // Memoize menu sections to avoid recreating on every render
+  const menuSections = useMemo(
+    () => ({
+      development: [
+        { name: tStacks('ides'), href: '/ides' },
+        { name: tStacks('clis'), href: '/clis' },
+        { name: tStacks('extensions'), href: '/extensions' },
+      ] as MenuItem[],
+      intelligence: [
+        { name: tStacks('models'), href: '/models' },
+        { name: tStacks('modelProviders'), href: '/model-providers' },
+      ] as MenuItem[],
+    }),
+    [tStacks]
+  )
+
+  // Memoize featured links configuration
+  const featuredLinks = useMemo<FeaturedLink[]>(
+    () => [
+      {
+        href: '/ai-coding-landscape',
+        titleKey: 'aiCodingLandscape',
+        descKey: 'aiCodingLandscapeDesc',
+        marginBottom: 'sm',
+      },
+      {
+        href: '/open-source-rank',
+        titleKey: 'openSourceRank',
+        descKey: 'openSourceRankDesc',
+        marginBottom: 'md',
+      },
+    ],
+    []
+  )
+
+  // Memoize menu columns configuration
+  const menuColumns = useMemo<MenuColumn[]>(
+    () => [
+      { titleKey: 'developmentTools', items: menuSections.development },
+      { titleKey: 'intelligence', items: menuSections.intelligence },
+    ],
+    [menuSections]
+  )
 
   if (!isOpen) return null
 
@@ -39,59 +137,16 @@ export function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
 
       <div className="bg-[var(--color-bg)] border border-[var(--color-border)] shadow-lg animate-fadeIn">
         <div className="p-[var(--spacing-md)]">
-          {/* AI Coding Landscape */}
-          <Link
-            href="/ai-coding-landscape"
-            onClick={onClose}
-            className="block mb-[var(--spacing-md)] p-[var(--spacing-sm)] border border-[var(--color-border)] hover:border-[var(--color-border-strong)] hover:bg-[var(--color-hover)] transition-all"
-          >
-            <div className="font-medium mb-[var(--spacing-xs)]">{tNav('aiCodingLandscape')}</div>
-            <div className="text-xs text-[var(--color-text-secondary)]">
-              {tNav('aiCodingLandscapeDesc')}
-            </div>
-          </Link>
+          {/* Featured Links */}
+          {featuredLinks.map(link => (
+            <FeaturedLink key={link.href} {...link} onClose={onClose} tNav={tNav} />
+          ))}
 
           {/* Two Column Grid */}
           <div className="grid grid-cols-2 gap-[var(--spacing-md)] mb-[var(--spacing-sm)]">
-            {/* Development Tools */}
-            <div>
-              <h4 className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider font-medium mb-[var(--spacing-xs)]">
-                {tNav('developmentTools')}
-              </h4>
-              <ul className="space-y-1">
-                {menuSections.development.map(item => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      onClick={onClose}
-                      className="block px-[var(--spacing-xs)] py-1 text-sm hover:bg-[var(--color-hover)] transition-colors"
-                    >
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Intelligence */}
-            <div>
-              <h4 className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider font-medium mb-[var(--spacing-xs)]">
-                {tNav('intelligence')}
-              </h4>
-              <ul className="space-y-1">
-                {menuSections.intelligence.map(item => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      onClick={onClose}
-                      className="block px-[var(--spacing-xs)] py-1 text-sm hover:bg-[var(--color-hover)] transition-colors"
-                    >
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {menuColumns.map(column => (
+              <MenuColumn key={column.titleKey} {...column} onClose={onClose} tNav={tNav} />
+            ))}
           </div>
 
           {/* All Vendors */}
@@ -109,4 +164,4 @@ export function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
       </div>
     </div>
   )
-}
+})

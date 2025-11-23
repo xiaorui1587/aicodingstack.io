@@ -1,8 +1,8 @@
 'use client'
 
-import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { memo, type ReactNode, useCallback, useMemo, useState } from 'react'
+import { Link } from '@/i18n/navigation'
 
 export type SidebarItem = {
   id: string

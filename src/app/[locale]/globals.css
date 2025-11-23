@@ -100,15 +100,6 @@ strong {
   animation: fadeIn 200ms ease-out;
 }
 
-/* Code syntax highlighting theme switching */
-:root {
-  @layer highlight-light;
-}
-
-[data-theme="dark"] {
-  @layer highlight-dark;
-}
-
 /* Code block styling */
 pre {
   overflow-x: auto;

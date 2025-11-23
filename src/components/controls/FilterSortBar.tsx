@@ -12,6 +12,8 @@ export interface FilterSortBarProps {
   onPlatformFiltersChange: (platforms: string[]) => void
   availablePlatforms?: string[]
   platformLabel?: string // Custom label for platform filter (e.g., "IDE", "Compatibility")
+  searchQuery?: string
+  onSearchChange?: (query: string) => void
 }
 
 export default function FilterSortBar({
@@ -23,6 +25,8 @@ export default function FilterSortBar({
   onPlatformFiltersChange,
   availablePlatforms = ['macOS', 'Windows', 'Linux'],
   platformLabel,
+  searchQuery = '',
+  onSearchChange,
 }: FilterSortBarProps) {
   const t = useTranslations('components.filterSortBar')
   const [isSortOpen, setIsSortOpen] = useState(false)
@@ -65,16 +69,33 @@ export default function FilterSortBar({
     }
   }
 
-  const hasActiveFilters = licenseFilters.length > 0 || platformFilters.length > 0
+  const hasActiveFilters =
+    licenseFilters.length > 0 || platformFilters.length > 0 || searchQuery.length > 0
 
   const clearFilters = () => {
     onLicenseFiltersChange([])
     onPlatformFiltersChange([])
+    if (onSearchChange) {
+      onSearchChange('')
+    }
   }
 
   return (
     <div className="mb-[var(--spacing-md)]">
       <div className="flex flex-wrap items-center gap-[var(--spacing-sm)]">
+        {/* Search Box */}
+        {onSearchChange && (
+          <div className="flex items-center gap-[var(--spacing-xs)] flex-1 min-w-[200px] max-w-[300px]">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={e => onSearchChange(e.target.value)}
+              placeholder={t('search')}
+              className="flex-1 px-[var(--spacing-sm)] py-1 text-sm border border-[var(--color-border)] bg-[var(--color-background)] text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-border-strong)] transition-colors"
+            />
+          </div>
+        )}
+
         {/* Sort Custom Dropdown */}
         <div className="flex items-center gap-[var(--spacing-xs)]">
           <span className="text-xs text-[var(--color-text-muted)]">{t('sort')}</span>

@@ -28,7 +28,7 @@ export function BackToNavigation({ href, title }: BackToNavigationProps) {
 
   return (
     <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
-      <div className="max-w-[1200px] mx-auto px-[var(--spacing-md)]">
+      <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[var(--spacing-md)]">
           <Link
             href={href}

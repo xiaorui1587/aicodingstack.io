@@ -15,7 +15,7 @@ export function ProductPricing({ pricing, pricingUrl }: ProductPricingProps) {
 
   return (
     <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
-      <div className="max-w-[1200px] mx-auto px-[var(--spacing-md)]">
+      <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
         <h2 className="text-[1.5rem] font-semibold tracking-[-0.02em] mb-[var(--spacing-sm)]">
           <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
             {'//'}

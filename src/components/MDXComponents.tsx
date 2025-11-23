@@ -1,5 +1,5 @@
 import type { MDXComponents } from 'mdx/types'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {

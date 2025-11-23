@@ -107,7 +107,7 @@ export function GitHubStarHistory({ githubUrl }: GitHubStarHistoryProps) {
   if (loading) {
     return (
       <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
-        <div className="max-w-[800px] mx-auto px-[var(--spacing-md)]">
+        <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
           <div className="border border-[var(--color-border)] p-[var(--spacing-md)]">
             <div className="flex items-center justify-center h-[300px]">
               <p className="text-sm text-[var(--color-text-muted)] animate-pulse">
@@ -126,7 +126,7 @@ export function GitHubStarHistory({ githubUrl }: GitHubStarHistoryProps) {
 
   return (
     <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
-      <div className="max-w-[800px] mx-auto px-[var(--spacing-md)]">
+      <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
         <div className="border border-[var(--color-border)] p-[var(--spacing-md)]">
           {/* Header */}
           <div className="mb-[var(--spacing-md)]">

@@ -70,7 +70,7 @@ export function ProductLinks({ resourceUrls, communityUrls }: ProductLinksProps)
 
   return (
     <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
-      <div className="max-w-[800px] mx-auto px-[var(--spacing-md)]">
+      <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--spacing-lg)]">
           {sections.map(
             ({ title, links, show }) =>
