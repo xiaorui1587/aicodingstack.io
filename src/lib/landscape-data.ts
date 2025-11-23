@@ -65,8 +65,8 @@ export type VendorType =
   | 'full-stack' // Has IDE + CLI + Extension
   | 'ai-native' // Has Model + (IDE or CLI or Extension)
   | 'tool-only' // Only has IDE/CLI/Extension
-  | 'model-only' // Only has Model/Provider
-  | 'provider-only' // Only has Provider
+  | 'model-only' // Only has Model, or has Model + Provider (no Tools)
+  | 'provider-only' // Only has Provider (no Model, no Tools)
 
 export interface ExtensionIDECompatibility {
   extensionId: string
@@ -318,10 +318,17 @@ function determineVendorType(products: {
     return 'tool-only'
   }
 
-  if (hasModel && !hasProvider && !hasTools) {
+  // Only has Provider (no Model, no Tools) -> Provider Only
+  if (hasProvider && !hasModel && !hasTools) {
+    return 'provider-only'
+  }
+
+  // Has Model (with or without Provider, but no Tools) -> Model Only
+  if (hasModel && !hasTools) {
     return 'model-only'
   }
 
+  // Fallback (should not reach here in normal cases)
   return 'provider-only'
 }
 

@@ -35,9 +35,7 @@ function MatrixCell({ products, category }: MatrixCellProps) {
 
   if (products.length === 0) {
     return (
-      <div className="h-full min-h-[80px] border border-dashed border-[var(--color-border)] bg-[var(--color-bg-subtle)] flex items-center justify-center">
-        <span className="text-[var(--color-text-muted)] text-sm">-</span>
-      </div>
+      <div className="h-full min-h-[80px] border border-dashed border-[var(--color-border)] bg-[var(--color-bg-subtle)]" />
     )
   }
 
@@ -123,10 +121,79 @@ export default function VendorMatrix({ matrixData }: VendorMatrixProps) {
       if (sortBy === 'name') {
         return a.vendorName.localeCompare(b.vendorName)
       }
-      // Sort by total products (descending)
-      const aTotal = Object.values(a.cells).reduce((sum, arr) => sum + arr.length, 0)
-      const bTotal = Object.values(b.cells).reduce((sum, arr) => sum + arr.length, 0)
-      return bTotal - aTotal
+
+      // Define column groups: first part (high priority) and second part (low priority)
+      const FIRST_PART_CATEGORIES = PRODUCT_CATEGORIES.slice(0, 3) // IDE, CLI, Extension
+      const SECOND_PART_CATEGORIES = PRODUCT_CATEGORIES.slice(3) // Model, Provider
+
+      // Helper function to get column count for a specific set of categories
+      const getColumnCount = (row: VendorMatrixRow, categories: typeof PRODUCT_CATEGORIES) => {
+        return categories.filter(cat => row.cells[cat.key] && row.cells[cat.key].length > 0).length
+      }
+
+      // Helper function to get column order (left to right) for a specific set of categories
+      const getColumnOrder = (row: VendorMatrixRow, categories: typeof PRODUCT_CATEGORIES) => {
+        return categories
+          .filter(cat => row.cells[cat.key] && row.cells[cat.key].length > 0)
+          .map(cat => cat.key)
+      }
+
+      // Helper function to compare column order
+      const compareColumnOrder = (
+        aOrder: string[],
+        bOrder: string[],
+        categories: typeof PRODUCT_CATEGORIES
+      ) => {
+        for (let i = 0; i < Math.min(aOrder.length, bOrder.length); i++) {
+          const aIndex = categories.findIndex(cat => cat.key === aOrder[i])
+          const bIndex = categories.findIndex(cat => cat.key === bOrder[i])
+          if (aIndex !== bIndex) {
+            return aIndex - bIndex
+          }
+        }
+        return 0
+      }
+
+      // 1. Sort by first part column count (descending)
+      const aFirstPartCount = getColumnCount(a, FIRST_PART_CATEGORIES)
+      const bFirstPartCount = getColumnCount(b, FIRST_PART_CATEGORIES)
+      if (aFirstPartCount !== bFirstPartCount) {
+        return bFirstPartCount - aFirstPartCount
+      }
+
+      // 2. If first part column count is the same, sort by second part column count (descending)
+      const aSecondPartCount = getColumnCount(a, SECOND_PART_CATEGORIES)
+      const bSecondPartCount = getColumnCount(b, SECOND_PART_CATEGORIES)
+      if (aSecondPartCount !== bSecondPartCount) {
+        return bSecondPartCount - aSecondPartCount
+      }
+
+      // 3. If both column counts are the same, sort by first part column order (left to right)
+      const aFirstPartOrder = getColumnOrder(a, FIRST_PART_CATEGORIES)
+      const bFirstPartOrder = getColumnOrder(b, FIRST_PART_CATEGORIES)
+      const firstPartOrderComparison = compareColumnOrder(
+        aFirstPartOrder,
+        bFirstPartOrder,
+        FIRST_PART_CATEGORIES
+      )
+      if (firstPartOrderComparison !== 0) {
+        return firstPartOrderComparison
+      }
+
+      // 4. If first part order is also the same, sort by second part column order (left to right)
+      const aSecondPartOrder = getColumnOrder(a, SECOND_PART_CATEGORIES)
+      const bSecondPartOrder = getColumnOrder(b, SECOND_PART_CATEGORIES)
+      const secondPartOrderComparison = compareColumnOrder(
+        aSecondPartOrder,
+        bSecondPartOrder,
+        SECOND_PART_CATEGORIES
+      )
+      if (secondPartOrderComparison !== 0) {
+        return secondPartOrderComparison
+      }
+
+      // 5. If everything is the same, sort alphabetically by vendor name
+      return a.vendorName.localeCompare(b.vendorName)
     })
 
     return sorted
@@ -276,10 +343,10 @@ export default function VendorMatrix({ matrixData }: VendorMatrixProps) {
             <span className="font-medium">Tool Only:</span> IDE/CLI/Extension
           </span>
           <span>
-            <span className="font-medium">Model Only:</span> Model Provider
+            <span className="font-medium">Model Only:</span> Model (with or without Provider)
           </span>
           <span>
-            <span className="font-medium">Provider Only:</span> API Provider
+            <span className="font-medium">Provider Only:</span> Provider only
           </span>
         </div>
       </div>

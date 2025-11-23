@@ -25,7 +25,7 @@ function getLicenseDisplayName(license: string): string {
   return license
 }
 
-function getProductTypeName(type: ProductType, t: any): string {
+function getProductTypeName(type: ProductType, t: (key: string) => string): string {
   switch (type) {
     case 'ide':
       return t('productType.ide')
@@ -133,13 +133,41 @@ export function OpenSourceRankPage() {
       }
     })
 
-    // Sort by stars (descending)
-    openSource.sort((a, b) => b.stars - a.stars)
-    proprietary.sort((a, b) => b.stars - a.stars)
+    // Merge projects with the same GitHub URL, keeping the one with shorter name
+    const mergeByGitHubUrl = (projects: OpenSourceProject[]): OpenSourceProject[] => {
+      const urlMap = new Map<string, OpenSourceProject>()
+
+      projects.forEach(project => {
+        if (!project.githubUrl) {
+          // Keep projects without GitHub URL as-is
+          urlMap.set(`no-url-${project.id}`, project)
+          return
+        }
+
+        const existing = urlMap.get(project.githubUrl)
+        if (!existing) {
+          urlMap.set(project.githubUrl, project)
+        } else {
+          // Keep the one with shorter name
+          if (project.name.length < existing.name.length) {
+            urlMap.set(project.githubUrl, project)
+          }
+        }
+      })
+
+      return Array.from(urlMap.values())
+    }
+
+    // Merge first, then sort by stars (descending)
+    const mergedOpenSource = mergeByGitHubUrl(openSource)
+    const mergedProprietary = mergeByGitHubUrl(proprietary)
+
+    mergedOpenSource.sort((a, b) => b.stars - a.stars)
+    mergedProprietary.sort((a, b) => b.stars - a.stars)
 
     return {
-      openSourceProjects: openSource,
-      proprietaryProjects: proprietary,
+      openSourceProjects: mergedOpenSource,
+      proprietaryProjects: mergedProprietary,
     }
   }, [])
 
@@ -189,6 +217,7 @@ export function OpenSourceRankPage() {
       {/* Filter Section */}
       <div className="mb-[var(--spacing-md)] flex gap-[var(--spacing-xs)] flex-wrap">
         <button
+          type="button"
           onClick={() => setSelectedType('all')}
           className={`px-[var(--spacing-sm)] py-[var(--spacing-xs)] text-sm border transition-all ${
             selectedType === 'all'
@@ -199,6 +228,7 @@ export function OpenSourceRankPage() {
           {t('filter.all')} ({openSourceProjects.length + proprietaryProjects.length})
         </button>
         <button
+          type="button"
           onClick={() => setSelectedType('ide')}
           className={`px-[var(--spacing-sm)] py-[var(--spacing-xs)] text-sm border transition-all ${
             selectedType === 'ide'
@@ -212,6 +242,7 @@ export function OpenSourceRankPage() {
           )
         </button>
         <button
+          type="button"
           onClick={() => setSelectedType('cli')}
           className={`px-[var(--spacing-sm)] py-[var(--spacing-xs)] text-sm border transition-all ${
             selectedType === 'cli'
@@ -225,6 +256,7 @@ export function OpenSourceRankPage() {
           )
         </button>
         <button
+          type="button"
           onClick={() => setSelectedType('extension')}
           className={`px-[var(--spacing-sm)] py-[var(--spacing-xs)] text-sm border transition-all ${
             selectedType === 'extension'
@@ -283,7 +315,7 @@ export function OpenSourceRankPage() {
                         </Link>
                       </td>
                       <td className="px-[var(--spacing-sm)] py-[var(--spacing-sm)] text-sm">
-                        <span className="inline-block px-2 py-0.5 text-xs border border-[var(--color-border)] rounded">
+                        <span className="inline-block px-2 py-0.5 text-xs border border-[var(--color-border)]">
                           {getProductTypeName(project.type, t)}
                         </span>
                       </td>
@@ -355,6 +387,11 @@ export function OpenSourceRankPage() {
           </>
         )
       })()}
+
+      {/* Note Section */}
+      <div className="mt-[var(--spacing-lg)] mb-[var(--spacing-lg)] p-[var(--spacing-sm)] border border-[var(--color-border)] bg-[var(--color-hover)] text-sm text-[var(--color-text-secondary)]">
+        {t('note')}
+      </div>
 
       {/* Statistics Section with Pie Chart */}
       <div className="mt-[var(--spacing-lg)] border border-[var(--color-border)] p-[var(--spacing-md)]">
@@ -461,10 +498,7 @@ export function OpenSourceRankPage() {
                     key={stat.license}
                     className="border border-[var(--color-border)] p-[var(--spacing-sm)] flex items-center gap-[var(--spacing-sm)]"
                   >
-                    <div
-                      className="w-4 h-4 rounded-sm flex-shrink-0"
-                      style={{ backgroundColor: color }}
-                    />
+                    <div className="w-4 h-4 flex-shrink-0" style={{ backgroundColor: color }} />
                     <div className="flex-1 min-w-0">
                       <div className="text-sm font-medium truncate">{stat.license}</div>
                       <div className="text-xs text-[var(--color-text-secondary)]">
@@ -477,7 +511,7 @@ export function OpenSourceRankPage() {
 
               {/* Proprietary */}
               <div className="border border-[var(--color-border)] p-[var(--spacing-sm)] flex items-center gap-[var(--spacing-sm)]">
-                <div className="w-4 h-4 rounded-sm flex-shrink-0 bg-gray-300" />
+                <div className="w-4 h-4 flex-shrink-0 bg-gray-300" />
                 <div className="flex-1 min-w-0">
                   <div className="text-sm font-medium truncate">Proprietary</div>
                   <div className="text-xs text-[var(--color-text-secondary)]">
