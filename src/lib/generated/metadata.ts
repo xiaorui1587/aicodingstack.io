@@ -549,5 +549,5 @@ export const stackCounts: Record<string, number> = {
   extensions: 12,
   models: 24,
   'model-providers': 7,
-  vendors: 37,
+  vendors: 34,
 }

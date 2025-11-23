@@ -27,8 +27,6 @@ import Moonshot from '../../../manifests/vendors/moonshot.json'
 import MoonshotAi from '../../../manifests/vendors/moonshot-ai.json'
 import Openai from '../../../manifests/vendors/openai.json'
 import Openrouter from '../../../manifests/vendors/openrouter.json'
-import Qoder from '../../../manifests/vendors/qoder.json'
-import Qwen from '../../../manifests/vendors/qwen.json'
 import RooCode from '../../../manifests/vendors/roo-code.json'
 import ShareaiLab from '../../../manifests/vendors/shareai-lab.json'
 import Siliconflow from '../../../manifests/vendors/siliconflow.json'
@@ -37,7 +35,6 @@ import Sst from '../../../manifests/vendors/sst.json'
 import Streamlake from '../../../manifests/vendors/streamlake.json'
 import Tabnine from '../../../manifests/vendors/tabnine.json'
 import Tencent from '../../../manifests/vendors/tencent.json'
-import TencentCloud from '../../../manifests/vendors/tencent-cloud.json'
 import Xai from '../../../manifests/vendors/xai.json'
 import ZAi from '../../../manifests/vendors/z-ai.json'
 import ZedIndustries from '../../../manifests/vendors/zed-industries.json'
@@ -67,8 +64,6 @@ export const vendorsData = [
   MoonshotAi,
   Openai,
   Openrouter,
-  Qoder,
-  Qwen,
   RooCode,
   ShareaiLab,
   Siliconflow,
@@ -77,7 +72,6 @@ export const vendorsData = [
   Streamlake,
   Tabnine,
   Tencent,
-  TencentCloud,
   Xai,
   ZAi,
   ZedIndustries,

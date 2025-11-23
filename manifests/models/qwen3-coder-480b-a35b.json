@@ -10,7 +10,7 @@
   "websiteUrl": "https://qwen.ai",
   "docsUrl": "https://huggingface.co/Qwen/Qwen3-Coder-480B-A35B-Instruct",
   "verified": false,
-  "vendor": "Qwen",
+  "vendor": "Alibaba",
   "size": "32B",
   "totalContext": "32K",
   "maxOutput": "4K",
