@@ -1,12 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
-import {
-  buildRelationshipGraph,
-  buildVendorMatrix,
-  calculateLandscapeStats,
-  getProductsByCategory,
-} from '@/lib/landscape-data'
+import { buildVendorMatrix } from '@/lib/landscape-data'
 import { buildCanonicalUrl, buildOpenGraph, buildTitle, buildTwitterCard } from '@/lib/metadata'
 import LandscapePage from './components/LandscapePage'
 
@@ -53,11 +48,8 @@ export default async function Page({ params }: Props) {
   const tNav = await getTranslations({ locale, namespace: 'header' })
   const tOverview = await getTranslations({ locale, namespace: 'stacksPages.overview' })
 
-  // Build all data for the landscape page
+  // Build vendor matrix data
   const matrixData = buildVendorMatrix()
-  const graphData = buildRelationshipGraph()
-  const productsByCategory = getProductsByCategory()
-  const stats = calculateLandscapeStats()
 
   const translations = {
     title: tNav('aiCodingLandscape'),
@@ -68,14 +60,7 @@ export default async function Page({ params }: Props) {
   return (
     <>
       <Header />
-      <LandscapePage
-        matrixData={matrixData}
-        graphData={graphData}
-        productsByCategory={productsByCategory}
-        stats={stats}
-        locale={locale}
-        translations={translations}
-      />
+      <LandscapePage matrixData={matrixData} locale={locale} translations={translations} />
       <Footer />
     </>
   )

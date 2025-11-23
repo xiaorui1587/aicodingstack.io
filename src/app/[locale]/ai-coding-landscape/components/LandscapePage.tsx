@@ -1,29 +1,11 @@
 'use client'
 
 import { BackToNavigation } from '@/components/controls/BackToNavigation'
-import type {
-  LandscapeProduct,
-  LandscapeStats,
-  RelationshipEdge,
-  RelationshipNode,
-  VendorMatrixRow,
-} from '@/lib/landscape-data'
-import LandscapeViewTabs from './LandscapeViewTabs'
+import type { VendorMatrixRow } from '@/lib/landscape-data'
+import VendorMatrix from './VendorMatrix'
 
 interface LandscapePageProps {
   matrixData: VendorMatrixRow[]
-  graphData: {
-    nodes: RelationshipNode[]
-    edges: RelationshipEdge[]
-  }
-  productsByCategory: {
-    ides: LandscapeProduct[]
-    clis: LandscapeProduct[]
-    extensions: LandscapeProduct[]
-    models: LandscapeProduct[]
-    providers: LandscapeProduct[]
-  }
-  stats: LandscapeStats
   locale: string
   translations: {
     title: string
@@ -32,63 +14,19 @@ interface LandscapePageProps {
   }
 }
 
-export default function LandscapePage({
-  matrixData,
-  graphData,
-  productsByCategory,
-  stats,
-  locale,
-  translations,
-}: LandscapePageProps) {
+export default function LandscapePage({ matrixData, locale, translations }: LandscapePageProps) {
   return (
-    <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
+    <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
       {/* Page Header */}
-      <div className="text-center mb-[var(--spacing-xl)]">
-        <h1 className="text-[3rem] font-semibold tracking-[-0.04em] mb-[var(--spacing-sm)]">
-          <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
-            🗺️
-          </span>
+      <div className="mb-[var(--spacing-lg)]">
+        <h1 className="text-[2rem] font-semibold tracking-[-0.02em] mb-[var(--spacing-xs)]">
           {translations.title}
         </h1>
-        <p className="text-lg text-[var(--color-text-secondary)] font-light max-w-[800px] mx-auto">
-          {translations.description}
-        </p>
+        <p className="text-[var(--color-text-secondary)]">{translations.description}</p>
       </div>
 
-      {/* Quick Stats Summary */}
-      <div className="mb-[var(--spacing-xl)] p-[var(--spacing-lg)] border border-[var(--color-border)] bg-gradient-to-br from-blue-500/5 to-purple-500/5">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-[var(--spacing-md)] text-center">
-          <div>
-            <div className="text-2xl font-bold tracking-tight">{stats.totalProducts}</div>
-            <div className="text-xs text-[var(--color-text-muted)] mt-1">Products</div>
-          </div>
-          <div>
-            <div className="text-2xl font-bold tracking-tight">{stats.totalVendors}</div>
-            <div className="text-xs text-[var(--color-text-muted)] mt-1">Vendors</div>
-          </div>
-          <div>
-            <div className="text-2xl font-bold tracking-tight">{stats.counts.ides}</div>
-            <div className="text-xs text-[var(--color-text-muted)] mt-1">IDEs</div>
-          </div>
-          <div>
-            <div className="text-2xl font-bold tracking-tight">{stats.counts.clis}</div>
-            <div className="text-xs text-[var(--color-text-muted)] mt-1">CLIs</div>
-          </div>
-          <div>
-            <div className="text-2xl font-bold tracking-tight">{stats.counts.extensions}</div>
-            <div className="text-xs text-[var(--color-text-muted)] mt-1">Extensions</div>
-          </div>
-        </div>
-      </div>
-
-      {/* Tabs */}
-      <LandscapeViewTabs
-        matrixData={matrixData}
-        graphData={graphData}
-        productsByCategory={productsByCategory}
-        stats={stats}
-        locale={locale}
-      />
+      {/* Vendor Matrix */}
+      <VendorMatrix matrixData={matrixData} locale={locale} />
 
       {/* Back to Overview */}
       <div className="mt-[var(--spacing-xl)]">
