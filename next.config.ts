@@ -71,13 +71,7 @@ const nextConfig: NextConfig = {
 
   // Experimental features for better performance
   experimental: {
-    optimizePackageImports: [
-      'lucide-react',
-      'next-intl',
-      '@mdx-js/react',
-      'recharts',
-      '@xyflow/react',
-    ],
+    optimizePackageImports: ['lucide-react', 'next-intl', '@mdx-js/react', 'recharts'],
   },
 
   // Compiler optimizations
@@ -101,6 +95,18 @@ const nextConfig: NextConfig = {
   eslint: {
     // Set to true only if you want to skip linting during build
     ignoreDuringBuilds: false,
+  },
+
+  // Redirects configuration
+  async redirects() {
+    return [
+      // Redirect /discord to Discord server
+      {
+        source: '/discord',
+        destination: 'https://discord.gg/u4hCpmCFCQ',
+        permanent: true,
+      },
+    ]
   },
 
   // Headers for better caching and security

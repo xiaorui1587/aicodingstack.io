@@ -89,6 +89,9 @@
     ],
     "*.{json,jsonc}": [
       "biome format --write --no-errors-on-unmatched"
+    ],
+    "**/*.{ts,tsx,js,jsx,json,md,mdx}": [
+      "cspell --no-must-find-files"
     ]
   }
 }
