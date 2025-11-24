@@ -14,7 +14,7 @@ interface FooterLinkListProps {
 function FooterLinkList({ title, links }: FooterLinkListProps) {
   return (
     <div className="flex flex-col gap-[var(--spacing-sm)] lg:col-span-2">
-      <h4 className="text-sm font-semibold tracking-tight">{title}</h4>
+      <h2 className="text-sm font-semibold tracking-tight">{title}</h2>
       <ul className="flex flex-col gap-[var(--spacing-xs)] list-none">
         {links.map(item => (
           <li key={item.href}>
@@ -73,7 +73,7 @@ function Footer() {
       isExternal: true,
     },
     {
-      href: 'https://discord.gg/aicodingstack',
+      href: 'https://aicodingstack.io/discord',
       label: tCommunity('discord'),
       isExternal: true,
     },
@@ -89,12 +89,10 @@ function Footer() {
       <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-9 gap-[var(--spacing-lg)] mb-[var(--spacing-lg)]">
           <div className="flex flex-col gap-[var(--spacing-sm)] lg:col-span-3">
-            <h4 className="text-sm font-semibold tracking-tight">{tFooter('aicodingstack')}</h4>
-            <p className="text-sm pb-[var(--spacing-sm)] leading-relaxed text-[var(--color-text-secondary)] font-light">
+            <span className="text-sm font-semibold tracking-tight">{tFooter('aicodingstack')}</span>
+            <p className="text-sm pb-[var(--spacing-sm)] leading-[1.8] text-[var(--color-text-secondary)] font-light">
               {tFooter('tagline')}
-              <br />
-              <br />
-              {tFooter('openSource')}
+              <span className="block mt-[var(--spacing-sm)]">{tFooter('openSource')}</span>
             </p>
             <div className="flex gap-[var(--spacing-xs)]">
               <button
