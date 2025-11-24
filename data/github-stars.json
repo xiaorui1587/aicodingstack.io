@@ -2,7 +2,7 @@
   "extensions": {
     "amp": null,
     "augment-code": null,
-    "claude-code": 43.1,
+    "claude-code": 43.2,
     "cline": 52.6,
     "codex": 51.1,
     "continue": 30,
@@ -17,19 +17,19 @@
     "amazon-q-developer-cli": 1.8,
     "amp-cli": null,
     "augment-code-cli": 0.1,
-    "claude-code-cli": 43.1,
+    "claude-code-cli": 43.2,
     "cline-cli": null,
     "codebuddy-cli": null,
     "codex-cli": 51.1,
     "continue-cli": 30,
     "droid-cli": null,
-    "gemini-cli": 84.1,
+    "gemini-cli": 84.2,
     "github-copilot-cli": 5.4,
     "kilo-code-cli": 12.6,
     "kimi-cli": 3.2,
     "kode": 3.6,
     "neovate-code": 1.1,
-    "opencode": 33.6,
+    "opencode": 33.7,
     "qoder-cli": null
   },
   "ides": {
@@ -43,6 +43,6 @@
     "trae": null,
     "vscode": 178.9,
     "windsurf": null,
-    "zed": 70.2
+    "zed": 70.3
   }
 }
