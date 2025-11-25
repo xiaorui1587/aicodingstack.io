@@ -37,7 +37,7 @@ const ajv = new Ajv2020({
   allErrors: true,
   verbose: true,
   strict: true,
-  strictTypes: false, // Disable strict types to allow unevaluatedProperties with allOf/ref
+  strictTypes: true,
   allowUnionTypes: true,
 })
 
