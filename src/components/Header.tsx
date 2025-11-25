@@ -1,9 +1,11 @@
 'use client'
 
 import Image from 'next/image'
+import { useParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { memo, useCallback, useMemo, useState } from 'react'
+import { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { Link } from '@/i18n/navigation'
+import SearchDialog from './controls/SearchDialog'
 import { MegaMenu } from './MegaMenu'
 
 // Menu item configuration type
@@ -22,29 +24,26 @@ const MOBILE_LINK_CLASSES =
   'block text-sm py-[var(--spacing-xs)] hover:text-[var(--color-text-secondary)] transition-colors'
 
 function Header() {
+  const params = useParams()
+  const locale = params?.locale as string | undefined
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false)
+  const [isSearchDialogOpen, setIsSearchDialogOpen] = useState(false)
   const tHeader = useTranslations('header')
   const tCommunity = useTranslations('community')
 
   // Menu items configuration - memoized to avoid recreation on each render
   const menuItems = useMemo<MenuItem[]>(
     () => [
-      { href: '/#features', translationKey: 'features', namespace: 'header' },
+      { href: '/manifesto', translationKey: 'manifesto', namespace: 'header' },
       {
         href: '/ai-coding-stack',
         translationKey: 'aiCodingStack',
         namespace: 'header',
         hasMegaMenu: true,
       },
+      { href: '/ai-coding-landscape', translationKey: 'landscape', namespace: 'header' },
       { href: '/curated-collections', translationKey: 'collections', namespace: 'header' },
-      { href: '/docs', translationKey: 'docs', namespace: 'header' },
-      {
-        href: 'https://github.com/aicodingstack/aicodingstack.io',
-        translationKey: 'github',
-        namespace: 'community',
-        isExternal: true,
-      },
     ],
     []
   )
@@ -64,6 +63,20 @@ function Header() {
 
   const handleMegaMenuClose = useCallback(() => {
     setIsMegaMenuOpen(false)
+  }, [])
+
+  // Handle keyboard shortcuts for search
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // CMD+K (Mac) or CTRL+K (Windows/Linux)
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault()
+        setIsSearchDialogOpen(true)
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
   }, [])
 
   // Get translation text helper - memoized
@@ -143,7 +156,7 @@ function Header() {
 
   return (
     <header className="sticky top-0 bg-[var(--color-bg)]/95 backdrop-blur-sm border-b border-[var(--color-border)] z-50">
-      <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
+      <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
         <nav className="flex justify-between items-center py-[var(--spacing-sm)]">
           <Link
             href="/"
@@ -160,42 +173,94 @@ function Header() {
           </Link>
 
           {/* Desktop Menu */}
-          <ul className="hidden md:flex gap-[var(--spacing-md)] list-none">
-            {menuItems.map(renderDesktopMenuItem)}
-          </ul>
+          <div className="hidden md:flex items-center gap-[var(--spacing-md)]">
+            <ul className="flex gap-[var(--spacing-md)] list-none">
+              {menuItems.map(renderDesktopMenuItem)}
+            </ul>
 
-          {/* Mobile Menu Button */}
-          <button
-            type="button"
-            onClick={handleMenuToggle}
-            className="md:hidden p-[var(--spacing-xs)] hover:bg-[var(--color-hover)] transition-colors"
-            aria-label={tHeader('toggleMenu')}
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              role="img"
+            {/* Desktop Search Button */}
+            <button
+              type="button"
+              onClick={() => setIsSearchDialogOpen(true)}
+              className="flex items-center gap-2 px-3 py-1.5 text-sm border border-[var(--color-border)] bg-[var(--color-background)] text-[var(--color-text-muted)] hover:border-[var(--color-border-strong)] transition-colors min-w-[140px]"
             >
-              <title>{menuButtonLabel}</title>
-              {isMenuOpen ? (
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                aria-hidden="true"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
-              ) : (
+              </svg>
+              <span className="flex-1 text-left">{tHeader('searchPlaceholder')}</span>
+              <kbd className="px-1.5 py-0.5 text-xs border border-[var(--color-border)]">⌘K</kbd>
+            </button>
+          </div>
+
+          {/* Mobile Menu Buttons */}
+          <div className="flex md:hidden items-center gap-2">
+            {/* Mobile Search Toggle */}
+            <button
+              type="button"
+              onClick={() => setIsSearchDialogOpen(true)}
+              className="p-[var(--spacing-xs)] hover:bg-[var(--color-hover)] transition-colors"
+              aria-label={tHeader('search')}
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                aria-hidden="true"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
-              )}
-            </svg>
-          </button>
+              </svg>
+            </button>
+
+            {/* Mobile Menu Toggle */}
+            <button
+              type="button"
+              onClick={handleMenuToggle}
+              className="p-[var(--spacing-xs)] hover:bg-[var(--color-hover)] transition-colors"
+              aria-label={tHeader('toggleMenu')}
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                role="img"
+              >
+                <title>{menuButtonLabel}</title>
+                {isMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
         </nav>
 
         {/* Mobile Menu */}
@@ -207,6 +272,13 @@ function Header() {
           </div>
         )}
       </div>
+
+      {/* Search Dialog */}
+      <SearchDialog
+        isOpen={isSearchDialogOpen}
+        onClose={() => setIsSearchDialogOpen(false)}
+        locale={locale}
+      />
     </header>
   )
 }
