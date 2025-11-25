@@ -18,6 +18,10 @@
     "BMAD",
     "BYOK",
     "CLIs",
+    "cmdk",
+    "Entwicklungsworkflows",
+    "hrefs",
+    "Integrationen",
     "Junie",
     "Kimi",
     "Kiro",
@@ -26,13 +30,10 @@
     "Qoder",
     "QoderCLI",
     "Qwen",
+    "RLHF",
     "Roo",
     "shareAI",
-    "TRAE",
-    "RLHF",
-    "hrefs",
-    "Integrationen",
-    "Entwicklungsworkflows"
+    "TRAE"
   ],
   "allowCompoundWords": true
 }
