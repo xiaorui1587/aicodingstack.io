@@ -104,12 +104,6 @@ export const MegaMenu = memo(function MegaMenu({ isOpen, onClose }: MegaMenuProp
   const featuredLinks = useMemo<FeaturedLink[]>(
     () => [
       {
-        href: '/ai-coding-landscape',
-        titleKey: 'aiCodingLandscape',
-        descKey: 'aiCodingLandscapeDesc',
-        marginBottom: 'sm',
-      },
-      {
         href: '/open-source-rank',
         titleKey: 'openSourceRank',
         descKey: 'openSourceRankDesc',

@@ -42,6 +42,9 @@
   --color-acs-border: var(--color-border);
   --color-acs-border-strong: var(--color-border-strong);
   --color-acs-hover: var(--color-hover);
+
+  /* Custom max-width */
+  --max-width-8xl: 88rem;
 }
 
 body,
@@ -59,6 +62,14 @@ h4,
 h5,
 h6 {
   font-weight: 600;
+}
+
+/* H1 with "//" prefix */
+h1::before {
+  content: "//";
+  color: var(--color-text-muted);
+  font-weight: 300;
+  margin-right: 0.75rem;
 }
 
 strong {
@@ -98,6 +109,19 @@ strong {
 
 .animate-fadeIn {
   animation: fadeIn 200ms ease-out;
+}
+
+/* cmdk overrides */
+[cmdk-root] {
+  font-family: var(--font-ibm-plex-mono), monospace;
+}
+
+[cmdk-input] {
+  font-family: var(--font-ibm-plex-mono), monospace;
+}
+
+[cmdk-item] {
+  font-family: var(--font-ibm-plex-mono), monospace;
 }
 
 /* Code block styling */

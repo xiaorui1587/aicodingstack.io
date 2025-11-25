@@ -5,9 +5,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ children }) => (
       <h1 className="text-[2rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-md)] text-[var(--color-text)]">
-        <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
-          {'//'}
-        </span>
         {children}
       </h1>
     ),

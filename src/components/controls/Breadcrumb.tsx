@@ -63,7 +63,7 @@ export function Breadcrumb({
     <>
       <JsonLd data={breadcrumbListSchema} />
       <section className="py-[var(--spacing-sm)] bg-[var(--color-hover)] border-b border-[var(--color-border)]">
-        <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
+        <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
           <nav className="flex items-center gap-[var(--spacing-xs)] text-[0.8125rem]">
             {items.map((item, index) => {
               const isLast = index === items.length - 1

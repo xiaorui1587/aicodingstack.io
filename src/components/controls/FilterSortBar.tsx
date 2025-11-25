@@ -85,7 +85,7 @@ export default function FilterSortBar({
       <div className="flex flex-wrap items-center gap-[var(--spacing-sm)]">
         {/* Search Box */}
         {onSearchChange && (
-          <div className="flex items-center gap-[var(--spacing-xs)] flex-1 min-w-[200px] max-w-[300px]">
+          <div className="flex items-center gap-[var(--spacing-xs)] flex-1 min-w-[200px] max-w-2xs">
             <input
               type="text"
               value={searchQuery}

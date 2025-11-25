@@ -101,7 +101,7 @@ export function ProductHero({
   return (
     <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
       {/* Title and Description Container - Max 800px */}
-      <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)] text-center">
+      <div className="max-w-8xl mx-auto px-[var(--spacing-md)] text-center">
         {/* Title with Badge */}
         <div className="relative inline-block mb-[var(--spacing-sm)]">
           <h1 className="text-[3rem] font-semibold tracking-[-0.04em]">{name}</h1>
@@ -197,7 +197,7 @@ export function ProductHero({
       )}
 
       {/* Rest of the content - using the same container pattern */}
-      <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)] text-center">
+      <div className="max-w-8xl mx-auto px-[var(--spacing-md)] text-center">
         {/* Platforms */}
         {displayPlatforms && displayPlatforms.length > 0 && (
           <div className="flex justify-center mb-[var(--spacing-lg)]">

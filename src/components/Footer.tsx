@@ -86,7 +86,7 @@ function Footer() {
 
   return (
     <footer className="bg-[var(--color-bg)] border-t border-[var(--color-border)] py-[var(--spacing-xl)] pb-[var(--spacing-md)]">
-      <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
+      <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-9 gap-[var(--spacing-lg)] mb-[var(--spacing-lg)]">
           <div className="flex flex-col gap-[var(--spacing-sm)] lg:col-span-3">
             <span className="text-sm font-semibold tracking-tight">{tFooter('aicodingstack')}</span>
