@@ -59,7 +59,7 @@ export default async function DocPage({ params }: Props) {
     return (
       <>
         <Header />
-        <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
+        <div className="max-w-8xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
           <h1 className="text-[2.5rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
             {doc.title}
           </h1>
@@ -83,12 +83,12 @@ export default async function DocPage({ params }: Props) {
     <>
       <Header />
 
-      <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
+      <div className="max-w-8xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
         <div className="flex gap-[var(--spacing-lg)]">
           <DocsSidebar sections={docSections} activeSlug={slug} />
 
           {/* Main Content */}
-          <main className="flex-1 max-w-[1400px]">
+          <main className="flex-1 max-w-8xl">
             <article className="space-y-[var(--spacing-lg)] text-base leading-[1.8] text-[var(--color-text-secondary)] font-light">
               <DocContent />
             </article>

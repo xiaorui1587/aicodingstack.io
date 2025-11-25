@@ -184,7 +184,7 @@ export default async function IDEPage({
       {/* Related CLI Tool */}
       {ide.cli && (
         <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
-          <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
+          <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
             <Link
               href={`clis/${ide.cli}`}
               className="block border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5 group"

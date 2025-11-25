@@ -95,17 +95,12 @@ export default function CLIsPageClient({ locale }: Props) {
     <>
       <Header />
 
-      <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
+      <div className="max-w-8xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
         {/* Main Content */}
         <main className="w-full">
           <div className="mb-[var(--spacing-lg)]">
             <div className="flex items-start justify-between mb-[var(--spacing-sm)]">
-              <h1 className="text-[2rem] font-semibold tracking-[-0.03em]">
-                <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
-                  {'//'}
-                </span>
-                {t('title')}
-              </h1>
+              <h1 className="text-[2rem] font-semibold tracking-[-0.03em]">{t('title')}</h1>
               <Link
                 href={`/${locale}/clis/comparison`}
                 className="text-sm px-[var(--spacing-md)] py-[var(--spacing-xs)] border border-[var(--color-border)] hover:border-[var(--color-border-strong)] transition-colors"

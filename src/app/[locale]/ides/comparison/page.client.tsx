@@ -309,7 +309,7 @@ export default function IDEComparisonPageClient({ locale }: Props) {
       {/* Fixed Breadcrumb (when scrolled) */}
       {isBreadcrumbFixed && (
         <section className="fixed top-[60px] left-0 right-0 z-30 py-[var(--spacing-sm)] bg-[var(--color-hover)] border-b border-[var(--color-border)] shadow-sm">
-          <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
+          <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
             <nav className="flex items-center gap-[var(--spacing-xs)] text-[0.8125rem]">
               <Link
                 href={`/${locale}/ai-coding-stack`}
@@ -338,7 +338,7 @@ export default function IDEComparisonPageClient({ locale }: Props) {
         ref={breadcrumbRef}
         className="py-[var(--spacing-sm)] bg-[var(--color-hover)] border-b border-[var(--color-border)]"
       >
-        <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
+        <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
           <nav
             className={`flex items-center gap-[var(--spacing-xs)] text-[0.8125rem] ${isBreadcrumbFixed ? 'invisible' : ''}`}
           >
@@ -365,7 +365,7 @@ export default function IDEComparisonPageClient({ locale }: Props) {
 
       {/* Page Header */}
       <section className="py-[var(--spacing-lg)] border-[var(--color-border)]">
-        <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
+        <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
           <h1 className="text-[2.5rem] font-semibold tracking-[-0.04em] mb-[var(--spacing-sm)]">
             {tComparison('ides.title')}
           </h1>
@@ -377,7 +377,7 @@ export default function IDEComparisonPageClient({ locale }: Props) {
 
       {/* Comparison Table */}
       <section className="pb-[var(--spacing-lg)] border-b border-[var(--color-border)]">
-        <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
+        <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
           <ComparisonTable
             items={ides as unknown as Record<string, unknown>[]}
             columns={columns}
@@ -389,7 +389,7 @@ export default function IDEComparisonPageClient({ locale }: Props) {
 
       {/* Back Navigation */}
       <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
-        <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
+        <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
           <Link
             href={`/${locale}/ides`}
             className="inline-flex items-center gap-[var(--spacing-xs)] text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors"

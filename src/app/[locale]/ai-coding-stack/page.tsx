@@ -1,9 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
-import StackSidebar from '@/components/sidebar/StackSidebar'
 import { Link } from '@/i18n/navigation'
-import { getManifestoComponent } from '@/lib/manifesto'
 import { buildCanonicalUrl, buildOpenGraph, buildTitle, buildTwitterCard } from '@/lib/metadata'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -47,76 +45,52 @@ type Props = {
 export default async function AICodingStackPage({ params }: Props) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'stacksPages.overview' })
-  const ManifestoContent = await getManifestoComponent(locale)
 
   return (
     <>
       <Header />
 
-      <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
-        <div className="flex gap-[var(--spacing-lg)]">
-          <StackSidebar activeStack="overview" locale={locale} />
+      <div className="max-w-8xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
+        <main>
+          {/* Hero Section */}
+          <section className="mb-[var(--spacing-xl)]">
+            <h1 className="text-[3rem] font-bold tracking-[-0.04em] leading-[1.1] mb-[var(--spacing-md)]">
+              {t('title')}
+            </h1>
+          </section>
 
-          <main className="flex-1">
-            {/* Hero Section */}
-            <section className="mb-[var(--spacing-2xl)]">
-              <div className="space-y-[var(--spacing-md)]">
-                <h1 className="text-[2.5rem] md:text-[2rem] font-bold tracking-[-0.03em] leading-[1.15]">
-                  {t('title')}
-                </h1>
-                <div className="bg-[var(--color-hover)] p-[var(--spacing-md)]">
-                  <div className="text-[1.5rem] md:text-[1.25rem] tracking-[-0.01em] font-semibold text-[var(--color-text-secondary)]">
-                    {t('slogan')}
+          {/* Stacks Grid Section */}
+          <section className="mb-[var(--spacing-xl)]">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-[var(--spacing-md)]">
+              {[
+                { key: 'ides', path: 'ides' },
+                { key: 'clis', path: 'clis' },
+                { key: 'extensions', path: 'extensions' },
+                { key: 'models', path: 'models' },
+                { key: 'modelProviders', path: 'model-providers' },
+                { key: 'vendors', path: 'vendors' },
+              ].map(stack => (
+                <Link
+                  key={stack.key}
+                  href={`/${stack.path}`}
+                  className="block border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5 group"
+                >
+                  <div className="flex justify-between items-start mb-[var(--spacing-md)]">
+                    <h3 className="text-[1.5rem] font-semibold tracking-tight">
+                      {t(`${stack.key}.title`)}
+                    </h3>
+                    <span className="text-2xl text-[var(--color-text-muted)] group-hover:text-[var(--color-text)] group-hover:translate-x-1 transition-all">
+                      →
+                    </span>
                   </div>
-                </div>
-              </div>
-            </section>
-
-            {/* Stacks Grid Section */}
-            <section className="mb-[var(--spacing-xl)]">
-              <h2 className="text-[1.5rem] font-semibold tracking-[-0.02em] my-[var(--spacing-md)]">
-                <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
-                  {'//'}
-                </span>
-                {t('exploreStack')}
-              </h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--spacing-md)]">
-                {[
-                  { key: 'ides', path: 'ides' },
-                  { key: 'clis', path: 'clis' },
-                  { key: 'extensions', path: 'extensions' },
-                  { key: 'models', path: 'models' },
-                  { key: 'modelProviders', path: 'model-providers' },
-                  { key: 'vendors', path: 'vendors' },
-                ].map(stack => (
-                  <Link
-                    key={stack.key}
-                    href={`/${stack.path}`}
-                    className="block border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5 group"
-                  >
-                    <div className="flex justify-between items-start mb-[var(--spacing-md)]">
-                      <h3 className="text-[1.5rem] font-semibold tracking-tight">
-                        {t(`${stack.key}.title`)}
-                      </h3>
-                      <span className="text-2xl text-[var(--color-text-muted)] group-hover:text-[var(--color-text)] group-hover:translate-x-1 transition-all">
-                        →
-                      </span>
-                    </div>
-                    <p className="text-sm leading-relaxed text-[var(--color-text-secondary)] font-light">
-                      {t(`${stack.key}.description`)}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </section>
-
-            {/* Manifesto Section */}
-            <section className="prose prose-neutral dark:prose-invert max-w-none">
-              <ManifestoContent />
-            </section>
-          </main>
-        </div>
+                  <p className="text-sm leading-relaxed text-[var(--color-text-secondary)] font-light">
+                    {t(`${stack.key}.description`)}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        </main>
       </div>
 
       <Footer />

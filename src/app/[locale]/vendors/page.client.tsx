@@ -59,14 +59,11 @@ export default function VendorsPageClient({ locale }: Props) {
     <>
       <Header />
 
-      <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
+      <div className="max-w-8xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
         {/* Main Content */}
         <main className="w-full">
           <div className="mb-[var(--spacing-lg)]">
             <h1 className="text-[2rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
-              <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
-                {'//'}
-              </span>
               {t('title')}
             </h1>
             <p className="text-base text-[var(--color-text-secondary)] font-light">
@@ -83,7 +80,7 @@ export default function VendorsPageClient({ locale }: Props) {
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
               placeholder={t('search') || 'Search by name...'}
-              className="w-full max-w-[300px] px-[var(--spacing-sm)] py-1 text-sm border border-[var(--color-border)] bg-[var(--color-background)] text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-border-strong)] transition-colors"
+              className="w-full max-w-2xs px-[var(--spacing-sm)] py-1 text-sm border border-[var(--color-border)] bg-[var(--color-background)] text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-border-strong)] transition-colors"
             />
           </div>
 

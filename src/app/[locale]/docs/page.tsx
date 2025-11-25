@@ -50,12 +50,12 @@ export default async function DocsPage({ params }: Props) {
     <>
       <Header />
 
-      <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
+      <div className="max-w-8xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
         <div className="flex gap-[var(--spacing-lg)]">
           <DocsSidebar sections={docSections} activeSlug="welcome" />
 
           {/* Main Content */}
-          <main className="flex-1 max-w-[1400px]">
+          <main className="flex-1 max-w-8xl">
             <article className="space-y-[var(--spacing-lg)] text-base leading-[1.8] text-[var(--color-text-secondary)] font-light">
               {WelcomeDoc && <WelcomeDoc />}
             </article>

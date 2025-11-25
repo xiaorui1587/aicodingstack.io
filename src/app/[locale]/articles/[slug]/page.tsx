@@ -1,4 +1,6 @@
 import { notFound } from 'next/navigation'
+import { getTranslations } from 'next-intl/server'
+import { Breadcrumb } from '@/components/controls/Breadcrumb'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import { Link } from '@/i18n/navigation'
@@ -53,13 +55,14 @@ export default async function ArticlePage({ params }: Props) {
     notFound()
   }
 
+  const t = await getTranslations({ locale, namespace: 'header' })
   const ArticleContent = await getArticleComponent(locale, slug)
 
   if (!ArticleContent) {
     return (
       <>
         <Header />
-        <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
+        <div className="max-w-6xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
           <h1 className="text-[2.5rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
             {article.title}
           </h1>
@@ -83,24 +86,15 @@ export default async function ArticlePage({ params }: Props) {
     <>
       <Header />
 
-      {/* Breadcrumb */}
-      <section className="py-[var(--spacing-sm)] bg-[var(--color-hover)] border-b border-[var(--color-border)]">
-        <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)]">
-          <nav className="flex items-center gap-[var(--spacing-xs)] text-[0.8125rem]">
-            <Link
-              href="/articles"
-              className="text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors"
-            >
-              Articles
-            </Link>
-            <span className="text-[var(--color-text-muted)]">/</span>
-            <span className="text-[var(--color-text)] font-medium">{article.title}</span>
-          </nav>
-        </div>
-      </section>
+      <Breadcrumb
+        items={[
+          { name: t('articles'), href: '/articles' },
+          { name: article.title, href: `/articles/${slug}` },
+        ]}
+      />
 
       {/* Article Content */}
-      <article className="max-w-[1400px] mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
+      <article className="max-w-5xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
         {/* Article Header */}
         <header className="mb-[var(--spacing-xl)]">
           <h1 className="text-[2.5rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)] leading-tight">

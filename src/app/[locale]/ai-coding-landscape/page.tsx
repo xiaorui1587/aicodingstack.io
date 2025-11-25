@@ -55,13 +55,10 @@ export default async function Page({ params }: Props) {
   return (
     <>
       <Header />
-      <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
+      <div className="max-w-8xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
         {/* Page Header */}
         <div className="mb-[var(--spacing-lg)]">
           <h1 className="text-[2rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
-            <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
-              {'//'}
-            </span>
             {tNav('aiCodingLandscape')}
           </h1>
           <p className="text-base text-[var(--color-text-secondary)] font-light">

@@ -49,13 +49,10 @@ export default async function ArticlesPage({ params }: Props) {
     <>
       <Header />
 
-      <div className="max-w-[1400px] mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
+      <div className="max-w-8xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
         {/* Page Header */}
         <div className="text-center mb-[var(--spacing-xl)]">
           <h1 className="text-[2rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
-            <span className="text-[var(--color-text-muted)] font-light mr-[var(--spacing-xs)]">
-              {'//'}
-            </span>
             Articles
           </h1>
           <p className="text-base text-[var(--color-text-secondary)] font-light">
@@ -64,7 +61,7 @@ export default async function ArticlesPage({ params }: Props) {
         </div>
 
         {/* Articles Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--spacing-md)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[var(--spacing-md)]">
           {articles.map(article => (
             <Link
               key={article.slug}
