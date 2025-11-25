@@ -547,6 +547,75 @@ ${manifestoComponentsCode}
   console.log(`   - ${path.relative(rootDir, docsGeneratedFile)}`)
   console.log(`   - ${path.relative(rootDir, manifestoGeneratedFile)}`)
 
+  // Validate that content counts are consistent across all locales
+  console.log(`\n🔍 Validating content consistency across locales...`)
+  let hasError = false
+
+  // Validate articles count consistency
+  const articleCounts = Object.entries(articles).map(([locale, localeArticles]) => ({
+    locale,
+    count: localeArticles.length,
+  }))
+  const articleCountSet = new Set(articleCounts.map(item => item.count))
+  if (articleCountSet.size > 1) {
+    console.error(`❌ Articles count mismatch across locales:`)
+    articleCounts.forEach(({ locale, count }) => {
+      console.error(`   ${locale}: ${count}`)
+    })
+    hasError = true
+  }
+
+  // Validate docs count consistency
+  const docCounts = Object.entries(docs).map(([locale, localeDocs]) => ({
+    locale,
+    count: localeDocs.length,
+  }))
+  const docCountSet = new Set(docCounts.map(item => item.count))
+  if (docCountSet.size > 1) {
+    console.error(`❌ Docs count mismatch across locales:`)
+    docCounts.forEach(({ locale, count }) => {
+      console.error(`   ${locale}: ${count}`)
+    })
+    hasError = true
+  }
+
+  // Validate FAQs count consistency
+  const faqCounts = Object.entries(faqs).map(([locale, localeFaqs]) => ({
+    locale,
+    count: localeFaqs.length,
+  }))
+  const faqCountSet = new Set(faqCounts.map(item => item.count))
+  if (faqCountSet.size > 1) {
+    console.error(`❌ FAQs count mismatch across locales:`)
+    faqCounts.forEach(({ locale, count }) => {
+      console.error(`   ${locale}: ${count}`)
+    })
+    hasError = true
+  }
+
+  // Validate manifesto existence for all locales
+  const manifestoLocales = []
+  for (const locale of SUPPORTED_LOCALES) {
+    const manifestoIndex = path.join(rootDir, `content/manifesto/${locale}/index.mdx`)
+    if (fs.existsSync(manifestoIndex)) {
+      manifestoLocales.push(locale)
+    }
+  }
+  if (manifestoLocales.length !== SUPPORTED_LOCALES.length) {
+    const missingLocales = SUPPORTED_LOCALES.filter(locale => !manifestoLocales.includes(locale))
+    console.error(`❌ Manifesto missing for locales: ${missingLocales.join(', ')}`)
+    hasError = true
+  }
+
+  if (hasError) {
+    console.error(
+      `\n❌ Content consistency validation failed. Please ensure all locales have the same number of articles, docs, and FAQs.`
+    )
+    process.exit(1)
+  }
+
+  console.log(`✅ Content consistency validation passed`)
+
   // Run biome formatting on generated files
   console.log(`\n🎨 Formatting generated files with Biome...`)
   try {
