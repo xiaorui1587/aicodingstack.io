@@ -1,8 +1,4 @@
 {
-  "site": {
-    "title": "AI Coding Stack - Ihr KI-Coding-Ökosystem-Hub",
-    "description": "Umfassendes Verzeichnis für KI-Coding-Tools. Entdecken, vergleichen und erkunden Sie IDEs, CLIs, Erweiterungen, Modelle und Anbieter."
-  },
   "stacks": {
     "aiCodingStack": "AI Coding Stack",
     "ides": "IDEs",
@@ -29,8 +25,10 @@
     "curatedCollections": "Kuratierte Sammlungen",
     "comparison": "Vergleich",
     "features": "Funktionen",
+    "manifesto": "Manifest",
     "aiCodingStack": "AI Coding Stack",
     "collections": "Sammlungen",
+    "landscape": "Landschaft",
     "aiCodingLandscape": "KI-Coding-Landschaft",
     "aiCodingLandscapeDesc": "Visualisieren Sie das gesamte KI-Coding-Ökosystem",
     "openSourceRank": "Open Source Ranking",
@@ -39,7 +37,28 @@
     "intelligence": "Intelligenz",
     "toggleMenu": "Menü umschalten",
     "openMenu": "Menü öffnen",
-    "closeMenu": "Menü schließen"
+    "closeMenu": "Menü schließen",
+    "search": "Suchen",
+    "searchPlaceholder": "Suchen..."
+  },
+  "search": {
+    "title": "Suchergebnisse",
+    "placeholder": "KI-Coding-Tools durchsuchen...",
+    "searching": "Suchen...",
+    "noResults": "Keine Ergebnisse gefunden",
+    "noResultsFor": "Keine Ergebnisse für \"{query}\" gefunden",
+    "resultsCount": "{count} {count, plural, one {Ergebnis} other {Ergebnisse}}",
+    "resultsCountFor": "{count} {count, plural, one {Ergebnis} other {Ergebnisse}} für \"{query}\"",
+    "navigate": "zum Navigieren",
+    "select": "zum Auswählen",
+    "categories": {
+      "ides": "IDEs",
+      "clis": "CLIs",
+      "extensions": "Erweiterungen",
+      "models": "Modelle",
+      "providers": "Modellanbieter",
+      "vendors": "Anbieter"
+    }
   },
   "footer": {
     "aicodingstack": "AI Coding Stack",
@@ -55,7 +74,6 @@
     "selectLanguage": "Sprache auswählen",
     "toggleTheme": "Thema umschalten"
   },
-
   "pages": {
     "home": {
       "meta": {
@@ -114,9 +132,13 @@
       "title": "Dokumentation",
       "subtitle": "Vollständiger Leitfaden zu AI Coding Stack: Tools erkunden, Spezifikationen verstehen und die richtigen KI-Coding-Tools für Ihren Workflow auswählen.",
       "keywords": "AI Coding Stack Dokumentation, KI-Coding-Tools-Leitfaden, IDE-Vergleich, CLI-Vergleich, KI-Modell-Spezifikationen"
+    },
+    "manifesto": {
+      "title": "Manifest",
+      "subtitle": "Unsere Vision für die Zukunft der KI-gestützten Softwareentwicklung",
+      "slogan": "Entdecken. Vergleichen. 10x Schneller Entwickeln."
     }
   },
-
   "stacksPages": {
     "overview": {
       "title": "AI Coding Stack",
@@ -192,7 +214,6 @@
       "search": "Nach Namen suchen..."
     }
   },
-
   "stackDetailPages": {
     "ideDetail": {
       "breadcrumb": {
@@ -324,7 +345,6 @@
       "indexLabel": "INDEX"
     }
   },
-
   "comparison": {
     "breadcrumb": {
       "aiCodingStack": "AI Coding Stack",
@@ -380,11 +400,9 @@
       "freeOnly": "Nur kostenlos"
     }
   },
-
   "license": {
     "proprietary": "Proprietär"
   },
-
   "components": {
     "sidebar": {
       "selectItem": "Wählen Sie ein Element aus",

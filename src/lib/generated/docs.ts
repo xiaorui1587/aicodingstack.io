@@ -32,13 +32,17 @@ const docComponents: Record<
     'getting-started': () => import('@content/docs/en/getting-started.mdx'),
     welcome: () => import('@content/docs/en/welcome.mdx'),
   },
+  de: {
+    'getting-started': () => import('@content/docs/de/getting-started.mdx'),
+    welcome: () => import('@content/docs/de/welcome.mdx'),
+  },
   'zh-Hans': {
     'getting-started': () => import('@content/docs/zh-Hans/getting-started.mdx'),
     welcome: () => import('@content/docs/zh-Hans/welcome.mdx'),
   },
-  de: {
-    'getting-started': () => import('@content/docs/de/getting-started.mdx'),
-    welcome: () => import('@content/docs/de/welcome.mdx'),
+  ko: {
+    'getting-started': () => import('@content/docs/ko/getting-started.mdx'),
+    welcome: () => import('@content/docs/ko/welcome.mdx'),
   },
 }
 

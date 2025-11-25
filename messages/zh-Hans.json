@@ -25,8 +25,10 @@
     "curatedCollections": "精选集合",
     "comparison": "对比",
     "features": "功能特性",
+    "manifesto": "宣言",
     "aiCodingStack": "AI 编码技术栈",
     "collections": "精选集合",
+    "landscape": "全景图",
     "aiCodingLandscape": "AI 编码全景图",
     "aiCodingLandscapeDesc": "可视化 AI 编码生态系统全貌",
     "openSourceRank": "开源排行榜",
@@ -35,7 +37,28 @@
     "intelligence": "智能层",
     "toggleMenu": "切换菜单",
     "openMenu": "打开菜单",
-    "closeMenu": "关闭菜单"
+    "closeMenu": "关闭菜单",
+    "search": "搜索",
+    "searchPlaceholder": "搜索..."
+  },
+  "search": {
+    "title": "搜索结果",
+    "placeholder": "搜索 AI 编码工具...",
+    "searching": "搜索中...",
+    "noResults": "未找到结果",
+    "noResultsFor": "未找到\"{query}\"的结果",
+    "resultsCount": "{count} 个结果",
+    "resultsCountFor": "找到 {count} 个\"{query}\"的结果",
+    "navigate": "导航",
+    "select": "选择",
+    "categories": {
+      "ides": "IDE",
+      "clis": "命令行工具",
+      "extensions": "扩展",
+      "models": "模型",
+      "providers": "模型提供商",
+      "vendors": "供应商"
+    }
   },
   "footer": {
     "aicodingstack": "AI Coding Stack",
@@ -109,6 +132,11 @@
       "title": "文档",
       "subtitle": "AI Coding Stack 完整指南:探索工具、理解规格、选择 AI 编码工具,为你的工作流选择合适的 AI 编码工具。",
       "keywords": "AI 编码技术栈文档, AI 编码工具指南, IDE 对比, 命令行对比, AI 模型规格"
+    },
+    "manifesto": {
+      "title": "宣言",
+      "subtitle": "我们对 AI 驱动软件开发未来的愿景",
+      "slogan": "发现。对比。快 10 倍。"
     }
   },
   "stacksPages": {

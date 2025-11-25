@@ -1,0 +1,80 @@
+---
+title: '시작하기'
+---
+
+# 시작하기
+
+AI Coding Stack은 AI 코딩 생태계를 위한 종합 디렉토리 및 메타데이터 저장소입니다. 이 가이드는 웹사이트를 사용하고 프로젝트에 기여하는 방법을 이해하는 데 도움이 됩니다.
+
+## 스택 탐색하기
+
+### 카테고리 탐색
+
+[aicodingstack.io](https://aicodingstack.io)를 방문하여 다양한 AI 코딩 도구 카테고리를 탐색하세요:
+
+- **IDEs** - AI 기반 통합 개발 환경 찾기 (VS Code, Cursor, TRAE)
+- **CLIs** - 명령줄 AI 코딩 어시스턴트 탐색 (Codex, Claude Code)
+- **Models** - 코딩용 대규모 언어 모델 비교 (Kimi K2, DeepSeek V3.1, GLM 4.5, Qwen3 Coder)
+- **Providers** - LLM API 제공업체 검토 (DeepSeek, Moonshot, SiliconFlow, OpenRouter)
+
+### 도구 비교하기
+
+웹사이트를 사용하여 다양한 도구를 나란히 비교하고, 기능, 기능 및 공식 문서 링크를 검토합니다.
+
+## 메타데이터에 기여하기
+
+AI Coding Stack은 커뮤니티에서 유지 관리됩니다. 매니페스트 파일에 새 도구를 추가하거나 기존 항목을 업데이트하여 기여할 수 있습니다.
+
+### 매니페스트 이해하기
+
+모든 도구 메타데이터는 `manifests/` 디렉토리 아래의 JSON 파일에 저장됩니다:
+
+- `ides.json` - IDE 메타데이터
+- `clis.json` - CLI 도구 메타데이터
+- `models.json` - LLM 모델 메타데이터
+- `providers.json` - API 제공업체 메타데이터
+
+### 새 도구 추가하기
+
+1. 저장소 클론하기
+2. `manifests/`에서 적절한 매니페스트 파일 찾기
+3. 기존 스키마를 따라 항목 추가하기
+4. 모든 URL이 액세스 가능한지 확인하기
+5. Pull request 제출하기
+
+### 매니페스트 스키마 예시
+
+**IDEs/CLIs용:**
+```json
+{
+  "name": "도구 이름",
+  "id": "tool-id",
+  "vendor": "벤더 이름",
+  "description": "간단한 설명",
+  "websiteUrl": "https://...",
+  "docsUrl": "https://...",
+  "latestVersion": "1.0.0"
+}
+```
+
+**Models용:**
+```json
+{
+  "name": "모델 이름",
+  "vendor": "벤더",
+  "id": "model-id",
+  "size": "70B",
+  "totalContext": 128000,
+  "maxOutput": 4096,
+  "pricing": {...},
+  "urls": {...}
+}
+```
+
+## 다음 단계
+
+- [AI Coding Stack](/ai-coding-stack)을 탐색하여 도구 발견하기
+- `manifests/` 디렉토리를 확인하여 메타데이터 구조 확인하기
+- 자세한 기여 가이드라인을 위해 [CLAUDE.md](https://github.com/aicodingstack/aicodingstack.io/blob/main/CLAUDE.md) 읽기
+- 디렉토리 성장을 돕기 위해 첫 번째 기여 제출하기
+

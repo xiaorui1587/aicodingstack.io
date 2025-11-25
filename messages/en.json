@@ -25,8 +25,10 @@
     "curatedCollections": "Curated Collections",
     "comparison": "Comparison",
     "features": "Features",
+    "manifesto": "Manifesto",
     "aiCodingStack": "AI Coding Stack",
     "collections": "Collections",
+    "landscape": "Landscape",
     "aiCodingLandscape": "AI Coding Landscape",
     "aiCodingLandscapeDesc": "Visualize the complete AI coding ecosystem",
     "openSourceRank": "Open Source Ranking",
@@ -35,7 +37,28 @@
     "intelligence": "Intelligence",
     "toggleMenu": "Toggle menu",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "search": "Search",
+    "searchPlaceholder": "Search..."
+  },
+  "search": {
+    "title": "Search Results",
+    "placeholder": "Search AI coding tools...",
+    "searching": "Searching...",
+    "noResults": "No results found",
+    "noResultsFor": "No results found for \"{query}\"",
+    "resultsCount": "{count} {count, plural, one {result} other {results}}",
+    "resultsCountFor": "{count} {count, plural, one {result} other {results}} for \"{query}\"",
+    "navigate": "to navigate",
+    "select": "to select",
+    "categories": {
+      "ides": "IDEs",
+      "clis": "CLIs",
+      "extensions": "Extensions",
+      "models": "Models",
+      "providers": "Model Providers",
+      "vendors": "Vendors"
+    }
   },
   "footer": {
     "aicodingstack": "AI Coding Stack",
@@ -110,6 +133,11 @@
       "title": "Documentation",
       "subtitle": "Complete guide to AI Coding Stack: exploring tools, understanding specifications, and choosing the right AI coding tools for your workflow.",
       "keywords": "AI coding stack docs, AI coding tools guide, IDE comparison, CLI comparison, AI model specs"
+    },
+    "manifesto": {
+      "title": "Manifesto",
+      "subtitle": "Our vision for the future of AI-powered software development",
+      "slogan": "Discover. Compare. Build 10x Faster."
     }
   },
 

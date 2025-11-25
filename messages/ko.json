@@ -1,0 +1,531 @@
+{
+  "stacks": {
+    "aiCodingStack": "AI Coding Stack",
+    "ides": "IDE",
+    "clis": "CLI",
+    "extensions": "확장 프로그램",
+    "models": "모델",
+    "modelProviders": "모델 제공자",
+    "vendors": "벤더"
+  },
+  "community": {
+    "github": "GitHub",
+    "discord": "Discord",
+    "twitter": "X (Twitter)",
+    "youtube": "YouTube",
+    "reddit": "Reddit",
+    "linkedin": "LinkedIn",
+    "huggingface": "HuggingFace",
+    "artificialAnalysis": "Artificial Analysis",
+    "openrouter": "OpenRouter"
+  },
+  "header": {
+    "docs": "문서",
+    "articles": "아티클",
+    "curatedCollections": "큐레이션 컬렉션",
+    "comparison": "비교",
+    "features": "기능",
+    "manifesto": "선언문",
+    "aiCodingStack": "AI Coding Stack",
+    "collections": "컬렉션",
+    "landscape": "생태계",
+    "aiCodingLandscape": "AI 코딩 생태계",
+    "aiCodingLandscapeDesc": "전체 AI 코딩 생태계 시각화",
+    "openSourceRank": "오픈소스 순위",
+    "openSourceRankDesc": "GitHub 스타 수로 오픈소스 AI 코딩 프로젝트 탐색",
+    "developmentTools": "개발 도구",
+    "intelligence": "인텔리전스",
+    "toggleMenu": "메뉴 토글",
+    "openMenu": "메뉴 열기",
+    "closeMenu": "메뉴 닫기",
+    "search": "검색",
+    "searchPlaceholder": "검색..."
+  },
+  "search": {
+    "title": "검색 결과",
+    "placeholder": "AI 코딩 도구 검색...",
+    "searching": "검색 중...",
+    "noResults": "결과를 찾을 수 없습니다",
+    "noResultsFor": "\"{query}\"에 대한 결과를 찾을 수 없습니다",
+    "resultsCount": "{count} {count, plural, one {개 결과} other {개 결과}}",
+    "resultsCountFor": "\"{query}\"에 대한 {count} {count, plural, one {개 결과} other {개 결과}}",
+    "navigate": "탐색",
+    "select": "선택",
+    "categories": {
+      "ides": "IDE",
+      "clis": "CLI",
+      "extensions": "확장 프로그램",
+      "models": "모델",
+      "providers": "모델 제공자",
+      "vendors": "벤더"
+    }
+  },
+  "footer": {
+    "aicodingstack": "AI Coding Stack",
+    "tagline": "AI 코딩 생태계 허브.",
+    "openSource": "오픈소스 AI 코딩 메타데이터 저장소.",
+    "resources": "리소스",
+    "documentation": "문서",
+    "community": "커뮤니티",
+    "copyright": "© 2025 AI Coding Stack • ❤︎로 제작됨 • 오픈소스",
+    "darkMode": "다크 모드",
+    "lightMode": "라이트 모드",
+    "faq": "FAQ",
+    "selectLanguage": "언어 선택",
+    "toggleTheme": "테마 토글"
+  },
+  "pages": {
+    "home": {
+      "meta": {
+        "title": "AI Coding Stack - AI 코딩 생태계 허브",
+        "description": "AI 코딩 도구 종합 디렉토리. IDE, CLI, 확장 프로그램, 모델 및 제공자를 발견하고 비교하고 탐색하세요.",
+        "name": "AI Coding Stack"
+      },
+      "title": "AI 코딩 생태계 허브",
+      "subtitle": "발견하고, 비교하고, 더 빠르게 구축하세요.",
+      "description": "AI 코딩 도구 탐색 및 비교: IDE, CLI, 확장 프로그램, 모델 및 제공자 — 한 곳에서 모두 확인하세요.",
+      "exploreTools": "도구 탐색",
+      "readDocs": "문서 읽기",
+      "faq": "자주 묻는 질문",
+      "features": {
+        "title": "핵심 기능",
+        "directory": {
+          "title": "종합 디렉토리",
+          "description": "IDE, CLI, 확장 프로그램, 모델 및 제공자에 걸친 큐레이션된 AI 코딩 도구 컬렉션을 탐색하세요. 한 곳에서 모든 것을 확인하고 항상 최신 상태를 유지하세요."
+        },
+        "comparison": {
+          "title": "스마트 비교",
+          "description": "상세한 사양, 가격 및 기능을 나란히 비교하세요. 워크플로우에 가장 적합한 AI 코딩 도구에 대해 정보에 기반한 결정을 내리세요."
+        },
+        "ecosystem": {
+          "title": "생태계 개요",
+          "description": "대화형 생태계 뷰로 전체 AI 코딩 생태계를 시각화하세요. 다양한 도구, 모델 및 제공자가 어떻게 연결되고 서로 보완하는지 이해하세요."
+        },
+        "tracking": {
+          "title": "진행 상황 추적",
+          "description": "AI 코딩 생태계 전반의 최신 개발, 버전 및 업데이트를 최신 상태로 유지하세요. 새로운 릴리스, 기능 추가 및 생태계 변경 사항을 추적하세요."
+        }
+      }
+    },
+    "curatedCollections": {
+      "title": "큐레이션 컬렉션",
+      "subtitle": "AI 코딩을 위한 엄선된 리소스, 사양, 프로토콜 및 도구",
+      "specifications": {
+        "title": "사양 및 프로토콜",
+        "description": "현대 소프트웨어 개발을 위한 필수 표준 및 프로토콜"
+      },
+      "articles": {
+        "title": "추천 아티클",
+        "description": "업계 리더들의 AI 코딩에 관한 필독 아티클"
+      },
+      "tools": {
+        "title": "생태계 도구",
+        "description": "AI 코딩 워크플로우를 위한 큐레이션된 도구 및 유틸리티"
+      }
+    },
+    "articles": {
+      "title": "아티클",
+      "subtitle": "AI 코딩 심화 탐구: IDE, CLI 및 LLM 모델에 대한 튜토리얼, 인사이트, 모범 사례. AI로 10배 더 빠르게 구축하는 방법을 배우세요.",
+      "keywords": "AI 코딩 아티클, AI 개발 튜토리얼, AI 코딩 모범 사례, LLM 코딩 가이드, AI IDE 가이드"
+    },
+    "docs": {
+      "title": "문서",
+      "subtitle": "AI Coding Stack 완전 가이드: 도구 탐색, 사양 이해, 워크플로우에 적합한 AI 코딩 도구 선택.",
+      "keywords": "AI 코딩 스택 문서, AI 코딩 도구 가이드, IDE 비교, CLI 비교, AI 모델 사양"
+    },
+    "manifesto": {
+      "title": "선언문",
+      "subtitle": "AI 기반 소프트웨어 개발의 미래에 대한 우리의 비전",
+      "slogan": "발견하고, 비교하고, 10배 더 빠르게 구축하세요."
+    }
+  },
+  "stacksPages": {
+    "overview": {
+      "title": "AI Coding Stack",
+      "subtitle": "전체 AI 코딩 생태계 탐색: IDE, CLI, 확장 프로그램, 모델 및 제공자.",
+      "slogan": "발견하고, 비교하고, 10배 더 빠르게 구축하세요.",
+      "exploreStack": "스택 탐색",
+      "overviewTitle": "AI Coding Stack 개요",
+      "ides": {
+        "title": "IDE",
+        "description": "코드베이스를 이해하고 지능형 지원을 제공하는 AI 기반 통합 개발 환경. VS Code부터 Cursor까지, AI와 함께 코딩을 협업적으로 만드는 에디터를 발견하세요."
+      },
+      "clis": {
+        "title": "CLI",
+        "description": "대규모 언어 모델의 힘을 터미널에 직접 가져오는 명령줄 AI 어시스턴트. 쉘에서 바로 자연어로 복잡한 작업을 실행하세요."
+      },
+      "extensions": {
+        "title": "확장 프로그램",
+        "description": "좋아하는 IDE를 위한 AI 기반 코딩 확장 프로그램 및 플러그인. 코드 완성부터 지능형 리팩토링까지, AI 지원으로 개발 경험을 향상시키세요."
+      },
+      "models": {
+        "title": "모델",
+        "description": "인텔리전스 레이어. 코드 생성, 이해 및 분석에 최적화된 대규모 언어 모델. 주요 AI 모델의 사양, 가격 및 기능을 비교하세요."
+      },
+      "modelProviders": {
+        "title": "모델 제공자",
+        "description": "다양한 AI 모델에 대한 액세스를 제공하는 LLM API 제공자. DeepSeek부터 OpenRouter까지, 통합 API 및 모델 액세스로 AI 코딩 도구에 힘을 실어주는 플랫폼을 발견하세요."
+      },
+      "vendors": {
+        "title": "벤더",
+        "description": "AI 기술을 구축하는 선도 기업 및 조직. OpenAI부터 Anthropic까지, AI 코딩 혁명의 배후에 있는 벤더를 발견하세요."
+      }
+    },
+    "ides": {
+      "title": "IDE",
+      "subtitle": "AI 강화 통합 개발 환경",
+      "compareAll": "전체 비교",
+      "noMatches": "필터와 일치하는 IDE가 없습니다",
+      "allIDEs": "모든 IDE"
+    },
+    "clis": {
+      "title": "CLI",
+      "subtitle": "AI 기반 명령줄 코딩 어시스턴트",
+      "compareAll": "전체 비교",
+      "noMatches": "필터와 일치하는 CLI가 없습니다",
+      "allCLIs": "모든 CLI"
+    },
+    "extensions": {
+      "title": "확장 프로그램",
+      "subtitle": "AI 기반 코딩 확장 프로그램 및 플러그인",
+      "compareAll": "전체 비교",
+      "noMatches": "필터와 일치하는 확장 프로그램이 없습니다",
+      "allExtensions": "모든 확장 프로그램"
+    },
+    "models": {
+      "title": "모델",
+      "subtitle": "코드 생성 및 분석에 최적화된 대규모 언어 모델",
+      "compareAll": "전체 비교",
+      "search": "이름으로 검색...",
+      "size": "크기:",
+      "context": "컨텍스트:",
+      "pricing": "가격:"
+    },
+    "modelProviders": {
+      "title": "모델 제공자",
+      "subtitle": "다양한 AI 모델에 대한 액세스를 제공하는 LLM API 제공자",
+      "search": "이름으로 검색...",
+      "foundationProviders": "기초 모델 제공자",
+      "serviceProviders": "모델 서비스 제공자"
+    },
+    "vendors": {
+      "title": "벤더",
+      "subtitle": "AI 기술을 구축하는 선도 기업 및 조직",
+      "search": "이름으로 검색..."
+    }
+  },
+  "stackDetailPages": {
+    "ideDetail": {
+      "breadcrumb": {
+        "aiCodingStack": "AI Coding Stack",
+        "ides": "IDE"
+      },
+      "allIDEs": "모든 IDE"
+    },
+    "cliDetail": {
+      "breadcrumb": {
+        "aiCodingStack": "AI Coding Stack",
+        "clis": "CLI"
+      },
+      "allCLIs": "모든 CLI"
+    },
+    "extensionDetail": {
+      "breadcrumb": {
+        "aiCodingStack": "AI Coding Stack",
+        "extensions": "확장 프로그램"
+      },
+      "allExtensions": "모든 확장 프로그램"
+    },
+    "modelDetail": {
+      "breadcrumb": {
+        "aiCodingStack": "AI Coding Stack",
+        "models": "모델"
+      },
+      "metaTitle": "AI 코딩 모델 | 사양 및 가격 2025",
+      "specifications": "사양",
+      "modelSize": "모델 크기",
+      "totalContext": "전체 컨텍스트",
+      "maxOutput": "최대 출력",
+      "pricing": "가격",
+      "backTo": "돌아가기",
+      "allModels": "모든 모델",
+      "labels": {
+        "size": "크기",
+        "context": "컨텍스트",
+        "maxOutput": "최대 출력",
+        "pricing": "가격",
+        "website": "웹사이트",
+        "huggingface": "HuggingFace",
+        "artificialAnalysis": "Artificial Analysis",
+        "openrouter": "OpenRouter"
+      }
+    },
+    "vendorDetail": {
+      "breadcrumb": {
+        "home": "홈",
+        "aiCodingStack": "AI Coding Stack",
+        "vendors": "벤더"
+      },
+      "metaTitle": "AI 기술 벤더 | 회사 프로필 2025",
+      "metaDescription": "{name}의 AI 제품 및 기술을 탐색하세요.",
+      "vendorDetails": "벤더 세부 정보",
+      "productsTitle": "제품",
+      "productsSubtitle": "{vendorName}의 제품 및 서비스 탐색",
+      "quickLinks": "빠른 링크",
+      "communityLinks": "커뮤니티 링크",
+      "website": "웹사이트",
+      "visitWebsite": "공식 웹사이트 방문",
+      "github": "GitHub",
+      "viewGitHub": "오픈소스 저장소 보기",
+      "twitter": "Twitter",
+      "followTwitter": "Twitter에서 팔로우",
+      "linkedin": "LinkedIn",
+      "connectLinkedIn": "LinkedIn에서 연결",
+      "youtube": "YouTube",
+      "watchYouTube": "YouTube에서 동영상 보기",
+      "discord": "Discord",
+      "joinDiscord": "Discord 커뮤니티 참여",
+      "reddit": "Reddit",
+      "joinReddit": "Reddit 커뮤니티 참여",
+      "backTo": "돌아가기",
+      "allVendors": "모든 벤더",
+      "indexLabel": "INDEX",
+      "products": "제품",
+      "models": "모델"
+    },
+    "modelProviderDetail": {
+      "breadcrumb": {
+        "aiCodingStack": "AI Coding Stack",
+        "modelProviders": "모델 제공자"
+      },
+      "findOnAiPlatforms": "AI 플랫폼에서 찾기",
+      "communityLinks": "커뮤니티 링크",
+      "aiPlatforms": {
+        "huggingface": {
+          "title": "HuggingFace",
+          "description": "HuggingFace에서 보기"
+        },
+        "artificialAnalysis": {
+          "title": "Artificial Analysis",
+          "description": "성능 분석 보기"
+        },
+        "openrouter": {
+          "title": "OpenRouter",
+          "description": "OpenRouter를 통해 액세스"
+        }
+      },
+      "community": {
+        "linkedin": {
+          "title": "LinkedIn",
+          "description": "팔로우하기"
+        },
+        "twitter": {
+          "title": "Twitter",
+          "description": "팔로우하기"
+        },
+        "github": {
+          "title": "GitHub",
+          "description": "저장소 보기"
+        },
+        "youtube": {
+          "title": "YouTube",
+          "description": "동영상 보기"
+        },
+        "discord": {
+          "title": "Discord",
+          "description": "커뮤니티 참여"
+        },
+        "reddit": {
+          "title": "Reddit",
+          "description": "토론 참여"
+        }
+      },
+      "backTo": "돌아가기",
+      "allModelProviders": "모든 모델 제공자",
+      "indexLabel": "INDEX"
+    }
+  },
+  "comparison": {
+    "breadcrumb": {
+      "aiCodingStack": "AI Coding Stack",
+      "comparison": "비교",
+      "ides": "IDE",
+      "clis": "CLI",
+      "extensions": "확장 프로그램",
+      "models": "모델"
+    },
+    "ides": {
+      "title": "IDE 비교",
+      "subtitle": "AI 기반 IDE의 기능, 가격 및 사양을 나란히 비교하세요.",
+      "backTo": "IDE로 돌아가기"
+    },
+    "clis": {
+      "title": "CLI 비교",
+      "subtitle": "AI 코딩 CLI 도구의 기능, 가격 및 사양을 나란히 비교하세요.",
+      "backTo": "CLI로 돌아가기"
+    },
+    "extensions": {
+      "title": "확장 프로그램 비교",
+      "subtitle": "AI 코딩 확장 프로그램의 기능, 가격 및 사양을 나란히 비교하세요.",
+      "backTo": "확장 프로그램으로 돌아가기"
+    },
+    "models": {
+      "title": "모델 비교",
+      "subtitle": "AI 코딩 모델의 사양 및 가격을 나란히 비교하세요.",
+      "backTo": "모델로 돌아가기"
+    },
+    "columns": {
+      "vendor": "벤더",
+      "license": "라이선스",
+      "version": "버전",
+      "platforms": "플랫폼",
+      "supportedIdes": "지원되는 IDE",
+      "githubStars": "스타",
+      "links": "링크",
+      "freePlan": "무료 플랜",
+      "startingPrice": "시작 가격",
+      "maxPrice": "최대 가격",
+      "modelSize": "모델 크기",
+      "contextLength": "컨텍스트 길이",
+      "maxOutput": "최대 출력",
+      "pricing": "가격"
+    },
+    "linkTitles": {
+      "officialWebsite": "공식 웹사이트",
+      "download": "다운로드",
+      "documentation": "문서"
+    },
+    "pricingValues": {
+      "free": "무료",
+      "freeOnly": "무료만"
+    }
+  },
+  "license": {
+    "proprietary": "독점"
+  },
+  "components": {
+    "sidebar": {
+      "selectItem": "항목 선택",
+      "backToTop": "맨 위로"
+    },
+    "docsSidebar": {
+      "title": "문서",
+      "label": "문서"
+    },
+    "collectionScrollbar": {
+      "specifications": "사양 및 프로토콜",
+      "articles": "추천 아티클",
+      "tools": "생태계 도구"
+    },
+    "stackSidebar": {
+      "title": "스택",
+      "label": "AI Coding Stack",
+      "overview": "개요"
+    },
+    "filterSortBar": {
+      "search": "이름으로 검색...",
+      "sort": "정렬:",
+      "sortDefault": "기본값",
+      "sortNameAsc": "이름 (A-Z)",
+      "sortNameDesc": "이름 (Z-A)",
+      "license": "라이선스:",
+      "openSource": "오픈소스",
+      "proprietary": "독점",
+      "platform": "플랫폼:",
+      "clearFilters": "필터 지우기"
+    },
+    "backToNavigation": {
+      "backTo": "돌아가기",
+      "indexLabel": "INDEX"
+    },
+    "productHero": {
+      "vendor": "벤더",
+      "version": "버전",
+      "license": "라이선스",
+      "stars": "스타",
+      "platforms": "플랫폼",
+      "type": "유형",
+      "visitWebsite": "웹사이트 방문",
+      "documentation": "문서",
+      "download": "다운로드",
+      "getApiKey": "API 키 받기",
+      "supportedIdes": "지원되는 IDE",
+      "runtime": "런타임",
+      "categories": {
+        "IDE": "IDE",
+        "CLI": "CLI",
+        "EXTENSION": "확장 프로그램",
+        "MODEL": "모델",
+        "PROVIDER": "모델 제공자",
+        "VENDOR": "벤더"
+      },
+      "providerTypes": {
+        "foundation-model-provider": "기초 모델 제공자",
+        "model-service-provider": "모델 서비스 제공자"
+      }
+    },
+    "productCommands": {
+      "install": "설치",
+      "launch": "실행",
+      "command": "명령"
+    },
+    "productLinks": {
+      "download": "다운로드",
+      "resources": "리소스",
+      "community": "커뮤니티",
+      "changelog": "변경 로그",
+      "pricing": "가격",
+      "blog": "블로그",
+      "mcp": "MCP 문서",
+      "issue": "이슈 추적기",
+      "linkedin": "LinkedIn",
+      "twitter": "X (Twitter)",
+      "github": "GitHub",
+      "youtube": "YouTube",
+      "discord": "Discord",
+      "reddit": "Reddit"
+    },
+    "productPricing": {
+      "title": "가격",
+      "viewFullDetails": "전체 가격 세부 정보 보기 →"
+    },
+    "openSourceRank": {
+      "meta": {
+        "title": "오픈소스 프로젝트 순위",
+        "description": "GitHub 스타 수로 정렬된 AI Coding Stack의 모든 오픈소스 프로젝트 순위. 오픈소스 vs 독점 도구의 통계 및 트렌드 보기."
+      },
+      "title": "오픈소스 프로젝트 순위",
+      "description": "GitHub 스타 수로 순위가 매겨진 오픈소스 AI 코딩 도구를 발견하고 탐색하세요. IDE, CLI 및 확장 프로그램을 비교하여 개발 워크플로우에 완벽한 도구를 찾으세요.",
+      "statistics": {
+        "title": "오픈소스 vs 독점 분포",
+        "totalProjects": "전체 프로젝트",
+        "openSource": "오픈소스",
+        "openSourceCount": "오픈소스 프로젝트",
+        "closedSource": "독점",
+        "closedSourceCount": "독점 프로젝트",
+        "closedSourcePercentage": "독점 비율",
+        "licenseBreakdown": "라이선스 분포",
+        "projects": "프로젝트"
+      },
+      "filter": {
+        "all": "전체"
+      },
+      "note": "참고: 이 페이지는 GitHub 저장소가 있는 프로젝트만 표시합니다. 일부 프로젝트는 오픈소스가 아니더라도 사용자 피드백 채널로 GitHub 저장소를 유지합니다.",
+      "productType": {
+        "ide": "IDE",
+        "cli": "CLI",
+        "extension": "확장 프로그램"
+      },
+      "table": {
+        "rank": "순위",
+        "name": "이름",
+        "type": "유형",
+        "license": "라이선스",
+        "stars": "스타",
+        "openSourceTitle": "오픈소스 프로젝트 ({count})",
+        "proprietaryTitle": "독점 프로젝트 ({count})"
+      },
+      "noResults": "이 카테고리에 대한 오픈소스 프로젝트를 찾을 수 없습니다."
+    }
+  }
+}

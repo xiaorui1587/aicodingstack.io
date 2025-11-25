@@ -34,15 +34,20 @@ const articleComponents: Record<
       import('@content/articles/en/getting-started-with-ai-coding.mdx'),
     'mcp-servers-explained': () => import('@content/articles/en/mcp-servers-explained.mdx'),
   },
+  de: {
+    'getting-started-with-ai-coding': () =>
+      import('@content/articles/de/getting-started-with-ai-coding.mdx'),
+    'mcp-servers-explained': () => import('@content/articles/de/mcp-servers-explained.mdx'),
+  },
   'zh-Hans': {
     'getting-started-with-ai-coding': () =>
       import('@content/articles/zh-Hans/getting-started-with-ai-coding.mdx'),
     'mcp-servers-explained': () => import('@content/articles/zh-Hans/mcp-servers-explained.mdx'),
   },
-  de: {
+  ko: {
     'getting-started-with-ai-coding': () =>
-      import('@content/articles/de/getting-started-with-ai-coding.mdx'),
-    'mcp-servers-explained': () => import('@content/articles/de/mcp-servers-explained.mdx'),
+      import('@content/articles/ko/getting-started-with-ai-coding.mdx'),
+    'mcp-servers-explained': () => import('@content/articles/ko/mcp-servers-explained.mdx'),
   },
 }
 
