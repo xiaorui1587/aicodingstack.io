@@ -24,15 +24,13 @@ When creating or modifying any page, module, or data:
 - **No rounded corners:** All controls, components, labels, and UI elements MUST use sharp corners (border-radius: 0)
 - **Restrained color usage:** Use colors extremely sparingly and intentionally. Prefer grayscale and limit accent colors to essential UI elements only. If colors must be used, prefer low-saturation designs.
 - **Icon usage:** Avoid using emoji or any other characters as icons. Prioritize SVG for icons.
+- **Page width:**
+  - `max-w-8xl`: for all pages globally
+  - `max-w-5xl`: for content pages and homepage
 
 ## Coding Principles
 
 **CRITICAL: Follow these principles rigorously in all code:**
-
-### KISS - Keep It Simple & Stupid
-- Prefer simple, straightforward solutions over clever or complex ones
-- Write code that is easy to read and understand
-- Avoid unnecessary abstractions and premature optimization
 
 ### DRY - Don't Repeat Yourself
 - Eliminate code duplication by extracting common logic
