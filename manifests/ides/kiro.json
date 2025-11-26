@@ -11,7 +11,7 @@
   "websiteUrl": "https://kiro.dev",
   "docsUrl": "https://kiro.dev/docs",
   "verified": false,
-  "vendor": "Amazon Web Services",
+  "vendor": "AWS",
   "latestVersion": "1.0",
   "githubUrl": "https://github.com/kirodotdev/Kiro",
   "license": "Proprietary",

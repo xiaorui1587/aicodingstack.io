@@ -11,7 +11,7 @@
   "websiteUrl": "https://aws.amazon.com/developer/learning/q-developer-cli",
   "docsUrl": "https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line.html",
   "verified": false,
-  "vendor": "Amazon Web Services",
+  "vendor": "AWS",
   "latestVersion": "v1.18.1",
   "githubUrl": "https://github.com/aws/amazon-q-developer-cli",
   "license": "Apache-2.0, MIT",
