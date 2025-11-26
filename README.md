@@ -1,9 +1,9 @@
 # AI Coding Stack
 
-[![CI Status](https://github.com/aicodingstack/aicodingstack.io/workflows/CI/badge.svg)](https://github.com/aicodingstack/aicodingstack.io/actions/workflows/ci.yml)
-[![Deploy Status](https://github.com/aicodingstack/aicodingstack.io/workflows/Deploy%20Production/badge.svg)](https://github.com/aicodingstack/aicodingstack.io/actions/workflows/deploy-production.yml)
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![CI Status](https://img.shields.io/github/actions/workflow/status/aicodingstack/aicodingstack.io/ci.yml?style=flat-square&label=CI)](https://github.com/aicodingstack/aicodingstack.io/actions/workflows/ci.yml)
+[![Deploy Status](https://img.shields.io/github/actions/workflow/status/aicodingstack/aicodingstack.io/deploy-production.yml?style=flat-square&label=Deploy)](https://github.com/aicodingstack/aicodingstack.io/actions/workflows/deploy-production.yml)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue?style=flat-square)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](CONTRIBUTING.md)
 
 > Your AI Coding Ecosystem Hub - Discover, Compare, Build Faster
 
