@@ -353,10 +353,10 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
       {/* Page Header */}
       <section className="py-[var(--spacing-lg)] border-[var(--color-border)]">
         <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
-          <h1 className="text-[2.5rem] font-semibold tracking-[-0.04em] mb-[var(--spacing-sm)]">
+          <h1 className="text-[2rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
             {tComparison('extensions.title')}
           </h1>
-          <p className="text-lg text-[var(--color-text-secondary)] font-light leading-relaxed">
+          <p className="text-base text-[var(--color-text-secondary)] font-light">
             {tComparison('extensions.subtitle')}
           </p>
         </div>

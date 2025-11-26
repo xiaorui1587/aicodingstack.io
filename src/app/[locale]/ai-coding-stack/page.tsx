@@ -53,11 +53,11 @@ export default async function AICodingStackPage({ params }: Props) {
       <div className="max-w-8xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
         <main>
           {/* Hero Section */}
-          <section className="mb-[var(--spacing-xl)]">
-            <h1 className="text-[3rem] font-bold tracking-[-0.04em] leading-[1.1] mb-[var(--spacing-md)]">
+          <section className="mb-[var(--spacing-lg)]">
+            <h1 className="text-[2rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
               {t('title')}
             </h1>
-            <p className="text-lg text-[var(--color-text-secondary)] leading-relaxed">
+            <p className="text-base text-[var(--color-text-secondary)] font-light">
               {t('subtitle')}
             </p>
           </section>

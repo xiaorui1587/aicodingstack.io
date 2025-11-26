@@ -72,6 +72,19 @@ h1::before {
   margin-right: 0.75rem;
 }
 
+/* Homepage specific: H1 without "//" prefix */
+.homepage-h1::before {
+  content: none;
+}
+
+/* Homepage specific: H2 with "//" prefix */
+.homepage-h2::before {
+  content: "//";
+  color: var(--color-text-muted);
+  font-weight: 300;
+  margin-right: 0.75rem;
+}
+
 strong {
   font-weight: 600;
 }
