@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/ide.schema.json",
   "id": "zed",
   "name": "Zed",
   "description": "A next-generation code editor built in Rust for high-performance collaboration with humans and AI. Features agentic editing, multibuffer editing, and native Git support.",

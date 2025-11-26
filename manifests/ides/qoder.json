@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/ide.schema.json",
   "id": "qoder",
   "name": "Qoder",
   "description": "An agentic AI coding platform for real software development, integrating context-aware intelligent agents to handle code generation and project-level tasks.",

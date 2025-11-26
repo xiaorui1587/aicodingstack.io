@@ -14,7 +14,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const ROOT_DIR = path.resolve(__dirname, '../..')
 const MANIFESTS_DIR = path.join(ROOT_DIR, 'manifests')
-const SCHEMAS_DIR = path.join(MANIFESTS_DIR, 'schemas')
+const SCHEMAS_DIR = path.join(MANIFESTS_DIR, '$schemas')
 
 // Cache for loaded schemas to avoid redundant reads
 const schemaCache = new Map()
@@ -439,12 +439,12 @@ async function main() {
 
   // Mapping of subdirectories to their schema files
   const manifestCategories = [
-    { dir: 'vendors', schema: 'vendors.schema.json' },
-    { dir: 'providers', schema: 'providers.schema.json' },
-    { dir: 'models', schema: 'models.schema.json' },
-    { dir: 'ides', schema: 'ides.schema.json' },
-    { dir: 'extensions', schema: 'extensions.schema.json' },
-    { dir: 'clis', schema: 'clis.schema.json' },
+    { dir: 'vendors', schema: 'vendor.schema.json' },
+    { dir: 'providers', schema: 'provider.schema.json' },
+    { dir: 'models', schema: 'model.schema.json' },
+    { dir: 'ides', schema: 'ide.schema.json' },
+    { dir: 'extensions', schema: 'extension.schema.json' },
+    { dir: 'clis', schema: 'cli.schema.json' },
   ]
 
   // Process files in subdirectories

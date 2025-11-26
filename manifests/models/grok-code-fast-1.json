@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/model.schema.json",
   "id": "grok-code-fast-1",
   "name": "Grok Code Fast 1",
   "description": "A reasoning model that is blazing fast and excels at agentic coding, accessible for free in Kilo Code for a limited time. Note: prompts and completions are logged by xAI and used to improve the model.",

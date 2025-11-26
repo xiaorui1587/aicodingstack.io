@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/model.schema.json",
   "id": "gpt-5-codex",
   "name": "GPT-5 Codex",
   "description": "GPT-5 optimized for software engineering. Supports interactive development, complex tasks, building projects, feature development, debugging, refactoring, and code review.",

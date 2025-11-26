@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "alibaba",
   "name": "Alibaba",
   "description": "Alibaba is a vendor.",

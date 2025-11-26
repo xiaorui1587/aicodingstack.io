@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/cli.schema.json",
   "id": "gemini-cli",
   "name": "Gemini CLI",
   "description": "Google's Gemini CLI brings advanced AI models to your terminal. Provides code completion, explanations, test generation, and bug fixes while supporting multiple languages.",

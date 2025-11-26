@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "z-ai",
   "name": "Z.ai",
   "description": "An AI platform offering advanced language models and AI services for various applications including coding and content generation.",

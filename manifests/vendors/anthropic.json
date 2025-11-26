@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "anthropic",
   "name": "Anthropic",
   "description": "An AI safety company focused on building reliable, interpretable, and steerable AI systems.",

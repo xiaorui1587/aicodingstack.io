@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/model.schema.json",
   "id": "gpt-4-1",
   "name": "GPT-4.1",
   "description": "Released in April 2025, GPT-4.1 shows particularly significant improvements in coding and frontend web development, featuring 1M token context window for complex coding tasks.",

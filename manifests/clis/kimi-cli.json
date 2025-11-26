@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/cli.schema.json",
   "id": "kimi-cli",
   "name": "Kimi CLI",
   "description": "Kimi CLI is a new CLI agent that can help you with your software development tasks and terminal operations. Features shell-like UI, Zsh integration, Agent Client Protocol support, and MCP support.",

@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "amazon-web-services",
   "name": "Amazon Web Services",
   "description": "Amazon Web Services is a vendor.",

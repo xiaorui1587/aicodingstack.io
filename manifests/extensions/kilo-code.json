@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/extension.schema.json",
   "id": "kilo-code",
   "name": "Kilo Code",
   "description": "Open-source AI coding agent supporting 500+ models from 60+ providers with transparent pricing. Features multi-mode orchestration, automatic failure recovery, parallel agents, and MCP marketplace.",

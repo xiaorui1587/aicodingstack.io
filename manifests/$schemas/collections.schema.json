@@ -4,6 +4,7 @@
   "description": "Schema for curated collections of specifications, articles, and tools",
   "type": "object",
   "properties": {
+    "$schema": { "type": "string" },
     "specifications": {
       "$ref": "#/$defs/collectionSection"
     },

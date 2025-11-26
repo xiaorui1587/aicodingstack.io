@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "bytedance",
   "name": "ByteDance",
   "description": "ByteDance is a vendor.",

@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/extension.schema.json",
   "id": "claude-code",
   "name": "Claude Code",
   "description": "Claude Code is an AI coding assistant that integrates directly into VS Code. It provides intelligent code suggestions, explanations, and helps with debugging and code generation.",

@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/ide.schema.json",
   "id": "windsurf",
   "name": "Windsurf Editor",
   "description": "An AI-native IDE featuring the \"Cascade\" assistant that autonomously generates, edits, tests, and deploys code. Integrates MCP servers and plugin hooks to maintain developer flow state.",

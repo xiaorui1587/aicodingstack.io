@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/model.schema.json",
   "id": "qwen3-coder-480b-a35b",
   "name": "Qwen3 Coder 480B-A35B",
   "description": "Qwen3 Coder is a specialized code generation model with 32B parameters and 32K context window, designed for software development and programming assistance.",

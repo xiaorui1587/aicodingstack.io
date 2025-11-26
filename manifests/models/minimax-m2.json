@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/model.schema.json",
   "id": "minimax-m2",
   "name": "MiniMax M2",
   "description": "A 230B parameter MoE model from MiniMax with 204.8K context window, designed for intelligent agents and coding tasks. Activates 10B parameters per inference.",

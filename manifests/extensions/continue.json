@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/extension.schema.json",
   "id": "continue",
   "name": "Continue",
   "description": "Open-source AI code assistant that lets you build custom agents across your IDE, terminal, and CI. Features Agent, Chat, Edit, and Autocomplete modes with full model flexibility and MCP integration.",

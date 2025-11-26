@@ -174,7 +174,11 @@ function generateCollectionsMetadata() {
   }
 
   const fileContents = fs.readFileSync(collectionsFile, 'utf8')
-  return JSON.parse(fileContents)
+  const collectionsData = JSON.parse(fileContents)
+
+  // Remove $schema property as it's not part of the CollectionSection type
+  const { $schema, ...collections } = collectionsData
+  return collections
 }
 
 // Generate FAQ metadata for a specific locale

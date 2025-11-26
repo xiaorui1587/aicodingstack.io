@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/ide.schema.json",
   "id": "trae",
   "name": "TRAE",
   "description": "An AI-powered IDE that acts as a 10x \"AI engineer,\" providing real-time code completion, chat-based assistance, and autonomous code generation (Builder/SOLO mode) for end-to-end development.",

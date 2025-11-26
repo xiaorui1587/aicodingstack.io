@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/ide.schema.json",
   "id": "codeflicker",
   "name": "CodeFlicker",
   "description": "An AI-powered intelligent code editor designed to unleash your coding imagination with advanced AI assistance.",

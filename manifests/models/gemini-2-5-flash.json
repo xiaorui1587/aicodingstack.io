@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/model.schema.json",
   "id": "gemini-2-5-flash",
   "name": "Gemini 2.5 Flash",
   "description": "Google's workhorse model for advanced reasoning, coding, mathematics, and science. Built-in thinking capabilities enable greater accuracy and nuanced context handling.",

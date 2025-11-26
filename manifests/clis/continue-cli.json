@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/cli.schema.json",
   "id": "continue-cli",
   "name": "Continue CLI",
   "description": "Open-source CLI agent that brings continuous AI to your terminal. Build and run custom agents with any model, define your own rules, and integrate MCP tools without vendor lock-in.",

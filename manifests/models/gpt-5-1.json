@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/model.schema.json",
   "id": "gpt-5-1",
   "name": "GPT-5.1",
   "description": "Latest GPT-5 series model with stronger reasoning and natural conversation. Uses adaptive reasoning to respond quickly to simple queries while providing depth for complex tasks.",

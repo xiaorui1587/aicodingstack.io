@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/ide.schema.json",
   "id": "cursor",
   "name": "Cursor",
   "description": "An AI-powered code editor built on VS Code with advanced AI capabilities for code generation, editing, and understanding.",

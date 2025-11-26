@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/extension.schema.json",
   "id": "tabnine",
   "name": "Tabnine",
   "description": "Tabnine is an AI code completion tool that helps developers write code faster and more accurately. It provides intelligent code suggestions based on context and learns from your codebase.",

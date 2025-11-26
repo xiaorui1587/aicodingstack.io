@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "factory-ai",
   "name": "Factory AI",
   "description": "Factory AI is a vendor.",

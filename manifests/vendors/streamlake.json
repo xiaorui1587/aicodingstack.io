@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "streamlake",
   "name": "StreamLake",
   "description": "StreamLake is a vendor.",

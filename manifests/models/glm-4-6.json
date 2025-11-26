@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/model.schema.json",
   "id": "glm-4-6",
   "name": "GLM 4.6",
   "description": "GLM 4.6 is a 9B parameter language model from Z.ai with 128K context window, optimized for efficient performance and multilingual understanding.",

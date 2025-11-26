@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/model.schema.json",
   "id": "llama-4-maverick",
   "name": "Llama 4 Maverick",
   "description": "Meta's multimodal model with MoE architecture (128 experts, 17B active, 400B total). Supports multilingual text/image input and outputs text/code in 12 languages.",

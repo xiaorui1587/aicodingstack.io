@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/extension.schema.json",
   "id": "droid",
   "name": "Droid",
   "description": "An AI development platform providing \"Droids\" - autonomous coding agents that automate software tasks across workflows. Droids refactor code, handle debugging and tests, and generate features.",

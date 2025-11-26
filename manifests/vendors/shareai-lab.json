@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "shareai-lab",
   "name": "shareAI Lab",
   "description": "shareAI Lab is a vendor.",

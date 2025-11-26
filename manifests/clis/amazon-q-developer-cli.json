@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/cli.schema.json",
   "id": "amazon-q-developer-cli",
   "name": "Amazon Q Developer CLI",
   "description": "Amazon Q Developer CLI is an agentic AI assistant in your CLI that executes tasks, understands your codebase, and speeds up development through adaptive, natural dialogue.",

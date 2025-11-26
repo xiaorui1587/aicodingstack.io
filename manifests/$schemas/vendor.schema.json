@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Vendor Schema",
+  "description": "Schema for vendor information including basic details and community URLs",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "./ref/entity.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "communityUrls": {
+          "$ref": "./ref/community-urls.schema.json"
+        }
+      },
+      "required": ["communityUrls"]
+    }
+  ]
+}

@@ -6,7 +6,7 @@ This document outlines the inconsistencies found across various schema definitio
 
 ## Base Info Schema
 
-Created `manifests/schemas/ref/entity.schema.json` to define the absolute minimum fields that ALL entities should have:
+Created `manifests/$schemas/ref/entity.schema.json` to define the absolute minimum fields that ALL entities should have:
 
 - `id` - Unique identifier
 - `name` - Official name

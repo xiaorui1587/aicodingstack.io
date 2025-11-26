@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/cli.schema.json",
   "id": "kode",
   "name": "Kode",
   "description": "Kode is an open-source AI coding assistant that understands your codebase, edits files, runs commands, and handles complete development workflows. Extends Claude Code with multi-model support.",

@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/model.schema.json",
   "id": "deepseek-r1",
   "name": "DeepSeek R1",
   "description": "DeepSeek R1 is a 1.3B parameter language model with 128K context window, designed for advanced reasoning and code generation tasks.",

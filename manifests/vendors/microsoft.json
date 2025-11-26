@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "microsoft",
   "name": "Microsoft",
   "description": "A multinational technology corporation developing computer software, consumer electronics, and AI-powered services.",

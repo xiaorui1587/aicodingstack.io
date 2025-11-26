@@ -19,12 +19,12 @@ const rootDir = path.join(__dirname, '../..')
 
 // Configuration: map manifest directories to their schema files
 const MANIFEST_SCHEMA_MAP = {
-  clis: 'clis.schema.json',
-  ides: 'ides.schema.json',
-  extensions: 'extensions.schema.json',
-  providers: 'providers.schema.json',
-  models: 'models.schema.json',
-  vendors: 'vendors.schema.json',
+  clis: 'cli.schema.json',
+  ides: 'ide.schema.json',
+  extensions: 'extension.schema.json',
+  providers: 'provider.schema.json',
+  models: 'model.schema.json',
+  vendors: 'vendor.schema.json',
 }
 
 // Special files that are still single JSON files
@@ -213,7 +213,7 @@ function validateSingleFile(filePath, schema, expectedId = null) {
  */
 function validateManifestDirectory(dirName, schemaFile) {
   const dirPath = path.join(rootDir, 'manifests', dirName)
-  const schemaPath = path.join(rootDir, 'manifests', 'schemas', schemaFile)
+  const schemaPath = path.join(rootDir, 'manifests', '$schemas', schemaFile)
 
   // Check if directory exists
   if (!fs.existsSync(dirPath)) {
@@ -283,7 +283,7 @@ function validateManifestDirectory(dirName, schemaFile) {
  */
 function validateSingleManifest(manifestFile, schemaFile) {
   const manifestPath = path.join(rootDir, 'manifests', manifestFile)
-  const schemaPath = path.join(rootDir, 'manifests', 'schemas', schemaFile)
+  const schemaPath = path.join(rootDir, 'manifests', '$schemas', schemaFile)
 
   // Check if files exist
   if (!fs.existsSync(manifestPath)) {
@@ -411,7 +411,7 @@ function main() {
   console.log('🔍 Validating manifest files...\n')
 
   // Load base schema first
-  const schemasDir = path.join(rootDir, 'manifests', 'schemas')
+  const schemasDir = path.join(rootDir, 'manifests', '$schemas')
   loadBaseSchema(schemasDir)
 
   let hasErrors = false

@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "moonshot-ai",
   "name": "Moonshot AI",
   "description": "Moonshot AI is a vendor.",

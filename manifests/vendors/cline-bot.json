@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "cline-bot",
   "name": "Cline Bot",
   "description": "Cline Bot is a vendor.",

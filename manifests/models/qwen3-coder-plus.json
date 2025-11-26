@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/model.schema.json",
   "id": "qwen3-coder-plus",
   "name": "Qwen3 Coder Plus",
   "description": "Alibaba's proprietary Qwen3 Coder 480B. Powerful coding agent specializing in autonomous programming via tool calling and environment interaction.",

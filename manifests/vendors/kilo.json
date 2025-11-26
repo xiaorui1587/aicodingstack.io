@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "kilo",
   "name": "Kilo",
   "description": "An AI-powered coding platform providing advanced code generation, debugging, and development workflows through CLI tools and IDE extensions.",

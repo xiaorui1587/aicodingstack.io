@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/model.schema.json",
   "id": "claude-opus-4-1",
   "name": "Claude Opus 4.1",
   "description": "Released in August 2025, Claude Opus 4.1 achieves 85.2% on HumanEval+ (surpassing GPT-4o) and 74.5% on SWE-bench Verified, featuring 200K context window for complex coding tasks.",

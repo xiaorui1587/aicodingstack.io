@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/ide.schema.json",
   "id": "codebuddy",
   "name": "CodeBuddy IDE",
   "description": "Tencent's AI coding assistant offering intelligent code completion, multi-file code generation (Craft Mode), design-to-code conversion, and integrated deployment tools.",

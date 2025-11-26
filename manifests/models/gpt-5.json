@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/model.schema.json",
   "id": "gpt-5",
   "name": "GPT-5",
   "description": "OpenAI's most advanced model with major improvements in reasoning, code quality, and UX. Optimized for complex tasks requiring step-by-step reasoning and high accuracy.",

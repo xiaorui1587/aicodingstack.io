@@ -2,28 +2,25 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Extensions Manifest Schema",
   "description": "Schema for IDE extensions metadata",
-  "type": "array",
-  "items": {
-    "type": "object",
-    "allOf": [
-      { "$ref": "./ref/product.schema.json" },
-      {
-        "type": "object",
-        "properties": {
-          "supportedIdes": {
-            "type": "array",
-            "description": "List of IDEs that support this extension",
-            "items": {
-              "$ref": "#/$defs/ideSupport"
-            },
-            "minItems": 1,
-            "uniqueItems": true
-          }
-        },
-        "required": ["supportedIdes"]
-      }
-    ]
-  },
+  "type": "object",
+  "allOf": [
+    { "$ref": "./ref/product.schema.json" },
+    {
+      "type": "object",
+      "properties": {
+        "supportedIdes": {
+          "type": "array",
+          "description": "List of IDEs that support this extension",
+          "items": {
+            "$ref": "#/$defs/ideSupport"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": ["supportedIdes"]
+    }
+  ],
   "$defs": {
     "ideSupport": {
       "type": "object",

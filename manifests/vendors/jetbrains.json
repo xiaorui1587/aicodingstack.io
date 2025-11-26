@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "jetbrains",
   "name": "JetBrains",
   "description": "JetBrains is a vendor.",

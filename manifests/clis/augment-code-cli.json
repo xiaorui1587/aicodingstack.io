@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/cli.schema.json",
   "id": "augment-code-cli",
   "name": "Augment Code CLI",
   "description": "Augment Code CLI brings autonomous AI agents to your terminal with industry-leading context engine. Features native TUI, automated workflows, and deep codebase understanding.",

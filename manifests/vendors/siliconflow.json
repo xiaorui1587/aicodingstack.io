@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "siliconflow",
   "name": "SiliconFlow",
   "description": "A unified AI inference platform providing high-speed access to LLMs and multimodal models through a single API, with flexible deployment options including serverless, fine-tuning, and dedicated GPUs.",

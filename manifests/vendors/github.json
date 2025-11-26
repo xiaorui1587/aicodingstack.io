@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "github",
   "name": "GitHub",
   "description": "GitHub is a vendor.",

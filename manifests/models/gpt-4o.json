@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/model.schema.json",
   "id": "gpt-4o",
   "name": "GPT-4o",
   "description": "OpenAI's flagship multimodal model optimized for coding tasks, featuring 128K context window and advanced reasoning capabilities for code generation and debugging.",

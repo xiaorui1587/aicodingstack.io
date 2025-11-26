@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/cli.schema.json",
   "id": "kilo-code-cli",
   "name": "Kilo Code CLI",
   "description": "Kilo Code CLI brings the power of AI coding assistance directly to your terminal. Experience advanced code generation, debugging, and development workflows through natural language commands.",

@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/cli.schema.json",
   "id": "codex-cli",
   "name": "Codex CLI",
   "description": "OpenAI's Codex CLI is a local coding agent that reads, modifies, and runs code through natural language commands. Enables building, debugging, and automating coding tasks.",

@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/cli.schema.json",
   "id": "codebuddy-cli",
   "name": "CodeBuddy CLI",
   "description": "CodeBuddy CLI is an AI-driven code editor that integrates intelligent code generation, debugging, and development workflows into your terminal. Features TUI mode and inline chat.",

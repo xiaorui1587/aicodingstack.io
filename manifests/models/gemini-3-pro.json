@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/model.schema.json",
   "id": "gemini-3-pro",
   "name": "Gemini 3 Pro",
   "description": "Google's flagship AI model for advanced reasoning, coding, mathematics, and science. Employs thinking capabilities for enhanced accuracy and nuanced context handling.",

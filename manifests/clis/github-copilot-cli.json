@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/cli.schema.json",
   "id": "github-copilot-cli",
   "name": "GitHub Copilot CLI",
   "description": "GitHub Copilot CLI brings AI assistance to your terminal. Suggests shell commands, generates code snippets, and integrates with repositories through natural language.",

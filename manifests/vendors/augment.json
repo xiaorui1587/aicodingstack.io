@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "augment",
   "name": "Augment",
   "description": "An AI software development platform backed by an industry-leading context engine, providing autonomous coding agents and codebase-aware tools.",

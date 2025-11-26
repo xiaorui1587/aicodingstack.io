@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/cli.schema.json",
   "id": "qoder-cli",
   "name": "Qoder CLI",
   "description": "Qoder CLI is an AI-powered coding assistant for intelligent code generation, debugging, and development workflows. Features TUI mode, inline chat, and project management.",

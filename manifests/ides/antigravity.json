@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/ide.schema.json",
   "id": "antigravity",
   "name": "Antigravity",
   "description": "Google's AI-powered integrated development environment (IDE) for modern software development with advanced AI capabilities.",

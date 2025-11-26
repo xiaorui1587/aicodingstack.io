@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/model.schema.json",
   "id": "deepseek-v3-terminus",
   "name": "DeepSeek V3.1 Terminus",
   "description": "DeepSeek V3.1 Terminus-extended version with 67B parameters and 64K context window, designed for advanced reasoning and code generation tasks.",

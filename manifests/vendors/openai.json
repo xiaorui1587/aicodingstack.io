@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "openai",
   "name": "OpenAI",
   "description": "A leading AI research company focused on developing safe and beneficial artificial general intelligence.",

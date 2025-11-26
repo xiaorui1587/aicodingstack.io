@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/ide.schema.json",
   "id": "kiro",
   "name": "Kiro",
   "description": "AWS's agentic IDE that brings spec-driven development to VS Code. Uses AI agents to convert natural language specs into code, automate tasks, and integrate with workflows.",

@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/ide.schema.json",
   "id": "vscode",
   "name": "Visual Studio Code",
   "description": "A free, open-source code editor with extensive language support and an ecosystem of extensions (including AI agents like GitHub Copilot) for editing, debugging, and version control.",

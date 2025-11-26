@@ -1,4 +1,5 @@
 {
+  "$schema": "./$schemas/collections.schema.json",
   "specifications": {
     "title": "Specifications & Protocols",
     "description": "Essential standards and protocols for modern software development",

@@ -126,16 +126,16 @@ All manifest files now pass validation:
 ## Files Modified
 
 ### Schema Files
-- `manifests/schemas/ref/entity.schema.json`
-- `manifests/schemas/ref/vendor-entity.schema.json` (NEW)
-- `manifests/schemas/ref/product.schema.json`
-- `manifests/schemas/ref/app.schema.json`
-- `manifests/schemas/ref/i18n.schema.json`
-- `manifests/schemas/clis.schema.json`
-- `manifests/schemas/ides.schema.json`
-- `manifests/schemas/models.schema.json`
-- `manifests/schemas/providers.schema.json`
-- `manifests/schemas/collections.schema.json`
+- `manifests/$schemas/ref/entity.schema.json`
+- `manifests/$schemas/ref/vendor-entity.schema.json` (NEW)
+- `manifests/$schemas/ref/product.schema.json`
+- `manifests/$schemas/ref/app.schema.json`
+- `manifests/$schemas/ref/i18n.schema.json`
+- `manifests/$schemas/clis.schema.json`
+- `manifests/$schemas/ides.schema.json`
+- `manifests/$schemas/models.schema.json`
+- `manifests/$schemas/providers.schema.json`
+- `manifests/$schemas/collections.schema.json`
 
 ### Data Files
 - `manifests/models.json` (renamed `pricing` → `tokenPricing`)

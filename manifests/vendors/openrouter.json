@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "openrouter",
   "name": "OpenRouter",
   "description": "A unified API platform that provides access to multiple AI models from different providers through a single interface.",

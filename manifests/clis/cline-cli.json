@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/cli.schema.json",
   "id": "cline-cli",
   "name": "Cline CLI",
   "description": "Cline CLI enables headless task execution from the terminal and integrates Cline anywhere. Use it to power GitHub Actions, Discord bots, and Linear tickets with collaborative AI.",

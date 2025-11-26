@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "google",
   "name": "Google",
   "description": "A multinational technology company specializing in Internet-related services and products, including AI and machine learning.",

@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/cli.schema.json",
   "id": "neovate-code",
   "name": "Neovate Code",
   "description": "Ant Group's Neovate Code is an open-source smart programming assistant. Generates code, fixes bugs, reviews code, and adds tests with flexible multi-client architecture.",

@@ -2,9 +2,6 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "IDE Manifest Schema",
   "description": "Schema for IDE metadata",
-  "type": "array",
-  "items": {
-    "type": "object",
-    "allOf": [{ "$ref": "./ref/app.schema.json" }]
-  }
+  "type": "object",
+  "allOf": [{ "$ref": "./ref/app.schema.json" }]
 }

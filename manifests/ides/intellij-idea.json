@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/ide.schema.json",
   "id": "intellij-idea",
   "name": "IntelliJ IDEA",
   "description": "A powerful Java IDE with intelligent code assistance, refactoring tools, and support for multiple languages. Available in Community (free) and Ultimate (paid) editions.",

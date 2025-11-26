@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "sourcegraph",
   "name": "Sourcegraph",
   "description": "A code intelligence platform providing universal code search, navigation, and AI-powered development tools including the Amp coding agent.",

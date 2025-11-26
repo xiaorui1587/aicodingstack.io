@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/cli.schema.json",
   "id": "droid-cli",
   "name": "Droid CLI",
   "description": "Factory AI's Droid CLI is a terminal-based coding agent that handles complete feature development from planning to testing. Integrates with enterprise tools and provides transparent diff reviews.",

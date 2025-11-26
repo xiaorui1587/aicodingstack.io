@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/cli.schema.json",
   "id": "amp-cli",
   "name": "Amp",
   "description": "A frontier coding agent by Sourcegraph that performs autonomous reasoning, code editing, and complex tasks. Available as CLI and in VS Code, Cursor, and Windsurf.",

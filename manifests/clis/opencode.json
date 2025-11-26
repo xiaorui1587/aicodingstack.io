@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/cli.schema.json",
   "id": "opencode",
   "name": "OpenCode",
   "description": "OpenCode is an open source AI coding agent built for the terminal. Features native TUI, LSP support, multi-session capability, and works with 75+ LLM providers including local models.",

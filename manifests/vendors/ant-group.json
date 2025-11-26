@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "ant-group",
   "name": "Ant Group",
   "description": "Ant Group is a vendor.",

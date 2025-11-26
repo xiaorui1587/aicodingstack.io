@@ -1,4 +1,5 @@
 {
+  "$schema": "../$schemas/vendor.schema.json",
   "id": "minimax",
   "name": "MiniMax",
   "description": "An AI company specializing in multimodal general large language models, offering advanced AI services including text, speech, music, image, and video generation.",

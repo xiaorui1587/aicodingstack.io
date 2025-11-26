@@ -114,12 +114,12 @@ Visit `http://localhost:3000` to see the site.
 
 ### JSON Schema
 
-All manifest files must conform to their respective JSON schemas located in `manifests/schemas/`. The most common schemas are:
+All manifest files must conform to their respective JSON schemas located in `manifests/$schemas/`. The most common schemas are:
 
-- [IDE Schema](manifests/schemas/ide.schema.json)
-- [CLI Schema](manifests/schemas/cli.schema.json)
-- [Model Schema](manifests/schemas/model.schema.json)
-- [Provider Schema](manifests/schemas/provider.schema.json)
+- [IDE Schema](manifests/$schemas/ide.schema.json)
+- [CLI Schema](manifests/$schemas/cli.schema.json)
+- [Model Schema](manifests/$schemas/model.schema.json)
+- [Provider Schema](manifests/$schemas/provider.schema.json)
 
 ### Example: Adding a New IDE
 

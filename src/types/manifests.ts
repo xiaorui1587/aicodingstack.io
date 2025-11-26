@@ -1,21 +1,21 @@
 /**
  * AI Coding Stack Manifest Type Definitions
  *
- * These TypeScript interfaces mirror the JSON schema definitions in /manifests/schemas/
+ * These TypeScript interfaces mirror the JSON schema definitions in /manifests/$schemas/
  * and follow the same inheritance hierarchy to ensure type safety and consistency.
  *
  * Schema references:
- * - Base schemas: /manifests/schemas/ref/
- * - Product schemas: /manifests/schemas/*.schema.json
+ * - Base schemas: /manifests/$schemas/ref/
+ * - Product schemas: /manifests/$schemas/*.schema.json
  */
 
 // =============================================================================
-// SECTION 1: Base Ref Types (from /manifests/schemas/ref/)
+// SECTION 1: Base Ref Types (from /manifests/$schemas/ref/)
 // =============================================================================
 
 /**
  * Base Entity - Fundamental properties all manifests share
- * Based on: /manifests/schemas/ref/entity.schema.json
+ * Based on: /manifests/$schemas/ref/entity.schema.json
  */
 export interface ManifestEntity {
   id: string
@@ -28,7 +28,7 @@ export interface ManifestEntity {
 
 /**
  * Vendor Entity - Entity with vendor information
- * Based on: /manifests/schemas/ref/vendor-entity.schema.json
+ * Based on: /manifests/$schemas/ref/vendor-entity.schema.json
  * Extends: ManifestEntity
  */
 export interface ManifestVendorEntity extends ManifestEntity {
@@ -37,7 +37,7 @@ export interface ManifestVendorEntity extends ManifestEntity {
 
 /**
  * App - Entity marked as verified
- * Based on: /manifests/schemas/ref/app.schema.json
+ * Based on: /manifests/$schemas/ref/app.schema.json
  * Extends: ManifestEntity
  */
 export interface ManifestApp extends ManifestEntity {
@@ -46,7 +46,7 @@ export interface ManifestApp extends ManifestEntity {
 
 /**
  * Internationalization translations
- * Based on: /manifests/schemas/ref/i18n.schema.json
+ * Based on: /manifests/$schemas/ref/i18n.schema.json
  */
 export interface ManifestI18n {
   [locale: string]: {
@@ -58,7 +58,7 @@ export interface ManifestI18n {
 
 /**
  * Community/Social URLs
- * Based on: /manifests/schemas/ref/community-urls.schema.json
+ * Based on: /manifests/$schemas/ref/community-urls.schema.json
  */
 export interface ManifestCommunityUrls {
   linkedin?: string | null
@@ -73,7 +73,7 @@ export interface ManifestCommunityUrls {
 
 /**
  * Platform-specific URLs
- * Based on: /manifests/schemas/ref/platform-urls.schema.json
+ * Based on: /manifests/$schemas/ref/platform-urls.schema.json
  */
 export interface ManifestPlatformUrls {
   macos?: string | null
@@ -83,7 +83,7 @@ export interface ManifestPlatformUrls {
 
 /**
  * Pricing tier information
- * Based on: /manifests/schemas/ref/product.schema.json#$defs/pricingTier
+ * Based on: /manifests/$schemas/ref/product.schema.json#$defs/pricingTier
  */
 export interface ManifestPricingTier {
   name: string
@@ -95,7 +95,7 @@ export interface ManifestPricingTier {
 
 /**
  * Resource URLs for a product
- * Based on: /manifests/schemas/ref/product.schema.json#$defs/resourceUrls
+ * Based on: /manifests/$schemas/ref/product.schema.json#$defs/resourceUrls
  */
 export interface ManifestResourceUrls {
   download: string | null
@@ -131,7 +131,7 @@ export interface ComponentCommunityUrls {
 
 /**
  * Platform installation information
- * Based on: /manifests/schemas/ref/product.schema.json#$defs/platformElement
+ * Based on: /manifests/$schemas/ref/product.schema.json#$defs/platformElement
  */
 export interface ManifestPlatformElement {
   os: 'macOS' | 'Windows' | 'Linux'
@@ -142,7 +142,7 @@ export interface ManifestPlatformElement {
 
 /**
  * Related products reference
- * Based on: /manifests/schemas/ref/product.schema.json#$defs/relatedProducts
+ * Based on: /manifests/$schemas/ref/product.schema.json#$defs/relatedProducts
  */
 export interface ManifestRelatedProduct {
   type: 'ide' | 'cli' | 'extension'
@@ -151,7 +151,7 @@ export interface ManifestRelatedProduct {
 
 /**
  * GitHub metadata
- * Based on: /manifests/schemas/ref/github.schema.json
+ * Based on: /manifests/$schemas/ref/github.schema.json
  */
 export interface ManifestGithub {
   data?: string | null
@@ -163,7 +163,7 @@ export interface ManifestGithub {
 
 /**
  * Vendor information
- * Based on: /manifests/schemas/ref/vendor.schema.json
+ * Based on: /manifests/$schemas/ref/vendor.schema.json
  */
 export interface ManifestVendorBase {
   id: string
@@ -177,7 +177,7 @@ export interface ManifestVendorBase {
 
 /**
  * Collection item reference
- * Based on: /manifests/schemas/ref/collection-item.schema.json
+ * Based on: /manifests/$schemas/ref/collection-item.schema.json
  */
 export interface ManifestCollectionItem {
   type: 'cli' | 'ide' | 'extension'
@@ -191,7 +191,7 @@ export interface ManifestCollectionItem {
 
 /**
  * Base Product - Common properties for all product types
- * Based on: /manifests/schemas/ref/product.schema.json
+ * Based on: /manifests/$schemas/ref/product.schema.json
  * Extends: ManifestVendorEntity
  */
 export interface ManifestBaseProduct extends ManifestVendorEntity {
@@ -208,7 +208,7 @@ export interface ManifestBaseProduct extends ManifestVendorEntity {
 
 /**
  * IDE (Integrated Development Environment)
- * Based on: /manifests/schemas/ides.schema.json
+ * Based on: /manifests/$schemas/ides.schema.json
  * Extends: ManifestVendorEntity
  */
 export interface ManifestIDE extends ManifestVendorEntity {
@@ -232,7 +232,7 @@ export interface ManifestIDE extends ManifestVendorEntity {
 
 /**
  * CLI (Command Line Interface)
- * Based on: /manifests/schemas/clis.schema.json
+ * Based on: /manifests/$schemas/clis.schema.json
  * Extends: ManifestVendorEntity
  */
 export interface ManifestCLI extends ManifestVendorEntity {
@@ -256,7 +256,7 @@ export interface ManifestCLI extends ManifestVendorEntity {
 
 /**
  * Extension
- * Based on: /manifests/schemas/extensions.schema.json
+ * Based on: /manifests/$schemas/extensions.schema.json
  * Extends: ManifestApp
  */
 export interface ManifestExtension extends ManifestApp {
@@ -291,7 +291,7 @@ export interface ManifestExtension extends ManifestApp {
 
 /**
  * Large Language Model for Coding
- * Based on: /manifests/schemas/models.schema.json
+ * Based on: /manifests/$schemas/models.schema.json
  */
 export interface ManifestModel {
   name: string
@@ -321,7 +321,7 @@ export interface ManifestModel {
 
 /**
  * LLM API Provider
- * Based on: /manifests/schemas/providers.schema.json
+ * Based on: /manifests/$schemas/providers.schema.json
  * Extends: ManifestVendorEntity
  */
 export interface ManifestProvider extends ManifestVendorEntity {
@@ -341,7 +341,7 @@ export interface ManifestProvider extends ManifestVendorEntity {
 
 /**
  * Complete Vendor Information
- * Based on: /manifests/schemas/vendors.schema.json
+ * Based on: /manifests/$schemas/vendors.schema.json
  * Extends: ManifestVendorBase
  */
 export interface ManifestVendor extends ManifestVendorBase {
@@ -356,7 +356,7 @@ export interface ManifestVendor extends ManifestVendorBase {
 
 /**
  * Collection of Related Products
- * Based on: /manifests/schemas/collections.schema.json
+ * Based on: /manifests/$schemas/collections.schema.json
  */
 export interface ManifestCollection {
   title: string
