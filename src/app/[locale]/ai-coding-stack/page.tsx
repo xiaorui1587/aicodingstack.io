@@ -57,6 +57,9 @@ export default async function AICodingStackPage({ params }: Props) {
             <h1 className="text-[3rem] font-bold tracking-[-0.04em] leading-[1.1] mb-[var(--spacing-md)]">
               {t('title')}
             </h1>
+            <p className="text-lg text-[var(--color-text-secondary)] leading-relaxed">
+              {t('subtitle')}
+            </p>
           </section>
 
           {/* Stacks Grid Section */}

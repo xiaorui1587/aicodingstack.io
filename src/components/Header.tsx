@@ -157,7 +157,7 @@ function Header() {
   return (
     <header className="sticky top-0 bg-[var(--color-bg)]/95 backdrop-blur-sm border-b border-[var(--color-border)] z-50">
       <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
-        <nav className="flex justify-between items-center py-[var(--spacing-sm)]">
+        <nav className="flex items-center py-[var(--spacing-sm)]">
           <Link
             href="/"
             className="flex items-center gap-2 text-lg font-semibold tracking-tight hover:text-[var(--color-text-secondary)] transition-colors"
@@ -172,13 +172,15 @@ function Header() {
             AI Coding Stack
           </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-[var(--spacing-md)]">
+          {/* Desktop Menu - Centered */}
+          <div className="hidden md:flex flex-1 justify-center">
             <ul className="flex gap-[var(--spacing-md)] list-none">
               {menuItems.map(renderDesktopMenuItem)}
             </ul>
+          </div>
 
-            {/* Desktop Search Button */}
+          {/* Desktop Search Button - Right aligned */}
+          <div className="hidden md:block">
             <button
               type="button"
               onClick={() => setIsSearchDialogOpen(true)}
@@ -203,8 +205,8 @@ function Header() {
             </button>
           </div>
 
-          {/* Mobile Menu Buttons */}
-          <div className="flex md:hidden items-center gap-2">
+          {/* Mobile Menu Buttons - Right aligned */}
+          <div className="flex md:hidden items-center gap-2 ml-auto">
             {/* Mobile Search Toggle */}
             <button
               type="button"
