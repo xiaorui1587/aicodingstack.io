@@ -68,7 +68,7 @@ export default function SearchPageClient({ locale, initialQuery }: Props) {
 
           {/* Search Input */}
           <div className="mb-[var(--spacing-md)] max-w-xl">
-            <SearchInput initialQuery={query} onSearch={handleSearch} autoFocus />
+            <SearchInput initialQuery={query} onSearch={handleSearch} />
           </div>
 
           {/* Results Section */}
