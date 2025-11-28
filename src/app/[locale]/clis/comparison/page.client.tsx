@@ -2,8 +2,8 @@
 
 import { Download, FileText, Github, Home, Linkedin, Twitter, Youtube } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import { useEffect, useRef, useState } from 'react'
 import ComparisonTable, { type ComparisonColumn } from '@/components/ComparisonTable'
+import { Breadcrumb } from '@/components/controls/Breadcrumb'
 import { AppleIcon, LinuxIcon, WindowsIcon } from '@/components/controls/PlatformIcons'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
@@ -19,38 +19,9 @@ type Props = {
 
 export default function CLIComparisonPageClient({ locale }: Props) {
   const tComparison = useTranslations('comparison')
+  const tStacks = useTranslations('stacks')
   const tCommunity = useTranslations('community')
   const t = useTranslations()
-  const breadcrumbRef = useRef<HTMLElement>(null)
-  const [isBreadcrumbFixed, setIsBreadcrumbFixed] = useState(false)
-  const [breadcrumbHeight, setBreadcrumbHeight] = useState(0)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!breadcrumbRef.current) return
-
-      const headerHeight = 60 // Height of the site header
-      const breadcrumbTop = breadcrumbRef.current.offsetTop
-
-      if (window.scrollY > breadcrumbTop - headerHeight) {
-        if (!isBreadcrumbFixed) {
-          setBreadcrumbHeight(breadcrumbRef.current.offsetHeight)
-        }
-        setIsBreadcrumbFixed(true)
-      } else {
-        setIsBreadcrumbFixed(false)
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    window.addEventListener('resize', handleScroll)
-    handleScroll()
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleScroll)
-    }
-  }, [isBreadcrumbFixed])
 
   const columns: ComparisonColumn[] = [
     {
@@ -307,67 +278,19 @@ export default function CLIComparisonPageClient({ locale }: Props) {
     <>
       <Header />
 
-      {/* Fixed Breadcrumb (when scrolled) */}
-      {isBreadcrumbFixed && (
-        <section className="fixed top-[60px] left-0 right-0 z-30 py-[var(--spacing-sm)] bg-[var(--color-hover)] border-b border-[var(--color-border)] shadow-sm">
-          <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
-            <nav className="flex items-center gap-[var(--spacing-xs)] text-[0.8125rem]">
-              <Link
-                href={`/${locale}/ai-coding-stack`}
-                className="text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors"
-              >
-                {tComparison('breadcrumb.aiCodingStack')}
-              </Link>
-              <span className="text-[var(--color-text-muted)]">/</span>
-              <Link
-                href={`/${locale}/clis`}
-                className="text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors"
-              >
-                {tComparison('breadcrumb.clis')}
-              </Link>
-              <span className="text-[var(--color-text-muted)]">/</span>
-              <span className="text-[var(--color-text)] font-medium">
-                {tComparison('breadcrumb.comparison')}
-              </span>
-            </nav>
-          </div>
-        </section>
-      )}
-
-      {/* Breadcrumb (original position) */}
-      <section
-        ref={breadcrumbRef}
-        className="py-[var(--spacing-sm)] bg-[var(--color-hover)] border-b border-[var(--color-border)]"
-      >
-        <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
-          <nav
-            className={`flex items-center gap-[var(--spacing-xs)] text-[0.8125rem] ${isBreadcrumbFixed ? 'invisible' : ''}`}
-          >
-            <Link
-              href={`/${locale}/ai-coding-stack`}
-              className="text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors"
-            >
-              {tComparison('breadcrumb.aiCodingStack')}
-            </Link>
-            <span className="text-[var(--color-text-muted)]">/</span>
-            <Link
-              href={`/${locale}/clis`}
-              className="text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors"
-            >
-              {tComparison('breadcrumb.clis')}
-            </Link>
-            <span className="text-[var(--color-text-muted)]">/</span>
-            <span className="text-[var(--color-text)] font-medium">
-              {tComparison('breadcrumb.comparison')}
-            </span>
-          </nav>
-        </div>
-      </section>
+      <Breadcrumb
+        sticky
+        items={[
+          { name: tStacks('aiCodingStack'), href: '/ai-coding-stack' },
+          { name: tStacks('clis'), href: '/clis' },
+          { name: tStacks('comparison'), href: '/clis/comparison' },
+        ]}
+      />
 
       {/* Page Header */}
       <section className="py-[var(--spacing-lg)] border-[var(--color-border)]">
         <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
-          <h1 className="text-[2rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
+          <h1 className="text-3xl font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
             {tComparison('clis.title')}
           </h1>
           <p className="text-base text-[var(--color-text-secondary)] font-light">
@@ -383,7 +306,6 @@ export default function CLIComparisonPageClient({ locale }: Props) {
             items={clis as unknown as Record<string, unknown>[]}
             columns={columns}
             itemLinkPrefix={`/${locale}/clis`}
-            stickyTopOffset={60 + (isBreadcrumbFixed ? breadcrumbHeight : 0)}
           />
         </div>
       </section>
