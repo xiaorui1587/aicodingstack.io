@@ -6,7 +6,8 @@
     "extensions": "Extensions",
     "models": "Models",
     "modelProviders": "Model Providers",
-    "vendors": "Vendors"
+    "vendors": "Vendors",
+    "comparison": "Comparison"
   },
   "community": {
     "github": "GitHub",
@@ -350,14 +351,6 @@
   },
 
   "comparison": {
-    "breadcrumb": {
-      "aiCodingStack": "AI Coding Stack",
-      "comparison": "Comparison",
-      "ides": "IDEs",
-      "clis": "CLIs",
-      "extensions": "Extensions",
-      "models": "Models"
-    },
     "ides": {
       "title": "IDE Comparison",
       "subtitle": "Compare features, pricing, and specifications of AI-powered IDEs side by side.",

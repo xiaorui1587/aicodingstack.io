@@ -6,7 +6,8 @@
     "extensions": "Erweiterungen",
     "models": "Modelle",
     "modelProviders": "Modellanbieter",
-    "vendors": "Anbieter"
+    "vendors": "Anbieter",
+    "comparison": "Vergleich"
   },
   "community": {
     "github": "GitHub",
@@ -346,14 +347,6 @@
     }
   },
   "comparison": {
-    "breadcrumb": {
-      "aiCodingStack": "AI Coding Stack",
-      "comparison": "Vergleich",
-      "ides": "IDEs",
-      "clis": "CLIs",
-      "extensions": "Erweiterungen",
-      "models": "Modelle"
-    },
     "ides": {
       "title": "IDE-Vergleich",
       "subtitle": "Vergleichen Sie Funktionen, Preise und Spezifikationen von KI-gestützten IDEs nebeneinander.",
