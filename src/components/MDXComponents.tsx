@@ -4,17 +4,17 @@ import { Link } from '@/i18n/navigation'
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ children }) => (
-      <h1 className="text-[2rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-md)] text-[var(--color-text)]">
+      <h1 className="text-3xl font-semibold tracking-[-0.03em] mb-[var(--spacing-md)] text-[var(--color-text)]">
         {children}
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-[1.5rem] font-semibold text-[var(--color-text)] mb-[var(--spacing-sm)] mt-[var(--spacing-lg)]">
+      <h2 className="text-2xl font-semibold text-[var(--color-text)] mb-[var(--spacing-sm)] mt-[var(--spacing-lg)]">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-[1.25rem] font-semibold text-[var(--color-text)] mb-[var(--spacing-sm)] mt-[var(--spacing-md)]">
+      <h3 className="text-xl font-semibold text-[var(--color-text)] mb-[var(--spacing-sm)] mt-[var(--spacing-md)]">
         {children}
       </h3>
     ),

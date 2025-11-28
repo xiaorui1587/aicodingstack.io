@@ -16,7 +16,7 @@ export function ProductPricing({ pricing, pricingUrl }: ProductPricingProps) {
   return (
     <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
       <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
-        <h2 className="text-[1.5rem] font-semibold tracking-[-0.02em] mb-[var(--spacing-sm)]">
+        <h2 className="text-2xl font-semibold tracking-[-0.02em] mb-[var(--spacing-sm)]">
           {t('title')}
         </h2>
 

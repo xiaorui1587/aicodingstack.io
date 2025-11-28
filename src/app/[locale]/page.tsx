@@ -95,7 +95,7 @@ export default async function Home({ params }: Props) {
               </pre>
             </div>
 
-            <h1 className="text-[2rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-md)] homepage-h1">
+            <h1 className="text-3xl font-semibold tracking-[-0.03em] mb-[var(--spacing-md)] homepage-h1">
               {tHome('title')}
             </h1>
 
@@ -130,7 +130,7 @@ export default async function Home({ params }: Props) {
         className="py-[var(--spacing-xl)] border-b border-[var(--color-border)]"
       >
         <div className="max-w-6xl mx-auto px-[var(--spacing-md)]">
-          <h2 className="text-[1.5rem] font-semibold tracking-[-0.02em] mb-[var(--spacing-sm)] homepage-h2">
+          <h2 className="text-2xl font-semibold tracking-[-0.02em] mb-[var(--spacing-sm)] homepage-h2">
             {tFeatures('title')}
           </h2>
 
@@ -197,7 +197,7 @@ export default async function Home({ params }: Props) {
       {/* FAQ Section */}
       <section id="faq" className="py-[var(--spacing-xl)]">
         <div className="max-w-6xl mx-auto px-[var(--spacing-md)]">
-          <h2 className="text-[1.5rem] font-semibold tracking-[-0.02em] mb-[var(--spacing-sm)] homepage-h2">
+          <h2 className="text-2xl font-semibold tracking-[-0.02em] mb-[var(--spacing-sm)] homepage-h2">
             {tHome('faq')}
           </h2>
 

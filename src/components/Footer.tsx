@@ -114,7 +114,7 @@ function Footer() {
 
         <div className="border-t border-[var(--color-border)] pt-[var(--spacing-md)]">
           <div className="text-center">
-            <div className="text-[0.75rem] leading-tight text-[var(--color-text-muted)]">
+            <div className="text-xs leading-tight text-[var(--color-text-muted)]">
               {tFooter('copyright')}
             </div>
           </div>
