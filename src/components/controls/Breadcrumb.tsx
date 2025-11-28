@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect, useRef, useState } from 'react'
 import { JsonLd } from '@/components/JsonLd'
 import { Link } from '@/i18n/navigation'
 import { SITE_CONFIG } from '@/lib/metadata/config'
@@ -10,17 +13,33 @@ export interface BreadcrumbItem {
 /**
  * Renders a breadcrumb navigation bar and injects a Schema.org BreadcrumbList via JsonLd.
  * - Visual trail is rendered from provided items; the last item is shown as plain text.
- * - Structured data includes an optional "Home" at the first position for better SEO.
+ * - Structured data includes "Home" at the first position for better SEO.
+ * - Sticky behavior is enabled when scrolling.
  */
-export function Breadcrumb({
-  items,
-  siteOrigin = SITE_CONFIG.url,
-  includeHome = true,
-}: {
-  items: BreadcrumbItem[]
-  siteOrigin?: string
-  includeHome?: boolean
-}) {
+export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
+  const breadcrumbRef = useRef<HTMLDivElement>(null)
+  const [isBreadcrumbFixed, setIsBreadcrumbFixed] = useState(false)
+  const [headerHeight, setHeaderHeight] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!breadcrumbRef.current) return
+      const header = document.querySelector('header')
+      const currentHeaderHeight = header?.offsetHeight || 0
+      setHeaderHeight(currentHeaderHeight)
+      const breadcrumbTop = breadcrumbRef.current.offsetTop
+      setIsBreadcrumbFixed(window.scrollY > breadcrumbTop - currentHeaderHeight)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleScroll)
+    handleScroll()
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
+  }, [])
   // Normalize href to ensure it starts with '/' (unless it's already an absolute URL)
   const normalizeHref = (href: string): string => {
     // If it's already an absolute URL or starts with '/', return as is
@@ -32,23 +51,19 @@ export function Breadcrumb({
   }
 
   const schemaItems = [
-    ...(includeHome
-      ? [
-          {
-            '@type': 'ListItem',
-            position: 1,
-            name: 'Home',
-            item: `${siteOrigin}`,
-          },
-        ]
-      : []),
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: SITE_CONFIG.url,
+    },
     ...items.map((item, index) => {
       const normalizedHref = normalizeHref(item.href)
       return {
         '@type': 'ListItem',
-        position: (includeHome ? 2 : 1) + index,
+        position: 2 + index,
         name: item.name,
-        item: `${siteOrigin}${normalizedHref}`,
+        item: `${SITE_CONFIG.url}${normalizedHref}`,
       }
     }),
   ]
@@ -59,37 +74,51 @@ export function Breadcrumb({
     itemListElement: schemaItems,
   } as const
 
+  const BreadcrumbContent = () => (
+    <section
+      className="py-[var(--spacing-sm)] bg-[var(--color-hover)] border-b border-[var(--color-border)]"
+      data-breadcrumb
+    >
+      <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
+        <nav className="flex items-center gap-[var(--spacing-xs)] text-sm pl-[var(--spacing-xs)]">
+          {items.map((item, index) => {
+            const isLast = index === items.length - 1
+            const normalizedHref = normalizeHref(item.href)
+            return (
+              <span
+                key={`${item.href}-${index}`}
+                className="inline-flex items-center gap-[var(--spacing-xs)]"
+              >
+                {isLast ? (
+                  <span className="text-[var(--color-text)] font-medium">{item.name}</span>
+                ) : (
+                  <Link
+                    href={normalizedHref}
+                    className="text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                )}
+                {!isLast && <span className="text-[var(--color-text-muted)]">/</span>}
+              </span>
+            )
+          })}
+        </nav>
+      </div>
+    </section>
+  )
+
   return (
     <>
       <JsonLd data={breadcrumbListSchema} />
-      <section className="py-[var(--spacing-sm)] bg-[var(--color-hover)] border-b border-[var(--color-border)]">
-        <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
-          <nav className="flex items-center gap-[var(--spacing-xs)] text-[0.8125rem]">
-            {items.map((item, index) => {
-              const isLast = index === items.length - 1
-              const normalizedHref = normalizeHref(item.href)
-              return (
-                <span
-                  key={`${item.href}-${index}`}
-                  className="inline-flex items-center gap-[var(--spacing-xs)]"
-                >
-                  {isLast ? (
-                    <span className="text-[var(--color-text)] font-medium">{item.name}</span>
-                  ) : (
-                    <Link
-                      href={normalizedHref}
-                      className="text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors"
-                    >
-                      {item.name}
-                    </Link>
-                  )}
-                  {!isLast && <span className="text-[var(--color-text-muted)]">/</span>}
-                </span>
-              )
-            })}
-          </nav>
+      {isBreadcrumbFixed && (
+        <div className="fixed left-0 right-0 z-40 shadow-sm" style={{ top: `${headerHeight}px` }}>
+          <BreadcrumbContent />
         </div>
-      </section>
+      )}
+      <div ref={breadcrumbRef} className={isBreadcrumbFixed ? 'invisible' : ''}>
+        <BreadcrumbContent />
+      </div>
     </>
   )
 }

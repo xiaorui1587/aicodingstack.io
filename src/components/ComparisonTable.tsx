@@ -26,7 +26,7 @@ export default function ComparisonTable({
   itemLinkPrefix,
   itemNameKey = 'name',
   itemIdKey = 'id',
-  stickyTopOffset = 60,
+  stickyTopOffset,
 }: ComparisonTableProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const tableRef = useRef<HTMLTableElement>(null)
@@ -36,7 +36,34 @@ export default function ComparisonTable({
   const [theadHeight, setTheadHeight] = useState<number>(0)
   const [columnWidths, setColumnWidths] = useState<number[]>([])
   const [scrollLeft, setScrollLeft] = useState<number>(0)
+  const [calculatedOffset, setCalculatedOffset] = useState<number>(0)
   const columnWidthsMeasured = useRef(false)
+
+  useEffect(() => {
+    // Calculate sticky offset based on header and breadcrumb heights
+    const calculateOffset = () => {
+      if (stickyTopOffset !== undefined) {
+        setCalculatedOffset(stickyTopOffset)
+        return
+      }
+
+      const header = document.querySelector('header')
+      const breadcrumb = document.querySelector('[data-breadcrumb]')
+      const headerHeight = header?.offsetHeight || 0
+      const breadcrumbHeight = breadcrumb?.offsetHeight || 0
+      setCalculatedOffset(headerHeight + breadcrumbHeight)
+    }
+
+    calculateOffset()
+    window.addEventListener('resize', calculateOffset)
+    // Also recalculate on scroll to handle dynamic changes
+    window.addEventListener('scroll', calculateOffset)
+
+    return () => {
+      window.removeEventListener('resize', calculateOffset)
+      window.removeEventListener('scroll', calculateOffset)
+    }
+  }, [stickyTopOffset])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,7 +74,7 @@ export default function ComparisonTable({
       const theadHeight = theadRef.current.offsetHeight
 
       // Check if table has scrolled past the sticky offset
-      if (tableRect.top <= stickyTopOffset && tableRect.bottom > stickyTopOffset + theadHeight) {
+      if (tableRect.top <= calculatedOffset && tableRect.bottom > calculatedOffset + theadHeight) {
         // Only measure widths once, before first fixing
         if (!columnWidthsMeasured.current) {
           const ths = theadRef.current.querySelectorAll('th')
@@ -79,16 +106,16 @@ export default function ComparisonTable({
       window.removeEventListener('resize', handleScroll)
       container?.removeEventListener('scroll', handleContainerScroll)
     }
-  }, [stickyTopOffset])
+  }, [calculatedOffset])
 
   return (
     <>
       {/* Fixed header wrapper with clipping */}
       {isFixed && containerRef.current && (
         <div
-          className="fixed z-40 overflow-hidden"
+          className="fixed z-30 overflow-hidden"
           style={{
-            top: `${stickyTopOffset}px`,
+            top: `${calculatedOffset}px`,
             width: `${theadWidth}px`,
             left: `${containerRef.current.getBoundingClientRect().left}px`,
             pointerEvents: 'none',
