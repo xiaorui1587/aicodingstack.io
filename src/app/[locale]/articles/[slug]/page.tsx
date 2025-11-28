@@ -63,7 +63,7 @@ export default async function ArticlePage({ params }: Props) {
       <>
         <Header />
         <div className="max-w-6xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
-          <h1 className="text-[2.5rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
+          <h1 className="text-4xl font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
             {article.title}
           </h1>
           <p className="text-[var(--color-text-secondary)]">
@@ -97,7 +97,7 @@ export default async function ArticlePage({ params }: Props) {
       <article className="max-w-5xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
         {/* Article Header */}
         <header className="mb-[var(--spacing-xl)]">
-          <h1 className="text-[2.5rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)] leading-tight">
+          <h1 className="text-4xl font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)] leading-tight">
             {article.title}
           </h1>
           <time className="text-sm text-[var(--color-text-muted)]">

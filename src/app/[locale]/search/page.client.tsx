@@ -61,7 +61,7 @@ export default function SearchPageClient({ locale, initialQuery }: Props) {
         <main className="w-full">
           {/* Page Header */}
           <div className="mb-[var(--spacing-lg)]">
-            <h1 className="text-[2rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
+            <h1 className="text-3xl font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
               {t('title')}
             </h1>
           </div>

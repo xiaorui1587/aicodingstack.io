@@ -60,7 +60,7 @@ export default async function DocPage({ params }: Props) {
       <>
         <Header />
         <div className="max-w-8xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
-          <h1 className="text-[2.5rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
+          <h1 className="text-4xl font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
             {doc.title}
           </h1>
           <p className="text-[var(--color-text-secondary)]">
