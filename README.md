@@ -4,6 +4,9 @@
 [![Deploy Status](https://img.shields.io/github/actions/workflow/status/aicodingstack/aicodingstack.io/deploy-production.yml?style=flat-square&label=Deploy)](https://github.com/aicodingstack/aicodingstack.io/actions/workflows/deploy-production.yml)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue?style=flat-square)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](CONTRIBUTING.md)
+<br>
+[![Twitter Follow](https://img.shields.io/twitter/follow/aicodingstack?style=flat-square&logo=x&label=Follow)](https://x.com/aicodingstack)
+[![Discord](https://img.shields.io/badge/Discord-Join-5865F2?style=flat-square&logo=discord&logoColor=white)](https://aicodingstack.io/discord)
 
 > Your AI Coding Ecosystem Hub - Discover, Compare, Build Faster
 
