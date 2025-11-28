@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import PageHeader from '@/components/PageHeader'
 import { Link } from '@/i18n/navigation'
 import { getManifestoComponent } from '@/lib/manifesto'
 import { buildCanonicalUrl, buildOpenGraph, buildTitle, buildTwitterCard } from '@/lib/metadata'
@@ -54,19 +55,7 @@ export default async function ManifestoPage({ params }: Props) {
 
       <div className="max-w-5xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
         <main>
-          {/* Hero Section */}
-          <section className="mb-[var(--spacing-2xl)]">
-            <div className="space-y-[var(--spacing-md)]">
-              <h1 className="text-[2.5rem] md:text-[2rem] font-bold tracking-[-0.03em] leading-[1.15]">
-                {t('title')}
-              </h1>
-              <div className="bg-[var(--color-hover)] p-[var(--spacing-md)]">
-                <div className="text-[1.5rem] md:text-[1.25rem] tracking-[-0.01em] font-semibold text-[var(--color-text-secondary)]">
-                  {t('slogan')}
-                </div>
-              </div>
-            </div>
-          </section>
+          <PageHeader title={t('title')} subtitle={t('slogan')} />
 
           {/* Manifesto Content */}
           <section className="prose prose-neutral dark:prose-invert max-w-none mb-[var(--spacing-xl)]">
@@ -81,7 +70,7 @@ export default async function ManifestoPage({ params }: Props) {
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-[1.5rem] font-semibold tracking-[-0.02em] mb-[var(--spacing-xs)]">
+                  <h2 className="text-2xl font-semibold tracking-[-0.02em] mb-[var(--spacing-xs)]">
                     {tStack('title')}
                   </h2>
                   <p className="text-sm text-[var(--color-text-secondary)]">{tStack('subtitle')}</p>

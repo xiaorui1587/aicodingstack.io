@@ -5,6 +5,7 @@ import { useMemo, useState } from 'react'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import StackTabs from '@/components/navigation/StackTabs'
+import PageHeader from '@/components/PageHeader'
 import type { Locale } from '@/i18n/config'
 import { Link } from '@/i18n/navigation'
 import { modelsData } from '@/lib/generated'
@@ -62,20 +63,18 @@ export default function ModelsPageClient({ locale }: Props) {
       <div className="max-w-8xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
         {/* Main Content */}
         <main className="w-full">
-          <div className="mb-[var(--spacing-lg)]">
-            <div className="flex items-start justify-between mb-[var(--spacing-sm)]">
-              <h1 className="text-[2rem] font-semibold tracking-[-0.03em]">{t('title')}</h1>
+          <PageHeader
+            title={t('title')}
+            subtitle={t('subtitle')}
+            action={
               <Link
                 href={`/${locale}/models/comparison`}
                 className="text-sm px-[var(--spacing-md)] py-[var(--spacing-xs)] border border-[var(--color-border)] hover:border-[var(--color-border-strong)] transition-colors"
               >
                 {t('compareAll')} →
               </Link>
-            </div>
-            <p className="text-base text-[var(--color-text-secondary)] font-light">
-              {t('subtitle')}
-            </p>
-          </div>
+            }
+          />
 
           <StackTabs activeStack="models" locale={locale} />
 

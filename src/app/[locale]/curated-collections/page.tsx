@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server'
 import CollectionScrollbar from '@/components/CollectionScrollbar'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import PageHeader from '@/components/PageHeader'
 import { getCollections } from '@/lib/collections'
 import { buildCanonicalUrl, buildOpenGraph, buildTitle, buildTwitterCard } from '@/lib/metadata'
 
@@ -53,13 +54,7 @@ export default async function CuratedCollectionsPage({ params }: Props) {
       <Header />
 
       <div className="max-w-8xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
-        {/* Page Header */}
-        <div className="text-center mb-[var(--spacing-xl)]">
-          <h1 className="text-[2rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
-            {t('title')}
-          </h1>
-          <p className="text-base text-[var(--color-text-secondary)] font-light">{t('subtitle')}</p>
-        </div>
+        <PageHeader title={t('title')} subtitle={t('subtitle')} />
 
         {/* Main Content with Sidebar */}
         <div className="flex gap-[var(--spacing-lg)]">

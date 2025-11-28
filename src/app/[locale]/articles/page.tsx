@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import PageHeader from '@/components/PageHeader'
 import { Link } from '@/i18n/navigation'
 import { getArticles } from '@/lib/generated/articles'
 import { buildCanonicalUrl, buildOpenGraph, buildTitle, buildTwitterCard } from '@/lib/metadata'
@@ -44,21 +45,14 @@ type Props = {
 
 export default async function ArticlesPage({ params }: Props) {
   const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'pages.articles' })
   const articles = getArticles(locale)
   return (
     <>
       <Header />
 
-      <div className="max-w-8xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
-        {/* Page Header */}
-        <div className="text-center mb-[var(--spacing-xl)]">
-          <h1 className="text-[2rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
-            Articles
-          </h1>
-          <p className="text-base text-[var(--color-text-secondary)] font-light">
-            Insights, tutorials, and deep dives into the AI coding ecosystem
-          </p>
-        </div>
+      <div className="max-w-8xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
+        <PageHeader title={t('title')} subtitle={t('subtitle')} />
 
         {/* Articles Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[var(--spacing-md)]">

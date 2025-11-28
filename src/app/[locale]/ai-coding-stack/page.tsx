@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import PageHeader from '@/components/PageHeader'
 import { Link } from '@/i18n/navigation'
 import { buildCanonicalUrl, buildOpenGraph, buildTitle, buildTwitterCard } from '@/lib/metadata'
 
@@ -52,15 +53,7 @@ export default async function AICodingStackPage({ params }: Props) {
 
       <div className="max-w-8xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
         <main>
-          {/* Hero Section */}
-          <section className="mb-[var(--spacing-lg)]">
-            <h1 className="text-[2rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
-              {t('title')}
-            </h1>
-            <p className="text-base text-[var(--color-text-secondary)] font-light">
-              {t('subtitle')}
-            </p>
-          </section>
+          <PageHeader title={t('title')} subtitle={t('subtitle')} />
 
           {/* Stacks Grid Section */}
           <section className="mb-[var(--spacing-xl)]">
@@ -79,7 +72,7 @@ export default async function AICodingStackPage({ params }: Props) {
                   className="block border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5 group"
                 >
                   <div className="flex justify-between items-start mb-[var(--spacing-md)]">
-                    <h3 className="text-[1.5rem] font-semibold tracking-tight">
+                    <h3 className="text-2xl font-semibold tracking-tight">
                       {t(`${stack.key}.title`)}
                     </h3>
                     <span className="text-2xl text-[var(--color-text-muted)] group-hover:text-[var(--color-text)] group-hover:translate-x-1 transition-all">

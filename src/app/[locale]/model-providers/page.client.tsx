@@ -5,6 +5,7 @@ import { useMemo, useState } from 'react'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import StackTabs from '@/components/navigation/StackTabs'
+import PageHeader from '@/components/PageHeader'
 import type { Locale } from '@/i18n/config'
 import { Link } from '@/i18n/navigation'
 import { providersData } from '@/lib/generated'
@@ -67,14 +68,7 @@ export default function ModelProvidersPageClient({ locale }: Props) {
       <div className="max-w-8xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
         {/* Main Content */}
         <main className="w-full">
-          <div className="mb-[var(--spacing-lg)]">
-            <h1 className="text-[2rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
-              {t('title')}
-            </h1>
-            <p className="text-base text-[var(--color-text-secondary)] font-light">
-              {t('subtitle')}
-            </p>
-          </div>
+          <PageHeader title={t('title')} subtitle={t('subtitle')} />
 
           <StackTabs activeStack="model-providers" locale={locale} />
 

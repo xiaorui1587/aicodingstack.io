@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server'
 import { BackToNavigation } from '@/components/controls/BackToNavigation'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import PageHeader from '@/components/PageHeader'
 import { buildVendorMatrix } from '@/lib/landscape-data'
 import { buildCanonicalUrl, buildOpenGraph, buildTitle, buildTwitterCard } from '@/lib/metadata'
 import VendorMatrix from './components/VendorMatrix'
@@ -56,15 +57,7 @@ export default async function Page({ params }: Props) {
     <>
       <Header />
       <div className="max-w-8xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
-        {/* Page Header */}
-        <div className="mb-[var(--spacing-lg)]">
-          <h1 className="text-[2rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
-            {tNav('aiCodingLandscape')}
-          </h1>
-          <p className="text-base text-[var(--color-text-secondary)] font-light">
-            {tNav('aiCodingLandscapeDesc')}
-          </p>
-        </div>
+        <PageHeader title={tNav('aiCodingLandscape')} subtitle={tNav('aiCodingLandscapeDesc')} />
 
         {/* Vendor Matrix */}
         <VendorMatrix matrixData={matrixData} locale={locale} />

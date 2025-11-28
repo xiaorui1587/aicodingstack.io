@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import PageHeader from '@/components/PageHeader'
 import { buildAlternates, buildOpenGraph, buildTitle, buildTwitterCard } from '@/lib/metadata'
 import { OpenSourceRankPage } from './page.client'
 
@@ -55,14 +56,7 @@ export default async function Page({ params }: Props) {
       <Header />
       <main className="min-h-screen">
         <div className="max-w-8xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
-          <div className="mb-[var(--spacing-lg)]">
-            <h1 className="text-[2rem] font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
-              {t('title')}
-            </h1>
-            <p className="text-base leading-[1.8] text-[var(--color-text-secondary)] font-light">
-              {t('description')}
-            </p>
-          </div>
+          <PageHeader title={t('title')} subtitle={t('description')} />
 
           <OpenSourceRankPage />
         </div>
