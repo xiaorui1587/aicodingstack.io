@@ -6,7 +6,8 @@ import { useTranslations } from 'next-intl'
 import { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { Link } from '@/i18n/navigation'
 import SearchDialog from './controls/SearchDialog'
-import { MegaMenu } from './MegaMenu'
+import { RankingMegaMenu } from './RankingMegaMenu'
+import { StackMegaMenu } from './StackMegaMenu'
 
 // Menu item configuration type
 interface MenuItem {
@@ -15,6 +16,7 @@ interface MenuItem {
   namespace?: 'header' | 'community'
   isExternal?: boolean
   hasMegaMenu?: boolean
+  megaMenuType?: 'aiCodingStack' | 'ranking'
 }
 
 // Common CSS class names - extracted to constants for DRY
@@ -27,7 +29,7 @@ function Header() {
   const params = useParams()
   const locale = params?.locale as string | undefined
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false)
+  const [activeMegaMenu, setActiveMegaMenu] = useState<'aiCodingStack' | 'ranking' | null>(null)
   const [isSearchDialogOpen, setIsSearchDialogOpen] = useState(false)
   const tHeader = useTranslations('header')
   const tCommunity = useTranslations('community')
@@ -41,8 +43,16 @@ function Header() {
         translationKey: 'aiCodingStack',
         namespace: 'header',
         hasMegaMenu: true,
+        megaMenuType: 'aiCodingStack',
       },
       { href: '/ai-coding-landscape', translationKey: 'landscape', namespace: 'header' },
+      {
+        href: '#',
+        translationKey: 'ranking',
+        namespace: 'header',
+        hasMegaMenu: true,
+        megaMenuType: 'ranking',
+      },
       { href: '/curated-collections', translationKey: 'collections', namespace: 'header' },
     ],
     []
@@ -57,12 +67,12 @@ function Header() {
     setIsMenuOpen(false)
   }, [])
 
-  const handleMegaMenuOpen = useCallback(() => {
-    setIsMegaMenuOpen(true)
+  const handleMegaMenuOpen = useCallback((type: 'aiCodingStack' | 'ranking') => {
+    setActiveMegaMenu(type)
   }, [])
 
   const handleMegaMenuClose = useCallback(() => {
-    setIsMegaMenuOpen(false)
+    setActiveMegaMenu(null)
   }, [])
 
   // Handle keyboard shortcuts for search
@@ -92,23 +102,29 @@ function Header() {
   // Render desktop menu item
   const renderDesktopMenuItem = useCallback(
     (item: MenuItem) => {
-      if (item.hasMegaMenu) {
+      if (item.hasMegaMenu && item.megaMenuType) {
+        const isActive = activeMegaMenu === item.megaMenuType
         return (
           <li
             key={item.href}
             className="relative"
-            onMouseEnter={handleMegaMenuOpen}
+            onMouseEnter={() => handleMegaMenuOpen(item.megaMenuType!)}
             onMouseLeave={handleMegaMenuClose}
           >
             <Link
               href={item.href}
               className={DESKTOP_LINK_CLASSES}
-              aria-expanded={isMegaMenuOpen}
+              aria-expanded={isActive}
               aria-haspopup="true"
             >
               {getMenuText(item)}
             </Link>
-            <MegaMenu isOpen={isMegaMenuOpen} onClose={handleMegaMenuClose} />
+            {item.megaMenuType === 'aiCodingStack' && (
+              <StackMegaMenu isOpen={isActive} onClose={handleMegaMenuClose} />
+            )}
+            {item.megaMenuType === 'ranking' && (
+              <RankingMegaMenu isOpen={isActive} onClose={handleMegaMenuClose} />
+            )}
           </li>
         )
       }
@@ -127,7 +143,7 @@ function Header() {
         </li>
       )
     },
-    [isMegaMenuOpen, handleMegaMenuOpen, handleMegaMenuClose, getMenuText]
+    [activeMegaMenu, handleMegaMenuOpen, handleMegaMenuClose, getMenuText]
   )
 
   // Render mobile menu item

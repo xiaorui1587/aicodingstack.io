@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 import { memo, useMemo } from 'react'
 import { Link } from '@/i18n/navigation'
 
-interface MegaMenuProps {
+interface StackMegaMenuProps {
   isOpen: boolean
   onClose: () => void
 }
@@ -80,7 +80,7 @@ const MenuColumn = memo(function MenuColumn({
   )
 })
 
-export const MegaMenu = memo(function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
+export const StackMegaMenu = memo(function StackMegaMenu({ isOpen, onClose }: StackMegaMenuProps) {
   const tStacks = useTranslations('stacks')
   const tNav = useTranslations('header')
 
@@ -101,17 +101,7 @@ export const MegaMenu = memo(function MegaMenu({ isOpen, onClose }: MegaMenuProp
   )
 
   // Memoize featured links configuration
-  const featuredLinks = useMemo<FeaturedLink[]>(
-    () => [
-      {
-        href: '/open-source-rank',
-        titleKey: 'openSourceRank',
-        descKey: 'openSourceRankDesc',
-        marginBottom: 'md',
-      },
-    ],
-    []
-  )
+  const featuredLinks = useMemo<FeaturedLink[]>(() => [], [])
 
   // Memoize menu columns configuration
   const menuColumns = useMemo<MenuColumn[]>(
@@ -137,23 +127,22 @@ export const MegaMenu = memo(function MegaMenu({ isOpen, onClose }: MegaMenuProp
           ))}
 
           {/* Two Column Grid */}
-          <div className="grid grid-cols-2 gap-[var(--spacing-md)] mb-[var(--spacing-sm)]">
+          <div className="grid grid-cols-2 gap-[var(--spacing-md)]">
             {menuColumns.map(column => (
               <MenuColumn key={column.titleKey} {...column} onClose={onClose} tNav={tNav} />
             ))}
           </div>
 
-          {/* All Vendors */}
-          <Link
-            href="/vendors"
-            onClick={onClose}
-            className="flex items-center justify-between px-[var(--spacing-sm)] py-[var(--spacing-xs)] border border-[var(--color-border)] hover:border-[var(--color-border-strong)] hover:bg-[var(--color-hover)] transition-all group"
-          >
-            <span className="text-sm font-medium">{tStacks('vendors')}</span>
-            <span className="text-[var(--color-text-muted)] group-hover:text-[var(--color-text)] group-hover:translate-x-1 transition-all">
-              →
-            </span>
-          </Link>
+          {/* All Vendors - separated by top border */}
+          <div className="mt-[var(--spacing-md)] pt-[var(--spacing-sm)] border-t border-[var(--color-border)]">
+            <Link
+              href="/vendors"
+              onClick={onClose}
+              className="block px-[var(--spacing-xs)] py-1 text-sm hover:bg-[var(--color-hover)] transition-colors"
+            >
+              {tStacks('vendors')}
+            </Link>
+          </div>
         </div>
       </div>
     </div>
