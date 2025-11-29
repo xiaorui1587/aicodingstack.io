@@ -1,13 +1,33 @@
 {
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
   "version": "0.2",
-  "language": "en,de",
-  "dictionaries": ["de"],
+  "language": "en,de,es,fr,pt,ru",
+  "dictionaries": ["de", "es", "fr", "pt", "ru"],
   "dictionaryDefinitions": [
     {
       "name": "de",
       "path": "node_modules/@cspell/dict-de-de/de_DE.trie.gz",
       "description": "German dictionary"
+    },
+    {
+      "name": "es",
+      "path": "node_modules/@cspell/dict-es-es/Spanish.trie.gz",
+      "description": "Spanish dictionary"
+    },
+    {
+      "name": "fr",
+      "path": "node_modules/@cspell/dict-fr-fr/fr-fr.trie.gz",
+      "description": "French dictionary"
+    },
+    {
+      "name": "pt",
+      "path": "node_modules/@cspell/dict-pt-pt/dict/Portuguese-European.trie.gz",
+      "description": "Portuguese dictionary"
+    },
+    {
+      "name": "ru",
+      "path": "node_modules/@cspell/dict-ru_ru/ru_RU.trie.gz",
+      "description": "Russian dictionary"
     }
   ],
   "useGitignore": true,
@@ -33,7 +53,10 @@
     "RLHF",
     "Roo",
     "shareAI",
-    "TRAE"
+    "TRAE",
+    "linkedin",
+    "gemini",
+    "aicodingstack"
   ],
   "allowCompoundWords": true
 }
