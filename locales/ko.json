@@ -1,6 +1,8 @@
 {
+  "common": {
+    "comparison": "Comparison"
+  },
   "stacks": {
-    "aiCodingStack": "AI Coding Stack",
     "ides": "IDE",
     "clis": "CLI",
     "extensions": "확장 프로그램",
@@ -20,19 +22,13 @@
     "openrouter": "OpenRouter"
   },
   "header": {
-    "docs": "문서",
-    "articles": "아티클",
-    "curatedCollections": "큐레이션 컬렉션",
-    "comparison": "비교",
-    "features": "기능",
-    "manifesto": "선언문",
     "aiCodingStack": "AI Coding Stack",
-    "collections": "컬렉션",
+    "manifesto": "선언문",
     "landscape": "생태계",
-    "aiCodingLandscape": "AI 코딩 생태계",
-    "aiCodingLandscapeDesc": "전체 AI 코딩 생태계 시각화",
+    "ranking": "순위",
     "openSourceRank": "오픈소스 순위",
     "openSourceRankDesc": "GitHub 스타 수로 오픈소스 AI 코딩 프로젝트 탐색",
+    "collections": "컬렉션",
     "developmentTools": "개발 도구",
     "intelligence": "인텔리전스",
     "toggleMenu": "메뉴 토글",
@@ -40,6 +36,22 @@
     "closeMenu": "메뉴 닫기",
     "search": "검색",
     "searchPlaceholder": "검색..."
+  },
+  "footer": {
+    "tagline": "AI 코딩 생태계 허브.",
+    "openSource": "오픈소스 AI 코딩 메타데이터 저장소.",
+    "resources": "리소스",
+    "documentation": "문서",
+    "docs": "Docs",
+    "articles": "Articles",
+    "curatedCollections": "Curated Collections",
+    "faq": "FAQ",
+    "community": "커뮤니티",
+    "copyright": "© 2025 AI Coding Stack • ❤︎로 제작됨 • 오픈소스",
+    "darkMode": "다크 모드",
+    "lightMode": "라이트 모드",
+    "selectLanguage": "언어 선택",
+    "toggleTheme": "테마 토글"
   },
   "search": {
     "title": "검색 결과",
@@ -59,20 +71,6 @@
       "providers": "모델 제공자",
       "vendors": "벤더"
     }
-  },
-  "footer": {
-    "aicodingstack": "AI Coding Stack",
-    "tagline": "AI 코딩 생태계 허브.",
-    "openSource": "오픈소스 AI 코딩 메타데이터 저장소.",
-    "resources": "리소스",
-    "documentation": "문서",
-    "community": "커뮤니티",
-    "copyright": "© 2025 AI Coding Stack • ❤︎로 제작됨 • 오픈소스",
-    "darkMode": "다크 모드",
-    "lightMode": "라이트 모드",
-    "faq": "FAQ",
-    "selectLanguage": "언어 선택",
-    "toggleTheme": "테마 토글"
   },
   "pages": {
     "home": {
@@ -346,14 +344,6 @@
     }
   },
   "comparison": {
-    "breadcrumb": {
-      "aiCodingStack": "AI Coding Stack",
-      "comparison": "비교",
-      "ides": "IDE",
-      "clis": "CLI",
-      "extensions": "확장 프로그램",
-      "models": "모델"
-    },
     "ides": {
       "title": "IDE 비교",
       "subtitle": "AI 기반 IDE의 기능, 가격 및 사양을 나란히 비교하세요.",
@@ -416,11 +406,6 @@
       "specifications": "사양 및 프로토콜",
       "articles": "추천 아티클",
       "tools": "생태계 도구"
-    },
-    "stackSidebar": {
-      "title": "스택",
-      "label": "AI Coding Stack",
-      "overview": "개요"
     },
     "filterSortBar": {
       "search": "이름으로 검색...",

@@ -4,7 +4,7 @@
  * Translate language file with Claude Code assistance
  *
  * This script:
- * 1. Reads messages/en.json and messages/<locale>.json
+ * 1. Reads locales/en.json and locales/<locale>.json
  * 2. Identifies keys that need translation (currently in English)
  * 3. Outputs translation tasks for Claude Code to perform
  * 4. Reads translated content from stdin
@@ -31,8 +31,8 @@ const colors = {
 
 // Get project root (4 levels up from .claude/skills/i18n/scripts/)
 const PROJECT_ROOT = path.resolve(__dirname, '../../../../')
-const MESSAGES_DIR = path.join(PROJECT_ROOT, 'messages')
-const EN_FILE = path.join(MESSAGES_DIR, 'en.json')
+const LOCALES_DIR = path.join(PROJECT_ROOT, 'locales')
+const EN_FILE = path.join(LOCALES_DIR, 'en.json')
 
 // Locale display names
 const LOCALE_NAMES = {
@@ -228,7 +228,7 @@ function main() {
     process.exit(1)
   }
 
-  const targetFile = path.join(MESSAGES_DIR, `${locale}.json`)
+  const targetFile = path.join(LOCALES_DIR, `${locale}.json`)
 
   console.log(`${colors.cyan}🌐 Translation Assistant for ${locale}${colors.reset}\n`)
 

@@ -1,13 +1,14 @@
 {
+  "common": {
+    "comparison": "Comparison"
+  },
   "stacks": {
-    "aiCodingStack": "AI Coding Stack",
     "ides": "IDEs",
     "clis": "CLIs",
     "extensions": "Erweiterungen",
     "models": "Modelle",
     "modelProviders": "Modellanbieter",
-    "vendors": "Anbieter",
-    "comparison": "Vergleich"
+    "vendors": "Anbieter"
   },
   "community": {
     "github": "GitHub",
@@ -21,19 +22,13 @@
     "openrouter": "OpenRouter"
   },
   "header": {
-    "docs": "Dokumentation",
-    "articles": "Artikel",
-    "curatedCollections": "Kuratierte Sammlungen",
-    "comparison": "Vergleich",
-    "features": "Funktionen",
-    "manifesto": "Manifest",
     "aiCodingStack": "AI Coding Stack",
-    "collections": "Sammlungen",
+    "manifesto": "Manifest",
     "landscape": "Landschaft",
-    "aiCodingLandscape": "KI-Coding-Landschaft",
-    "aiCodingLandscapeDesc": "Visualisieren Sie das gesamte KI-Coding-Ökosystem",
+    "ranking": "Ranking",
     "openSourceRank": "Open Source Ranking",
     "openSourceRankDesc": "Erkunden Sie Open-Source-KI-Coding-Projekte nach GitHub-Sternen",
+    "collections": "Sammlungen",
     "developmentTools": "Entwicklungstools",
     "intelligence": "Intelligenz",
     "toggleMenu": "Menü umschalten",
@@ -41,6 +36,22 @@
     "closeMenu": "Menü schließen",
     "search": "Suchen",
     "searchPlaceholder": "Suchen..."
+  },
+  "footer": {
+    "tagline": "Ihr KI-Coding-Ökosystem-Hub.",
+    "openSource": "Open-Source-KI-Coding-Metadaten-Repository.",
+    "resources": "Ressourcen",
+    "documentation": "Dokumentation",
+    "docs": "Docs",
+    "articles": "Articles",
+    "curatedCollections": "Curated Collections",
+    "faq": "FAQ",
+    "community": "Community",
+    "copyright": "© 2025 AI Coding Stack • Mit ❤︎ erstellt • Open Source",
+    "darkMode": "Dunkelmodus",
+    "lightMode": "Hellmodus",
+    "selectLanguage": "Sprache auswählen",
+    "toggleTheme": "Thema umschalten"
   },
   "search": {
     "title": "Suchergebnisse",
@@ -60,20 +71,6 @@
       "providers": "Modellanbieter",
       "vendors": "Anbieter"
     }
-  },
-  "footer": {
-    "aicodingstack": "AI Coding Stack",
-    "tagline": "Ihr KI-Coding-Ökosystem-Hub.",
-    "openSource": "Open-Source-KI-Coding-Metadaten-Repository.",
-    "resources": "Ressourcen",
-    "documentation": "Dokumentation",
-    "community": "Community",
-    "copyright": "© 2025 AI Coding Stack • Mit ❤︎ erstellt • Open Source",
-    "darkMode": "Dunkelmodus",
-    "lightMode": "Hellmodus",
-    "faq": "FAQ",
-    "selectLanguage": "Sprache auswählen",
-    "toggleTheme": "Thema umschalten"
   },
   "pages": {
     "home": {
@@ -409,11 +406,6 @@
       "specifications": "Spezifikationen & Protokolle",
       "articles": "Featured Artikel",
       "tools": "Ökosystem-Tools"
-    },
-    "stackSidebar": {
-      "title": "STACKS",
-      "label": "AI Coding Stack",
-      "overview": "Übersicht"
     },
     "filterSortBar": {
       "search": "Nach Namen suchen...",

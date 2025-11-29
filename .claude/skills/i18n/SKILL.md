@@ -5,14 +5,14 @@ description: Internationalization management tool for syncing and translating la
 
 # I18n Management Skill
 
-Manage multilingual content in the `messages/` directory. This skill provides tools to synchronize language files with the English reference and assist with translations.
+Manage multilingual content in the `locales/` directory. This skill provides tools to synchronize language files with the English reference and assist with translations.
 
 ## Overview
 
-This project uses `next-intl` for internationalization with JSON message files stored in `messages/`:
+This project uses `next-intl` for internationalization with JSON message files stored in `locales/`:
 
-- `messages/en.json` - English (source of truth)
-- `messages/zh-Hans.json` - Simplified Chinese
+- `locales/en.json` - English (source of truth)
+- `locales/zh-Hans.json` - Simplified Chinese
 - Additional language files can be added
 
 All language files must maintain the same nested key structure as `en.json`.
@@ -25,7 +25,7 @@ Synchronize all language files with `en.json` as the source of truth.
 
 **What it does:**
 
-- Scans all `.json` files in `messages/` directory
+- Scans all `.json` files in `locales/` directory
 - Compares each file's keys with `en.json`
 - **Adds missing keys** with English text as placeholder (needs translation)
 - **Removes extra keys** not present in `en.json`
@@ -195,7 +195,7 @@ export const locales = ['en', 'zh-Hans', 'ja'] as const; // Add 'ja'
 2. Create an empty JSON file or copy `en.json`:
 
 ```bash
-cp messages/en.json messages/ja.json
+cp locales/en.json locales/ja.json
 ```
 
 3. Run sync to ensure structure matches:
@@ -224,7 +224,7 @@ Please run the i18n translate command for ja
 **Problem:** Script says "file not found"
 
 - **Solution:** Ensure you're running from project root
-- Check that `messages/` directory exists
+- Check that `locales/` directory exists
 
 **Problem:** Keys are out of sync after adding new content
 
@@ -245,7 +245,7 @@ This skill is designed to work with the project's `next-intl` setup:
 ```typescript
 // src/i18n/request.ts
 export default getRequestConfig(async ({ locale }) => ({
-  messages: (await import(`../../messages/${locale}.json`)).default,
+  messages: (await import(`../../locales/${locale}.json`)).default,
 }));
 ```
 

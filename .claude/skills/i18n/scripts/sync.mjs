@@ -4,8 +4,8 @@
  * Sync all language files with en.json as source of truth
  *
  * This script:
- * 1. Reads messages/en.json as the reference
- * 2. Scans all other .json files in messages/
+ * 1. Reads locales/en.json as the reference
+ * 2. Scans all other .json files in locales/
  * 3. Adds missing keys (with English text as placeholder)
  * 4. Removes extra keys not present in en.json
  * 5. Preserves JSON structure and formatting
@@ -30,8 +30,8 @@ const colors = {
 
 // Get project root (4 levels up from .claude/skills/i18n/scripts/)
 const PROJECT_ROOT = path.resolve(__dirname, '../../../../')
-const MESSAGES_DIR = path.join(PROJECT_ROOT, 'messages')
-const EN_FILE = path.join(MESSAGES_DIR, 'en.json')
+const LOCALES_DIR = path.join(PROJECT_ROOT, 'locales')
+const EN_FILE = path.join(LOCALES_DIR, 'en.json')
 
 /**
  * Recursively get all keys from a nested object
@@ -104,6 +104,68 @@ function deleteValueByPath(obj, path) {
 }
 
 /**
+ * Recursively rebuild object with same structure and order as reference
+ * @param {Object} reference - The reference object (en.json)
+ * @param {Object} target - The target object to sync
+ * @param {Array} added - Array to track added keys
+ * @param {Array} removed - Array to track removed keys
+ * @param {string} prefix - Current key path prefix
+ * @returns {Object} Rebuilt object with same structure as reference
+ */
+function rebuildWithSameOrder(reference, target, added, removed, prefix = '') {
+  const result = {}
+
+  // Iterate through reference keys in order
+  for (const [key, refValue] of Object.entries(reference)) {
+    const fullKey = prefix ? `${prefix}.${key}` : key
+
+    if (refValue !== null && typeof refValue === 'object' && !Array.isArray(refValue)) {
+      // It's a nested object
+      if (
+        key in target &&
+        typeof target[key] === 'object' &&
+        target[key] !== null &&
+        !Array.isArray(target[key])
+      ) {
+        // Recursively rebuild nested object
+        result[key] = rebuildWithSameOrder(refValue, target[key], added, removed, fullKey)
+      } else {
+        // Missing nested object, use reference structure
+        result[key] = rebuildWithSameOrder(refValue, {}, added, removed, fullKey)
+        // Track all leaf keys as added
+        const leafKeys = getAllKeys(refValue, fullKey)
+        added.push(...leafKeys)
+      }
+    } else {
+      // It's a leaf value
+      if (key in target) {
+        // Use target's translation
+        result[key] = target[key]
+      } else {
+        // Missing key, use English as placeholder
+        result[key] = refValue
+        added.push(fullKey)
+      }
+    }
+  }
+
+  // Track removed keys (keys in target but not in reference)
+  for (const key in target) {
+    const fullKey = prefix ? `${prefix}.${key}` : key
+    if (!(key in reference)) {
+      if (typeof target[key] === 'object' && target[key] !== null && !Array.isArray(target[key])) {
+        const leafKeys = getAllKeys(target[key], fullKey)
+        removed.push(...leafKeys)
+      } else {
+        removed.push(fullKey)
+      }
+    }
+  }
+
+  return result
+}
+
+/**
  * Sync a target language file with the English reference
  * @param {string} targetFile - Path to the target language file
  * @param {Object} enData - English reference data
@@ -111,33 +173,15 @@ function deleteValueByPath(obj, path) {
  */
 function syncLanguageFile(targetFile, enData) {
   const targetData = JSON.parse(fs.readFileSync(targetFile, 'utf-8'))
-  const enKeys = getAllKeys(enData)
-  const targetKeys = getAllKeys(targetData)
 
   const added = []
   const removed = []
 
-  // Add missing keys from en.json
-  for (const key of enKeys) {
-    if (!targetKeys.includes(key)) {
-      const enValue = getValueByPath(enData, key)
-      setValueByPath(targetData, key, enValue)
-      added.push(key)
-    }
-  }
+  // Rebuild target with same structure and order as en.json
+  const syncedData = rebuildWithSameOrder(enData, targetData, added, removed)
 
-  // Remove extra keys not in en.json
-  for (const key of targetKeys) {
-    if (!enKeys.includes(key)) {
-      deleteValueByPath(targetData, key)
-      removed.push(key)
-    }
-  }
-
-  // Write back with consistent formatting (2 spaces indentation)
-  if (added.length > 0 || removed.length > 0) {
-    fs.writeFileSync(targetFile, `${JSON.stringify(targetData, null, 2)}\n`, 'utf-8')
-  }
+  // Always write to ensure correct order
+  fs.writeFileSync(targetFile, `${JSON.stringify(syncedData, null, 2)}\n`, 'utf-8')
 
   return { added, removed }
 }
@@ -148,9 +192,9 @@ function syncLanguageFile(targetFile, enData) {
 function main() {
   console.log(`${colors.cyan}🔄 Syncing language files with en.json...${colors.reset}\n`)
 
-  // Check if messages directory exists
-  if (!fs.existsSync(MESSAGES_DIR)) {
-    console.error(`${colors.red}✗ Messages directory not found: ${MESSAGES_DIR}${colors.reset}`)
+  // Check if locales directory exists
+  if (!fs.existsSync(LOCALES_DIR)) {
+    console.error(`${colors.red}✗ Locales directory not found: ${LOCALES_DIR}${colors.reset}`)
     process.exit(1)
   }
 
@@ -164,9 +208,9 @@ function main() {
 
   // Get all language files except en.json
   const files = fs
-    .readdirSync(MESSAGES_DIR)
+    .readdirSync(LOCALES_DIR)
     .filter(file => file.endsWith('.json') && file !== 'en.json')
-    .map(file => path.join(MESSAGES_DIR, file))
+    .map(file => path.join(LOCALES_DIR, file))
 
   if (files.length === 0) {
     console.log(`${colors.yellow}⚠ No other language files found to sync${colors.reset}`)
