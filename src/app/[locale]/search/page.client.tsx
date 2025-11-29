@@ -104,7 +104,9 @@ export default function SearchPageClient({ locale, initialQuery }: Props) {
                           </h3>
                           <div className="mt-1">
                             <span className="inline-block px-2 py-0.5 text-xs border border-[var(--color-border)] text-[var(--color-text-muted)]">
-                              {t(`categories.${result.category}`)}
+                              {t(
+                                `stacks.${result.category === 'providers' ? 'modelProviders' : result.category}`
+                              )}
                             </span>
                           </div>
                         </div>

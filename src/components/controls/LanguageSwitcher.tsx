@@ -1,5 +1,6 @@
 'use client'
 
+import { Languages } from 'lucide-react'
 import { usePathname, useRouter } from 'next/navigation'
 import { useLocale, useTranslations } from 'next-intl'
 import { useEffect, useRef, useState } from 'react'
@@ -118,11 +119,13 @@ export default function LanguageSwitcher() {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-block w-auto px-[var(--spacing-sm)] py-[var(--spacing-xs)] border border-[var(--color-border)] hover:bg-[var(--color-hover)] transition-colors text-xs font-light tracking-tight text-left"
+        className="footer-control-button"
+        title={t('selectLanguage')}
         aria-label={t('selectLanguage')}
         aria-expanded={isOpen}
       >
-        🌐 {localeLabels[locale]}
+        <Languages className="footer-control-icon" />
+        {localeLabels[locale]}
       </button>
 
       {isOpen && (

@@ -47,8 +47,8 @@ export default function ComparisonTable({
         return
       }
 
-      const header = document.querySelector('header')
-      const breadcrumb = document.querySelector('[data-breadcrumb]')
+      const header = document.querySelector('header') as HTMLElement | null
+      const breadcrumb = document.querySelector('[data-breadcrumb]') as HTMLElement | null
       const headerHeight = header?.offsetHeight || 0
       const breadcrumbHeight = breadcrumb?.offsetHeight || 0
       setCalculatedOffset(headerHeight + breadcrumbHeight)

@@ -265,7 +265,6 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
       <Header />
 
       <Breadcrumb
-        sticky
         items={[
           { name: tStacks('aiCodingStack'), href: '/ai-coding-stack' },
           { name: tStacks('extensions'), href: '/extensions' },

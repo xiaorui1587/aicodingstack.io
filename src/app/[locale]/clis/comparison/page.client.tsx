@@ -279,7 +279,6 @@ export default function CLIComparisonPageClient({ locale }: Props) {
       <Header />
 
       <Breadcrumb
-        sticky
         items={[
           { name: tStacks('aiCodingStack'), href: '/ai-coding-stack' },
           { name: tStacks('clis'), href: '/clis' },

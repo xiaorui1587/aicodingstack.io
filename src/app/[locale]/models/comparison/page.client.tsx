@@ -140,7 +140,6 @@ export default function ModelComparisonPageClient({ locale }: Props) {
       <Header />
 
       <Breadcrumb
-        sticky
         items={[
           { name: tStacks('aiCodingStack'), href: '/ai-coding-stack' },
           { name: tStacks('models'), href: '/models' },
