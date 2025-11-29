@@ -177,7 +177,7 @@ function generateCollectionsMetadata() {
   const collectionsData = JSON.parse(fileContents)
 
   // Remove $schema property as it's not part of the CollectionSection type
-  const { $schema, ...collections } = collectionsData
+  const { $schema: _$schema, ...collections } = collectionsData
   return collections
 }
 

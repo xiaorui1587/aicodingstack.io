@@ -56,54 +56,6 @@ function getAllKeys(obj, prefix = '') {
 }
 
 /**
- * Get value from nested object using dot notation
- * @param {Object} obj - The object to query
- * @param {string} path - Dot notation path (e.g., 'pages.home.title')
- * @returns {*} The value at the path
- */
-function getValueByPath(obj, path) {
-  return path.split('.').reduce((current, key) => current?.[key], obj)
-}
-
-/**
- * Set value in nested object using dot notation
- * @param {Object} obj - The object to modify
- * @param {string} path - Dot notation path
- * @param {*} value - Value to set
- */
-function setValueByPath(obj, path, value) {
-  const keys = path.split('.')
-  const lastKey = keys.pop()
-  const target = keys.reduce((current, key) => {
-    if (!(key in current)) {
-      current[key] = {}
-    }
-    return current[key]
-  }, obj)
-  target[lastKey] = value
-}
-
-/**
- * Delete value from nested object using dot notation
- * @param {Object} obj - The object to modify
- * @param {string} path - Dot notation path
- */
-function deleteValueByPath(obj, path) {
-  const keys = path.split('.')
-  const lastKey = keys.pop()
-  const target = keys.reduce((current, key) => current?.[key], obj)
-
-  if (target && lastKey in target) {
-    delete target[lastKey]
-
-    // Clean up empty parent objects
-    if (Object.keys(target).length === 0 && keys.length > 0) {
-      deleteValueByPath(obj, keys.join('.'))
-    }
-  }
-}
-
-/**
  * Recursively rebuild object with same structure and order as reference
  * @param {Object} reference - The reference object (en.json)
  * @param {Object} target - The target object to sync
