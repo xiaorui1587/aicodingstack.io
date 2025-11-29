@@ -1,9 +1,7 @@
-'use client'
-
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import LanguageSwitcher from './controls/LanguageSwitcher'
-import { useTheme } from './ThemeProvider'
+import ThemeSwitcher from './controls/ThemeSwitcher'
 
 // Footer link list component to reduce code duplication
 interface FooterLinkListProps {
@@ -19,19 +17,11 @@ function FooterLinkList({ title, links }: FooterLinkListProps) {
         {links.map(item => (
           <li key={item.href}>
             {item.isExternal ? (
-              <a
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors font-light"
-              >
+              <a href={item.href} target="_blank" rel="noopener noreferrer" className="footer-link">
                 {item.label}
               </a>
             ) : (
-              <Link
-                href={item.href}
-                className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors font-light"
-              >
+              <Link href={item.href} className="footer-link">
                 {item.label}
               </Link>
             )}
@@ -42,12 +32,11 @@ function FooterLinkList({ title, links }: FooterLinkListProps) {
   )
 }
 
-function Footer() {
-  const { theme, toggleTheme } = useTheme()
-  const tFooter = useTranslations('footer')
-  const tCommunity = useTranslations('community')
-  const tStacks = useTranslations('stacks')
-  const tNav = useTranslations('header')
+export default async function Footer() {
+  const tFooter = await getTranslations('footer')
+  const tCommunity = await getTranslations('community')
+  const tStacks = await getTranslations('stacks')
+  const tHeader = await getTranslations('header')
 
   // Define link arrays (static hrefs, only labels depend on translations)
   const resourceLinks = [
@@ -60,9 +49,9 @@ function Footer() {
   ]
 
   const documentationLinks = [
-    { href: '/docs', label: tNav('docs') },
-    { href: '/articles', label: tNav('articles') },
-    { href: '/curated-collections', label: tNav('curatedCollections') },
+    { href: '/docs', label: tFooter('docs') },
+    { href: '/articles', label: tFooter('articles') },
+    { href: '/curated-collections', label: tFooter('curatedCollections') },
     { href: '/#faq', label: tFooter('faq') },
   ]
 
@@ -89,20 +78,13 @@ function Footer() {
       <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-9 gap-[var(--spacing-lg)] mb-[var(--spacing-lg)]">
           <div className="flex flex-col gap-[var(--spacing-sm)] lg:col-span-3">
-            <span className="text-sm font-semibold tracking-tight">{tFooter('aicodingstack')}</span>
+            <span className="text-sm font-semibold tracking-tight">{tHeader('aiCodingStack')}</span>
             <p className="text-sm pb-[var(--spacing-sm)] leading-[1.8] text-[var(--color-text-secondary)] font-light">
               {tFooter('tagline')}
               <span className="block mt-[var(--spacing-sm)]">{tFooter('openSource')}</span>
             </p>
             <div className="flex gap-[var(--spacing-xs)]">
-              <button
-                type="button"
-                onClick={toggleTheme}
-                className="inline-block w-auto px-[var(--spacing-sm)] py-[var(--spacing-xs)] border border-[var(--color-border)] hover:bg-[var(--color-hover)] transition-colors text-xs font-light tracking-tight text-left"
-                aria-label={tFooter('toggleTheme')}
-              >
-                {theme === 'light' ? `◐ ${tFooter('darkMode')}` : `◑ ${tFooter('lightMode')}`}
-              </button>
+              <ThemeSwitcher />
               <LanguageSwitcher />
             </div>
           </div>
@@ -123,5 +105,3 @@ function Footer() {
     </footer>
   )
 }
-
-export default Footer

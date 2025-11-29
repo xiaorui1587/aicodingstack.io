@@ -218,3 +218,40 @@ code.hljs:not(pre code.hljs) {
 [data-theme="dark"] .hljs-selector-tag {
   color: #ff7b72;
 }
+
+/* Footer control button styles */
+.footer-control-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.75rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.footer-control-button:hover {
+  border-color: var(--color-border-strong);
+  background-color: var(--color-hover);
+}
+
+.footer-control-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+/* Footer link styles */
+.footer-link {
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: var(--color-text);
+}
