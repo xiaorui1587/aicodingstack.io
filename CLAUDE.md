@@ -4,10 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Internationalization (i18n)
 
-**CRITICAL REQUIREMENTS:**
-
 When creating or modifying any page, module, or data:
-- **MUST support at least 3 languages:** English, Simplified Chinese (zh-Hans), and German (de)
+- **MUST support at least 3 languages:** English, Simplified Chinese (zh-Hans), and German (de), NEVER hardcode `'en' | 'zh-Hans'`
 - **MUST use the localized Link component:** Always import and use `import { Link } from '@/i18n/navigation'` instead of Next.js default Link
 
 ### Localization Best Practices
@@ -23,19 +21,28 @@ When creating or modifying any page, module, or data:
 - **Minimalist approach:** Follow a unified, extremely minimalist design style throughout the entire application
 - **No rounded corners:** All controls, components, labels, and UI elements MUST use sharp corners (border-radius: 0)
 - **Restrained color usage:** Use colors extremely sparingly and intentionally. Prefer grayscale and limit accent colors to essential UI elements only. If colors must be used, prefer low-saturation designs.
-- **Icon usage:** Avoid using emoji or any other characters as icons. Prioritize SVG for icons.
+- **Icon usage:** Prefer using Lucide SVG icons. Avoid using emoji or any other characters as icons.
 - **Page width:**
   - `max-w-8xl`: for all pages globally
-  - `max-w-5xl`: for content pages and homepage
+  - `max-w-6xl`: for content pages and homepage
 
 ## Coding Principles
-
-**CRITICAL: Follow these principles rigorously in all code:**
 
 ### DRY - Don't Repeat Yourself
 - Eliminate code duplication by extracting common logic
 - Reuse existing components, functions, and translation keys
 - Create shared utilities when patterns emerge
+
+## Metadata & SEO
+
+- **File-based OG images:** Use `opengraph-image.tsx` files for all routes, NOT code-based image paths
+- **Request memoization:** Wrap all data fetchers with React `cache()` to prevent duplicate fetching in `generateMetadata()` and page components
+- **Type-safe locales:** Always use `import type { Locale } from '@/i18n/config'`
+- **Auto-detected OG images:** Do NOT manually specify `images` in OpenGraph metadata - Next.js auto-detects `opengraph-image.tsx` files
+
+**OG Image Design:**
+- Size: 1200x630px (OpenGraph standard)
+- Follow global design system strictly
 
 ## Development Workflow
 
