@@ -148,14 +148,6 @@
       "providers": "Modellanbieter",
       "vendors": "Anbieter"
     },
-    "stacks": {
-      "clis": "@:shared.stacks.clis",
-      "extensions": "@:shared.stacks.extensions",
-      "ides": "@:shared.stacks.ides",
-      "models": "@:shared.stacks.models",
-      "modelProviders": "@:shared.stacks.modelProviders",
-      "vendors": "@:shared.stacks.vendors"
-    },
     "navigate": "zum Navigieren",
     "noResults": "Keine Ergebnisse gefunden",
     "noResultsFor": "Keine Ergebnisse für \"{query}\" gefunden",
@@ -164,6 +156,14 @@
     "resultsCountFor": "{count} {count, plural, one {Ergebnis} other {Ergebnisse}} für \"{query}\"",
     "searching": "Suchen...",
     "select": "zum Auswählen",
+    "stacks": {
+      "clis": "@:shared.stacks.clis",
+      "extensions": "@:shared.stacks.extensions",
+      "ides": "@:shared.stacks.ides",
+      "modelProviders": "@:shared.stacks.modelProviders",
+      "models": "@:shared.stacks.models",
+      "vendors": "@:shared.stacks.vendors"
+    },
     "title": "Suchergebnisse"
   },
   "sidebar": {

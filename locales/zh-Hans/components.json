@@ -148,14 +148,6 @@
       "providers": "模型提供商",
       "vendors": "供应商"
     },
-    "stacks": {
-      "clis": "@:shared.stacks.clis",
-      "extensions": "@:shared.stacks.extensions",
-      "ides": "@:shared.stacks.ides",
-      "models": "@:shared.stacks.models",
-      "modelProviders": "@:shared.stacks.modelProviders",
-      "vendors": "@:shared.stacks.vendors"
-    },
     "navigate": "导航",
     "noResults": "未找到结果",
     "noResultsFor": "未找到\"{query}\"的结果",
@@ -164,6 +156,14 @@
     "resultsCountFor": "找到 {count} 个\"{query}\"的结果",
     "searching": "搜索中...",
     "select": "选择",
+    "stacks": {
+      "clis": "@:shared.stacks.clis",
+      "extensions": "@:shared.stacks.extensions",
+      "ides": "@:shared.stacks.ides",
+      "modelProviders": "@:shared.stacks.modelProviders",
+      "models": "@:shared.stacks.models",
+      "vendors": "@:shared.stacks.vendors"
+    },
     "title": "搜索结果"
   },
   "sidebar": {

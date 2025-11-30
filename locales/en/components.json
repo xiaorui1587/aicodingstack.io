@@ -148,14 +148,6 @@
       "providers": "@:shared.stacks.modelProviders",
       "vendors": "@:shared.stacks.vendors"
     },
-    "stacks": {
-      "clis": "@:shared.stacks.clis",
-      "extensions": "@:shared.stacks.extensions",
-      "ides": "@:shared.stacks.ides",
-      "models": "@:shared.stacks.models",
-      "modelProviders": "@:shared.stacks.modelProviders",
-      "vendors": "@:shared.stacks.vendors"
-    },
     "navigate": "to navigate",
     "noResults": "No results found",
     "noResultsFor": "No results found for \"{query}\"",
@@ -164,6 +156,14 @@
     "resultsCountFor": "{count} {count, plural, one {result} other {results}} for \"{query}\"",
     "searching": "Searching...",
     "select": "to select",
+    "stacks": {
+      "clis": "@:shared.stacks.clis",
+      "extensions": "@:shared.stacks.extensions",
+      "ides": "@:shared.stacks.ides",
+      "modelProviders": "@:shared.stacks.modelProviders",
+      "models": "@:shared.stacks.models",
+      "vendors": "@:shared.stacks.vendors"
+    },
     "title": "Search Results"
   },
   "sidebar": {
