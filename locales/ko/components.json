@@ -1,0 +1,165 @@
+{
+  "backToNavigation": {
+    "backTo": "돌아가기",
+    "indexLabel": "INDEX"
+  },
+  "collectionScrollbar": {
+    "articles": "추천 아티클",
+    "specifications": "사양 및 프로토콜",
+    "tools": "생태계 도구"
+  },
+  "docsSidebar": {
+    "label": "문서",
+    "title": "문서"
+  },
+  "filterSortBar": {
+    "clearFilters": "필터 지우기",
+    "license": "라이선스:",
+    "openSource": "오픈소스",
+    "platform": "플랫폼:",
+    "proprietary": "독점",
+    "search": "이름으로 검색...",
+    "sort": "정렬:",
+    "sortDefault": "기본값",
+    "sortNameAsc": "이름 (A-Z)",
+    "sortNameDesc": "이름 (Z-A)"
+  },
+  "footer": {
+    "copyright": "© 2025 AI Coding Stack • ❤︎로 제작됨 • 오픈소스",
+    "openSource": "오픈소스 AI 코딩 메타데이터 저장소.",
+    "selectLanguage": "언어 선택",
+    "tagline": "AI 코딩 생태계 허브.",
+    "toggleTheme": "테마 토글"
+  },
+  "header": {
+    "aiCodingLandscape": "AI 코딩 생태계",
+    "aiCodingLandscapeDesc": "전체 AI 코딩 생태계 시각화",
+    "aiCodingStack": "AI Coding Stack",
+    "articles": "문서",
+    "closeMenu": "메뉴 닫기",
+    "collections": "컬렉션",
+    "developmentTools": "개발 도구",
+    "intelligence": "인텔리전스",
+    "landscape": "생태계",
+    "manifesto": "선언문",
+    "openMenu": "메뉴 열기",
+    "openSourceRank": "오픈소스 순위",
+    "openSourceRankDesc": "GitHub 스타 수로 오픈소스 AI 코딩 프로젝트 탐색",
+    "ranking": "순위",
+    "search": "검색",
+    "searchPlaceholder": "검색...",
+    "toggleMenu": "메뉴 토글"
+  },
+  "openSourceRank": {
+    "description": "GitHub 스타 수로 순위가 매겨진 오픈소스 AI 코딩 도구를 발견하고 탐색하세요. IDE, CLI 및 확장 프로그램을 비교하여 개발 워크플로우에 완벽한 도구를 찾으세요.",
+    "filter": {
+      "all": "전체"
+    },
+    "meta": {
+      "description": "GitHub 스타 수로 정렬된 AI Coding Stack의 모든 오픈소스 프로젝트 순위. 오픈소스 vs 독점 도구의 통계 및 트렌드 보기.",
+      "title": "오픈소스 프로젝트 순위"
+    },
+    "noResults": "이 카테고리에 대한 오픈소스 프로젝트를 찾을 수 없습니다.",
+    "note": "참고: 이 페이지는 GitHub 저장소가 있는 프로젝트만 표시합니다. 일부 프로젝트는 오픈소스가 아니더라도 사용자 피드백 채널로 GitHub 저장소를 유지합니다.",
+    "productType": {
+      "cli": "CLI",
+      "extension": "확장 프로그램",
+      "ide": "IDE"
+    },
+    "statistics": {
+      "closedSource": "독점",
+      "closedSourceCount": "독점 프로젝트",
+      "closedSourcePercentage": "독점 비율",
+      "licenseBreakdown": "라이선스 분포",
+      "openSource": "오픈소스",
+      "openSourceCount": "오픈소스 프로젝트",
+      "projects": "프로젝트",
+      "title": "오픈소스 vs 독점 분포",
+      "totalProjects": "전체 프로젝트"
+    },
+    "table": {
+      "license": "라이선스",
+      "name": "이름",
+      "openSourceTitle": "오픈소스 프로젝트 ({count})",
+      "proprietaryTitle": "독점 프로젝트 ({count})",
+      "rank": "순위",
+      "stars": "스타",
+      "type": "유형"
+    },
+    "title": "오픈소스 프로젝트 순위"
+  },
+  "productCommands": {
+    "command": "명령",
+    "install": "설치",
+    "launch": "실행"
+  },
+  "productHero": {
+    "categories": {
+      "CLI": "CLI",
+      "EXTENSION": "확장 프로그램",
+      "IDE": "IDE",
+      "MODEL": "모델",
+      "PROVIDER": "모델 제공자",
+      "VENDOR": "벤더"
+    },
+    "documentation": "문서",
+    "download": "다운로드",
+    "getApiKey": "API 키 받기",
+    "license": "라이선스",
+    "platforms": "플랫폼",
+    "providerTypes": {
+      "foundation-model-provider": "기초 모델 제공자",
+      "model-service-provider": "모델 서비스 제공자"
+    },
+    "runtime": "런타임",
+    "stars": "스타",
+    "supportedIdes": "지원되는 IDE",
+    "type": "유형",
+    "vendor": "벤더",
+    "version": "버전",
+    "visitWebsite": "웹사이트 방문"
+  },
+  "productLinks": {
+    "blog": "블로그",
+    "changelog": "변경 로그",
+    "community": "커뮤니티",
+    "discord": "Discord",
+    "download": "다운로드",
+    "github": "GitHub",
+    "issue": "이슈 추적기",
+    "linkedin": "LinkedIn",
+    "mcp": "MCP 문서",
+    "pricing": "가격",
+    "reddit": "Reddit",
+    "resources": "리소스",
+    "twitter": "X (Twitter)",
+    "youtube": "YouTube"
+  },
+  "productPricing": {
+    "title": "가격",
+    "viewFullDetails": "전체 가격 세부 정보 보기 →"
+  },
+  "search": {
+    "categories": {
+      "clis": "CLI",
+      "extensions": "확장 프로그램",
+      "ides": "IDE",
+      "models": "모델",
+      "providers": "모델 제공자",
+      "vendors": "벤더"
+    },
+    "navigate": "탐색",
+    "noResults": "결과를 찾을 수 없습니다",
+    "noResultsFor": "\"{query}\"에 대한 결과를 찾을 수 없습니다",
+    "placeholder": "AI 코딩 도구 검색...",
+    "resultsCount": "{count} {count, plural, one {개 결과} other {개 결과}}",
+    "resultsCountFor": "\"{query}\"에 대한 {count} {count, plural, one {개 결과} other {개 결과}}",
+    "searching": "검색 중...",
+    "select": "선택",
+    "title": "검색 결과"
+  },
+  "sidebar": {
+    "backToTop": "맨 위로",
+    "selectItem": "항목 선택"
+  }
+}

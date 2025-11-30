@@ -1,0 +1,47 @@
+{
+  "clis": {
+    "backTo": "返回命令行列表",
+    "subtitle": "并排对比 AI 编码命令行工具的功能、定价和规格。",
+    "title": "命令行对比"
+  },
+  "columns": {
+    "contextLength": "上下文长度",
+    "freePlan": "免费计划",
+    "githubStars": "星标数",
+    "license": "许可证",
+    "links": "链接",
+    "maxOutput": "最大输出",
+    "maxPrice": "最高价",
+    "modelSize": "模型大小",
+    "platforms": "平台",
+    "pricing": "定价",
+    "startingPrice": "起步价",
+    "supportedIdes": "支持的 IDE",
+    "vendor": "厂商",
+    "version": "版本"
+  },
+  "extensions": {
+    "backTo": "返回扩展插件列表",
+    "subtitle": "并排对比 AI 编码扩展插件的功能、定价和规格。",
+    "title": "扩展插件对比"
+  },
+  "ides": {
+    "backTo": "返回 IDE 列表",
+    "subtitle": "并排对比 AI 增强 IDE 的功能、定价和规格。",
+    "title": "IDE 对比"
+  },
+  "linkTitles": {
+    "documentation": "文档",
+    "download": "下载",
+    "officialWebsite": "官方网站"
+  },
+  "models": {
+    "backTo": "返回模型列表",
+    "subtitle": "并排对比 AI 编码模型的规格和定价。",
+    "title": "模型对比"
+  },
+  "pricingValues": {
+    "free": "免费",
+    "freeOnly": "仅免费"
+  }
+}

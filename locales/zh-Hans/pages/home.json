@@ -1,0 +1,32 @@
+{
+  "description": "探索和对比 AI 编码工具:IDE、命令行、终端、模型和提供商 — 一站式平台。",
+  "exploreTools": "探索工具",
+  "faq": "常见问题",
+  "features": {
+    "comparison": {
+      "description": "并排对比工具的详细规格、定价和功能。做出明智决策,选择最适合你工作流的 AI 编码工具。",
+      "title": "智能对比"
+    },
+    "directory": {
+      "description": "探索精心整理的 AI 编码工具集合,涵盖 IDE、CLI、扩展、模型和提供商。一站式获取,持续更新。",
+      "title": "综合目录"
+    },
+    "ecosystem": {
+      "description": "通过交互式全景视图可视化完整的 AI 编码生态系统。了解不同工具、模型和提供商如何连接和互补。",
+      "title": "生态全景"
+    },
+    "title": "核心功能",
+    "tracking": {
+      "description": "及时了解 AI 编码领域的最新发展、版本和更新。跟踪新版本发布、功能添加和生态系统变化。",
+      "title": "进展跟踪"
+    }
+  },
+  "meta": {
+    "description": "AI 编码工具综合目录。发现、对比和探索 IDE、命令行、终端、模型和提供商。",
+    "name": "AI Coding Stack",
+    "title": "AI Coding Stack - 你的 AI 编码生态中心"
+  },
+  "readDocs": "阅读文档",
+  "subtitle": "发现、对比、更快构建。",
+  "title": "你的 AI 编码生态中心"
+}

@@ -1,0 +1,32 @@
+{
+  "description": "Explore and compare AI coding tools: IDEs, CLIs, extensions, models, and providers — all in one place.",
+  "exploreTools": "@:shared.actions.explore",
+  "faq": "Frequently Asked Questions",
+  "features": {
+    "comparison": {
+      "description": "Compare tools side-by-side with detailed specifications, pricing, and features. Make informed decisions about which AI coding tools best fit your workflow.",
+      "title": "Smart Comparison"
+    },
+    "directory": {
+      "description": "Explore a curated collection of AI coding tools across IDEs, CLIs, extensions, models, and providers. All in one place, always up to date.",
+      "title": "Comprehensive Directory"
+    },
+    "ecosystem": {
+      "description": "Visualize the complete AI coding ecosystem with interactive landscape views. Understand how different tools, models, and providers connect and complement each other.",
+      "title": "Ecosystem Overview"
+    },
+    "title": "Core Features",
+    "tracking": {
+      "description": "Stay updated with the latest developments, versions, and updates across the AI coding landscape. Track new releases, feature additions, and ecosystem changes.",
+      "title": "Progress Tracking"
+    }
+  },
+  "meta": {
+    "description": "Comprehensive directory for AI coding tools. Discover, compare and explore IDEs, CLIs, extensions, models and providers.",
+    "name": "@:shared.common.aiCodingStack",
+    "title": "AI Coding Stack - Your AI Coding Ecosystem Hub"
+  },
+  "readDocs": "Read Documentation",
+  "subtitle": "Discover, Compare, Build Faster.",
+  "title": "Your AI Coding Ecosystem Hub"
+}

@@ -1,0 +1,47 @@
+{
+  "clis": {
+    "backTo": "Zurück zu CLIs",
+    "subtitle": "Vergleichen Sie Funktionen, Preise und Spezifikationen von KI-Coding-CLI-Tools nebeneinander.",
+    "title": "CLI-Vergleich"
+  },
+  "columns": {
+    "contextLength": "Kontextlänge",
+    "freePlan": "Kostenloser Plan",
+    "githubStars": "Stars",
+    "license": "Lizenz",
+    "links": "Links",
+    "maxOutput": "Max. Ausgabe",
+    "maxPrice": "Höchstpreis",
+    "modelSize": "Modellgröße",
+    "platforms": "Plattformen",
+    "pricing": "Preise",
+    "startingPrice": "Startpreis",
+    "supportedIdes": "Unterstützte IDEs",
+    "vendor": "Anbieter",
+    "version": "Version"
+  },
+  "extensions": {
+    "backTo": "Zurück zu Erweiterungen",
+    "subtitle": "Vergleichen Sie Funktionen, Preise und Spezifikationen von KI-Coding-Erweiterungen nebeneinander.",
+    "title": "Erweiterungs-Vergleich"
+  },
+  "ides": {
+    "backTo": "Zurück zu IDEs",
+    "subtitle": "Vergleichen Sie Funktionen, Preise und Spezifikationen von KI-gestützten IDEs nebeneinander.",
+    "title": "IDE-Vergleich"
+  },
+  "linkTitles": {
+    "documentation": "Dokumentation",
+    "download": "Download",
+    "officialWebsite": "Offizielle Website"
+  },
+  "models": {
+    "backTo": "Zurück zu Modellen",
+    "subtitle": "Vergleichen Sie Spezifikationen und Preise von KI-Coding-Modellen nebeneinander.",
+    "title": "Modell-Vergleich"
+  },
+  "pricingValues": {
+    "free": "Kostenlos",
+    "freeOnly": "Nur kostenlos"
+  }
+}

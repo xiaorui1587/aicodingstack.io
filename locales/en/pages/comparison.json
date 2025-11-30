@@ -1,0 +1,47 @@
+{
+  "clis": {
+    "backTo": "Back to CLIs",
+    "subtitle": "Compare features, pricing, and specifications of AI coding CLI tools side by side.",
+    "title": "CLI Comparison"
+  },
+  "columns": {
+    "contextLength": "Context Length",
+    "freePlan": "Free Plan",
+    "githubStars": "@:components.productHero.stars",
+    "license": "@:components.productHero.license",
+    "links": "Links",
+    "maxOutput": "@:shared.common.maxOutput",
+    "maxPrice": "Max Price",
+    "modelSize": "@:shared.common.modelSize",
+    "platforms": "@:components.productHero.platforms",
+    "pricing": "@:shared.common.pricing",
+    "startingPrice": "Starting Price",
+    "supportedIdes": "@:components.productHero.supportedIdes",
+    "vendor": "@:components.productHero.vendor",
+    "version": "@:components.productHero.version"
+  },
+  "extensions": {
+    "backTo": "Back to Extensions",
+    "subtitle": "Compare features, pricing, and specifications of AI coding extensions side by side.",
+    "title": "Extension Comparison"
+  },
+  "ides": {
+    "backTo": "Back to IDEs",
+    "subtitle": "Compare features, pricing, and specifications of AI-powered IDEs side by side.",
+    "title": "IDE Comparison"
+  },
+  "linkTitles": {
+    "documentation": "@:components.productHero.documentation",
+    "download": "@:components.productHero.download",
+    "officialWebsite": "@:components.productHero.visitWebsite"
+  },
+  "models": {
+    "backTo": "Back to Models",
+    "subtitle": "Compare specifications and pricing of AI coding models side by side.",
+    "title": "Model Comparison"
+  },
+  "pricingValues": {
+    "free": "Free",
+    "freeOnly": "Free only"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "clis": {
+    "backTo": "CLI로 돌아가기",
+    "subtitle": "AI 코딩 CLI 도구의 기능, 가격 및 사양을 나란히 비교하세요.",
+    "title": "CLI 비교"
+  },
+  "columns": {
+    "contextLength": "컨텍스트 길이",
+    "freePlan": "무료 플랜",
+    "githubStars": "스타",
+    "license": "라이선스",
+    "links": "링크",
+    "maxOutput": "최대 출력",
+    "maxPrice": "최대 가격",
+    "modelSize": "모델 크기",
+    "platforms": "플랫폼",
+    "pricing": "가격",
+    "startingPrice": "시작 가격",
+    "supportedIdes": "지원되는 IDE",
+    "vendor": "벤더",
+    "version": "버전"
+  },
+  "extensions": {
+    "backTo": "확장 프로그램으로 돌아가기",
+    "subtitle": "AI 코딩 확장 프로그램의 기능, 가격 및 사양을 나란히 비교하세요.",
+    "title": "확장 프로그램 비교"
+  },
+  "ides": {
+    "backTo": "IDE로 돌아가기",
+    "subtitle": "AI 기반 IDE의 기능, 가격 및 사양을 나란히 비교하세요.",
+    "title": "IDE 비교"
+  },
+  "linkTitles": {
+    "documentation": "문서",
+    "download": "다운로드",
+    "officialWebsite": "공식 웹사이트"
+  },
+  "models": {
+    "backTo": "모델로 돌아가기",
+    "subtitle": "AI 코딩 모델의 사양 및 가격을 나란히 비교하세요.",
+    "title": "모델 비교"
+  },
+  "pricingValues": {
+    "free": "무료",
+    "freeOnly": "무료만"
+  }
+}

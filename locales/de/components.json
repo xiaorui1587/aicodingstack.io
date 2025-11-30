@@ -1,0 +1,165 @@
+{
+  "backToNavigation": {
+    "backTo": "Zurück zu",
+    "indexLabel": "INDEX"
+  },
+  "collectionScrollbar": {
+    "articles": "Featured Artikel",
+    "specifications": "Spezifikationen & Protokolle",
+    "tools": "Ökosystem-Tools"
+  },
+  "docsSidebar": {
+    "label": "Dokumentation",
+    "title": "DOKUMENTATION"
+  },
+  "filterSortBar": {
+    "clearFilters": "Filter löschen",
+    "license": "Lizenz:",
+    "openSource": "Open Source",
+    "platform": "Plattform:",
+    "proprietary": "Proprietär",
+    "search": "Nach Namen suchen...",
+    "sort": "Sortieren:",
+    "sortDefault": "Standard",
+    "sortNameAsc": "Name (A-Z)",
+    "sortNameDesc": "Name (Z-A)"
+  },
+  "footer": {
+    "copyright": "© 2025 AI Coding Stack • Mit ❤︎ erstellt • Open Source",
+    "openSource": "Open-Source-KI-Coding-Metadaten-Repository.",
+    "selectLanguage": "Sprache auswählen",
+    "tagline": "Ihr KI-Coding-Ökosystem-Hub.",
+    "toggleTheme": "Thema umschalten"
+  },
+  "header": {
+    "aiCodingLandscape": "KI-Coding-Landschaft",
+    "aiCodingLandscapeDesc": "Visualisieren Sie das gesamte KI-Coding-Ökosystem",
+    "aiCodingStack": "AI Coding Stack",
+    "articles": "Artikel",
+    "closeMenu": "Menü schließen",
+    "collections": "Sammlungen",
+    "developmentTools": "Entwicklungstools",
+    "intelligence": "Intelligenz",
+    "landscape": "Landschaft",
+    "manifesto": "Manifest",
+    "openMenu": "Menü öffnen",
+    "openSourceRank": "Open Source Ranking",
+    "openSourceRankDesc": "Erkunden Sie Open-Source-KI-Coding-Projekte nach GitHub-Sternen",
+    "ranking": "Ranking",
+    "search": "Suchen",
+    "searchPlaceholder": "Suchen...",
+    "toggleMenu": "Menü umschalten"
+  },
+  "openSourceRank": {
+    "description": "Entdecken und erkunden Sie Open-Source-KI-Coding-Tools, sortiert nach GitHub Stars. Vergleichen Sie IDEs, CLIs und Erweiterungen, um die perfekten Tools für Ihren Entwicklungs-Workflow zu finden.",
+    "filter": {
+      "all": "Alle"
+    },
+    "meta": {
+      "description": "Ranking aller Open-Source-Projekte in AI Coding Stack, sortiert nach GitHub Stars. Statistiken und Trends von Open-Source- vs. proprietären Tools anzeigen.",
+      "title": "Open-Source-Projekte-Ranking"
+    },
+    "noResults": "Keine Open-Source-Projekte für diese Kategorie gefunden.",
+    "note": "Hinweis: Diese Seite zeigt nur Projekte mit GitHub-Repositories. Einige Projekte, obwohl nicht Open Source, unterhalten GitHub-Repositories als Feedback-Kanäle für Benutzer.",
+    "productType": {
+      "cli": "CLI",
+      "extension": "Erweiterung",
+      "ide": "IDE"
+    },
+    "statistics": {
+      "closedSource": "Proprietär",
+      "closedSourceCount": "Proprietäre Projekte",
+      "closedSourcePercentage": "Proprietärer Prozentsatz",
+      "licenseBreakdown": "Lizenzverteilung",
+      "openSource": "Open Source",
+      "openSourceCount": "Open-Source-Projekte",
+      "projects": "Projekte",
+      "title": "Open-Source vs. Proprietär Verteilung",
+      "totalProjects": "Gesamtprojekte"
+    },
+    "table": {
+      "license": "Lizenz",
+      "name": "Name",
+      "openSourceTitle": "Open-Source-Projekte ({count})",
+      "proprietaryTitle": "Proprietäre Projekte ({count})",
+      "rank": "Rang",
+      "stars": "Stars",
+      "type": "Typ"
+    },
+    "title": "Open-Source-Projekte-Ranking"
+  },
+  "productCommands": {
+    "command": "Befehl",
+    "install": "Installieren",
+    "launch": "Starten"
+  },
+  "productHero": {
+    "categories": {
+      "CLI": "CLI",
+      "EXTENSION": "Erweiterung",
+      "IDE": "IDE",
+      "MODEL": "Modell",
+      "PROVIDER": "Modellanbieter",
+      "VENDOR": "Anbieter"
+    },
+    "documentation": "Dokumentation",
+    "download": "Download",
+    "getApiKey": "API-Schlüssel Abrufen",
+    "license": "Lizenz",
+    "platforms": "Plattformen",
+    "providerTypes": {
+      "foundation-model-provider": "Foundation-Modellanbieter",
+      "model-service-provider": "Modell-Service-Anbieter"
+    },
+    "runtime": "Laufzeit",
+    "stars": "Stars",
+    "supportedIdes": "Unterstützte IDEs",
+    "type": "Typ",
+    "vendor": "Anbieter",
+    "version": "Version",
+    "visitWebsite": "Website Besuchen"
+  },
+  "productLinks": {
+    "blog": "Blog",
+    "changelog": "Änderungsprotokoll",
+    "community": "Community",
+    "discord": "Discord",
+    "download": "Download",
+    "github": "GitHub",
+    "issue": "Issue-Tracker",
+    "linkedin": "LinkedIn",
+    "mcp": "MCP-Dokumentation",
+    "pricing": "Preise",
+    "reddit": "Reddit",
+    "resources": "Ressourcen",
+    "twitter": "X (Twitter)",
+    "youtube": "YouTube"
+  },
+  "productPricing": {
+    "title": "Preise",
+    "viewFullDetails": "Vollständige Preisdetails anzeigen →"
+  },
+  "search": {
+    "categories": {
+      "clis": "CLIs",
+      "extensions": "Erweiterungen",
+      "ides": "IDEs",
+      "models": "Modelle",
+      "providers": "Modellanbieter",
+      "vendors": "Anbieter"
+    },
+    "navigate": "zum Navigieren",
+    "noResults": "Keine Ergebnisse gefunden",
+    "noResultsFor": "Keine Ergebnisse für \"{query}\" gefunden",
+    "placeholder": "KI-Coding-Tools durchsuchen...",
+    "resultsCount": "{count} {count, plural, one {Ergebnis} other {Ergebnisse}}",
+    "resultsCountFor": "{count} {count, plural, one {Ergebnis} other {Ergebnisse}} für \"{query}\"",
+    "searching": "Suchen...",
+    "select": "zum Auswählen",
+    "title": "Suchergebnisse"
+  },
+  "sidebar": {
+    "backToTop": "Zurück nach oben",
+    "selectItem": "Wählen Sie ein Element aus"
+  }
+}
