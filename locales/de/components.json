@@ -148,6 +148,14 @@
       "providers": "Modellanbieter",
       "vendors": "Anbieter"
     },
+    "stacks": {
+      "clis": "@:shared.stacks.clis",
+      "extensions": "@:shared.stacks.extensions",
+      "ides": "@:shared.stacks.ides",
+      "models": "@:shared.stacks.models",
+      "modelProviders": "@:shared.stacks.modelProviders",
+      "vendors": "@:shared.stacks.vendors"
+    },
     "navigate": "zum Navigieren",
     "noResults": "Keine Ergebnisse gefunden",
     "noResultsFor": "Keine Ergebnisse für \"{query}\" gefunden",

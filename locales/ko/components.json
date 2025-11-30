@@ -148,6 +148,14 @@
       "providers": "모델 제공자",
       "vendors": "벤더"
     },
+    "stacks": {
+      "clis": "@:shared.stacks.clis",
+      "extensions": "@:shared.stacks.extensions",
+      "ides": "@:shared.stacks.ides",
+      "models": "@:shared.stacks.models",
+      "modelProviders": "@:shared.stacks.modelProviders",
+      "vendors": "@:shared.stacks.vendors"
+    },
     "navigate": "탐색",
     "noResults": "결과를 찾을 수 없습니다",
     "noResultsFor": "\"{query}\"에 대한 결과를 찾을 수 없습니다",
