@@ -1,6 +1,6 @@
 {
   "$schema": "../$schemas/vendor.schema.json",
-  "id": "amazon-web-services",
+  "id": "aws",
   "name": "AWS",
   "description": "AWS is a vendor.",
   "i18n": {
