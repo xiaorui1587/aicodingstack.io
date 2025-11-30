@@ -104,7 +104,7 @@ export default function IDEsPageClient({ locale }: Props) {
             subtitle={t('subtitle')}
             action={
               <Link
-                href={`/${locale}/ides/comparison`}
+                href="/ides/comparison"
                 className="text-sm px-[var(--spacing-md)] py-[var(--spacing-xs)] border border-[var(--color-border)] hover:border-[var(--color-border-strong)] transition-colors"
               >
                 {t('compareAll')} →
@@ -134,7 +134,7 @@ export default function IDEsPageClient({ locale }: Props) {
               {filteredAndSortedIdes.map(ide => (
                 <Link
                   key={ide.name}
-                  href={`/${locale}/ides/${ide.id}`}
+                  href={`/ides/${ide.id}`}
                   className="block border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5 group flex flex-col"
                 >
                   <div className="flex justify-between items-start mb-[var(--spacing-sm)]">

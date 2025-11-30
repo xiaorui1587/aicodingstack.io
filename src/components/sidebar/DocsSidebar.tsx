@@ -1,6 +1,6 @@
 'use client'
 
-import { useLocale, useTranslations } from 'next-intl'
+import { useTranslations } from 'next-intl'
 import type { DocSection } from '@/lib/generated/docs'
 import Sidebar, { type SidebarItem } from './Sidebar'
 
@@ -22,7 +22,6 @@ const docOrder = [
 
 export default function DocsSidebar({ sections, activeSlug }: DocsSidebarProps) {
   const t = useTranslations('components.docsSidebar')
-  const locale = useLocale()
 
   // Sort sections by custom order
   const sortedSections = [...sections].sort((a, b) => {
@@ -47,7 +46,7 @@ export default function DocsSidebar({ sections, activeSlug }: DocsSidebarProps) 
   const items: SidebarItem[] = sortedSections.map(section => ({
     id: section.slug,
     title: section.title,
-    href: `/${locale}/docs/${section.slug}`,
+    href: `/docs/${section.slug}`,
   }))
 
   const icon = (

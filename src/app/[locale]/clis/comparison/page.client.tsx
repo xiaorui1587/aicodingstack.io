@@ -17,7 +17,7 @@ type Props = {
   locale: string
 }
 
-export default function CLIComparisonPageClient({ locale }: Props) {
+export default function CLIComparisonPageClient({ locale: _locale }: Props) {
   const t = useTranslations('pages.comparison')
   const tCommunity = useTranslations('shared.platforms')
   const tGlobal = useTranslations()
@@ -304,7 +304,7 @@ export default function CLIComparisonPageClient({ locale }: Props) {
           <ComparisonTable
             items={clis as unknown as Record<string, unknown>[]}
             columns={columns}
-            itemLinkPrefix={`/${locale}/clis`}
+            itemLinkPrefix={`/clis`}
           />
         </div>
       </section>
@@ -313,7 +313,7 @@ export default function CLIComparisonPageClient({ locale }: Props) {
       <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
         <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
           <Link
-            href={`/${locale}/clis`}
+            href="/clis"
             className="inline-flex items-center gap-[var(--spacing-xs)] text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors"
           >
             ← {t('clis.backTo')}

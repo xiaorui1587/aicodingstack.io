@@ -12,27 +12,27 @@ interface StackTabsProps {
   locale: string
 }
 
-function StackTabs({ activeStack, locale }: StackTabsProps) {
+function StackTabs({ activeStack, locale: _locale }: StackTabsProps) {
   const tStacks = useTranslations('shared.stacks')
 
   const tabs = useMemo(() => {
     return [
-      { id: 'ides' as StackId, title: tStacks('ides'), path: `/${locale}/ides` },
-      { id: 'clis' as StackId, title: tStacks('clis'), path: `/${locale}/clis` },
+      { id: 'ides' as StackId, title: tStacks('ides'), path: `/ides` },
+      { id: 'clis' as StackId, title: tStacks('clis'), path: `/clis` },
       {
         id: 'extensions' as StackId,
         title: tStacks('extensions'),
-        path: `/${locale}/extensions`,
+        path: `/extensions`,
       },
-      { id: 'models' as StackId, title: tStacks('models'), path: `/${locale}/models` },
+      { id: 'models' as StackId, title: tStacks('models'), path: `/models` },
       {
         id: 'model-providers' as StackId,
         title: tStacks('modelProviders'),
-        path: `/${locale}/model-providers`,
+        path: `/model-providers`,
       },
-      { id: 'vendors' as StackId, title: tStacks('vendors'), path: `/${locale}/vendors` },
+      { id: 'vendors' as StackId, title: tStacks('vendors'), path: `/vendors` },
     ]
-  }, [locale, tStacks])
+  }, [tStacks])
 
   return (
     <div className="border-b border-[var(--color-border)] mb-[var(--spacing-lg)]">

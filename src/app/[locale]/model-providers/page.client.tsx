@@ -91,7 +91,7 @@ export default function ModelProvidersPageClient({ locale }: Props) {
               {foundationModelProviders.map(provider => (
                 <Link
                   key={provider.name}
-                  href={`/${locale}/model-providers/${provider.id}`}
+                  href={`/model-providers/${provider.id}`}
                   className="block border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5 group"
                 >
                   <div className="flex justify-between items-start mb-[var(--spacing-sm)]">
@@ -116,7 +116,7 @@ export default function ModelProvidersPageClient({ locale }: Props) {
               {modelServiceProviders.map(provider => (
                 <Link
                   key={provider.name}
-                  href={`/${locale}/model-providers/${provider.id}`}
+                  href={`/model-providers/${provider.id}`}
                   className="block border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5 group"
                 >
                   <div className="flex justify-between items-start mb-[var(--spacing-sm)]">

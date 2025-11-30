@@ -82,7 +82,7 @@ export default function VendorsPageClient({ locale }: Props) {
             {filteredVendors.map(vendor => (
               <Link
                 key={vendor.id}
-                href={`/${locale}/vendors/${vendor.id}`}
+                href={`/vendors/${vendor.id}`}
                 className="block border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5 group"
               >
                 <div className="flex justify-between items-start mb-[var(--spacing-sm)]">

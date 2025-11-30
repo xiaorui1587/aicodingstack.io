@@ -13,7 +13,7 @@ type Props = {
   locale: string
 }
 
-export default function ModelComparisonPageClient({ locale }: Props) {
+export default function ModelComparisonPageClient({ locale: _locale }: Props) {
   const t = useTranslations('pages.comparison')
   const tGlobal = useTranslations()
   const tCommunity = useTranslations('shared.platforms')
@@ -165,7 +165,7 @@ export default function ModelComparisonPageClient({ locale }: Props) {
           <ComparisonTable
             items={models as unknown as Record<string, unknown>[]}
             columns={columns}
-            itemLinkPrefix={`/${locale}/models`}
+            itemLinkPrefix={`/models`}
           />
         </div>
       </section>
@@ -174,7 +174,7 @@ export default function ModelComparisonPageClient({ locale }: Props) {
       <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
         <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
           <Link
-            href={`/${locale}/models`}
+            href="/models"
             className="inline-flex items-center gap-[var(--spacing-xs)] text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors"
           >
             ← {t('models.backTo')}

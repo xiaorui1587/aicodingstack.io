@@ -7,7 +7,7 @@ type Props = {
   title: string
 }
 
-export function VendorModels({ models, locale, title }: Props) {
+export function VendorModels({ models, locale: _locale, title }: Props) {
   if (models.length === 0) {
     return null
   }
@@ -20,7 +20,7 @@ export function VendorModels({ models, locale, title }: Props) {
         {models.map(model => (
           <Link
             key={model.id}
-            href={`/${locale}/models/${model.id}`}
+            href={`/models/${model.id}`}
             className="block border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5 group"
           >
             <div className="flex items-start justify-between mb-[var(--spacing-xs)]">

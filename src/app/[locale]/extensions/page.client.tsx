@@ -105,7 +105,7 @@ export default function ExtensionsPageClient({ locale }: Props) {
             subtitle={t('subtitle')}
             action={
               <Link
-                href={`/${locale}/extensions/comparison`}
+                href="/extensions/comparison"
                 className="text-sm px-[var(--spacing-md)] py-[var(--spacing-xs)] border border-[var(--color-border)] hover:border-[var(--color-border-strong)] transition-colors"
               >
                 {t('compareAll')} →
@@ -137,7 +137,7 @@ export default function ExtensionsPageClient({ locale }: Props) {
               {filteredAndSortedExtensions.map(extension => (
                 <Link
                   key={extension.name}
-                  href={`/${locale}/extensions/${extension.id}`}
+                  href={`/extensions/${extension.id}`}
                   className="block border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5 group flex flex-col"
                 >
                   <div className="flex justify-between items-start mb-[var(--spacing-sm)]">

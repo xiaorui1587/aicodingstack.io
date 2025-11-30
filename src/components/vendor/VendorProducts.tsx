@@ -17,7 +17,7 @@ const PRODUCT_TYPE_LABELS = {
   extension: 'Extension',
 } as const
 
-export function VendorProducts({ products, locale, title }: Props) {
+export function VendorProducts({ products, locale: _locale, title }: Props) {
   if (products.length === 0) {
     return null
   }
@@ -30,7 +30,7 @@ export function VendorProducts({ products, locale, title }: Props) {
         {products.map(product => (
           <Link
             key={product.id}
-            href={`/${locale}/${product.type === 'ide' ? 'ides' : product.type === 'cli' ? 'clis' : 'extensions'}/${product.id}`}
+            href={`/${product.type === 'ide' ? 'ides' : product.type === 'cli' ? 'clis' : 'extensions'}/${product.id}`}
             className="block border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5 group"
           >
             <div className="flex items-start justify-between mb-[var(--spacing-xs)]">

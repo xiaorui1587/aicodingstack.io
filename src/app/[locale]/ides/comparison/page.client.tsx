@@ -17,7 +17,7 @@ type Props = {
   locale: string
 }
 
-export default function IDEComparisonPageClient({ locale }: Props) {
+export default function IDEComparisonPageClient({ locale: _locale }: Props) {
   const t = useTranslations('pages.comparison')
   const tCommunity = useTranslations('shared.platforms')
   const tGlobal = useTranslations()
@@ -303,7 +303,7 @@ export default function IDEComparisonPageClient({ locale }: Props) {
           <ComparisonTable
             items={ides as unknown as Record<string, unknown>[]}
             columns={columns}
-            itemLinkPrefix={`/${locale}/ides`}
+            itemLinkPrefix={`/ides`}
           />
         </div>
       </section>
@@ -312,7 +312,7 @@ export default function IDEComparisonPageClient({ locale }: Props) {
       <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
         <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
           <Link
-            href={`/${locale}/ides`}
+            href="/ides"
             className="inline-flex items-center gap-[var(--spacing-xs)] text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors"
           >
             ← {t('ides.backTo')}

@@ -68,7 +68,7 @@ export default function ModelsPageClient({ locale }: Props) {
             subtitle={t('subtitle')}
             action={
               <Link
-                href={`/${locale}/models/comparison`}
+                href="/models/comparison"
                 className="text-sm px-[var(--spacing-md)] py-[var(--spacing-xs)] border border-[var(--color-border)] hover:border-[var(--color-border-strong)] transition-colors"
               >
                 {t('compareAll')} →
@@ -93,7 +93,7 @@ export default function ModelsPageClient({ locale }: Props) {
             {filteredModels.map(model => (
               <Link
                 key={model.name}
-                href={`/${locale}/models/${model.id}`}
+                href={`/models/${model.id}`}
                 className="block border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5 group"
               >
                 <div className="flex justify-between items-start mb-[var(--spacing-sm)]">

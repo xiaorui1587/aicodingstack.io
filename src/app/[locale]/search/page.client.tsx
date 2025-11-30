@@ -1,12 +1,12 @@
 'use client'
 
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useState } from 'react'
 import SearchInput from '@/components/controls/SearchInput'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
-import { Link } from '@/i18n/navigation'
+import { Link, useRouter } from '@/i18n/navigation'
 import type { SearchResult } from '@/lib/search'
 import { search } from '@/lib/search'
 
@@ -44,13 +44,14 @@ export default function SearchPageClient({ locale, initialQuery }: Props) {
     if (searchQuery.trim()) {
       params.set('q', searchQuery.trim())
     }
-    router.push(`/${locale}/search?${params.toString()}`)
+    // Use i18n router which automatically handles locale prefix
+    router.push(`/search?${params.toString()}`)
     setTimeout(() => setIsSearching(false), 300)
   }
 
   // Get category route
   const getCategoryRoute = (category: string, id: string) => {
-    return `/${locale}/${category}/${id}`
+    return `/${category}/${id}`
   }
 
   return (
