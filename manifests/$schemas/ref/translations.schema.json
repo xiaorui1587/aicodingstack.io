@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "i18n.schema.json",
-  "title": "I18n Schema",
+  "$id": "translations.schema.json",
+  "title": "Translations Schema",
   "description": "Internationalization translations schema for use across all manifests",
   "type": "object",
   "patternProperties": {

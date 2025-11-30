@@ -20,7 +20,7 @@
   "$defs": {
     "collectionSection": {
       "type": "object",
-      "description": "A collection section containing title, description, i18n, and cards",
+      "description": "A collection section containing title, description, translations, and cards",
       "properties": {
         "title": {
           "type": "string",
@@ -30,8 +30,8 @@
           "type": "string",
           "description": "Section description"
         },
-        "i18n": {
-          "$ref": "./ref/i18n.schema.json",
+        "translations": {
+          "$ref": "./ref/translations.schema.json",
           "description": "Internationalization translations for section fields"
         },
         "cards": {
@@ -43,19 +43,19 @@
           "minItems": 1
         }
       },
-      "required": ["title", "description", "i18n", "cards"],
+      "required": ["title", "description", "translations", "cards"],
       "additionalProperties": false
     },
     "collectionCard": {
       "type": "object",
-      "description": "A card containing a title, i18n, and items",
+      "description": "A card containing a title, translations, and items",
       "properties": {
         "title": {
           "type": "string",
           "description": "Card title"
         },
-        "i18n": {
-          "$ref": "./ref/i18n.schema.json",
+        "translations": {
+          "$ref": "./ref/translations.schema.json",
           "description": "Internationalization translations for card fields"
         },
         "items": {
@@ -67,7 +67,7 @@
           "minItems": 0
         }
       },
-      "required": ["title", "i18n", "items"],
+      "required": ["title", "translations", "items"],
       "additionalProperties": false
     },
     "collectionItem": {
@@ -88,12 +88,12 @@
           "type": "string",
           "description": "Item description"
         },
-        "i18n": {
-          "$ref": "./ref/i18n.schema.json",
+        "translations": {
+          "$ref": "./ref/translations.schema.json",
           "description": "Internationalization translations for item fields"
         }
       },
-      "required": ["name", "url", "description", "i18n"],
+      "required": ["name", "url", "description", "translations"],
       "additionalProperties": false
     }
   }

@@ -62,7 +62,7 @@ collections.schema.json (Independent)
 - `id` (string, pattern: `^[a-z0-9-]+$`): Unique identifier
 - `name` (string): Official name
 - `description` (string, maxLength: 200): Concise description
-- `i18n` (object, → i18n.schema.json): Translations
+- `translations` (object, → translations.schema.json): Translations
 - `websiteUrl` (string, uri, https): Official website
 - `docsUrl` (string/null, uri, https): Documentation URL
 - `verified` (boolean): Verification status
@@ -231,15 +231,15 @@ collections.schema.json (Independent)
 
 **Structure**:
 - `specifications`, `articles`, `tools` (collectionSection)
-  - `title`, `description`, `i18n` (→ i18n.schema.json), `cards`
-  - Cards contain: `title`, `i18n`, `items`
-  - Items contain: `name`, `url`, `description`, `i18n`
+  - `title`, `description`, `translations` (→ translations.schema.json), `cards`
+  - Cards contain: `title`, `translations`, `items`
+  - Items contain: `name`, `url`, `description`, `translations`
 
 ---
 
 ## Supporting Schemas (ref/)
 
-### i18n.schema.json
+### translations.schema.json
 **Purpose**: Internationalization translations
 
 **Pattern**: `^[a-z]{2}(-[A-Z][a-z]+)?$` (e.g., `zh-Hans`, `en`)

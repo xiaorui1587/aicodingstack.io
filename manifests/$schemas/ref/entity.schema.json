@@ -19,8 +19,8 @@
       "description": "A concise description of the entity and its key features, summarized from the official website homepage, company page, or about page",
       "maxLength": 200
     },
-    "i18n": {
-      "$ref": "./i18n.schema.json",
+    "translations": {
+      "$ref": "./translations.schema.json",
       "description": "Internationalization translations"
     },
     "verified": {
@@ -34,5 +34,5 @@
       "description": "Official website URL"
     }
   },
-  "required": ["id", "name", "description", "i18n", "verified", "websiteUrl"]
+  "required": ["id", "name", "description", "translations", "verified", "websiteUrl"]
 }

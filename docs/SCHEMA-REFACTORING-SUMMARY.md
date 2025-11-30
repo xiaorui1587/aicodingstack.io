@@ -8,11 +8,11 @@ This document summarizes the schema refactoring work done to improve the design 
 
 ### 1. Fixed i18n Schema Duplication ✅
 
-**Problem**: `collections.schema.json` was redefining its own i18n structure instead of reusing the standard `i18n.schema.json`.
+**Problem**: `collections.schema.json` was redefining its own translations structure instead of reusing the standard `translations.schema.json`.
 
 **Solution**:
-- Made `i18n.schema.json` more flexible by removing the `required` constraint on `description`
-- Updated `collections.schema.json` to reference `./ref/i18n.schema.json` instead of inline definitions
+- Made `translations.schema.json` more flexible by removing the `required` constraint on `description`
+- Updated `collections.schema.json` to reference `./ref/translations.schema.json` instead of inline definitions
 - Both `collectionCard` and `collectionItem` now use the standard i18n schema
 
 ### 2. Resolved pricing Field Semantic Conflict ✅
@@ -130,7 +130,7 @@ All manifest files now pass validation:
 - `manifests/$schemas/ref/vendor-entity.schema.json` (NEW)
 - `manifests/$schemas/ref/product.schema.json`
 - `manifests/$schemas/ref/app.schema.json`
-- `manifests/$schemas/ref/i18n.schema.json`
+- `manifests/$schemas/ref/translations.schema.json`
 - `manifests/$schemas/clis.schema.json`
 - `manifests/$schemas/ides.schema.json`
 - `manifests/$schemas/models.schema.json`
