@@ -11,7 +11,7 @@
  *   return await generateListPageMetadata({
  *     locale: params.locale,
  *     category: 'ides',
- *     translationNamespace: 'stacksPages.ides',
+ *     translationNamespace: 'pages.ides',
  *   });
  * }
  */
@@ -53,6 +53,5 @@ export {
   formatPlatforms,
   formatPriceForDescription,
   getAlternateOGLocale,
-  getOGImagePath,
   mapLocaleToOG,
 } from './helpers'

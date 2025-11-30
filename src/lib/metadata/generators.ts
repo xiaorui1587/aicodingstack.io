@@ -24,7 +24,6 @@ import {
   buildTwitterCard,
   formatPlatforms,
   formatPriceForDescription,
-  getOGImagePath,
 } from './helpers'
 
 /**
@@ -151,9 +150,9 @@ export async function generateSoftwareDetailMetadata(options: {
     languageBasePath: basePath,
   })
 
-  // Build OpenGraph with product image
+  // Build OpenGraph
+  // Note: OG images are automatically detected from opengraph-image.tsx files
   const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`
-  const imagePath = getOGImagePath(category, slug)
 
   const openGraph = buildOpenGraph({
     title: `${product.name} - ${typeDescription}`,
@@ -161,14 +160,13 @@ export async function generateSoftwareDetailMetadata(options: {
     url: canonicalPath,
     locale,
     type: 'article',
-    images: [{ url: imagePath, alt: `${product.name} Screenshot` }],
   })
 
-  // Build Twitter Card with product image
+  // Build Twitter Card
+  // Note: Twitter images are automatically detected from opengraph-image.tsx files
   const twitter = buildTwitterCard({
     title: `${product.name} - ${typeDescription}`,
     description: product.description,
-    images: [imagePath],
   })
 
   return {
@@ -242,8 +240,8 @@ export async function generateModelDetailMetadata(options: {
   })
 
   // Build OpenGraph
+  // Note: OG images are automatically detected from opengraph-image.tsx files
   const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`
-  const imagePath = getOGImagePath('models', slug)
 
   const openGraph = buildOpenGraph({
     title: `${model.name} - ${t('metaTitle')}`,
@@ -251,14 +249,13 @@ export async function generateModelDetailMetadata(options: {
     url: canonicalPath,
     locale,
     type: 'article',
-    images: [{ url: imagePath, alt: `${model.name} Information` }],
   })
 
   // Build Twitter Card
+  // Note: Twitter images are automatically detected from opengraph-image.tsx files
   const twitter = buildTwitterCard({
     title: `${model.name} - ${t('metaTitle')}`,
     description: model.description,
-    images: [imagePath],
   })
 
   return {
@@ -384,8 +381,8 @@ export async function generateArticleMetadata(options: {
   })
 
   // Build OpenGraph with article metadata
+  // Note: OG images are automatically detected from opengraph-image.tsx files
   const canonicalPath = locale === defaultLocale ? `/${basePath}` : `/${locale}/${basePath}`
-  const imagePath = getOGImagePath('articles', slug)
 
   const openGraph = buildOpenGraph({
     title: article.title,
@@ -393,15 +390,14 @@ export async function generateArticleMetadata(options: {
     url: canonicalPath,
     locale,
     type: 'article',
-    images: [{ url: imagePath, alt: article.title }],
     publishedTime: article.date,
   })
 
   // Build Twitter Card with creator
+  // Note: Twitter images are automatically detected from opengraph-image.tsx files
   const twitter = buildTwitterCard({
     title: article.title,
     description,
-    images: [imagePath],
     includeCreator: true,
   })
 
