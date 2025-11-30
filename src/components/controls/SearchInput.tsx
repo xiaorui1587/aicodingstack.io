@@ -26,6 +26,7 @@ export default function SearchInput({
   const inputRef = useRef<HTMLInputElement>(null)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
+  const hasUserInteracted = useRef(false)
 
   const placeholderText = placeholder || t('components.header.searchPlaceholder')
 
@@ -39,7 +40,10 @@ export default function SearchInput({
       debounceTimerRef.current = setTimeout(() => {
         const results = getAutocompleteSuggestions(query)
         setSuggestions(results)
-        setIsOpen(results.length > 0)
+        // Only auto-open dropdown if user has interacted with the input
+        if (hasUserInteracted.current && results.length > 0) {
+          setIsOpen(true)
+        }
         setSelectedIndex(-1)
       }, 300)
     } else {
@@ -74,6 +78,8 @@ export default function SearchInput({
 
   const handleInputChange = (value: string) => {
     setQuery(value)
+    // Mark as user interaction to allow dropdown to open
+    hasUserInteracted.current = true
   }
 
   const handleSearch = (searchQuery: string) => {
@@ -120,6 +126,12 @@ export default function SearchInput({
           value={query}
           onChange={e => handleInputChange(e.target.value)}
           onKeyDown={handleKeyDown}
+          onFocus={() => {
+            hasUserInteracted.current = true
+            if (query.trim() && suggestions.length > 0) {
+              setIsOpen(true)
+            }
+          }}
           placeholder={placeholderText}
           className="w-full px-[var(--spacing-sm)] py-1 text-sm border border-[var(--color-border)] bg-[var(--color-background)] text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-border-strong)] transition-colors"
         />
