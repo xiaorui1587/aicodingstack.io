@@ -8,9 +8,8 @@
       "description": "Kimi CLI 是一款新的 CLI Agent，可以帮助您完成软件开发任务和终端操作。具有类 Shell 的用户界面、Zsh 集成、Agent Client Protocol 支持和 MCP 支持。"
     }
   },
-  "websiteUrl": "https://github.com/MoonshotAI/kimi-cli",
-  "docsUrl": "https://github.com/MoonshotAI/kimi-cli#readme",
   "verified": false,
+  "websiteUrl": "https://github.com/MoonshotAI/kimi-cli",
   "communityUrls": {
     "linkedin": null,
     "twitter": null,

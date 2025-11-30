@@ -23,8 +23,29 @@ const schemaCache = new Map()
  * Load and parse a JSON file
  */
 async function loadJSON(filePath) {
-  const content = await fs.readFile(filePath, 'utf-8')
-  return JSON.parse(content)
+  try {
+    const content = await fs.readFile(filePath, 'utf-8')
+    // Remove BOM if present
+    const cleanContent = content.replace(/^\uFEFF/, '')
+    // Trim whitespace
+    const trimmedContent = cleanContent.trim()
+
+    if (!trimmedContent) {
+      throw new Error('File is empty')
+    }
+
+    return JSON.parse(trimmedContent)
+  } catch (error) {
+    if (error instanceof SyntaxError) {
+      // Get file stats for debugging
+      const stats = await fs.stat(filePath).catch(() => null)
+      const size = stats ? stats.size : 'unknown'
+      throw new Error(
+        `JSON parse error: ${error.message} (file size: ${size} bytes, path: ${filePath})`
+      )
+    }
+    throw error
+  }
 }
 
 /**
@@ -293,6 +314,7 @@ async function findAllNestedOrders(schema, schemaPath, parentPath = []) {
 
 /**
  * Sort object keys according to a specified order
+ * $schema field is always placed first
  */
 function sortObjectKeys(obj, keyOrder) {
   if (!obj || typeof obj !== 'object' || Array.isArray(obj)) {
@@ -302,21 +324,439 @@ function sortObjectKeys(obj, keyOrder) {
   const sorted = {}
   const objKeys = Object.keys(obj)
 
-  // First, add keys in the specified order
+  // Always place $schema first if it exists
+  if ('$schema' in obj) {
+    sorted.$schema = obj.$schema
+  }
+
+  // Then, add keys in the specified order (excluding $schema)
   for (const key of keyOrder) {
-    if (key in obj) {
+    if (key in obj && key !== '$schema') {
       sorted[key] = obj[key]
     }
   }
 
-  // Then, add any remaining keys that weren't in the order
+  // Then, add any remaining keys that weren't in the order (excluding $schema)
   for (const key of objKeys) {
-    if (!(key in sorted)) {
+    if (!(key in sorted) && key !== '$schema') {
       sorted[key] = obj[key]
     }
   }
 
   return sorted
+}
+
+/**
+ * Collect all valid property names from a schema (including nested)
+ * Also collects patternProperties information for dynamic keys
+ */
+async function collectAllValidProperties(
+  schema,
+  schemaPath,
+  parentPath = [],
+  validProps = new Set(),
+  patternProps = new Map()
+) {
+  const currentSchema = await loadSchema(schemaPath)
+
+  // Handle $ref at root level
+  if (schema.$ref) {
+    const refPath = resolveRefPath(schema.$ref, schemaPath)
+    if (refPath) {
+      const refSchema = await loadSchema(refPath)
+      await collectAllValidProperties(refSchema, refPath, parentPath, validProps, patternProps)
+    } else {
+      const refSchema = resolveInternalRef(schema.$ref, currentSchema)
+      if (refSchema) {
+        await collectAllValidProperties(refSchema, schemaPath, parentPath, validProps, patternProps)
+      }
+    }
+  }
+
+  // Handle allOf
+  if (schema.allOf) {
+    for (const subSchema of schema.allOf) {
+      if (subSchema.$ref) {
+        const refPath = resolveRefPath(subSchema.$ref, schemaPath)
+        if (refPath) {
+          const refSchema = await loadSchema(refPath)
+          await collectAllValidProperties(refSchema, refPath, parentPath, validProps, patternProps)
+        } else {
+          const refSchema = resolveInternalRef(subSchema.$ref, currentSchema)
+          if (refSchema) {
+            await collectAllValidProperties(
+              refSchema,
+              schemaPath,
+              parentPath,
+              validProps,
+              patternProps
+            )
+          }
+        }
+      } else {
+        await collectAllValidProperties(subSchema, schemaPath, parentPath, validProps, patternProps)
+      }
+    }
+  }
+
+  // Handle patternProperties (for dynamic keys like i18n locales)
+  if (schema.patternProperties) {
+    const currentPath = parentPath.length === 0 ? '' : parentPath.join('.')
+    for (const [pattern, patternSchema] of Object.entries(schema.patternProperties)) {
+      // Extract properties from pattern schema for validation
+      const patternPropsSet = await extractPropertiesFromSchema(patternSchema, schemaPath)
+
+      // Store pattern information for this path
+      patternProps.set(currentPath || 'root', {
+        pattern,
+        schema: patternSchema,
+        schemaPath,
+        properties: patternPropsSet,
+      })
+
+      // Recursively collect properties from the pattern schema
+      if (patternSchema.$ref) {
+        const refPath = resolveRefPath(patternSchema.$ref, schemaPath)
+        if (refPath) {
+          const refSchema = await loadSchema(refPath)
+          await collectAllValidProperties(refSchema, refPath, parentPath, validProps, patternProps)
+        } else {
+          const refSchema = resolveInternalRef(patternSchema.$ref, currentSchema)
+          if (refSchema) {
+            await collectAllValidProperties(
+              refSchema,
+              schemaPath,
+              parentPath,
+              validProps,
+              patternProps
+            )
+          }
+        }
+      } else if (patternSchema.properties || patternSchema.patternProperties) {
+        await collectAllValidProperties(
+          patternSchema,
+          schemaPath,
+          parentPath,
+          validProps,
+          patternProps
+        )
+      }
+    }
+  }
+
+  // Handle properties
+  if (schema.properties) {
+    for (const [propName, propSchema] of Object.entries(schema.properties)) {
+      const currentPath = [...parentPath, propName]
+      const pathKey = currentPath.join('.')
+
+      // Add this property to valid set
+      // Always add both the simple name (for root level) and full path (for nested)
+      validProps.add(propName)
+      if (parentPath.length > 0) {
+        validProps.add(pathKey)
+      }
+
+      // Recursively collect nested properties
+      if (propSchema.$ref) {
+        const refPath = resolveRefPath(propSchema.$ref, schemaPath)
+        let refSchema = null
+        let refSchemaPath = schemaPath
+
+        if (refPath) {
+          refSchema = await loadSchema(refPath)
+          refSchemaPath = refPath
+        } else {
+          refSchema = resolveInternalRef(propSchema.$ref, currentSchema)
+        }
+
+        if (refSchema) {
+          // If the referenced schema is an array, we need to process its items
+          if (refSchema.type === 'array' && refSchema.items) {
+            // Process array items schema
+            if (refSchema.items.$ref) {
+              const itemsRefPath = resolveRefPath(refSchema.items.$ref, refSchemaPath)
+              if (itemsRefPath) {
+                const itemsRefSchema = await loadSchema(itemsRefPath)
+                await collectAllValidProperties(
+                  itemsRefSchema,
+                  itemsRefPath,
+                  currentPath,
+                  validProps,
+                  patternProps
+                )
+              } else {
+                const itemsRefSchema = resolveInternalRef(
+                  refSchema.items.$ref,
+                  await loadSchema(refSchemaPath)
+                )
+                if (itemsRefSchema) {
+                  await collectAllValidProperties(
+                    itemsRefSchema,
+                    refSchemaPath,
+                    currentPath,
+                    validProps,
+                    patternProps
+                  )
+                }
+              }
+            } else if (refSchema.items.properties || refSchema.items.patternProperties) {
+              await collectAllValidProperties(
+                refSchema.items,
+                refSchemaPath,
+                currentPath,
+                validProps,
+                patternProps
+              )
+            }
+          } else {
+            // Not an array, process normally
+            await collectAllValidProperties(
+              refSchema,
+              refSchemaPath,
+              currentPath,
+              validProps,
+              patternProps
+            )
+          }
+        }
+      } else if (propSchema.properties || propSchema.patternProperties) {
+        await collectAllValidProperties(
+          propSchema,
+          schemaPath,
+          currentPath,
+          validProps,
+          patternProps
+        )
+      } else if (propSchema.items) {
+        if (propSchema.items.$ref) {
+          const refPath = resolveRefPath(propSchema.items.$ref, schemaPath)
+          if (refPath) {
+            const refSchema = await loadSchema(refPath)
+            await collectAllValidProperties(
+              refSchema,
+              refPath,
+              currentPath,
+              validProps,
+              patternProps
+            )
+          } else {
+            const refSchema = resolveInternalRef(propSchema.items.$ref, currentSchema)
+            if (refSchema) {
+              await collectAllValidProperties(
+                refSchema,
+                schemaPath,
+                currentPath,
+                validProps,
+                patternProps
+              )
+            }
+          }
+        } else if (propSchema.items.properties || propSchema.items.patternProperties) {
+          await collectAllValidProperties(
+            propSchema.items,
+            schemaPath,
+            currentPath,
+            validProps,
+            patternProps
+          )
+        }
+      }
+    }
+  }
+
+  return { validProps, patternProps }
+}
+
+/**
+ * Check if a key matches a pattern (for patternProperties)
+ */
+function matchesPattern(key, pattern) {
+  try {
+    const regex = new RegExp(pattern)
+    return regex.test(key)
+  } catch {
+    return false
+  }
+}
+
+/**
+ * Extract property names from a schema (for patternProperties validation)
+ */
+async function extractPropertiesFromSchema(schema, schemaPath) {
+  const props = new Set()
+  const currentSchema = await loadSchema(schemaPath)
+
+  // Handle $ref
+  if (schema.$ref) {
+    const refPath = resolveRefPath(schema.$ref, schemaPath)
+    if (refPath) {
+      const refSchema = await loadSchema(refPath)
+      const refProps = await extractPropertiesFromSchema(refSchema, refPath)
+      for (const prop of refProps) {
+        props.add(prop)
+      }
+    } else {
+      const refSchema = resolveInternalRef(schema.$ref, currentSchema)
+      if (refSchema) {
+        const refProps = await extractPropertiesFromSchema(refSchema, schemaPath)
+        for (const prop of refProps) {
+          props.add(prop)
+        }
+      }
+    }
+  }
+
+  // Handle allOf
+  if (schema.allOf) {
+    for (const subSchema of schema.allOf) {
+      if (subSchema.$ref) {
+        const refPath = resolveRefPath(subSchema.$ref, schemaPath)
+        if (refPath) {
+          const refSchema = await loadSchema(refPath)
+          const refProps = await extractPropertiesFromSchema(refSchema, refPath)
+          for (const prop of refProps) {
+            props.add(prop)
+          }
+        } else {
+          const refSchema = resolveInternalRef(subSchema.$ref, currentSchema)
+          if (refSchema) {
+            const refProps = await extractPropertiesFromSchema(refSchema, schemaPath)
+            for (const prop of refProps) {
+              props.add(prop)
+            }
+          }
+        }
+      } else {
+        const subProps = await extractPropertiesFromSchema(subSchema, schemaPath)
+        for (const prop of subProps) {
+          props.add(prop)
+        }
+      }
+    }
+  }
+
+  // Handle properties
+  if (schema.properties) {
+    for (const propName of Object.keys(schema.properties)) {
+      props.add(propName)
+    }
+  }
+
+  return props
+}
+
+/**
+ * Validate manifest fields against schema
+ */
+function validateManifestFields(
+  manifest,
+  validProps,
+  path = [],
+  errors = [],
+  patternProps = new Map()
+) {
+  if (Array.isArray(manifest)) {
+    manifest.forEach(item => {
+      // For arrays, we don't validate the index itself, just the items
+      validateManifestFields(item, validProps, path, errors, patternProps)
+    })
+    return errors
+  }
+
+  if (manifest && typeof manifest === 'object') {
+    const currentPath = path.length === 0 ? '' : path.join('.')
+    const pathKey = path.length === 0 ? 'root' : currentPath
+
+    // Check if this object uses patternProperties
+    let patternInfo = patternProps.get(pathKey)
+
+    // If not found, check parent paths (for nested patternProperties like i18n.zh-Hans)
+    if (!patternInfo && path.length > 0) {
+      // Check parent path
+      const parentPath = path.slice(0, -1)
+      const parentPathKey = parentPath.length === 0 ? 'root' : parentPath.join('.')
+      patternInfo = patternProps.get(parentPathKey)
+
+      // If parent uses patternProperties, check if current key matches
+      if (patternInfo && path.length > 0) {
+        const currentKey = path[path.length - 1]
+        if (!matchesPattern(currentKey, patternInfo.pattern)) {
+          patternInfo = null
+        }
+      }
+    }
+
+    for (const [key, value] of Object.entries(manifest)) {
+      // $schema is always allowed
+      if (key === '$schema') {
+        continue
+      }
+
+      // Check if this field is valid
+      let isValid = false
+
+      // First, check if this object uses patternProperties and the key matches the pattern
+      if (patternInfo) {
+        if (matchesPattern(key, patternInfo.pattern)) {
+          isValid = true
+          // The value will be validated recursively below
+        } else if (patternInfo.properties) {
+          // If we're inside a patternProperties object (like i18n.zh-Hans),
+          // check if the key is in the pattern schema's properties
+          isValid = patternInfo.properties.has(key)
+        }
+      }
+
+      // If not matched by pattern, check regular properties
+      if (!isValid) {
+        if (path.length === 0) {
+          // Root level field
+          isValid = validProps.has(key)
+        } else {
+          // Nested field - check full path
+          const fullPath = `${currentPath}.${key}`
+          isValid = validProps.has(fullPath)
+
+          // Also check if the parent path exists (meaning this is a valid nested object)
+          // This handles cases where nested properties are collected with their full paths
+          if (!isValid) {
+            // Check if any property starts with this path (meaning it's a valid nested structure)
+            for (const prop of validProps) {
+              if (prop.startsWith(`${fullPath}.`) || prop === fullPath) {
+                isValid = true
+                break
+              }
+            }
+          }
+        }
+      }
+
+      if (!isValid) {
+        const location = path.length === 0 ? `root.${key}` : `${currentPath}.${key}`
+        errors.push({
+          field: key,
+          location,
+          path: path.length === 0 ? [key] : [...path, key],
+        })
+      }
+
+      // Recursively validate nested objects
+      if (value && typeof value === 'object' && !Array.isArray(value)) {
+        const nextPath = path.length === 0 ? [key] : [...path, key]
+        validateManifestFields(value, validProps, nextPath, errors, patternProps)
+      } else if (Array.isArray(value)) {
+        value.forEach(item => {
+          if (item && typeof item === 'object') {
+            const nextPath = path.length === 0 ? [key] : [...path, key]
+            validateManifestFields(item, validProps, nextPath, errors, patternProps)
+          }
+        })
+      }
+    }
+  }
+
+  return errors
 }
 
 /**
@@ -348,16 +788,15 @@ function sortNestedObjects(data, nestedOrders, path = []) {
 
 /**
  * Process a single manifest file
+ * Returns validation errors count
  */
 async function processManifest(manifestPath, schemaPath, relativePath) {
-  console.log(`\nProcessing ${relativePath}...`)
-
   // Check if schema exists
   try {
     await fs.access(schemaPath)
   } catch {
     console.log(`  ⚠️  Schema not found: ${schemaPath}`)
-    return
+    return { errorCount: 0, hasError: true }
   }
 
   // Check if manifest file exists
@@ -365,7 +804,7 @@ async function processManifest(manifestPath, schemaPath, relativePath) {
     await fs.access(manifestPath)
   } catch {
     console.log(`  ⚠️  Manifest file not found: ${manifestPath}`)
-    return
+    return { errorCount: 0, hasError: true }
   }
 
   // Load manifest and schema
@@ -380,15 +819,34 @@ async function processManifest(manifestPath, schemaPath, relativePath) {
   }
 
   const propertyOrder = await extractPropertyOrder(itemSchema, schemaPath)
-  if (propertyOrder.length > 0) {
-    console.log(`  📋 Top-level field order: ${propertyOrder.join(', ')}`)
+
+  // Collect all valid properties for validation
+  const { validProps, patternProps } = await collectAllValidProperties(itemSchema, schemaPath, [])
+  // Always allow $schema
+  validProps.add('$schema')
+
+  // Validate manifest fields
+  const validationErrors = []
+  if (Array.isArray(manifest)) {
+    manifest.forEach((item, index) => {
+      const errors = validateManifestFields(item, validProps, [index], [], patternProps)
+      validationErrors.push(...errors)
+    })
+  } else {
+    const errors = validateManifestFields(manifest, validProps, [], [], patternProps)
+    validationErrors.push(...errors)
+  }
+
+  // Report validation errors only if there are any
+  if (validationErrors.length > 0) {
+    console.log(`\n  ❌ ${relativePath} - Found ${validationErrors.length} invalid field(s):`)
+    for (const error of validationErrors) {
+      console.log(`     - ${error.location}: field "${error.field}" does not exist in schema`)
+    }
   }
 
   // Find all nested property orders
   const nestedOrders = await findAllNestedOrders(itemSchema, schemaPath, [])
-  if (nestedOrders.size > 0) {
-    console.log(`  📦 Found ${nestedOrders.size} nested object schemas`)
-  }
 
   // Sort the manifest data
   // If schema is array type but manifest is object, treat it as a single item
@@ -407,7 +865,7 @@ async function processManifest(manifestPath, schemaPath, relativePath) {
   const jsonContent = `${JSON.stringify(sortedManifest, null, 2)}\n`
   await fs.writeFile(manifestPath, jsonContent, 'utf-8')
 
-  console.log(`  ✅ Sorted and saved`)
+  return { errorCount: validationErrors.length, hasError: false }
 }
 
 /**
@@ -437,6 +895,15 @@ async function getJsonFiles(dirPath) {
 async function main() {
   console.log('🔄 Sorting manifest fields according to schemas...\n')
 
+  // Statistics
+  const stats = {
+    totalFiles: 0,
+    processedFiles: 0,
+    errorFiles: 0,
+    totalErrors: 0,
+    categories: {},
+  }
+
   // Mapping of subdirectories to their schema files
   const manifestCategories = [
     { dir: 'vendors', schema: 'vendor.schema.json' },
@@ -454,20 +921,38 @@ async function main() {
     const schemaPath = path.join(SCHEMAS_DIR, category.schema)
 
     if (jsonFiles.length === 0) {
-      console.log(`\n⚠️  No JSON files found in ${category.dir}/`)
       continue
     }
 
-    console.log(`\n📁 Processing ${category.dir}/ (${jsonFiles.length} files)...`)
+    stats.categories[category.dir] = {
+      total: jsonFiles.length,
+      processed: 0,
+      errors: 0,
+      validationErrors: 0,
+    }
+    stats.totalFiles += jsonFiles.length
 
     for (const jsonFile of jsonFiles) {
       const manifestPath = path.join(categoryDir, jsonFile)
       const relativePath = `${category.dir}/${jsonFile}`
 
       try {
-        await processManifest(manifestPath, schemaPath, relativePath)
+        const result = await processManifest(manifestPath, schemaPath, relativePath)
+        if (result.hasError) {
+          stats.errorFiles++
+          stats.categories[category.dir].errors++
+        } else {
+          stats.processedFiles++
+          stats.categories[category.dir].processed++
+          if (result.errorCount > 0) {
+            stats.totalErrors += result.errorCount
+            stats.categories[category.dir].validationErrors += result.errorCount
+          }
+        }
       } catch (error) {
         console.error(`  ❌ Error processing ${relativePath}:`, error.message)
+        stats.errorFiles++
+        stats.categories[category.dir].errors++
       }
     }
   }
@@ -477,12 +962,58 @@ async function main() {
   const collectionsSchemaPath = path.join(SCHEMAS_DIR, 'collections.schema.json')
 
   try {
-    await processManifest(collectionsPath, collectionsSchemaPath, 'collections.json')
+    const result = await processManifest(collectionsPath, collectionsSchemaPath, 'collections.json')
+    stats.totalFiles++
+    if (result.hasError) {
+      stats.errorFiles++
+    } else {
+      stats.processedFiles++
+      if (result.errorCount > 0) {
+        stats.totalErrors += result.errorCount
+      }
+    }
   } catch (error) {
     console.error(`  ❌ Error processing collections.json:`, error.message)
+    stats.totalFiles++
+    stats.errorFiles++
   }
 
-  console.log('\n✨ Done!')
+  // Print summary
+  console.log(`\n${'='.repeat(60)}`)
+  console.log('📊 Summary')
+  console.log('='.repeat(60))
+  console.log(`Total files: ${stats.totalFiles}`)
+  console.log(`Processed successfully: ${stats.processedFiles}`)
+  if (stats.errorFiles > 0) {
+    console.log(`Files with errors: ${stats.errorFiles}`)
+  }
+  if (stats.totalErrors > 0) {
+    console.log(`Total validation errors: ${stats.totalErrors}`)
+  }
+
+  // Print category breakdown
+  const categoriesWithErrors = Object.entries(stats.categories).filter(
+    ([_, cat]) => cat.errors > 0 || cat.validationErrors > 0
+  )
+  if (categoriesWithErrors.length > 0) {
+    console.log('\nCategory breakdown:')
+    for (const [category, catStats] of categoriesWithErrors) {
+      const parts = [`${category}: ${catStats.processed}/${catStats.total} processed`]
+      if (catStats.errors > 0) {
+        parts.push(`${catStats.errors} file error(s)`)
+      }
+      if (catStats.validationErrors > 0) {
+        parts.push(`${catStats.validationErrors} validation error(s)`)
+      }
+      console.log(`  ${parts.join(', ')}`)
+    }
+  }
+
+  if (stats.errorFiles === 0 && stats.totalErrors === 0) {
+    console.log('\n✨ All files processed successfully with no errors!')
+  } else {
+    console.log('\n⚠️  Processing completed with some errors.')
+  }
 }
 
 main().catch(console.error)

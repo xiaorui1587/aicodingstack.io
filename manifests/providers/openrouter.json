@@ -8,9 +8,9 @@
       "description": "统一的 API 平台，通过单一接口提供来自不同提供商的多个 AI 模型的访问。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://openrouter.ai",
   "docsUrl": "https://openrouter.ai/docs",
-  "verified": false,
   "vendor": "openrouter",
   "type": "model-service-provider",
   "applyKeyUrl": "https://openrouter.ai/apply",
@@ -27,6 +27,5 @@
     "discord": "https://discord.gg/openrouter",
     "reddit": null,
     "blog": null
-  },
-  "githubUrl": "https://github.com/openrouter-ai"
+  }
 }

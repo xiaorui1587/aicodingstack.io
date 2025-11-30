@@ -2,22 +2,22 @@
   "$schema": "../$schemas/vendor.schema.json",
   "id": "anysphere",
   "name": "Anysphere",
-  "description": "Anysphere is a vendor.",
+  "description": "Anysphere is an applied research lab working on the future of programming. We are a group of researchers, engineers, and technologists inventing at the edge of what's useful and possible.",
   "i18n": {
     "zh-Hans": {
-      "description": "基于 VS Code 构建的 AI 驱动代码编辑器，具有高级 AI 功能，用于代码生成、编辑和理解。"
+      "description": "专注于编程未来的应用研究实验室,由研究人员、工程师和技术专家组成,致力于在实用性和可能性的边缘进行创新。"
     }
   },
-  "websiteUrl": "https://cursor.com",
-  "docsUrl": "https://cursor.com/docs",
+  "websiteUrl": "https://anysphere.inc",
+  "docsUrl": null,
   "verified": false,
   "communityUrls": {
-    "linkedin": "https://www.linkedin.com/company/cursorai",
-    "twitter": "https://x.com/cursor_ai",
-    "github": "https://github.com/cursor/cursor",
-    "youtube": "https://www.youtube.com/@cursor_ai",
+    "linkedin": "https://www.linkedin.com/company/anysphereinc",
+    "twitter": "https://x.com/anysphere",
+    "github": "https://github.com/anysphere",
+    "youtube": null,
     "discord": null,
-    "reddit": "https://www.reddit.com/r/cursor",
-    "blog": "https://cursor.com/blog"
+    "reddit": null,
+    "blog": null
   }
 }

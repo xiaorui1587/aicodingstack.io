@@ -8,9 +8,9 @@
       "description": "阿里巴巴专有的开源 Qwen3 Coder 480B A35B 版本。强大的编码代理模型，专长于通过工具调用和环境交互进行自主编程，结合了编码能力和通用的多功能能力。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://qwenlm.com",
   "docsUrl": "https://huggingface.co/Qwen/Qwen3-Coder-480B-A35B",
-  "verified": false,
   "vendor": "Alibaba",
   "size": "480B",
   "totalContext": "128K",

@@ -8,9 +8,9 @@
       "description": "DeepSeek V3.1 Terminus 扩展版本，67B 参数，64K 上下文窗口，专为高级推理和代码生成任务设计。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://www.deepseek.com",
   "docsUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1-Terminus",
-  "verified": false,
   "vendor": "DeepSeek",
   "size": "67B",
   "totalContext": "64K",

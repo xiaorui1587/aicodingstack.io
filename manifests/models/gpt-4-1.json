@@ -8,9 +8,9 @@
       "description": "2025年4月发布的 GPT-4.1，在编码和前端 Web 开发方面表现出特别显著的改进，支持 100 万 token 上下文窗口，适用于复杂的编码任务。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://openai.com",
   "docsUrl": "https://platform.openai.com/docs/models/gpt-4",
-  "verified": false,
   "vendor": "OpenAI",
   "size": "Unknown",
   "totalContext": "1M",

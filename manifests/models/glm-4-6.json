@@ -8,9 +8,9 @@
       "description": "GLM 4.6 是 Z.ai 推出的 9B 参数语言模型，具备 128K 上下文窗口，专为高效性能和多语言理解优化。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://z.ai",
   "docsUrl": "https://huggingface.co/zai-org/GLM-4.6",
-  "verified": false,
   "vendor": "Z.ai",
   "size": "9B",
   "totalContext": "128K",

@@ -8,9 +8,9 @@
       "description": "Qoder CLI 是 AI 驱动的编码助手，用于智能代码生成、调试和开发工作流。具有 TUI 模式、内联聊天和项目管理功能。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://qoder.com/cli",
   "docsUrl": "https://docs.qoder.com/cli/quick-start",
-  "verified": false,
   "vendor": "Alibaba",
   "latestVersion": "Latest",
   "githubUrl": null,

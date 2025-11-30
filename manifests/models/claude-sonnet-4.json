@@ -8,9 +8,9 @@
       "description": "显著增强了其前身 Sonnet 3.7 的能力，在编码和推理任务方面表现出色，具有改进的精度和可控性。在 SWE-bench 上达到 72.7% 的最先进性能，Sonnet 4 在能力和计算效率之间取得了平衡。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://www.anthropic.com",
   "docsUrl": "https://docs.anthropic.com/claude/docs/models-overview",
-  "verified": false,
   "vendor": "Anthropic",
   "size": "Unknown",
   "totalContext": "200K",

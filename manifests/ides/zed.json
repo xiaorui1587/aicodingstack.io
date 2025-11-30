@@ -8,9 +8,9 @@
       "description": "用 Rust 构建的下一代代码编辑器，专为与人类和 AI 的高性能协作而设计。具有智能编辑、多缓冲区编辑和原生 Git 支持。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://zed.dev",
   "docsUrl": "https://zed.dev/docs",
-  "verified": false,
   "vendor": "Zed Industries",
   "latestVersion": "0.140.0",
   "githubUrl": "https://github.com/zed-industries/zed",

@@ -8,9 +8,8 @@
       "description": "功能强大的 Java IDE，具有智能代码辅助、重构工具和多语言支持。提供社区版（免费）和旗舰版（付费）两个版本。"
     }
   },
-  "websiteUrl": "https://www.jetbrains.com/idea",
-  "docsUrl": "https://www.jetbrains.com/help/idea",
   "verified": false,
+  "websiteUrl": "https://www.jetbrains.com/idea",
   "communityUrls": {
     "linkedin": "https://www.linkedin.com/company/jetbrains",
     "twitter": "https://x.com/intellijidea",

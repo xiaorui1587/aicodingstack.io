@@ -8,9 +8,9 @@
       "description": "终端 AI 编码助手 CLI。理解代码库，通过自然语言执行任务，解释代码，管理 git 工作流，并支持 MCP 集成。"
     }
   },
+  "verified": true,
   "websiteUrl": "https://code.claude.com",
   "docsUrl": "https://docs.claude.com",
-  "verified": true,
   "vendor": "Anthropic",
   "latestVersion": "2.0.42",
   "githubUrl": "https://github.com/anthropics/claude-code",
@@ -24,10 +24,10 @@
       "category": "Individual"
     },
     {
-      "name": "Pro",
+      "name": "Pro (Annual)",
       "value": 17,
       "currency": "USD",
-      "per": "Month (Annual)",
+      "per": "Month",
       "category": "Individual"
     },
     {

@@ -8,9 +8,8 @@
       "description": "统一的 API 平台，通过单一接口提供来自不同提供商的多个 AI 模型的访问。"
     }
   },
-  "websiteUrl": "https://openrouter.ai",
-  "docsUrl": null,
   "verified": false,
+  "websiteUrl": "https://openrouter.ai",
   "communityUrls": {
     "linkedin": null,
     "twitter": "https://x.com/OpenRouterAI",

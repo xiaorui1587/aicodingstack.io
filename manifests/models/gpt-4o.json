@@ -8,9 +8,9 @@
       "description": "OpenAI 的旗舰多模态模型，专为编码任务优化，具备 128K 上下文窗口和先进的推理能力，适用于代码生成和调试。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://openai.com",
   "docsUrl": "https://platform.openai.com/docs/models/gpt-4o",
-  "verified": false,
   "vendor": "OpenAI",
   "size": "Unknown",
   "totalContext": "128K",

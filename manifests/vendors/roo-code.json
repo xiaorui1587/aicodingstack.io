@@ -8,9 +8,8 @@
       "description": "Roo Code 是一个开源的 AI 驱动编码助手，提供用于规划、架构、调试等的专门模式。它支持任何 AI 模型，具有精细的自动批准和完全自定义功能。"
     }
   },
-  "websiteUrl": "https://roocode.com",
-  "docsUrl": "https://docs.roocode.com",
   "verified": false,
+  "websiteUrl": "https://roocode.com",
   "communityUrls": {
     "linkedin": "https://www.linkedin.com/company/roo-code",
     "twitter": "https://x.com/roocode",

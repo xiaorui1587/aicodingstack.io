@@ -8,9 +8,9 @@
       "description": "GPT-5 系列的最新前沿级模型，提供更强的通用推理能力、改进的指令遵循和更自然的对话风格。使用自适应推理动态分配计算，对简单查询快速响应，同时对复杂任务进行更深入的思考。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://openai.com",
   "docsUrl": "https://platform.openai.com/docs/models/gpt-5.1",
-  "verified": false,
   "vendor": "OpenAI",
   "size": "Unknown",
   "totalContext": "128K",

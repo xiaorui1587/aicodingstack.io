@@ -8,9 +8,9 @@
       "description": "Amazon Q Developer CLI 是您命令行中的智能 AI 助手，执行任务、理解您的代码库，并通过自适应自然对话加速开发。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://aws.amazon.com/developer/learning/q-developer-cli",
   "docsUrl": "https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line.html",
-  "verified": false,
   "vendor": "AWS",
   "latestVersion": "v1.18.1",
   "githubUrl": "https://github.com/aws/amazon-q-developer-cli",

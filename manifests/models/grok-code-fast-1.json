@@ -8,9 +8,9 @@
       "description": "一个极速推理模型，在代理式编码方面表现出色，在 Kilo Code 中限时免费提供。注意：提示和完成内容会被 xAI 记录并用于改进模型。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://docs.x.ai/docs/models/grok-code-fast-1",
   "docsUrl": "https://docs.x.ai/docs/models/grok-code-fast-1",
-  "verified": false,
   "vendor": "xAI",
   "size": "Unknown",
   "totalContext": "128K",

@@ -8,9 +8,9 @@
       "description": "xAI 是一家专注于开发 AI 模型的公司。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://x.ai",
   "docsUrl": "https://x.ai/api",
-  "verified": false,
   "vendor": "xAI",
   "type": "foundation-model-provider",
   "applyKeyUrl": "https://x.ai/api",

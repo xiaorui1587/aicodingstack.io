@@ -8,9 +8,9 @@
       "description": "Sourcegraph 的前沿编码 Agent，执行自主推理、代码编辑和复杂任务。提供 CLI 版本，并在 VS Code、Cursor 和 Windsurf 中可用。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://ampcode.com",
   "docsUrl": "https://ampcode.com",
-  "verified": false,
   "vendor": "Sourcegraph",
   "latestVersion": "1.0.0",
   "githubUrl": null,

@@ -8,9 +8,9 @@
       "description": "GPT-5 的专门版本，针对软件工程和编码工作流程进行了优化。专为交互式开发会话和长时间独立执行复杂工程任务而设计。支持从零开始构建项目、功能开发、调试、大规模重构和代码审查。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://openai.com",
   "docsUrl": "https://platform.openai.com/docs/models/gpt-5-codex",
-  "verified": false,
   "vendor": "OpenAI",
   "size": "Unknown",
   "totalContext": "128K",

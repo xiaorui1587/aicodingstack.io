@@ -8,9 +8,9 @@
       "description": "OpenAI 的 Codex CLI 是本地编码 Agent，通过自然语言命令读取、修改和运行代码。支持构建、调试和自动化编码任务。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://openai.com/codex",
   "docsUrl": "https://developers.openai.com/codex/cli",
-  "verified": false,
   "vendor": "OpenAI",
   "latestVersion": "0.44.0",
   "githubUrl": "https://github.com/openai/codex",

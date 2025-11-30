@@ -8,9 +8,8 @@
       "description": "代码智能平台，提供通用代码搜索、导航和 AI 驱动的开发工具，包括 Amp 编码 Agent。"
     }
   },
-  "websiteUrl": "https://sourcegraph.com",
-  "docsUrl": null,
   "verified": false,
+  "websiteUrl": "https://sourcegraph.com",
   "communityUrls": {
     "linkedin": "https://www.linkedin.com/company/sourcegraph",
     "twitter": "https://x.com/sourcegraph",

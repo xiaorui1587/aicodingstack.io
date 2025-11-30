@@ -8,9 +8,8 @@
       "description": "领先的 AI 研究公司，专注于开发安全且有益的通用人工智能。"
     }
   },
-  "websiteUrl": "https://openai.com",
-  "docsUrl": null,
   "verified": false,
+  "websiteUrl": "https://openai.com",
   "communityUrls": {
     "linkedin": "https://www.linkedin.com/company/openai",
     "twitter": "https://x.com/OpenAI",

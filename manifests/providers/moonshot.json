@@ -8,9 +8,9 @@
       "description": "专注于大型语言模型和智能应用的 AI 公司，以 Kimi AI 助手而闻名。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://www.moonshot.ai",
   "docsUrl": "https://platform.moonshot.ai/docs",
-  "verified": false,
   "vendor": "moonshot",
   "type": "foundation-model-provider",
   "applyKeyUrl": "https://platform.moonshot.ai/console/api-keys",
@@ -27,6 +27,5 @@
     "discord": null,
     "reddit": null,
     "blog": null
-  },
-  "githubUrl": "https://github.com/moonshotai"
+  }
 }

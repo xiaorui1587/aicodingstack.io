@@ -8,9 +8,9 @@
       "description": "AI 原生 IDE，具有智能助手 Cascade，可自主生成、编辑、测试和部署代码。集成 MCP 服务器和插件钩子，让开发者保持心流状态。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://windsurf.com",
   "docsUrl": "https://docs.windsurf.com",
-  "verified": false,
   "vendor": "Cognition",
   "latestVersion": "1.12.12",
   "githubUrl": null,

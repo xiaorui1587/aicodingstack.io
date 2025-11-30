@@ -8,9 +8,9 @@
       "description": "AI 平台，为各种应用提供先进的语言模型和 AI 服务，包括编码和内容生成。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://z.ai",
   "docsUrl": "https://docs.z.ai",
-  "verified": false,
   "vendor": "z-ai",
   "type": "foundation-model-provider",
   "applyKeyUrl": "https://z.ai/manage-apikey/apikey-list",
@@ -27,6 +27,5 @@
     "discord": null,
     "reddit": null,
     "blog": null
-  },
-  "githubUrl": "https://github.com/zai-org"
+  }
 }

@@ -8,9 +8,9 @@
       "description": "开源 AI 代码助手，让您可以在 IDE、终端和 CI 中构建自定义 Agent。具有 Agent、Chat、Edit 和 Autocomplete 模式，支持完全的模型灵活性和 MCP 集成。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://www.continue.dev",
   "docsUrl": "https://docs.continue.dev",
-  "verified": false,
   "vendor": "Continue Dev",
   "latestVersion": "1.0.0",
   "githubUrl": "https://github.com/continuedev/continue",

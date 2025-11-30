@@ -8,9 +8,9 @@
       "description": "Augment Code CLI 将自主 AI Agent 带到您的终端，配备行业领先的上下文引擎。具有原生 TUI、自动化工作流和深度代码库理解功能。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://www.augmentcode.com",
   "docsUrl": "https://docs.augmentcode.com/cli",
-  "verified": false,
   "vendor": "Augment",
   "latestVersion": "0.7.0",
   "githubUrl": "https://github.com/augmentcode/auggie",

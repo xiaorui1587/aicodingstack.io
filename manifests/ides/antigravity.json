@@ -8,9 +8,9 @@
       "description": "Google 的 AI 驱动集成开发环境（IDE），用于现代软件开发，具有先进的 AI 功能。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://antigravity.google",
   "docsUrl": "https://antigravity.google/docs",
-  "verified": false,
   "vendor": "Google",
   "latestVersion": "1.11.5",
   "githubUrl": null,

@@ -8,9 +8,9 @@
       "description": "蚂蚁集团的 Neovate Code 是开源智能编程助手。生成代码、修复错误、审查代码并添加测试，具有灵活的多客户端架构。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://neovateai.dev",
   "docsUrl": "https://neovateai.dev/en/docs/overview",
-  "verified": false,
   "vendor": "Ant Group",
   "latestVersion": "0.12.7",
   "githubUrl": "https://github.com/neovateai/neovate-code",

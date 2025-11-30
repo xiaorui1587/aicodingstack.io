@@ -29,19 +29,19 @@
         "ideId": {
           "type": "string",
           "enum": ["vscode", "jetbrains", "cursor", "windsurf", "trae", "zed"],
-          "description": "IDE identifier (e.g., 'vscode', 'jetbrains')"
+          "description": "IDE identifier"
         },
         "marketplaceUrl": {
           "type": ["string", "null"],
           "format": "uri",
-          "pattern": "^(https://marketplace\\.visualstudio\\.com/items\\?itemName=|https://plugins\\.jetbrains\\.com/plugin/)",
-          "description": "Extension marketplace URL for this IDE (must start with VS Code Marketplace or JetBrains Plugins prefix)"
+          "pattern": "^https://(marketplace\\.visualstudio\\.com/items\\?itemName=|plugins\\.jetbrains\\.com/plugin/|open-vsx\\.org/extension/)",
+          "description": "Extension marketplace URL for this IDE (must start with VS Code Marketplace, JetBrains Plugins, or Open VSX prefix)"
         },
         "installUri": {
           "type": ["string", "null"],
           "format": "uri",
-          "pattern": "^[a-zA-Z0-9-]+:extension/",
-          "description": "Deep link URI for one-click installation (must start with scheme:extension/ format, e.g., 'vscode:extension/')"
+          "pattern": "^(vscode|vscode-insider|cursor|windsurf|trae):extension/",
+          "description": "Deep link URI for one-click installation (must start with vscode, vscode-insider, cursor, windsurf, or trae scheme followed by :extension/, e.g., 'vscode:extension/')"
         }
       },
       "required": ["ideId", "marketplaceUrl", "installUri"],

@@ -8,9 +8,9 @@
       "description": "GitHub Copilot 是一个 AI 结对程序员，帮助您更快地编写代码并减少工作量。它从注释和代码中获取上下文，建议单行代码和整个函数。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://github.com/features/copilot",
   "docsUrl": "https://docs.github.com/en/copilot",
-  "verified": false,
   "vendor": "GitHub",
   "latestVersion": "1.0.0",
   "githubUrl": null,

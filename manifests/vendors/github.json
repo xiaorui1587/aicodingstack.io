@@ -8,9 +8,8 @@
       "description": "GitHub Copilot CLI 将 AI 辅助功能带到您的终端。建议 shell 命令、生成代码片段，并通过自然语言与代码仓库集成。"
     }
   },
-  "websiteUrl": "https://github.com/features/copilot/cli",
-  "docsUrl": "https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli",
   "verified": false,
+  "websiteUrl": "https://github.com/features/copilot/cli",
   "communityUrls": {
     "linkedin": null,
     "twitter": "https://x.com/github",

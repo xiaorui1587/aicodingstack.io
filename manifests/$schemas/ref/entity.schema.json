@@ -16,29 +16,23 @@
     },
     "description": {
       "type": "string",
-      "description": "A concise description of the entity and its key features",
+      "description": "A concise description of the entity and its key features, summarized from the official website homepage, company page, or about page",
       "maxLength": 200
     },
     "i18n": {
       "$ref": "./i18n.schema.json",
       "description": "Internationalization translations"
     },
+    "verified": {
+      "type": "boolean",
+      "description": "Whether the entity has been verified by the AI Coding Stack team (default value is false)"
+    },
     "websiteUrl": {
       "type": "string",
       "format": "uri",
       "pattern": "^https://",
       "description": "Official website URL"
-    },
-    "docsUrl": {
-      "type": ["string", "null"],
-      "format": "uri",
-      "pattern": "^https://",
-      "description": "Documentation URL (null if not available)"
-    },
-    "verified": {
-      "type": "boolean",
-      "description": "Whether the entity has been verified"
     }
   },
-  "required": ["id", "name", "description", "i18n", "websiteUrl", "docsUrl", "verified"]
+  "required": ["id", "name", "description", "i18n", "verified", "websiteUrl"]
 }

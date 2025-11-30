@@ -8,9 +8,9 @@
       "description": "适用于 VS Code、Cursor 和 Windsurf 的前沿编码 Agent。具有自主推理、全面编辑和会话共享功能。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://ampcode.com",
   "docsUrl": "https://ampcode.com",
-  "verified": false,
   "vendor": "Sourcegraph",
   "latestVersion": "1.0.0",
   "githubUrl": null,

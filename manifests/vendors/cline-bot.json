@@ -8,9 +8,8 @@
       "description": "Cline 是一个开源的协作式编码 Agent，用于复杂工作。它提供计划-执行工作流程，具有完全透明性、模型自由度和企业级安全的客户端架构。"
     }
   },
-  "websiteUrl": "https://cline.bot",
-  "docsUrl": "https://cline.bot/docs",
   "verified": false,
+  "websiteUrl": "https://cline.bot",
   "communityUrls": {
     "linkedin": null,
     "twitter": "https://x.com/clinebot",

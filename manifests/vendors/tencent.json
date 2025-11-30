@@ -8,9 +8,8 @@
       "description": "腾讯的 AI 编码助手，提供智能代码补全、多文件代码生成（Craft 模式）、设计转代码转换和集成部署工具。"
     }
   },
-  "websiteUrl": "https://www.codebuddy.ai",
-  "docsUrl": "https://www.codebuddy.ai/docs/ide",
   "verified": false,
+  "websiteUrl": "https://www.codebuddy.ai",
   "communityUrls": {
     "linkedin": null,
     "twitter": null,

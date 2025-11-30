@@ -8,9 +8,9 @@
       "description": "Google 的 Gemini CLI 将先进的 AI 模型带到您的终端。提供代码补全、解释、测试生成和错误修复，同时支持多种语言。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://geminicli.com",
   "docsUrl": "https://geminicli.com/docs",
-  "verified": false,
   "vendor": "Google",
   "latestVersion": "0.5.4",
   "githubUrl": "https://github.com/google-gemini/gemini-cli",

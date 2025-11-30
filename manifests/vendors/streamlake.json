@@ -8,9 +8,8 @@
       "description": "由人工智能驱动的智能代码编辑器，旨在释放您的代码想象力，提供先进的AI辅助功能。"
     }
   },
-  "websiteUrl": "https://www.codeflicker.ai",
-  "docsUrl": "https://www.codeflicker.ai/docs",
   "verified": false,
+  "websiteUrl": "https://www.codeflicker.ai",
   "communityUrls": {
     "linkedin": null,
     "twitter": "https://x.com/CodeFlicker_ai",

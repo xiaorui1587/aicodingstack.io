@@ -8,9 +8,9 @@
       "description": "Qwen3 Coder 是专为代码生成设计的模型，32B 参数，32K 上下文窗口，优化了代码编写和调试任务的效率。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://qwen.ai",
   "docsUrl": "https://huggingface.co/Qwen/Qwen3-Coder-30B-A3B-Instruct",
-  "verified": false,
   "vendor": "Alibaba",
   "size": "32B",
   "totalContext": "32K",

@@ -8,9 +8,9 @@
       "description": "Factory AI 的 Droid CLI 是基于终端的编码 Agent，处理从规划到测试的完整功能开发。与企业工具集成并提供透明的差异审查。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://factory.ai",
   "docsUrl": "https://docs.factory.ai/cli/getting-started/overview",
-  "verified": false,
   "vendor": "Factory AI",
   "latestVersion": "3.2.0",
   "githubUrl": null,

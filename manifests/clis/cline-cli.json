@@ -8,9 +8,9 @@
       "description": "Cline CLI 支持从终端无头执行任务并将 Cline 集成到任何地方。使用它通过协作 AI 驱动 GitHub Actions、Discord 机器人和 Linear 工单。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://cline.bot/cline-cli",
   "docsUrl": "https://cline.bot/docs",
-  "verified": false,
   "vendor": "Cline Bot",
   "latestVersion": "Preview",
   "githubUrl": null,

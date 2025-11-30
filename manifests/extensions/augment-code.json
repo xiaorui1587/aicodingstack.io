@@ -8,9 +8,9 @@
       "description": "Augment Code 是最强大的 AI 软件开发平台，由行业领先的上下文引擎支持。它提供自主编码 Agent、代码库感知自动补全，以及对大型代码库的深度上下文理解。"
     }
   },
+  "verified": false,
   "websiteUrl": "https://www.augmentcode.com",
   "docsUrl": "https://docs.augmentcode.com",
-  "verified": false,
   "vendor": "Augment",
   "latestVersion": "1.0.0",
   "githubUrl": null,

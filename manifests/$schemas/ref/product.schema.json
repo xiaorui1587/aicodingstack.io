@@ -12,13 +12,13 @@
       "properties": {
         "latestVersion": {
           "type": "string",
-          "description": "The latest stable version number"
+          "description": "The latest stable version number (typically found on download page or changelog page)"
         },
         "githubUrl": {
           "type": ["string", "null"],
           "format": "uri",
-          "pattern": "^https://github.com/",
-          "description": "GitHub repository URL"
+          "pattern": "^https://github\\.com/[a-zA-Z0-9._-]+/[a-zA-Z0-9._-]+$",
+          "description": "GitHub repository URL (format: github.com/:owner/:repo)"
         },
         "license": {
           "type": "string",
@@ -27,11 +27,12 @@
         },
         "pricing": {
           "type": "array",
-          "description": "Pricing tiers for the product (can be empty array if not applicable)",
+          "description": "Pricing tiers for the product (can be empty array if not applicable, typically found on example.com/pricing or example.com/plans page)",
           "items": {
             "$ref": "#/$defs/pricingTier"
           },
-          "minItems": 1
+          "minItems": 0,
+          "uniqueItems": true
         },
         "resourceUrls": {
           "$ref": "#/$defs/resourceUrls"
@@ -57,7 +58,7 @@
   "$defs": {
     "relatedProducts": {
       "type": "array",
-      "description": "Related products (CLIs, extensions, etc.)",
+      "description": "Related products (IDEs, CLIs, or extensions)",
       "items": {
         "type": "object",
         "properties": {
@@ -68,7 +69,7 @@
           },
           "productId": {
             "type": "string",
-            "description": "ID of the related product"
+            "description": "ID of the related product (the 'id' field from the product's manifest file)"
           }
         },
         "required": ["type", "productId"],
@@ -83,7 +84,7 @@
       "properties": {
         "name": {
           "type": "string",
-          "description": "Name of the pricing tier"
+          "description": "Name of the pricing tier (must be unique within the pricing array)"
         },
         "value": {
           "type": ["number", "null"],

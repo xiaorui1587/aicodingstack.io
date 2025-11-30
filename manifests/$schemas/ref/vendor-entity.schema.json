@@ -8,15 +8,22 @@
     {
       "$ref": "./entity.schema.json"
     },
+
     {
       "type": "object",
       "properties": {
+        "docsUrl": {
+          "type": ["string", "null"],
+          "format": "uri",
+          "pattern": "^https://",
+          "description": "Documentation URL, usually the official website documentation page (typical formats include docs.example.com or example.com/docs)"
+        },
         "vendor": {
           "type": "string",
           "description": "The company or organization that develops this entity"
         }
       },
-      "required": ["vendor"]
+      "required": ["docsUrl", "vendor"]
     }
   ]
 }
