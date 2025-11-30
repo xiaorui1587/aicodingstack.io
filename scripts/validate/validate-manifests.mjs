@@ -51,11 +51,11 @@ function loadBaseSchema(schemasDir) {
   // Load all ref schemas first
   const refDir = path.join(schemasDir, 'ref')
 
-  // Load i18n schema
-  const i18nSchemaPath = path.join(refDir, 'i18n.schema.json')
-  const i18nSchemaContent = fs.readFileSync(i18nSchemaPath, 'utf8')
-  const i18nSchema = JSON.parse(i18nSchemaContent)
-  ajv.addSchema(i18nSchema, 'i18n.schema.json')
+  // Load translations schema
+  const translationsSchemaPath = path.join(refDir, 'translations.schema.json')
+  const translationsSchemaContent = fs.readFileSync(translationsSchemaPath, 'utf8')
+  const translationsSchema = JSON.parse(translationsSchemaContent)
+  ajv.addSchema(translationsSchema, 'translations.schema.json')
 
   // Load community-urls schema
   const communitySchemaPath = path.join(refDir, 'community-urls.schema.json')

@@ -46,7 +46,7 @@ export interface ManifestApp extends ManifestEntity {
 
 /**
  * Internationalization translations
- * Based on: /manifests/$schemas/ref/i18n.schema.json
+ * Based on: /manifests/$schemas/ref/translations.schema.json
  */
 export interface ManifestI18n {
   [locale: string]: {

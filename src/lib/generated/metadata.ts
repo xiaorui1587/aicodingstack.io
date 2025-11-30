@@ -128,7 +128,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
   specifications: {
     title: 'Specifications & Protocols',
     description: 'Essential standards and protocols for modern software development',
-    i18n: {
+    translations: {
       'zh-Hans': {
         title: '规范与协议',
         description: '现代软件开发的基本标准和协议',
@@ -137,14 +137,14 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
     cards: [
       {
         title: 'Development Standards',
-        i18n: {
+        translations: {
           'zh-Hans': {
             title: '开发标准',
           },
         },
         items: [
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: '语义化版本',
                 description: '使用 MAJOR.MINOR.PATCH 格式的版本控制方案，传达兼容性和更新影响',
@@ -156,7 +156,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
               'Versioning scheme using MAJOR.MINOR.PATCH format to communicate compatibility and impact of updates',
           },
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: '约定式提交',
                 description: '结构化提交消息的轻量级约定，支持自动化变更日志生成和语义化版本控制',
@@ -168,7 +168,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
               'Lightweight convention for structured commit messages that enable automated changelog generation and semantic versioning',
           },
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: 'AGENTS.md',
                 description: '为编码 Agent 提供项目特定指令和上下文的开放格式 Markdown 文件',
@@ -183,14 +183,14 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
       },
       {
         title: 'Agent Protocols',
-        i18n: {
+        translations: {
           'zh-Hans': {
             title: 'Agent 协议',
           },
         },
         items: [
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: '模型上下文协议 (MCP)',
                 description: '将 AI 应用连接到外部系统（如数据源、工具和工作流）的开放标准',
@@ -202,7 +202,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
               'Open standard connecting AI applications to external systems like data sources, tools, and workflows',
           },
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: 'Agent 间通信协议 (A2A)',
                 description: '支持不同平台之间 AI Agent 安全通信和协作的开放协议',
@@ -214,7 +214,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
               'Open protocol enabling secure communication and collaboration between AI agents across different platforms',
           },
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: 'Agent 支付协议 (AP2)',
                 description: '使用可验证数字凭证和授权委托的安全 Agent 支付开放协议',
@@ -226,7 +226,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
               'Open protocol for secure agent-led payments using verifiable digital credentials and authorization mandates',
           },
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: 'Agent 网络协议 (ANP)',
                 description: '基于 DID 身份和自动协议协商的去中心化无信任 Agent 通信协议',
@@ -238,7 +238,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
               'Decentralized protocol for trustless agent communication with DID-based identity and automatic protocol negotiation',
           },
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: 'Agent 客户端协议 (ACP)',
                 description: '标准化代码编辑器与 Agent 之间通信的开放协议，用于自主代码修改',
@@ -256,7 +256,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
   articles: {
     title: 'Featured Articles',
     description: 'Must-read articles about AI coding from industry leaders',
-    i18n: {
+    translations: {
       'zh-Hans': {
         title: '精选文章',
         description: '来自行业领袖的 AI 编码必读文章',
@@ -265,14 +265,14 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
     cards: [
       {
         title: 'OpenAI on Coding',
-        i18n: {
+        translations: {
           'zh-Hans': {
             title: 'OpenAI 关于编码',
           },
         },
         items: [
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: '构建 AI 驱动的应用',
                 description: '在生产环境中部署 AI 应用的最佳实践',
@@ -283,7 +283,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
             description: 'Best practices for deploying AI applications in production',
           },
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: '提示工程指南',
                 description: '制作有效代码生成提示的策略',
@@ -297,14 +297,14 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
       },
       {
         title: 'Cursor Insights',
-        i18n: {
+        translations: {
           'zh-Hans': {
             title: 'Cursor 见解',
           },
         },
         items: [
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: '编程的未来',
                 description: 'AI 如何重塑开发工作流',
@@ -315,7 +315,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
             description: 'How AI is reshaping the development workflow',
           },
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: 'AI 优先的 IDE 设计',
                 description: '设计无缝 AI 协作的 IDE',
@@ -329,14 +329,14 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
       },
       {
         title: 'Claude on AI Coding',
-        i18n: {
+        translations: {
           'zh-Hans': {
             title: 'Claude 关于 AI 编码',
           },
         },
         items: [
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: '使用 Claude Code 构建',
                 description: 'Claude Code 及其功能介绍',
@@ -347,7 +347,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
             description: 'Introduction to Claude Code and its capabilities',
           },
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: 'MCP：新标准',
                 description: '模型上下文协议如何实现更好的 AI 集成',
@@ -361,14 +361,14 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
       },
       {
         title: 'Lovable Engineering',
-        i18n: {
+        translations: {
           'zh-Hans': {
             title: 'Lovable 工程',
           },
         },
         items: [
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: 'AI 原生开发',
                 description: '构建为 AI 优先工作流设计的应用',
@@ -379,7 +379,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
             description: 'Building applications designed for AI-first workflows',
           },
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: '编码副驾驶模式',
                 description: '有效 AI 结对编程的常见模式',
@@ -396,7 +396,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
   tools: {
     title: 'Ecosystem Tools',
     description: 'Curated tools and utilities for AI coding workflows',
-    i18n: {
+    translations: {
       'zh-Hans': {
         title: '生态系统工具',
         description: 'AI 编码工作流的精选工具和实用程序',
@@ -405,14 +405,14 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
     cards: [
       {
         title: 'Development Tools',
-        i18n: {
+        translations: {
           'zh-Hans': {
             title: '开发工具',
           },
         },
         items: [
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: 'OpenSpec',
                 description: '为 AI 编码助手设计的规范驱动开发框架，提供组织化的变更管理和活文档',
@@ -424,7 +424,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
               'Spec-driven development framework for AI coding assistants with organized change management and living documentation',
           },
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: 'Spec Kit',
                 description: '从可执行规范生成工作实现的规范驱动开发工具包',
@@ -436,7 +436,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
               'Toolkit for Spec-Driven Development that generates working implementations from executable specifications',
           },
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: 'ccusage',
                 description: 'Claude Code 使用跟踪和分析工具',
@@ -447,7 +447,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
             description: 'Claude Code usage tracking and analytics tool',
           },
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: 'BMAD-METHOD',
                 description:
@@ -460,7 +460,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
               'Breakthrough Method for Agile AI-Driven Development with specialized AI agents for planning, architecture, and implementation',
           },
           {
-            i18n: {
+            translations: {
               'zh-Hans': {
                 name: 'Anthropic Skills',
                 description:
@@ -476,7 +476,7 @@ export const collectionsMetadata: Record<string, CollectionSection> = {
       },
       {
         title: 'Productivity Utilities',
-        i18n: {
+        translations: {
           'zh-Hans': {
             title: '生产力工具',
           },
