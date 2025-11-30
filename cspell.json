@@ -26,7 +26,7 @@
     },
     {
       "name": "ru",
-      "path": "node_modules/@cspell/dict-ru_ru/ru_RU.trie.gz",
+      "path": "node_modules/@cspell/dict-ru_ru/ru_ru.trie.gz",
       "description": "Russian dictionary"
     }
   ],
