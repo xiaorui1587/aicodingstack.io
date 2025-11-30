@@ -8,16 +8,15 @@ import { JsonLd } from '@/components/JsonLd'
 import { ProductCommands, ProductHero, ProductLinks, ProductPricing } from '@/components/product'
 import type { Locale } from '@/i18n/config'
 import { Link } from '@/i18n/navigation'
+import { getCLI } from '@/lib/data/fetchers'
 import { clisData as clis } from '@/lib/generated'
 import { getGithubStars } from '@/lib/generated/github-stars'
 import { translateLicenseText } from '@/lib/license'
-import { localizeManifestItem } from '@/lib/manifest-i18n'
 import { generateSoftwareDetailMetadata } from '@/lib/metadata'
 import { getSchemaCurrency, getSchemaPrice } from '@/lib/pricing'
 import type {
   ComponentCommunityUrls,
   ComponentResourceUrls,
-  ManifestCLI,
   ManifestPricingTier,
 } from '@/types/manifests'
 
@@ -35,22 +34,17 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>
 }) {
   const { locale, slug } = await params
-  const cliRaw = clis.find(c => c.id === slug)
+  const cli = await getCLI(slug, locale as Locale)
 
-  if (!cliRaw) {
+  if (!cli) {
     return { title: 'CLI Not Found | AI Coding Stack' }
   }
 
-  const cli = localizeManifestItem(
-    cliRaw as unknown as Record<string, unknown>,
-    locale as Locale
-  ) as unknown as ManifestCLI
-  const t = await getTranslations({ locale })
-
-  const licenseStr = cli.license ? translateLicenseText(cli.license, t) : ''
+  const tGlobal = await getTranslations({ locale })
+  const licenseStr = cli.license ? translateLicenseText(cli.license, tGlobal) : ''
 
   return await generateSoftwareDetailMetadata({
-    locale: locale as 'en' | 'zh-Hans',
+    locale: locale as Locale,
     category: 'clis',
     slug,
     product: {
@@ -71,20 +65,14 @@ export default async function CLIPage({
   params: Promise<{ locale: string; slug: string }>
 }) {
   const { locale, slug } = await params
-  const cliRaw = clis.find(c => c.id === slug) as ManifestCLI | undefined
+  const cli = await getCLI(slug, locale as Locale)
 
-  if (!cliRaw) {
+  if (!cli) {
     notFound()
   }
 
-  const cli = localizeManifestItem(
-    cliRaw as unknown as Record<string, unknown>,
-    locale as Locale
-  ) as unknown as ManifestCLI
-  const t = await getTranslations({ locale })
-  const tHero = await getTranslations({ locale, namespace: 'components.productHero' })
-  const tNav = await getTranslations({ locale, namespace: 'stacksPages.clis' })
-  const tStacks = await getTranslations({ locale, namespace: 'stacks' })
+  const t = await getTranslations({ locale, namespace: 'pages.cliDetail' })
+  const tGlobal = await getTranslations({ locale })
 
   const websiteUrl = cli.resourceUrls?.download || cli.websiteUrl
   const docsUrl = cli.docsUrl
@@ -135,7 +123,7 @@ export default async function CLIPage({
           }
         })
       : undefined,
-    license: cli.license ? translateLicenseText(cli.license, t) : undefined,
+    license: cli.license ? translateLicenseText(cli.license, tGlobal) : undefined,
   }
 
   return (
@@ -145,8 +133,8 @@ export default async function CLIPage({
 
       <Breadcrumb
         items={[
-          { name: tStacks('aiCodingStack'), href: '/ai-coding-stack' },
-          { name: tStacks('clis'), href: 'clis' },
+          { name: tGlobal('shared.common.aiCodingStack'), href: '/ai-coding-stack' },
+          { name: tGlobal('shared.stacks.clis'), href: 'clis' },
           { name: cli.name, href: `clis/${cli.id}` },
         ]}
       />
@@ -157,7 +145,7 @@ export default async function CLIPage({
         description={cli.description}
         vendor={cli.vendor}
         category="CLI"
-        categoryLabel={tHero('categories.CLI')}
+        categoryLabel={t('categoryLabel')}
         latestVersion={cli.latestVersion}
         license={cli.license}
         githubStars={getGithubStars('clis', cli.id)}
@@ -166,14 +154,14 @@ export default async function CLIPage({
         docsUrl={docsUrl}
         downloadUrl={cli.resourceUrls?.download || undefined}
         labels={{
-          vendor: tHero('vendor'),
-          version: tHero('version'),
-          license: tHero('license'),
-          stars: tHero('stars'),
-          platforms: tHero('platforms'),
-          visitWebsite: tHero('visitWebsite'),
-          documentation: tHero('documentation'),
-          download: tHero('download'),
+          vendor: t('vendor'),
+          version: t('version'),
+          license: t('license'),
+          stars: t('stars'),
+          platforms: t('platforms'),
+          visitWebsite: t('visitWebsite'),
+          documentation: t('documentation'),
+          download: t('download'),
         }}
       />
 
@@ -226,7 +214,7 @@ export default async function CLIPage({
       <ProductCommands install={cli.install} launch={cli.launch} />
 
       {/* Navigation */}
-      <BackToNavigation href="clis" title={tNav('allCLIs')} />
+      <BackToNavigation href="clis" title={t('allCLIs')} />
 
       <Footer />
     </>

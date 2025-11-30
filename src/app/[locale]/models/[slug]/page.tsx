@@ -6,9 +6,10 @@ import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import { JsonLd } from '@/components/JsonLd'
 import { ProductHero } from '@/components/product'
+import type { Locale } from '@/i18n/config'
+import { getModel } from '@/lib/data/fetchers'
 import { modelsData as models } from '@/lib/generated'
 import { generateModelDetailMetadata } from '@/lib/metadata'
-import type { ManifestModel } from '@/types/manifests'
 
 export const revalidate = 3600
 
@@ -24,14 +25,14 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>
 }) {
   const { locale, slug } = await params
-  const model = models.find(m => m.id === slug)
+  const model = await getModel(slug)
 
   if (!model) {
     return { title: 'Model Not Found | AI Coding Stack' }
   }
 
   return await generateModelDetailMetadata({
-    locale: locale as 'en' | 'zh-Hans',
+    locale: locale as Locale,
     slug,
     model: {
       name: model.name,
@@ -55,7 +56,7 @@ export async function generateMetadata({
           }
         : undefined,
     },
-    translationNamespace: 'stackDetailPages.modelDetail',
+    translationNamespace: 'pages.modelDetail',
   })
 }
 
@@ -65,18 +66,14 @@ export default async function ModelPage({
   params: Promise<{ locale: string; slug: string }>
 }) {
   const { locale, slug } = await params
-  const model = models.find(m => m.id === slug) as unknown as ManifestModel | undefined
-  const t = await getTranslations({ locale, namespace: 'stackDetailPages.modelDetail' })
-  const tStacks = await getTranslations({ locale, namespace: 'stacks' })
-  const tHero = await getTranslations({ locale, namespace: 'components.productHero' })
-  const tLabels = await getTranslations({
-    locale,
-    namespace: 'stackDetailPages.modelDetail.labels',
-  })
+  const model = await getModel(slug)
 
   if (!model) {
     notFound()
   }
+
+  const t = await getTranslations({ locale, namespace: 'pages.modelDetail' })
+  const tGlobal = await getTranslations({ locale })
 
   // Schema.org structured data
   const pricingDisplayForSchema = model.tokenPricing?.input
@@ -109,8 +106,8 @@ export default async function ModelPage({
 
       <Breadcrumb
         items={[
-          { name: tStacks('aiCodingStack'), href: '/ai-coding-stack' },
-          { name: tStacks('models'), href: 'models' },
+          { name: tGlobal('shared.common.aiCodingStack'), href: '/ai-coding-stack' },
+          { name: tGlobal('shared.stacks.models'), href: 'models' },
           { name: model.name, href: `models/${model.id}` },
         ]}
       />
@@ -121,46 +118,46 @@ export default async function ModelPage({
         description={`by ${model.vendor}`}
         vendor={model.vendor}
         category="MODEL"
-        categoryLabel={tHero('categories.MODEL')}
+        categoryLabel={t('categoryLabel')}
         additionalInfo={
           [
-            model.size && { label: tLabels('size'), value: model.size },
-            model.totalContext && { label: tLabels('context'), value: model.totalContext },
-            model.maxOutput && { label: tLabels('maxOutput'), value: model.maxOutput },
+            model.size && { label: t('labels.size'), value: model.size },
+            model.totalContext && { label: t('labels.context'), value: model.totalContext },
+            model.maxOutput && { label: t('labels.maxOutput'), value: model.maxOutput },
           ].filter(Boolean) as { label: string; value: string }[]
         }
         pricing={
           pricingDisplayForSchema
-            ? { label: tLabels('pricing'), value: pricingDisplayForSchema }
+            ? { label: t('labels.pricing'), value: pricingDisplayForSchema }
             : undefined
         }
         additionalUrls={
           [
-            model.websiteUrl && { label: tLabels('website'), url: model.websiteUrl, icon: '↗' },
+            model.websiteUrl && { label: t('labels.website'), url: model.websiteUrl, icon: '↗' },
             model.platformUrls?.huggingface && {
-              label: tLabels('huggingface'),
+              label: t('labels.huggingface'),
               url: model.platformUrls.huggingface,
               icon: '→',
             },
             model.platformUrls?.artificialAnalysis && {
-              label: tLabels('artificialAnalysis'),
+              label: t('labels.artificialAnalysis'),
               url: model.platformUrls.artificialAnalysis,
               icon: '→',
             },
             model.platformUrls?.openrouter && {
-              label: tLabels('openrouter'),
+              label: t('labels.openrouter'),
               url: model.platformUrls.openrouter,
               icon: '→',
             },
           ].filter(Boolean) as { label: string; url: string; icon?: string }[]
         }
         labels={{
-          vendor: tHero('vendor'),
-          version: tHero('version'),
-          license: tHero('license'),
-          stars: tHero('stars'),
-          visitWebsite: tHero('visitWebsite'),
-          documentation: tHero('documentation'),
+          vendor: t('vendor'),
+          version: t('version'),
+          license: t('license'),
+          stars: t('stars'),
+          visitWebsite: t('visitWebsite'),
+          documentation: t('documentation'),
         }}
       />
 

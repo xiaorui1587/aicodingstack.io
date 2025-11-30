@@ -7,10 +7,9 @@ import Header from '@/components/Header'
 import { JsonLd } from '@/components/JsonLd'
 import { LinkCardGrid, ProductHero } from '@/components/product'
 import type { Locale } from '@/i18n/config'
+import { getModelProvider } from '@/lib/data/fetchers'
 import { providersData as providers } from '@/lib/generated'
-import { localizeManifestItem } from '@/lib/manifest-i18n'
 import { generateSoftwareDetailMetadata } from '@/lib/metadata'
-import type { ManifestProvider } from '@/types/manifests'
 
 export const revalidate = 3600
 
@@ -26,19 +25,14 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>
 }) {
   const { locale, slug } = await params
-  const providerRaw = providers.find(p => p.id === slug)
+  const provider = await getModelProvider(slug, locale as Locale)
 
-  if (!providerRaw) {
+  if (!provider) {
     return { title: 'Provider Not Found | AI Coding Stack' }
   }
 
-  const provider = localizeManifestItem(
-    providerRaw as unknown as Record<string, unknown>,
-    locale as Locale
-  ) as unknown as ManifestProvider
-
   return await generateSoftwareDetailMetadata({
-    locale: locale as 'en' | 'zh-Hans',
+    locale: locale as Locale,
     category: 'modelProviders',
     slug,
     product: {
@@ -56,19 +50,14 @@ export default async function ProviderPage({
   params: Promise<{ locale: string; slug: string }>
 }) {
   const { locale, slug } = await params
-  const providerRaw = providers.find(p => p.id === slug) as unknown as ManifestProvider | undefined
+  const provider = await getModelProvider(slug, locale as Locale)
 
-  if (!providerRaw) {
+  if (!provider) {
     notFound()
   }
 
-  const provider = localizeManifestItem(
-    providerRaw as unknown as Record<string, unknown>,
-    locale as Locale
-  ) as unknown as ManifestProvider
-  const t = await getTranslations('stackDetailPages.modelProviderDetail')
-  const tStacks = await getTranslations({ locale, namespace: 'stacks' })
-  const tHero = await getTranslations({ locale, namespace: 'components.productHero' })
+  const t = await getTranslations({ locale, namespace: 'pages.modelProviderDetail' })
+  const tGlobal = await getTranslations({ locale })
 
   const websiteUrl = provider.websiteUrl
   const docsUrl = provider.docsUrl
@@ -142,8 +131,8 @@ export default async function ProviderPage({
 
       <Breadcrumb
         items={[
-          { name: tStacks('aiCodingStack'), href: '/ai-coding-stack' },
-          { name: tStacks('modelProviders'), href: 'model-providers' },
+          { name: tGlobal('shared.common.aiCodingStack'), href: '/ai-coding-stack' },
+          { name: tGlobal('shared.stacks.modelProviders'), href: 'model-providers' },
           { name: provider.name, href: `model-providers/${provider.id}` },
         ]}
       />
@@ -153,17 +142,17 @@ export default async function ProviderPage({
         name={provider.name}
         description={provider.description}
         category="PROVIDER"
-        categoryLabel={tHero('categories.PROVIDER')}
+        categoryLabel={t('categoryLabel')}
         type={provider.type}
         websiteUrl={websiteUrl}
         docsUrl={docsUrl}
         applyKeyUrl={provider.applyKeyUrl}
         labels={{
-          type: tHero('type'),
-          typeValue: provider.type ? tHero(`providerTypes.${provider.type}`) : undefined,
-          visitWebsite: tHero('visitWebsite'),
-          documentation: tHero('documentation'),
-          getApiKey: tHero('getApiKey'),
+          type: t('type'),
+          typeValue: provider.type ? t(`providerTypes.${provider.type}`) : undefined,
+          visitWebsite: t('visitWebsite'),
+          documentation: t('documentation'),
+          getApiKey: t('getApiKey'),
         }}
       />
 

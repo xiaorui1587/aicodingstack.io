@@ -8,10 +8,10 @@ import { JsonLd } from '@/components/JsonLd'
 import { ProductCommands, ProductHero, ProductLinks, ProductPricing } from '@/components/product'
 import type { Locale } from '@/i18n/config'
 import { Link } from '@/i18n/navigation'
+import { getIDE } from '@/lib/data/fetchers'
 import { idesData as ides } from '@/lib/generated'
 import { getGithubStars } from '@/lib/generated/github-stars'
 import { translateLicenseText } from '@/lib/license'
-import { localizeManifestItem } from '@/lib/manifest-i18n'
 import { generateSoftwareDetailMetadata } from '@/lib/metadata'
 import { getSchemaCurrency, getSchemaPrice } from '@/lib/pricing'
 import type {
@@ -35,22 +35,17 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>
 }) {
   const { locale, slug } = await params
-  const ideRaw = ides.find(i => i.id === slug)
+  const ide = await getIDE(slug, locale as Locale)
 
-  if (!ideRaw) {
+  if (!ide) {
     return { title: 'IDE Not Found | AI Coding Stack' }
   }
 
-  const ide = localizeManifestItem(
-    ideRaw as unknown as Record<string, unknown>,
-    locale as Locale
-  ) as unknown as ManifestIDE
-  const t = await getTranslations({ locale })
-
-  const licenseStr = ide.license ? translateLicenseText(ide.license, t) : ''
+  const tGlobal = await getTranslations({ locale })
+  const licenseStr = ide.license ? translateLicenseText(ide.license, tGlobal) : ''
 
   return await generateSoftwareDetailMetadata({
-    locale: locale as 'en' | 'zh-Hans',
+    locale: locale as Locale,
     category: 'ides',
     slug,
     product: {
@@ -71,20 +66,14 @@ export default async function IDEPage({
   params: Promise<{ locale: string; slug: string }>
 }) {
   const { locale, slug } = await params
-  const ideRaw = ides.find(i => i.id === slug) as ManifestIDE | undefined
+  const ide = await getIDE(slug, locale as Locale)
 
-  if (!ideRaw) {
+  if (!ide) {
     notFound()
   }
 
-  const ide = localizeManifestItem(
-    ideRaw as unknown as Record<string, unknown>,
-    locale as Locale
-  ) as unknown as ManifestIDE
-  const t = await getTranslations({ locale })
-  const tHero = await getTranslations({ locale, namespace: 'components.productHero' })
-  const tNav = await getTranslations({ locale, namespace: 'stacksPages.ides' })
-  const tStacks = await getTranslations({ locale, namespace: 'stacks' })
+  const t = await getTranslations({ locale, namespace: 'pages.ideDetail' })
+  const tGlobal = await getTranslations({ locale })
 
   const websiteUrl = ide.resourceUrls?.download || ide.websiteUrl
   const docsUrl = ide.docsUrl
@@ -136,7 +125,7 @@ export default async function IDEPage({
         })
       : undefined,
     license: (ide as unknown as ManifestIDE).license
-      ? translateLicenseText((ide as unknown as ManifestIDE).license, t)
+      ? translateLicenseText((ide as unknown as ManifestIDE).license, tGlobal)
       : undefined,
   }
 
@@ -149,8 +138,8 @@ export default async function IDEPage({
 
       <Breadcrumb
         items={[
-          { name: tStacks('aiCodingStack'), href: '/ai-coding-stack' },
-          { name: tStacks('ides'), href: 'ides' },
+          { name: tGlobal('shared.common.aiCodingStack'), href: '/ai-coding-stack' },
+          { name: tGlobal('shared.stacks.ides'), href: 'ides' },
           { name: ide.name, href: `ides/${ide.id}` },
         ]}
       />
@@ -161,7 +150,7 @@ export default async function IDEPage({
         description={ide.description}
         vendor={ide.vendor}
         category="IDE"
-        categoryLabel={tHero('categories.IDE')}
+        categoryLabel={t('categoryLabel')}
         latestVersion={ide.latestVersion}
         license={ide.license}
         githubStars={getGithubStars('ides', ide.id)}
@@ -170,14 +159,14 @@ export default async function IDEPage({
         docsUrl={docsUrl}
         downloadUrl={ide.resourceUrls?.download || undefined}
         labels={{
-          vendor: tHero('vendor'),
-          version: tHero('version'),
-          license: tHero('license'),
-          stars: tHero('stars'),
-          platforms: tHero('platforms'),
-          visitWebsite: tHero('visitWebsite'),
-          documentation: tHero('documentation'),
-          download: tHero('download'),
+          vendor: t('vendor'),
+          version: t('version'),
+          license: t('license'),
+          stars: t('stars'),
+          platforms: t('platforms'),
+          visitWebsite: t('visitWebsite'),
+          documentation: t('documentation'),
+          download: t('download'),
         }}
       />
 
@@ -230,7 +219,7 @@ export default async function IDEPage({
       <ProductCommands install={ide.install} launch={ide.launch} />
 
       {/* Navigation */}
-      <BackToNavigation href="ides" title={tNav('allIDEs')} />
+      <BackToNavigation href="ides" title={t('allIDEs')} />
 
       <Footer />
     </>

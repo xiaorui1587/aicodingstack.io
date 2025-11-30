@@ -14,30 +14,30 @@ type Props = {
 }
 
 export default function ModelComparisonPageClient({ locale }: Props) {
-  const tComparison = useTranslations('comparison')
-  const tStacks = useTranslations('stacks')
-  const tCommunity = useTranslations('community')
+  const t = useTranslations('pages.comparison')
+  const tGlobal = useTranslations()
+  const tCommunity = useTranslations('shared.platforms')
 
   const columns: ComparisonColumn[] = [
     {
       key: 'vendor',
-      label: tComparison('columns.vendor'),
+      label: t('columns.vendor'),
     },
     {
       key: 'size',
-      label: tComparison('columns.modelSize'),
+      label: t('columns.modelSize'),
     },
     {
       key: 'totalContext',
-      label: tComparison('columns.contextLength'),
+      label: t('columns.contextLength'),
     },
     {
       key: 'maxOutput',
-      label: tComparison('columns.maxOutput'),
+      label: t('columns.maxOutput'),
     },
     {
       key: 'tokenPricing',
-      label: tComparison('columns.pricing'),
+      label: t('columns.pricing'),
       render: (value: unknown) => {
         if (!value || typeof value !== 'object') return '-'
         const pricing = value as {
@@ -56,7 +56,7 @@ export default function ModelComparisonPageClient({ locale }: Props) {
     },
     {
       key: 'links',
-      label: tComparison('columns.links'),
+      label: t('columns.links'),
       render: (_: unknown, item: Record<string, unknown>) => {
         const websiteUrl = item.websiteUrl as string | null | undefined
         const platformUrls = item.platformUrls as
@@ -75,7 +75,7 @@ export default function ModelComparisonPageClient({ locale }: Props) {
                 target="_blank"
                 rel="noopener"
                 className="text-[var(--color-text)] hover:text-[var(--color-text-secondary)] transition-colors"
-                title={tComparison('linkTitles.officialWebsite')}
+                title={t('linkTitles.officialWebsite')}
               >
                 <Home className="w-3.5 h-3.5" />
               </a>
@@ -141,9 +141,9 @@ export default function ModelComparisonPageClient({ locale }: Props) {
 
       <Breadcrumb
         items={[
-          { name: tStacks('aiCodingStack'), href: '/ai-coding-stack' },
-          { name: tStacks('models'), href: '/models' },
-          { name: tStacks('comparison'), href: '/models/comparison' },
+          { name: tGlobal('shared.common.aiCodingStack'), href: '/ai-coding-stack' },
+          { name: tGlobal('shared.stacks.models'), href: '/models' },
+          { name: tGlobal('shared.common.comparison'), href: '/models/comparison' },
         ]}
       />
 
@@ -151,10 +151,10 @@ export default function ModelComparisonPageClient({ locale }: Props) {
       <section className="py-[var(--spacing-lg)] border-[var(--color-border)]">
         <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
           <h1 className="text-3xl font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
-            {tComparison('models.title')}
+            {t('models.title')}
           </h1>
           <p className="text-base text-[var(--color-text-secondary)] font-light">
-            {tComparison('models.subtitle')}
+            {t('models.subtitle')}
           </p>
         </div>
       </section>
@@ -177,7 +177,7 @@ export default function ModelComparisonPageClient({ locale }: Props) {
             href={`/${locale}/models`}
             className="inline-flex items-center gap-[var(--spacing-xs)] text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors"
           >
-            ← {tComparison('models.backTo')}
+            ← {t('models.backTo')}
           </Link>
         </div>
       </section>

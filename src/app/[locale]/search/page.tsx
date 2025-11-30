@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
+import type { Locale } from '@/i18n/config'
 import { buildOpenGraph, buildTitle, buildTwitterCard, SITE_CONFIG } from '@/lib/metadata'
 import SearchPageClient from './page.client'
 
@@ -13,7 +14,7 @@ type Props = {
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   const { locale } = await params
   const { q } = await searchParams
-  const t = await getTranslations({ locale, namespace: 'search' })
+  const t = await getTranslations({ locale, namespace: 'components.search' })
 
   const title = q ? t('resultsCountFor', { count: 0, query: q }) : t('title')
   const description = t('placeholder')
@@ -26,7 +27,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
       title: buildTitle({ title }),
       description,
       url: searchUrl,
-      locale: locale as 'en' | 'zh-Hans' | 'de',
+      locale: locale as Locale | 'de',
     }),
     twitter: buildTwitterCard({
       title: buildTitle({ title }),

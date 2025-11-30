@@ -46,14 +46,14 @@ type Props = {
 export default async function ManifestoPage({ params }: Props) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'pages.manifesto' })
-  const tStack = await getTranslations({ locale, namespace: 'stacksPages.overview' })
+  const tStack = await getTranslations({ locale, namespace: 'pages.overview' })
   const ManifestoContent = await getManifestoComponent(locale)
 
   return (
     <>
       <Header />
 
-      <div className="max-w-5xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)]">
+      <div className="max-w-6xl mx-auto px-[var(--spacing-md)] pt-[var(--spacing-lg)]">
         <main>
           <PageHeader title={t('title')} subtitle={t('slogan')} />
 

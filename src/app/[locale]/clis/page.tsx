@@ -1,3 +1,4 @@
+import type { Locale } from '@/i18n/config'
 import { generateListPageMetadata } from '@/lib/metadata'
 import CLIsPageClient from './page.client'
 
@@ -7,9 +8,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params
 
   return await generateListPageMetadata({
-    locale: locale as 'en' | 'zh-Hans',
+    locale: locale as Locale,
     category: 'clis',
-    translationNamespace: 'stacksPages.clis',
+    translationNamespace: 'pages.clis',
     additionalKeywords: ['Gemini CLI', 'GitHub Copilot CLI', 'command line AI tools'],
   })
 }

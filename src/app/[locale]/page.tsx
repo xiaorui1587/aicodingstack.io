@@ -77,11 +77,11 @@ export default async function Home({ params }: Props) {
       <Header />
 
       {/* Hero Section */}
-      <section className="py-[var(--spacing-lg)] border-b border-[var(--color-border)]">
+      <section className="my-[var(--spacing-lg)]">
         <div className="max-w-6xl mx-auto px-[var(--spacing-md)]">
           <div className="text-center max-w-6xl mx-auto">
-            <div className="mb-[var(--spacing-md)]">
-              <pre className="text-[0.45rem] leading-[1.3] inline-block text-left bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-transparent">
+            <div className="mb-[var(--spacing-md)] overflow-x-auto">
+              <pre className="text-[0.3rem] md:text-[0.45rem] leading-[1.3] inline-block text-left bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-transparent">
                 {`╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 ║                                                                                                                   ║
 ║     █████╗ ██╗     ██████╗ ██████╗ ██████╗ ██╗███╗   ██╗ ██████╗     ███████╗████████╗ █████╗  ██████╗██╗  ██╗    ║
@@ -127,115 +127,85 @@ export default async function Home({ params }: Props) {
       {/* Features Section */}
       <section
         id="features"
-        className="py-[var(--spacing-xl)] border-b border-[var(--color-border)]"
+        className="my-[var(--spacing-lg)] max-w-8xl mx-auto px-[var(--spacing-md)]"
       >
-        <div className="max-w-6xl mx-auto px-[var(--spacing-md)]">
-          <h2 className="text-2xl font-semibold tracking-[-0.02em] mb-[var(--spacing-sm)] homepage-h2">
-            {tFeatures('title')}
-          </h2>
+        <div className="border-y border-[var(--color-border)] pb-[var(--spacing-lg)]">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-2xl font-semibold homepage-h2 my-[var(--spacing-lg)]">
+              {tFeatures('title')}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--spacing-lg)]">
+              {(['directory', 'comparison', 'ecosystem', 'tracking'] as const).map(featureKey => {
+                const iconMap: Record<string, string> = {
+                  directory: 'DIR',
+                  comparison: 'CMP',
+                  ecosystem: 'ECO',
+                  tracking: 'TRK',
+                }
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--spacing-lg)] mt-[var(--spacing-lg)]">
-            <div className="border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5">
-              <pre className="text-xs leading-tight text-[var(--color-text-muted)] mb-[var(--spacing-md)]">
-                {`┌─────┐
-│ DIR │
+                return (
+                  <div
+                    key={featureKey}
+                    className="border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5"
+                  >
+                    <pre className="text-xs leading-tight text-[var(--color-text-muted)] mb-[var(--spacing-md)]">
+                      {`┌─────┐
+│ ${iconMap[featureKey]} │
 └─────┘`}
-              </pre>
-              <h3 className="text-base font-semibold tracking-tight mb-[var(--spacing-sm)]">
-                {tFeatures('directory.title')}
-              </h3>
-              <p className="text-sm leading-relaxed text-[var(--color-text-secondary)] font-light">
-                {tFeatures('directory.description')}
-              </p>
-            </div>
-
-            <div className="border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5">
-              <pre className="text-xs leading-tight text-[var(--color-text-muted)] mb-[var(--spacing-md)]">
-                {`┌─────┐
-│ CMP │
-└─────┘`}
-              </pre>
-              <h3 className="text-base font-semibold tracking-tight mb-[var(--spacing-sm)]">
-                {tFeatures('comparison.title')}
-              </h3>
-              <p className="text-sm leading-relaxed text-[var(--color-text-secondary)] font-light">
-                {tFeatures('comparison.description')}
-              </p>
-            </div>
-
-            <div className="border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5">
-              <pre className="text-xs leading-tight text-[var(--color-text-muted)] mb-[var(--spacing-md)]">
-                {`┌─────┐
-│ ECO │
-└─────┘`}
-              </pre>
-              <h3 className="text-base font-semibold tracking-tight mb-[var(--spacing-sm)]">
-                {tFeatures('ecosystem.title')}
-              </h3>
-              <p className="text-sm leading-relaxed text-[var(--color-text-secondary)] font-light">
-                {tFeatures('ecosystem.description')}
-              </p>
-            </div>
-
-            <div className="border border-[var(--color-border)] p-[var(--spacing-md)] hover:border-[var(--color-border-strong)] transition-all hover:-translate-y-0.5">
-              <pre className="text-xs leading-tight text-[var(--color-text-muted)] mb-[var(--spacing-md)]">
-                {`┌─────┐
-│ TRK │
-└─────┘`}
-              </pre>
-              <h3 className="text-base font-semibold tracking-tight mb-[var(--spacing-sm)]">
-                {tFeatures('tracking.title')}
-              </h3>
-              <p className="text-sm leading-relaxed text-[var(--color-text-secondary)] font-light">
-                {tFeatures('tracking.description')}
-              </p>
+                    </pre>
+                    <h3 className="text-base font-semibold tracking-tight mb-[var(--spacing-sm)]">
+                      {tFeatures(`${featureKey}.title`)}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-[var(--color-text-secondary)] font-light">
+                      {tFeatures(`${featureKey}.description`)}
+                    </p>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-[var(--spacing-xl)]">
-        <div className="max-w-6xl mx-auto px-[var(--spacing-md)]">
-          <h2 className="text-2xl font-semibold tracking-[-0.02em] mb-[var(--spacing-sm)] homepage-h2">
-            {tHome('faq')}
-          </h2>
-
-          <div className="mt-[var(--spacing-lg)] space-y-[var(--spacing-md)]">
-            {faqItems.map(faq => (
-              <article
-                key={faq.title}
-                className="border border-[var(--color-border)] p-[var(--spacing-md)]"
-                itemScope
-                itemProp="mainEntity"
-                itemType="https://schema.org/Question"
-              >
-                <details className="group">
-                  <summary className="text-base font-medium tracking-tight cursor-pointer list-none select-none flex items-center gap-[var(--spacing-xs)] text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors">
-                    <span className="text-[var(--color-text-muted)] text-xs group-open:rotate-90 transition-transform">
-                      ▶
-                    </span>
-                    <h3 itemProp="name" className="font-medium">
-                      {faq.title}
-                    </h3>
-                  </summary>
+      <section id="faq" className="my-[var(--spacing-lg)] max-w-6xl mx-auto">
+        <h2 className="text-2xl font-semibold homepage-h2 my-[var(--spacing-lg)]">
+          {tHome('faq')}
+        </h2>
+        <div className="space-y-[var(--spacing-md)]">
+          {faqItems.map(faq => (
+            <article
+              key={faq.title}
+              className="border border-[var(--color-border)] p-[var(--spacing-md)]"
+              itemScope
+              itemProp="mainEntity"
+              itemType="https://schema.org/Question"
+            >
+              <details className="group">
+                <summary className="text-base font-medium tracking-tight cursor-pointer list-none select-none flex items-center gap-[var(--spacing-xs)] text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors">
+                  <span className="text-[var(--color-text-muted)] text-xs group-open:rotate-90 transition-transform">
+                    ▶
+                  </span>
+                  <h3 itemProp="name" className="font-medium">
+                    {faq.title}
+                  </h3>
+                </summary>
+                <div
+                  className="mt-[var(--spacing-sm)] pl-[var(--spacing-md)]"
+                  itemScope
+                  itemProp="acceptedAnswer"
+                  itemType="https://schema.org/Answer"
+                >
                   <div
-                    className="mt-[var(--spacing-sm)] pl-[var(--spacing-md)]"
-                    itemScope
-                    itemProp="acceptedAnswer"
-                    itemType="https://schema.org/Answer"
+                    className="text-sm leading-relaxed text-[var(--color-text-secondary)] font-light"
+                    itemProp="text"
                   >
-                    <div
-                      className="text-sm leading-relaxed text-[var(--color-text-secondary)] font-light"
-                      itemProp="text"
-                    >
-                      <MarkdownContent content={faq.content} />
-                    </div>
+                    <MarkdownContent content={faq.content} />
                   </div>
-                </details>
-              </article>
-            ))}
-          </div>
+                </div>
+              </details>
+            </article>
+          ))}
         </div>
       </section>
 

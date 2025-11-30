@@ -9,7 +9,7 @@ import VendorMatrix from './components/VendorMatrix'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const tNav = await getTranslations({ locale, namespace: 'header' })
+  const tNav = await getTranslations({ locale, namespace: 'components.header' })
 
   const canonicalPath = locale === 'en' ? '/ai-coding-landscape' : `/${locale}/ai-coding-landscape`
   const title = buildTitle({ title: tNav('aiCodingLandscape') })
@@ -47,8 +47,8 @@ type Props = {
 
 export default async function Page({ params }: Props) {
   const { locale } = await params
-  const tNav = await getTranslations({ locale, namespace: 'header' })
-  const tOverview = await getTranslations({ locale, namespace: 'stacksPages.overview' })
+  const tNav = await getTranslations({ locale, namespace: 'components.header' })
+  const tOverview = await getTranslations({ locale, namespace: 'pages.overview' })
 
   // Build vendor matrix data
   const matrixData = buildVendorMatrix()

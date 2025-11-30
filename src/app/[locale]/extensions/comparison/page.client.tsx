@@ -17,28 +17,28 @@ type Props = {
 }
 
 export default function ExtensionComparisonPageClient({ locale }: Props) {
-  const tComparison = useTranslations('comparison')
-  const tStacks = useTranslations('stacks')
-  const tCommunity = useTranslations('community')
-  const t = useTranslations()
+  const t = useTranslations('pages.comparison')
+  const tCommunity = useTranslations('shared.platforms')
+  const tGlobal = useTranslations()
 
   const columns: ComparisonColumn[] = [
     {
       key: 'vendor',
-      label: tComparison('columns.vendor'),
+      label: t('columns.vendor'),
     },
     {
       key: 'license',
-      label: tComparison('columns.license'),
-      render: (value: unknown, item: Record<string, unknown>) => renderLicense(value, item, t),
+      label: t('columns.license'),
+      render: (value: unknown, item: Record<string, unknown>) =>
+        renderLicense(value, item, tGlobal),
     },
     {
       key: 'latestVersion',
-      label: tComparison('columns.version'),
+      label: t('columns.version'),
     },
     {
       key: 'supportedIdes',
-      label: tComparison('columns.supportedIdes'),
+      label: t('columns.supportedIdes'),
       render: (value: unknown) => {
         const supportedIdes = value as Array<{ ideId: string }> | undefined
         if (!supportedIdes || supportedIdes.length === 0) return '-'
@@ -58,7 +58,7 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
     },
     {
       key: 'githubStars',
-      label: tComparison('columns.githubStars'),
+      label: t('columns.githubStars'),
       render: (_: unknown, item: Record<string, unknown>) => {
         const id = item.id as string
         const stars = getGithubStars('extensions', id)
@@ -92,7 +92,7 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
     },
     {
       key: 'links',
-      label: tComparison('columns.links'),
+      label: t('columns.links'),
       render: (_: unknown, item: Record<string, unknown>) => {
         const websiteUrl = item.websiteUrl as string | undefined
         const docsUrl = item.docsUrl as string | undefined
@@ -119,7 +119,7 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
                 target="_blank"
                 rel="noopener"
                 className="text-[var(--color-text)] hover:text-[var(--color-text-secondary)] transition-colors"
-                title={tComparison('linkTitles.officialWebsite')}
+                title={t('linkTitles.officialWebsite')}
               >
                 <Home className="w-3.5 h-3.5" />
               </a>
@@ -134,7 +134,7 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
                 target="_blank"
                 rel="noopener"
                 className="text-[var(--color-text)] hover:text-[var(--color-text-secondary)] transition-colors"
-                title={tComparison('linkTitles.download')}
+                title={t('linkTitles.download')}
               >
                 <Download className="w-3.5 h-3.5" />
               </a>
@@ -149,7 +149,7 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
                 target="_blank"
                 rel="noopener"
                 className="text-[var(--color-text)] hover:text-[var(--color-text-secondary)] transition-colors"
-                title={tComparison('linkTitles.documentation')}
+                title={t('linkTitles.documentation')}
               >
                 <FileText className="w-3.5 h-3.5" />
               </a>
@@ -224,7 +224,7 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
     },
     {
       key: 'pricing-free',
-      label: tComparison('columns.freePlan'),
+      label: t('columns.freePlan'),
       render: (_: unknown, item: Record<string, unknown>) => {
         const pricing = item.pricing as PricingTier[]
         if (!pricing || pricing.length === 0) return '✓' // Extensions without pricing info are typically free
@@ -234,12 +234,12 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
     },
     {
       key: 'pricing-min',
-      label: tComparison('columns.startingPrice'),
+      label: t('columns.startingPrice'),
       render: (_: unknown, item: Record<string, unknown>) => {
         const pricing = item.pricing as PricingTier[]
-        if (!pricing || pricing.length === 0) return tComparison('pricingValues.free')
+        if (!pricing || pricing.length === 0) return t('pricingValues.free')
         const paidPlans = pricing.filter(p => p.value && p.value > 0)
-        if (paidPlans.length === 0) return tComparison('pricingValues.freeOnly')
+        if (paidPlans.length === 0) return t('pricingValues.freeOnly')
         const minPrice = Math.min(...paidPlans.map(p => p.value as number))
         const minPlan = paidPlans.find(p => p.value === minPrice)
         return minPlan ? formatPrice(minPlan) : '-'
@@ -247,7 +247,7 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
     },
     {
       key: 'pricing-max',
-      label: tComparison('columns.maxPrice'),
+      label: t('columns.maxPrice'),
       render: (_: unknown, item: Record<string, unknown>) => {
         const pricing = item.pricing as PricingTier[]
         if (!pricing || pricing.length === 0) return '-'
@@ -266,9 +266,9 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
 
       <Breadcrumb
         items={[
-          { name: tStacks('aiCodingStack'), href: '/ai-coding-stack' },
-          { name: tStacks('extensions'), href: '/extensions' },
-          { name: tStacks('comparison'), href: '/extensions/comparison' },
+          { name: tGlobal('shared.common.aiCodingStack'), href: '/ai-coding-stack' },
+          { name: tGlobal('shared.stacks.extensions'), href: '/extensions' },
+          { name: tGlobal('shared.common.comparison'), href: '/extensions/comparison' },
         ]}
       />
 
@@ -276,10 +276,10 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
       <section className="py-[var(--spacing-lg)] border-[var(--color-border)]">
         <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
           <h1 className="text-3xl font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)]">
-            {tComparison('extensions.title')}
+            {t('extensions.title')}
           </h1>
           <p className="text-base text-[var(--color-text-secondary)] font-light">
-            {tComparison('extensions.subtitle')}
+            {t('extensions.subtitle')}
           </p>
         </div>
       </section>
@@ -302,7 +302,7 @@ export default function ExtensionComparisonPageClient({ locale }: Props) {
             href={`/${locale}/extensions`}
             className="inline-flex items-center gap-[var(--spacing-xs)] text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors"
           >
-            ← {tComparison('extensions.backTo')}
+            ← {t('extensions.backTo')}
           </Link>
         </div>
       </section>

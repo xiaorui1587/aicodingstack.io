@@ -3,8 +3,10 @@ import { getTranslations } from 'next-intl/server'
 import { Breadcrumb } from '@/components/controls/Breadcrumb'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import type { Locale } from '@/i18n/config'
 import { Link } from '@/i18n/navigation'
-import { getArticleBySlug, getArticleComponent, getArticles } from '@/lib/generated/articles'
+import { getArticle } from '@/lib/data/fetchers'
+import { getArticleComponent, getArticles } from '@/lib/generated/articles'
 import { generateArticleMetadata } from '@/lib/metadata'
 
 type Props = {
@@ -30,14 +32,14 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props) {
   const { slug, locale } = await params
-  const article = getArticleBySlug(slug, locale)
+  const article = await getArticle(slug, locale)
 
   if (!article) {
     return { title: 'Article Not Found | AI Coding Stack' }
   }
 
   return await generateArticleMetadata({
-    locale: locale as 'en' | 'zh-Hans',
+    locale: locale as Locale,
     slug,
     article: {
       title: article.title,
@@ -49,13 +51,13 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function ArticlePage({ params }: Props) {
   const { slug, locale } = await params
-  const article = getArticleBySlug(slug, locale)
+  const article = await getArticle(slug, locale)
 
   if (!article) {
     notFound()
   }
 
-  const t = await getTranslations({ locale, namespace: 'header' })
+  const t = await getTranslations({ locale, namespace: 'components.header' })
   const ArticleContent = await getArticleComponent(locale, slug)
 
   if (!ArticleContent) {
@@ -94,7 +96,7 @@ export default async function ArticlePage({ params }: Props) {
       />
 
       {/* Article Content */}
-      <article className="max-w-5xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
+      <article className="max-w-6xl mx-auto px-[var(--spacing-md)] py-[var(--spacing-xl)]">
         {/* Article Header */}
         <header className="mb-[var(--spacing-xl)]">
           <h1 className="text-4xl font-semibold tracking-[-0.03em] mb-[var(--spacing-sm)] leading-tight">

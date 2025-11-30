@@ -9,7 +9,11 @@ import ClientLayout from '@/components/ClientLayout'
 import { JsonLd } from '@/components/JsonLd'
 import { defaultLocale, type Locale, locales } from '@/i18n/config'
 import { SITE_CONFIG } from '@/lib/metadata/config'
-import { getLanguageAlternates, getOgAlternateLocales, getOgLocale } from '@/lib/seo-helpers'
+import {
+  buildLanguageAlternates,
+  getAlternateOGLocale,
+  mapLocaleToOG,
+} from '@/lib/metadata/helpers'
 import { WebVitals } from './web-vitals'
 
 // Reduced font weights from 4 to 2 for better performance
@@ -74,7 +78,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     alternates: {
       canonical: canonicalPath,
-      languages: getLanguageAlternates('/'),
+      languages: buildLanguageAlternates('/'),
     },
     appleWebApp: {
       capable: true,
@@ -87,8 +91,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     openGraph: {
       type: 'website',
-      locale: getOgLocale(locale),
-      alternateLocale: getOgAlternateLocales(locale),
+      locale: mapLocaleToOG(locale),
+      alternateLocale: getAlternateOGLocale(locale),
       url: `${baseUrl}${canonicalPath}`,
       siteName: 'AI Coding Stack',
       title,
@@ -179,7 +183,7 @@ export default async function RootLayout({ children, params }: Props) {
         <JsonLd data={websiteSchema} />
       </head>
       <body
-        className={`${ibmPlexMono.variable} font-mono antialiased bg-[var(--color-bg)] text-[var(--color-text)]`}
+        className={`${ibmPlexMono.variable} font-mono bg-[var(--color-bg)] text-[var(--color-text)]`}
       >
         <NextIntlClientProvider messages={messages}>
           <ClientLayout>{children}</ClientLayout>

@@ -18,7 +18,7 @@ type Props = {
 }
 
 export default function ExtensionsPageClient({ locale }: Props) {
-  const t = useTranslations('stacksPages.extensions')
+  const t = useTranslations('pages.extensions')
   const tGlobal = useTranslations()
   const [sortOrder, setSortOrder] = useState<'default' | 'name-asc' | 'name-desc'>('default')
   const [licenseFilters, setLicenseFilters] = useState<string[]>([])

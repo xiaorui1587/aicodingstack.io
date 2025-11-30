@@ -7,7 +7,7 @@ import { buildCanonicalUrl, buildOpenGraph, buildTitle, buildTwitterCard } from 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: 'stacksPages.overview' })
+  const t = await getTranslations({ locale, namespace: 'pages.overview' })
 
   const canonicalPath = locale === 'en' ? '/ai-coding-stack' : `/${locale}/ai-coding-stack`
   const title = buildTitle({ title: t('title') })
@@ -45,7 +45,7 @@ type Props = {
 
 export default async function AICodingStackPage({ params }: Props) {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: 'stacksPages.overview' })
+  const t = await getTranslations({ locale, namespace: 'pages.overview' })
 
   return (
     <>

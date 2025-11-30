@@ -2,8 +2,10 @@ import { notFound } from 'next/navigation'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import DocsSidebar from '@/components/sidebar/DocsSidebar'
+import type { Locale } from '@/i18n/config'
 import { Link } from '@/i18n/navigation'
-import { getDocBySlug, getDocComponent, getDocSections } from '@/lib/generated/docs'
+import { getDoc } from '@/lib/data/fetchers'
+import { getDocComponent, getDocSections } from '@/lib/generated/docs'
 import { generateDocsMetadata } from '@/lib/metadata'
 
 type Props = {
@@ -26,7 +28,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props) {
   const { locale, slug } = await params
-  const doc = getDocBySlug(slug, locale)
+  const doc = await getDoc(slug, locale)
 
   if (!doc) {
     return {
@@ -35,7 +37,7 @@ export async function generateMetadata({ params }: Props) {
   }
 
   return await generateDocsMetadata({
-    locale: locale as 'en' | 'zh-Hans',
+    locale: locale as Locale,
     slug,
     doc: {
       title: doc.title,
@@ -46,7 +48,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function DocPage({ params }: Props) {
   const { locale, slug } = await params
-  const doc = getDocBySlug(slug, locale)
+  const doc = await getDoc(slug, locale)
 
   if (!doc) {
     notFound()

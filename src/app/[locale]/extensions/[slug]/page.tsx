@@ -7,13 +7,12 @@ import Header from '@/components/Header'
 import { JsonLd } from '@/components/JsonLd'
 import { ProductCommands, ProductHero, ProductLinks, ProductPricing } from '@/components/product'
 import type { Locale } from '@/i18n/config'
+import { getExtension } from '@/lib/data/fetchers'
 import { extensionsData as extensions } from '@/lib/generated'
 import { getGithubStars } from '@/lib/generated/github-stars'
 import { translateLicenseText } from '@/lib/license'
-import { localizeManifestItem } from '@/lib/manifest-i18n'
 import { generateSoftwareDetailMetadata } from '@/lib/metadata'
 import { getSchemaCurrency, getSchemaPrice } from '@/lib/pricing'
-import type { ManifestExtension } from '@/types/manifests'
 
 export const revalidate = 3600
 
@@ -29,23 +28,18 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>
 }) {
   const { locale, slug } = await params
-  const extensionRaw = extensions.find(e => e.id === slug)
+  const extension = await getExtension(slug, locale as Locale)
 
-  if (!extensionRaw) {
+  if (!extension) {
     return { title: 'Extension Not Found | AI Coding Stack' }
   }
 
-  const extension = localizeManifestItem(
-    extensionRaw as unknown as Record<string, unknown>,
-    locale as Locale
-  ) as unknown as ManifestExtension
   const t = await getTranslations({ locale })
-
   const licenseStr = extension.license ? translateLicenseText(extension.license, t) : ''
   const platforms = extension.supportedIdes?.map(ideSupport => ({ os: ideSupport.ideId }))
 
   return await generateSoftwareDetailMetadata({
-    locale: locale as 'en' | 'zh-Hans',
+    locale: locale as Locale,
     category: 'extensions',
     slug,
     product: {
@@ -66,21 +60,14 @@ export default async function ExtensionPage({
   params: Promise<{ locale: string; slug: string }>
 }) {
   const { locale, slug } = await params
-  const extensionRaw = extensions.find(e => e.id === slug) as ManifestExtension | undefined
+  const extension = await getExtension(slug, locale as Locale)
 
-  if (!extensionRaw) {
+  if (!extension) {
     notFound()
   }
 
-  // Apply localization
-  const extension = localizeManifestItem(
-    extensionRaw as unknown as Record<string, unknown>,
-    locale as Locale
-  ) as unknown as ManifestExtension
-  const t = await getTranslations({ locale })
-  const tHero = await getTranslations({ locale, namespace: 'components.productHero' })
-  const tNav = await getTranslations({ locale, namespace: 'stacksPages.extensions' })
-  const tStacks = await getTranslations({ locale, namespace: 'stacks' })
+  const t = await getTranslations({ locale, namespace: 'pages.extensionDetail' })
+  const tGlobal = await getTranslations({ locale })
 
   const websiteUrl = extension.resourceUrls?.download || extension.websiteUrl
   const docsUrl = extension.docsUrl
@@ -123,7 +110,7 @@ export default async function ExtensionPage({
             price: '0',
             priceCurrency: 'USD',
           },
-    license: extension.license ? translateLicenseText(extension.license, t) : undefined,
+    license: extension.license ? translateLicenseText(extension.license, tGlobal) : undefined,
   }
 
   return (
@@ -133,8 +120,8 @@ export default async function ExtensionPage({
 
       <Breadcrumb
         items={[
-          { name: tStacks('aiCodingStack'), href: '/ai-coding-stack' },
-          { name: tStacks('extensions'), href: 'extensions' },
+          { name: tGlobal('shared.common.aiCodingStack'), href: '/ai-coding-stack' },
+          { name: tGlobal('shared.stacks.extensions'), href: 'extensions' },
           { name: extension.name, href: `extensions/${extension.id}` },
         ]}
       />
@@ -145,7 +132,7 @@ export default async function ExtensionPage({
         description={extension.description}
         vendor={extension.vendor}
         category="IDE"
-        categoryLabel={tHero('categories.EXTENSION')}
+        categoryLabel={t('categoryLabel')}
         latestVersion={extension.latestVersion}
         license={extension.license}
         githubStars={getGithubStars('extensions', extension.id)}
@@ -153,7 +140,7 @@ export default async function ExtensionPage({
           extension.supportedIdes && extension.supportedIdes.length > 0
             ? [
                 {
-                  label: tHero('supportedIdes'),
+                  label: t('supportedIdes'),
                   value: extension.supportedIdes.map(ideSupport => ideSupport.ideId).join(', '),
                 },
               ]
@@ -167,13 +154,13 @@ export default async function ExtensionPage({
           undefined
         }
         labels={{
-          vendor: tHero('vendor'),
-          version: tHero('version'),
-          license: tHero('license'),
-          stars: tHero('stars'),
-          visitWebsite: tHero('visitWebsite'),
-          documentation: tHero('documentation'),
-          download: tHero('download'),
+          vendor: t('vendor'),
+          version: t('version'),
+          license: t('license'),
+          stars: t('stars'),
+          visitWebsite: t('visitWebsite'),
+          documentation: t('documentation'),
+          download: t('download'),
         }}
       />
 
@@ -193,7 +180,7 @@ export default async function ExtensionPage({
       />
 
       {/* Navigation */}
-      <BackToNavigation href="extensions" title={tNav('allExtensions')} />
+      <BackToNavigation href="extensions" title={t('allExtensions')} />
 
       <Footer />
     </>

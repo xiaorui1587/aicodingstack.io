@@ -9,6 +9,7 @@ import { LinkCardGrid, ProductHero } from '@/components/product'
 import { VendorModels } from '@/components/vendor/VendorModels'
 import { VendorProducts } from '@/components/vendor/VendorProducts'
 import type { Locale } from '@/i18n/config'
+import { getVendor } from '@/lib/data/fetchers'
 import {
   clisData as clis,
   extensionsData as extensions,
@@ -18,13 +19,7 @@ import {
 } from '@/lib/generated'
 import { localizeManifestItem, localizeManifestItems } from '@/lib/manifest-i18n'
 import { generateSoftwareDetailMetadata } from '@/lib/metadata'
-import type {
-  ManifestCLI,
-  ManifestExtension,
-  ManifestIDE,
-  ManifestModel,
-  ManifestVendor,
-} from '@/types/manifests'
+import type { ManifestCLI, ManifestExtension, ManifestIDE, ManifestModel } from '@/types/manifests'
 
 export const revalidate = 3600
 
@@ -50,19 +45,14 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>
 }) {
   const { locale, slug } = await params
-  const vendorRaw = vendors.find(v => v.id === slug)
+  const vendor = await getVendor(slug, locale as Locale)
 
-  if (!vendorRaw) {
+  if (!vendor) {
     return { title: 'Vendor Not Found | AI Coding Stack' }
   }
 
-  const vendor = localizeManifestItem(
-    vendorRaw as unknown as Record<string, unknown>,
-    locale as Locale
-  ) as unknown as ManifestVendor
-
   return await generateSoftwareDetailMetadata({
-    locale: locale as 'en' | 'zh-Hans',
+    locale: locale as Locale,
     category: 'vendors',
     slug,
     product: {
@@ -80,19 +70,14 @@ export default async function VendorPage({
   params: Promise<{ locale: string; slug: string }>
 }) {
   const { locale, slug } = await params
-  const vendorRaw = vendors.find(v => v.id === slug) as ManifestVendor | undefined
-  const t = await getTranslations({ locale, namespace: 'stackDetailPages.vendorDetail' })
-  const tStacks = await getTranslations({ locale, namespace: 'stacks' })
-  const tHero = await getTranslations({ locale, namespace: 'components.productHero' })
+  const vendor = await getVendor(slug, locale as Locale)
 
-  if (!vendorRaw) {
+  if (!vendor) {
     notFound()
   }
 
-  const vendor = localizeManifestItem(
-    vendorRaw as unknown as Record<string, unknown>,
-    locale as Locale
-  ) as unknown as ManifestVendor
+  const t = await getTranslations({ locale, namespace: 'pages.vendorDetail' })
+  const tGlobal = await getTranslations({ locale })
 
   const websiteUrl = vendor.websiteUrl
 
@@ -144,8 +129,8 @@ export default async function VendorPage({
 
       <Breadcrumb
         items={[
-          { name: tStacks('aiCodingStack'), href: '/ai-coding-stack' },
-          { name: tStacks('vendors'), href: 'vendors' },
+          { name: tGlobal('shared.common.aiCodingStack'), href: '/ai-coding-stack' },
+          { name: tGlobal('shared.stacks.vendors'), href: 'vendors' },
           { name: vendor.name, href: `vendors/${vendor.id}` },
         ]}
       />
@@ -155,7 +140,7 @@ export default async function VendorPage({
         name={vendor.name}
         description={vendor.description}
         category="VENDOR"
-        categoryLabel={tHero('categories.VENDOR')}
+        categoryLabel={t('categoryLabel')}
         websiteUrl={websiteUrl}
       />
 
