@@ -56,7 +56,8 @@
     "TRAE",
     "linkedin",
     "gemini",
-    "aicodingstack"
+    "aicodingstack",
+    "dedup"
   ],
   "allowCompoundWords": true
 }
