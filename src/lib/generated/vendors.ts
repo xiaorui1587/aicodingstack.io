@@ -5,11 +5,11 @@
  */
 
 import Alibaba from '../../../manifests/vendors/alibaba.json'
-import AmazonWebServices from '../../../manifests/vendors/amazon-web-services.json'
 import AntGroup from '../../../manifests/vendors/ant-group.json'
 import Anthropic from '../../../manifests/vendors/anthropic.json'
 import Anysphere from '../../../manifests/vendors/anysphere.json'
 import Augment from '../../../manifests/vendors/augment.json'
+import Aws from '../../../manifests/vendors/aws.json'
 import Bytedance from '../../../manifests/vendors/bytedance.json'
 import ClineBot from '../../../manifests/vendors/cline-bot.json'
 import Cognition from '../../../manifests/vendors/cognition.json'
@@ -42,11 +42,11 @@ import type { ManifestVendor } from '../../types/manifests'
 
 export const vendorsData = [
   Alibaba,
-  AmazonWebServices,
   AntGroup,
   Anthropic,
   Anysphere,
   Augment,
+  Aws,
   Bytedance,
   ClineBot,
   Cognition,
