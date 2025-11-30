@@ -1,7 +1,12 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import type { Locale } from '@/i18n/config'
-import { buildOpenGraph, buildTitle, buildTwitterCard, SITE_CONFIG } from '@/lib/metadata'
+import {
+  buildLanguageAlternates,
+  buildOpenGraph,
+  buildTitle,
+  buildTwitterCard,
+} from '@/lib/metadata'
 import SearchPageClient from './page.client'
 
 export const revalidate = 3600
@@ -18,7 +23,22 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 
   const title = q ? t('resultsCountFor', { count: 0, query: q }) : t('title')
   const description = t('placeholder')
-  const searchUrl = `/${locale}/search${q ? `?q=${encodeURIComponent(q)}` : ''}`
+
+  // Build canonical path based on locale (without query params for canonical)
+  const canonicalPath = locale === 'en' ? '/search' : `/${locale}/search`
+
+  // Build query string if search query exists
+  const queryString = q ? `?q=${encodeURIComponent(q)}` : ''
+
+  // Build full URL with query params for OpenGraph
+  const searchUrl = `${canonicalPath}${queryString}`
+
+  // Build language alternates with query params
+  const languageAlternates = buildLanguageAlternates('search')
+  const alternatesWithQuery: Record<string, string> = {}
+  Object.entries(languageAlternates).forEach(([lang, path]) => {
+    alternatesWithQuery[lang] = `${path}${queryString}`
+  })
 
   return {
     title: buildTitle({ title }),
@@ -34,12 +54,8 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
       description,
     }),
     alternates: {
-      canonical: `${SITE_CONFIG.url}${searchUrl}`,
-      languages: {
-        en: `${SITE_CONFIG.url}/en/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
-        'zh-Hans': `${SITE_CONFIG.url}/zh-Hans/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
-        de: `${SITE_CONFIG.url}/de/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
-      },
+      canonical: canonicalPath,
+      languages: alternatesWithQuery,
     },
   }
 }

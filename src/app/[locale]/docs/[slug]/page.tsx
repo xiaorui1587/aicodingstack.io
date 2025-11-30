@@ -69,7 +69,7 @@ export default async function DocPage({ params }: Props) {
             This documentation page is coming soon. Check back later!
           </p>
           <Link
-            href={`/${locale}/docs`}
+            href="/docs"
             className="inline-flex items-center gap-[var(--spacing-xs)] text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors mt-[var(--spacing-lg)]"
           >
             <span>←</span>
