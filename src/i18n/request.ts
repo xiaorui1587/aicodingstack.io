@@ -12,7 +12,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
   }
 
   // Import raw messages and resolve references centrally
-  const rawMessages = (await import(`../../locales/${locale}/index.ts`)).default
+  const rawMessages = (await import(`../../translations/${locale}/index.ts`)).default
   const messages = resolveReferences(rawMessages)
 
   return {
