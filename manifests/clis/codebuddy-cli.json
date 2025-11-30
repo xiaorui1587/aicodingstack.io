@@ -3,7 +3,7 @@
   "id": "codebuddy-cli",
   "name": "CodeBuddy CLI",
   "description": "CodeBuddy CLI is an AI-driven code editor that integrates intelligent code generation, debugging, and development workflows into your terminal. Features TUI mode and inline chat.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "CodeBuddy CLI 是 AI 驱动的代码编辑器，将智能代码生成、调试和开发工作流集成到您的终端。具有 TUI 模式和内联聊天功能。"
     }

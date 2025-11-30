@@ -3,7 +3,7 @@
   "id": "codex-cli",
   "name": "Codex CLI",
   "description": "OpenAI's Codex CLI is a local coding agent that reads, modifies, and runs code through natural language commands. Enables building, debugging, and automating coding tasks.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "OpenAI 的 Codex CLI 是本地编码 Agent，通过自然语言命令读取、修改和运行代码。支持构建、调试和自动化编码任务。"
     }

@@ -3,7 +3,7 @@
   "id": "tabnine",
   "name": "Tabnine",
   "description": "Tabnine is an AI code completion tool that helps developers write code faster and more accurately. It provides intelligent code suggestions based on context and learns from your codebase.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "Tabnine 是一个 AI 代码补全工具，帮助开发者更快、更准确地编写代码。它基于上下文提供智能代码建议，并从您的代码库中学习。"
     }

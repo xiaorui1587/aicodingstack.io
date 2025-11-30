@@ -3,7 +3,7 @@
   "id": "augment",
   "name": "Augment",
   "description": "An AI software development platform backed by an industry-leading context engine, providing autonomous coding agents and codebase-aware tools.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "由行业领先的上下文引擎支持的 AI 软件开发平台，提供自主编码 Agent 和代码库感知工具。"
     }

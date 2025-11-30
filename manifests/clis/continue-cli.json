@@ -3,7 +3,7 @@
   "id": "continue-cli",
   "name": "Continue CLI",
   "description": "Open-source CLI agent that brings continuous AI to your terminal. Build and run custom agents with any model, define your own rules, and integrate MCP tools without vendor lock-in.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "开源 CLI Agent，将持续 AI 带到您的终端。使用任何模型构建和运行自定义 Agent，定义您自己的规则，并集成 MCP 工具，无供应商锁定。"
     }

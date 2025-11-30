@@ -3,7 +3,7 @@
   "id": "vscode",
   "name": "Visual Studio Code",
   "description": "A free, open-source code editor with extensive language support and an ecosystem of extensions (including AI agents like GitHub Copilot) for editing, debugging, and version control.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "免费开源的代码编辑器，具有广泛的语言支持和扩展生态系统（包括 GitHub Copilot 等 AI Agent），用于编辑、调试和版本控制。"
     }

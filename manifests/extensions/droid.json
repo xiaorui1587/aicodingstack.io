@@ -3,7 +3,7 @@
   "id": "droid",
   "name": "Droid",
   "description": "An AI development platform providing \"Droids\" - autonomous coding agents that automate software tasks across workflows. Droids refactor code, handle debugging and tests, and generate features.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "AI 开发平台，提供 Droids —— 在工作流中自动化软件任务的自主编码 Agent。Droids 重构代码、处理调试和测试并生成功能。"
     }

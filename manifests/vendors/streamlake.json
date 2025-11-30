@@ -3,7 +3,7 @@
   "id": "streamlake",
   "name": "StreamLake",
   "description": "StreamLake is a vendor.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "由人工智能驱动的智能代码编辑器，旨在释放您的代码想象力，提供先进的AI辅助功能。"
     }

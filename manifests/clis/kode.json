@@ -3,7 +3,7 @@
   "id": "kode",
   "name": "Kode",
   "description": "Kode is an open-source AI coding assistant that understands your codebase, edits files, runs commands, and handles complete development workflows. Extends Claude Code with multi-model support.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "Kode 是开源 AI 编码助手，理解您的代码库、编辑文件、运行命令并处理完整的开发工作流。通过多模型支持扩展 Claude Code。"
     }

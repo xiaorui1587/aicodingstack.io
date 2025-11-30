@@ -3,7 +3,7 @@
   "id": "qwen3-coder-30b-a3b",
   "name": "Qwen3 Coder 30B-A3B",
   "description": "Qwen3 Coder is a specialized code generation model with 32B parameters and 32K context window, optimized for efficient code writing and debugging tasks.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "Qwen3 Coder 是专为代码生成设计的模型，32B 参数，32K 上下文窗口，优化了代码编写和调试任务的效率。"
     }

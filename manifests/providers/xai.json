@@ -3,7 +3,7 @@
   "id": "xai",
   "name": "xAI",
   "description": "xAI is a company that makes AI models.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "xAI 是一家专注于开发 AI 模型的公司。"
     }

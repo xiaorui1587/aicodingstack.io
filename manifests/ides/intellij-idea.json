@@ -3,7 +3,7 @@
   "id": "intellij-idea",
   "name": "IntelliJ IDEA",
   "description": "A powerful Java IDE with intelligent code assistance, refactoring tools, and support for multiple languages. Available in Community (free) and Ultimate (paid) editions.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "功能强大的 Java IDE，具有智能代码辅助、重构工具和多语言支持。提供社区版（免费）和旗舰版（付费）两个版本。"
     }

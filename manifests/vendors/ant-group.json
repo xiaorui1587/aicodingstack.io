@@ -3,7 +3,7 @@
   "id": "ant-group",
   "name": "Ant Group",
   "description": "Ant Group is a vendor.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "蚂蚁集团的 Neovate Code 是开源智能编程助手。生成代码、修复错误、审查代码并添加测试，具有灵活的多客户端架构。"
     }

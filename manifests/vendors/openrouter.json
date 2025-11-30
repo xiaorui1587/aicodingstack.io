@@ -3,7 +3,7 @@
   "id": "openrouter",
   "name": "OpenRouter",
   "description": "A unified API platform that provides access to multiple AI models from different providers through a single interface.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "统一的 API 平台，通过单一接口提供来自不同提供商的多个 AI 模型的访问。"
     }

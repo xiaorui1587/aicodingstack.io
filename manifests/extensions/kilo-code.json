@@ -3,7 +3,7 @@
   "id": "kilo-code",
   "name": "Kilo Code",
   "description": "Open-source AI coding agent supporting 500+ models from 60+ providers with transparent pricing. Features multi-mode orchestration, automatic failure recovery, parallel agents, and MCP marketplace.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "开源 AI 编码代理，支持来自 60+ 提供商的 500+ 模型，提供透明定价。具备多模式编排、自动错误恢复、并行代理和 MCP 市场。"
     }

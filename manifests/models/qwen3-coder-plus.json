@@ -3,7 +3,7 @@
   "id": "qwen3-coder-plus",
   "name": "Qwen3 Coder Plus",
   "description": "Alibaba's proprietary Qwen3 Coder 480B. Powerful coding agent specializing in autonomous programming via tool calling and environment interaction.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "阿里巴巴专有的开源 Qwen3 Coder 480B A35B 版本。强大的编码代理模型，专长于通过工具调用和环境交互进行自主编程，结合了编码能力和通用的多功能能力。"
     }

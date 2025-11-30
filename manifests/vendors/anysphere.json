@@ -3,7 +3,7 @@
   "id": "anysphere",
   "name": "Anysphere",
   "description": "Anysphere is an applied research lab working on the future of programming. We are a group of researchers, engineers, and technologists inventing at the edge of what's useful and possible.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "专注于编程未来的应用研究实验室,由研究人员、工程师和技术专家组成,致力于在实用性和可能性的边缘进行创新。"
     }

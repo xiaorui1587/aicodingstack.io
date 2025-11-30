@@ -3,7 +3,7 @@
   "id": "kimi-k2-0905",
   "name": "Kimi K2 0905",
   "description": "A 200B parameter large language model from Moonshot AI with 200K context window, optimized for long-context reasoning and instruction following.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "月之暗面推出的 200B 参数大语言模型，具备 200K 上下文窗口，专为长文本推理和指令遵循优化。"
     }

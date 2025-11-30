@@ -3,7 +3,7 @@
   "id": "zed",
   "name": "Zed",
   "description": "A next-generation code editor built in Rust for high-performance collaboration with humans and AI. Features agentic editing, multibuffer editing, and native Git support.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "用 Rust 构建的下一代代码编辑器，专为与人类和 AI 的高性能协作而设计。具有智能编辑、多缓冲区编辑和原生 Git 支持。"
     }

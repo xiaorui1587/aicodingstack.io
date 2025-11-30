@@ -3,7 +3,7 @@
   "id": "sourcegraph",
   "name": "Sourcegraph",
   "description": "A code intelligence platform providing universal code search, navigation, and AI-powered development tools including the Amp coding agent.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "代码智能平台，提供通用代码搜索、导航和 AI 驱动的开发工具，包括 Amp 编码 Agent。"
     }

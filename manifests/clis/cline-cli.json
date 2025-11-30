@@ -3,7 +3,7 @@
   "id": "cline-cli",
   "name": "Cline CLI",
   "description": "Cline CLI enables headless task execution from the terminal and integrates Cline anywhere. Use it to power GitHub Actions, Discord bots, and Linear tickets with collaborative AI.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "Cline CLI 支持从终端无头执行任务并将 Cline 集成到任何地方。使用它通过协作 AI 驱动 GitHub Actions、Discord 机器人和 Linear 工单。"
     }

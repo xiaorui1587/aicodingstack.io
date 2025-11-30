@@ -3,7 +3,7 @@
   "id": "codeflicker",
   "name": "CodeFlicker",
   "description": "An AI-powered intelligent code editor designed to unleash your coding imagination with advanced AI assistance.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "由人工智能驱动的智能代码编辑器，旨在释放您的代码想象力，提供先进的AI辅助功能。"
     }

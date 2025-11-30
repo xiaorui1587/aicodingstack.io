@@ -3,7 +3,7 @@
   "id": "cline-bot",
   "name": "Cline Bot",
   "description": "Cline Bot is a vendor.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "Cline 是一个开源的协作式编码 Agent，用于复杂工作。它提供计划-执行工作流程，具有完全透明性、模型自由度和企业级安全的客户端架构。"
     }

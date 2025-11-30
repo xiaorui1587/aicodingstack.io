@@ -3,7 +3,7 @@
   "id": "gemini-cli",
   "name": "Gemini CLI",
   "description": "Google's Gemini CLI brings advanced AI models to your terminal. Provides code completion, explanations, test generation, and bug fixes while supporting multiple languages.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "Google 的 Gemini CLI 将先进的 AI 模型带到您的终端。提供代码补全、解释、测试生成和错误修复，同时支持多种语言。"
     }

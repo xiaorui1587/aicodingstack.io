@@ -3,7 +3,7 @@
   "id": "microsoft",
   "name": "Microsoft",
   "description": "A multinational technology corporation developing computer software, consumer electronics, and AI-powered services.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "开发计算机软件、消费电子产品和 AI 驱动服务的跨国科技公司。"
     }

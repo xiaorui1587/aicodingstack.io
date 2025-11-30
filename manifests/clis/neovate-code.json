@@ -3,7 +3,7 @@
   "id": "neovate-code",
   "name": "Neovate Code",
   "description": "Ant Group's Neovate Code is an open-source smart programming assistant. Generates code, fixes bugs, reviews code, and adds tests with flexible multi-client architecture.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "蚂蚁集团的 Neovate Code 是开源智能编程助手。生成代码、修复错误、审查代码并添加测试，具有灵活的多客户端架构。"
     }

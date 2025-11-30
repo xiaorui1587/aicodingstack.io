@@ -3,7 +3,7 @@
   "id": "minimax",
   "name": "MiniMax",
   "description": "An AI company specializing in multimodal general large language models, offering advanced AI services including text, speech, music, image, and video generation.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "专注于多模态通用大模型研发的 AI 公司，提供包括文本、语音、音乐、图像和视频生成在内的先进 AI 服务。"
     }

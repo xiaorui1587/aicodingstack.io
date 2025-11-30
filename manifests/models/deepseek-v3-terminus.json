@@ -3,7 +3,7 @@
   "id": "deepseek-v3-terminus",
   "name": "DeepSeek V3.1 Terminus",
   "description": "DeepSeek V3.1 Terminus-extended version with 67B parameters and 64K context window, designed for advanced reasoning and code generation tasks.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "DeepSeek V3.1 Terminus 扩展版本，67B 参数，64K 上下文窗口，专为高级推理和代码生成任务设计。"
     }

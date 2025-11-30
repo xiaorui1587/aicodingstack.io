@@ -3,7 +3,7 @@
   "id": "github-copilot",
   "name": "GitHub Copilot",
   "description": "GitHub Copilot is an AI pair programmer that helps you write code faster and with less work. It draws context from comments and code to suggest individual lines and entire functions.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "GitHub Copilot 是一个 AI 结对程序员，帮助您更快地编写代码并减少工作量。它从注释和代码中获取上下文，建议单行代码和整个函数。"
     }

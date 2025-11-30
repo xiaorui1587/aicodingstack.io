@@ -3,7 +3,7 @@
   "id": "github",
   "name": "GitHub",
   "description": "GitHub is a vendor.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "GitHub Copilot CLI 将 AI 辅助功能带到您的终端。建议 shell 命令、生成代码片段，并通过自然语言与代码仓库集成。"
     }

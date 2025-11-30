@@ -3,7 +3,7 @@
   "id": "windsurf",
   "name": "Windsurf Editor",
   "description": "An AI-native IDE featuring the \"Cascade\" assistant that autonomously generates, edits, tests, and deploys code. Integrates MCP servers and plugin hooks to maintain developer flow state.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "AI 原生 IDE，具有智能助手 Cascade，可自主生成、编辑、测试和部署代码。集成 MCP 服务器和插件钩子，让开发者保持心流状态。"
     }

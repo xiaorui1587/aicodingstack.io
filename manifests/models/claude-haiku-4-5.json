@@ -3,7 +3,7 @@
   "id": "claude-haiku-4-5",
   "name": "Claude Haiku 4.5",
   "description": "Anthropic's fastest model, delivering near-frontier intelligence at low cost and latency. Matches Claude Sonnet 4 across reasoning, coding, and computer-use tasks for real-time applications.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "Anthropic 最快、最高效的模型，以大型 Claude 模型的一小部分成本和延迟提供接近前沿的智能。在推理、编码和计算机使用任务方面与 Claude Sonnet 4 的性能相当，Haiku 4.5 为实时和大规模应用带来前沿级能力。"
     }

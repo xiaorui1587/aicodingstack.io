@@ -3,7 +3,7 @@
   "id": "augment-code-cli",
   "name": "Augment Code CLI",
   "description": "Augment Code CLI brings autonomous AI agents to your terminal with industry-leading context engine. Features native TUI, automated workflows, and deep codebase understanding.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "Augment Code CLI 将自主 AI Agent 带到您的终端，配备行业领先的上下文引擎。具有原生 TUI、自动化工作流和深度代码库理解功能。"
     }

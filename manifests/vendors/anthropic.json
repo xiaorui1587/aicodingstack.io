@@ -3,7 +3,7 @@
   "id": "anthropic",
   "name": "Anthropic",
   "description": "An AI safety company focused on building reliable, interpretable, and steerable AI systems.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "专注于构建可靠、可解释和可控制的 AI 系统的 AI 安全公司。"
     }

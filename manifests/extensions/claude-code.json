@@ -3,7 +3,7 @@
   "id": "claude-code",
   "name": "Claude Code",
   "description": "Claude Code is an AI coding assistant that integrates directly into VS Code. It provides intelligent code suggestions, explanations, and helps with debugging and code generation.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "Claude Code 是一个直接集成到 VS Code 中的 AI 编码助手。提供智能代码建议、解释，并帮助调试和代码生成。"
     }

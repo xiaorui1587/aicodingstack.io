@@ -3,7 +3,7 @@
   "id": "continue",
   "name": "Continue",
   "description": "Open-source AI code assistant that lets you build custom agents across your IDE, terminal, and CI. Features Agent, Chat, Edit, and Autocomplete modes with full model flexibility and MCP integration.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "开源 AI 代码助手，让您可以在 IDE、终端和 CI 中构建自定义 Agent。具有 Agent、Chat、Edit 和 Autocomplete 模式，支持完全的模型灵活性和 MCP 集成。"
     }

@@ -3,7 +3,7 @@
   "id": "siliconflow",
   "name": "SiliconFlow",
   "description": "A unified AI inference platform providing high-speed access to LLMs and multimodal models through a single API, with flexible deployment options including serverless, fine-tuning, and dedicated GPUs.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "统一的 AI 推理平台，通过单一 API 提供对 LLM 及多模态模型的高速访问，支持无服务器、微调和专用 GPU 等灵活部署选项。"
     }

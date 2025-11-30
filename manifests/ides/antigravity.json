@@ -3,7 +3,7 @@
   "id": "antigravity",
   "name": "Antigravity",
   "description": "Google's AI-powered integrated development environment (IDE) for modern software development with advanced AI capabilities.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "Google 的 AI 驱动集成开发环境（IDE），用于现代软件开发，具有先进的 AI 功能。"
     }

@@ -3,7 +3,7 @@
   "id": "amp",
   "name": "Amp",
   "description": "A frontier coding agent by Sourcegraph for VS Code, Cursor, and Windsurf. Features autonomous reasoning, comprehensive editing, and shared sessions.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "适用于 VS Code、Cursor 和 Windsurf 的前沿编码 Agent。具有自主推理、全面编辑和会话共享功能。"
     }

@@ -3,7 +3,7 @@
   "id": "claude-sonnet-4",
   "name": "Claude Sonnet 4",
   "description": "Enhances Sonnet 3.7 with improved precision and controllability in coding and reasoning. Achieves 72.7% on SWE-bench, balancing capability and computational efficiency.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "显著增强了其前身 Sonnet 3.7 的能力，在编码和推理任务方面表现出色，具有改进的精度和可控性。在 SWE-bench 上达到 72.7% 的最先进性能，Sonnet 4 在能力和计算效率之间取得了平衡。"
     }

@@ -3,7 +3,7 @@
   "id": "cursor",
   "name": "Cursor",
   "description": "An AI-powered code editor built on VS Code with advanced AI capabilities for code generation, editing, and understanding.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "基于 VS Code 构建的 AI 驱动代码编辑器，具有高级 AI 功能，用于代码生成、编辑和理解。"
     }

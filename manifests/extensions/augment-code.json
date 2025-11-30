@@ -3,7 +3,7 @@
   "id": "augment-code",
   "name": "Augment Code",
   "description": "AI software development platform with industry-leading context engine. Features autonomous agents, codebase-aware autocomplete, and deep context understanding for large codebases.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "Augment Code 是最强大的 AI 软件开发平台，由行业领先的上下文引擎支持。它提供自主编码 Agent、代码库感知自动补全，以及对大型代码库的深度上下文理解。"
     }

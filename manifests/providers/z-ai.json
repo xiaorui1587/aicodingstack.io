@@ -3,7 +3,7 @@
   "id": "z-ai",
   "name": "Z.ai",
   "description": "An AI platform offering advanced language models and AI services for various applications including coding and content generation.",
-  "i18n": {
+  "translations": {
     "zh-Hans": {
       "description": "AI 平台，为各种应用提供先进的语言模型和 AI 服务，包括编码和内容生成。"
     }
