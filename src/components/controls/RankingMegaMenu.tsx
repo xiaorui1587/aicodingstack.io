@@ -17,7 +17,7 @@ export const RankingMegaMenu = memo(function RankingMegaMenu({
   isOpen,
   onClose,
 }: RankingMegaMenuProps) {
-  const tNav = useTranslations('header')
+  const tNav = useTranslations('components.header')
 
   if (!isOpen) return null
 

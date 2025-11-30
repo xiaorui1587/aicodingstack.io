@@ -1,7 +1,9 @@
-import { getTranslations } from 'next-intl/server'
+'use client'
+
+import { useTranslations } from 'next-intl'
+import LanguageSwitcher from '@/components/controls/LanguageSwitcher'
+import ThemeSwitcher from '@/components/controls/ThemeSwitcher'
 import { Link } from '@/i18n/navigation'
-import LanguageSwitcher from './controls/LanguageSwitcher'
-import ThemeSwitcher from './controls/ThemeSwitcher'
 
 // Footer link list component to reduce code duplication
 interface FooterLinkListProps {
@@ -32,11 +34,11 @@ function FooterLinkList({ title, links }: FooterLinkListProps) {
   )
 }
 
-export default async function Footer() {
-  const tFooter = await getTranslations('footer')
-  const tCommunity = await getTranslations('community')
-  const tStacks = await getTranslations('stacks')
-  const tHeader = await getTranslations('header')
+export default function Footer() {
+  const tFooter = useTranslations('components.footer')
+  const tPlatforms = useTranslations('shared.platforms')
+  const tStacks = useTranslations('shared.stacks')
+  const tCommon = useTranslations('shared.common')
 
   // Define link arrays (static hrefs, only labels depend on translations)
   const resourceLinks = [
@@ -49,58 +51,52 @@ export default async function Footer() {
   ]
 
   const documentationLinks = [
-    { href: '/docs', label: tFooter('docs') },
-    { href: '/articles', label: tFooter('articles') },
-    { href: '/curated-collections', label: tFooter('curatedCollections') },
-    { href: '/#faq', label: tFooter('faq') },
+    { href: '/docs', label: tCommon('docs') },
+    { href: '/articles', label: tCommon('articles') },
+    { href: '/curated-collections', label: tCommon('curatedCollections') },
+    { href: '/#faq', label: tCommon('faq') },
   ]
 
   const communityLinks = [
     {
       href: 'https://github.com/aicodingstack/aicodingstack.io',
-      label: tCommunity('github'),
+      label: tPlatforms('github'),
       isExternal: true,
     },
     {
       href: 'https://aicodingstack.io/discord',
-      label: tCommunity('discord'),
+      label: tPlatforms('discord'),
       isExternal: true,
     },
     {
       href: 'https://x.com/aicodingstack',
-      label: tCommunity('twitter'),
+      label: tPlatforms('twitter'),
       isExternal: false,
     },
   ]
 
   return (
-    <footer className="bg-[var(--color-bg)] border-t border-[var(--color-border)] py-[var(--spacing-xl)] pb-[var(--spacing-md)]">
-      <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-9 gap-[var(--spacing-lg)] mb-[var(--spacing-lg)]">
-          <div className="flex flex-col gap-[var(--spacing-sm)] lg:col-span-3">
-            <span className="text-sm font-semibold tracking-tight">{tHeader('aiCodingStack')}</span>
-            <p className="text-sm pb-[var(--spacing-sm)] leading-[1.8] text-[var(--color-text-secondary)] font-light">
-              {tFooter('tagline')}
-              <span className="block mt-[var(--spacing-sm)]">{tFooter('openSource')}</span>
-            </p>
-            <div className="flex gap-[var(--spacing-xs)]">
-              <ThemeSwitcher />
-              <LanguageSwitcher />
-            </div>
-          </div>
-
-          <FooterLinkList title={tFooter('resources')} links={resourceLinks} />
-          <FooterLinkList title={tFooter('documentation')} links={documentationLinks} />
-          <FooterLinkList title={tFooter('community')} links={communityLinks} />
-        </div>
-
-        <div className="border-t border-[var(--color-border)] pt-[var(--spacing-md)]">
-          <div className="text-center">
-            <div className="text-xs leading-tight text-[var(--color-text-muted)]">
-              {tFooter('copyright')}
-            </div>
+    <footer className="bg-[var(--color-bg)] max-w-8xl mx-auto px-[var(--spacing-md)] mt-[var(--spacing-lg)]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-9 gap-[var(--spacing-lg)] py-[var(--spacing-lg)] border-y border-[var(--color-border)]">
+        <div className="flex flex-col gap-[var(--spacing-sm)] lg:col-span-3">
+          <span className="text-sm font-semibold tracking-tight">{tCommon('aiCodingStack')}</span>
+          <p className="text-sm pb-[var(--spacing-sm)] leading-[1.8] text-[var(--color-text-secondary)] font-light">
+            {tFooter('tagline')}
+            <span className="block mt-[var(--spacing-sm)]">{tFooter('openSource')}</span>
+          </p>
+          <div className="flex gap-[var(--spacing-xs)]">
+            <ThemeSwitcher />
+            <LanguageSwitcher />
           </div>
         </div>
+
+        <FooterLinkList title={tCommon('resources')} links={resourceLinks} />
+        <FooterLinkList title={tCommon('documentation')} links={documentationLinks} />
+        <FooterLinkList title={tCommon('community')} links={communityLinks} />
+      </div>
+
+      <div className="py-[var(--spacing-md)] text-center text-xs text-[var(--color-text-muted)]">
+        {tFooter('copyright')}
       </div>
     </footer>
   )

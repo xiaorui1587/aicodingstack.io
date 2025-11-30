@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
 import { JsonLd } from '@/components/JsonLd'
 import { Link } from '@/i18n/navigation'
 import { SITE_CONFIG } from '@/lib/metadata/config'
@@ -14,6 +17,23 @@ export interface BreadcrumbItem {
  * - Sticky behavior is enabled when scrolling using CSS position: sticky.
  */
 export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  // Dynamically adjust sticky position based on header height
+  useEffect(() => {
+    const updateStickyPosition = () => {
+      const header = document.querySelector('header')
+      if (header && sectionRef.current) {
+        const headerHeight = header.offsetHeight
+        sectionRef.current.style.top = `${headerHeight}px`
+      }
+    }
+
+    updateStickyPosition()
+    window.addEventListener('resize', updateStickyPosition)
+    return () => window.removeEventListener('resize', updateStickyPosition)
+  }, [])
+
   // Normalize href to ensure it starts with '/' (unless it's already an absolute URL)
   const normalizeHref = (href: string): string => {
     // If it's already an absolute URL or starts with '/', return as is
@@ -52,7 +72,8 @@ export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
     <>
       <JsonLd data={breadcrumbListSchema} />
       <section
-        className="sticky top-[4rem] z-40 py-[var(--spacing-sm)] bg-[var(--color-hover)] border-b border-[var(--color-border)] shadow-sm"
+        ref={sectionRef}
+        className="sticky z-40 py-[var(--spacing-sm)] bg-[var(--color-hover)] border-b border-[var(--color-border)] shadow-sm"
         data-breadcrumb
       >
         <div className="max-w-8xl mx-auto px-[var(--spacing-md)]">

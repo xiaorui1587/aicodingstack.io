@@ -1,19 +1,20 @@
 'use client'
 
+import { Command } from 'lucide-react'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { memo, useCallback, useEffect, useMemo, useState } from 'react'
+import { RankingMegaMenu } from '@/components/controls/RankingMegaMenu'
+import SearchDialog from '@/components/controls/SearchDialog'
+import { StackMegaMenu } from '@/components/controls/StackMegaMenu'
 import { Link } from '@/i18n/navigation'
-import SearchDialog from './controls/SearchDialog'
-import { RankingMegaMenu } from './RankingMegaMenu'
-import { StackMegaMenu } from './StackMegaMenu'
 
 // Menu item configuration type
 interface MenuItem {
   href: string
   translationKey: string
-  namespace?: 'header' | 'community'
+  namespace?: 'header' | 'common'
   isExternal?: boolean
   hasMegaMenu?: boolean
   megaMenuType?: 'aiCodingStack' | 'ranking'
@@ -31,8 +32,7 @@ function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeMegaMenu, setActiveMegaMenu] = useState<'aiCodingStack' | 'ranking' | null>(null)
   const [isSearchDialogOpen, setIsSearchDialogOpen] = useState(false)
-  const tHeader = useTranslations('header')
-  const tCommunity = useTranslations('community')
+  const t = useTranslations('components.header')
 
   // Menu items configuration - memoized to avoid recreation on each render
   const menuItems = useMemo<MenuItem[]>(
@@ -89,16 +89,6 @@ function Header() {
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [])
 
-  // Get translation text helper - memoized
-  const getMenuText = useCallback(
-    (item: MenuItem) => {
-      const t = item.namespace === 'community' ? tCommunity : tHeader
-      const text = t(item.translationKey as never)
-      return item.isExternal ? `→ ${text}` : text
-    },
-    [tHeader, tCommunity]
-  )
-
   // Render desktop menu item
   const renderDesktopMenuItem = useCallback(
     (item: MenuItem) => {
@@ -117,7 +107,7 @@ function Header() {
               aria-expanded={isActive}
               aria-haspopup="true"
             >
-              {getMenuText(item)}
+              {t(item.translationKey as never)}
             </Link>
             {item.megaMenuType === 'aiCodingStack' && (
               <StackMegaMenu isOpen={isActive} onClose={handleMegaMenuClose} />
@@ -133,17 +123,17 @@ function Header() {
         <li key={item.href}>
           {item.isExternal ? (
             <a href={item.href} target="_blank" rel="noopener" className={DESKTOP_LINK_CLASSES}>
-              {getMenuText(item)}
+              → {t(item.translationKey as never)}
             </a>
           ) : (
             <Link href={item.href} className={DESKTOP_LINK_CLASSES}>
-              {getMenuText(item)}
+              {t(item.translationKey as never)}
             </Link>
           )}
         </li>
       )
     },
-    [activeMegaMenu, handleMegaMenuOpen, handleMegaMenuClose, getMenuText]
+    [activeMegaMenu, handleMegaMenuOpen, handleMegaMenuClose, t]
   )
 
   // Render mobile menu item
@@ -152,22 +142,22 @@ function Header() {
       <li key={item.href}>
         {item.isExternal ? (
           <a href={item.href} target="_blank" rel="noopener" className={MOBILE_LINK_CLASSES}>
-            {getMenuText(item)}
+            → {t(item.translationKey as never)}
           </a>
         ) : (
           <Link href={item.href} className={MOBILE_LINK_CLASSES} onClick={handleMenuClose}>
-            {getMenuText(item)}
+            {t(item.translationKey as never)}
           </Link>
         )}
       </li>
     ),
-    [handleMenuClose, getMenuText]
+    [handleMenuClose, t]
   )
 
   // Memoized menu button label
   const menuButtonLabel = useMemo(
-    () => (isMenuOpen ? tHeader('closeMenu') : tHeader('openMenu')),
-    [isMenuOpen, tHeader]
+    () => (isMenuOpen ? t('closeMenu') : t('openMenu')),
+    [isMenuOpen, t]
   )
 
   return (
@@ -216,8 +206,11 @@ function Header() {
                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
               </svg>
-              <span className="flex-1 text-left">{tHeader('searchPlaceholder')}</span>
-              <kbd className="px-1.5 py-0.5 text-xs border border-[var(--color-border)]">⌘K</kbd>
+              <span className="flex-1 text-left">{t('searchPlaceholder')}</span>
+              <kbd className="flex items-center gap-1 px-1.5 py-0.5 text-xs border border-[var(--color-border)]">
+                <Command className="w-3 h-3" />
+                <span>K</span>
+              </kbd>
             </button>
           </div>
 
@@ -228,7 +221,7 @@ function Header() {
               type="button"
               onClick={() => setIsSearchDialogOpen(true)}
               className="p-[var(--spacing-xs)] hover:bg-[var(--color-hover)] transition-colors"
-              aria-label={tHeader('search')}
+              aria-label={t('search')}
             >
               <svg
                 className="w-5 h-5"
@@ -251,7 +244,7 @@ function Header() {
               type="button"
               onClick={handleMenuToggle}
               className="p-[var(--spacing-xs)] hover:bg-[var(--color-hover)] transition-colors"
-              aria-label={tHeader('toggleMenu')}
+              aria-label={t('toggleMenu')}
             >
               <svg
                 className="w-6 h-6"

@@ -10,7 +10,7 @@ import { useTheme } from '../ThemeProvider'
  */
 export default function ThemeSwitcher() {
   const { theme, toggleTheme } = useTheme()
-  const t = useTranslations('footer')
+  const t = useTranslations('components.footer')
 
   return (
     <button
@@ -25,7 +25,6 @@ export default function ThemeSwitcher() {
       ) : (
         <Sun className="footer-control-icon" />
       )}
-      {theme === 'light' ? t('darkMode') : t('lightMode')}
     </button>
   )
 }

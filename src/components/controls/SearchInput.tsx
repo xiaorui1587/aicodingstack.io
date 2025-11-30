@@ -27,7 +27,7 @@ export default function SearchInput({
   const dropdownRef = useRef<HTMLDivElement>(null)
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
 
-  const placeholderText = placeholder || t('header.searchPlaceholder')
+  const placeholderText = placeholder || t('components.header.searchPlaceholder')
 
   // Debounce search suggestions
   useEffect(() => {

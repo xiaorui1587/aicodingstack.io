@@ -58,7 +58,7 @@ export default function LanguageSwitcher() {
   const locale = useLocale() as Locale
   const router = useRouter()
   const pathname = usePathname()
-  const t = useTranslations('footer')
+  const t = useTranslations('components.footer')
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
