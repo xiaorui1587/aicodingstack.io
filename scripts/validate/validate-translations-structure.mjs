@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 /**
- * Validates that all locale structures are identical
+ * Validates that all translation structures are identical
  *
  * This script checks:
- * 1. All locales have the same file structure (same JSON files)
+ * 1. All translations have the same file structure (same JSON files)
  * 2. All JSON files have the same key structure (same nested keys)
- * 3. Reports any structural differences between locales
+ * 3. Reports any structural differences between translations
  */
 
 import fs from 'node:fs'
@@ -16,18 +16,18 @@ import { fileURLToPath } from 'node:url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const rootDir = path.join(__dirname, '../..')
-const localesDir = path.join(rootDir, 'locales')
+const translationsDir = path.join(rootDir, 'translations')
 
 /**
- * Discover all available locales by scanning the locales directory
+ * Discover all available translations by scanning the translations directory
  * @returns {string[]} - Array of locale codes
  */
 function discoverLocales() {
-  if (!fs.existsSync(localesDir)) {
-    throw new Error(`Locales directory not found: ${localesDir}`)
+  if (!fs.existsSync(translationsDir)) {
+    throw new Error(`Translations directory not found: ${translationsDir}`)
   }
 
-  const entries = fs.readdirSync(localesDir, { withFileTypes: true })
+  const entries = fs.readdirSync(translationsDir, { withFileTypes: true })
   const locales = []
 
   for (const entry of entries) {
@@ -43,8 +43,8 @@ function discoverLocales() {
       continue
     }
 
-    // Check if it's a valid locale directory (has index.ts)
-    const indexPath = path.join(localesDir, localeName, 'index.ts')
+    // Check if it's a valid translation directory (has index.ts)
+    const indexPath = path.join(translationsDir, localeName, 'index.ts')
     if (fs.existsSync(indexPath)) {
       locales.push(localeName)
     }
@@ -89,17 +89,17 @@ function collectKeys(obj, prefix, keys) {
 }
 
 /**
- * Get the structure of a locale (files and keys)
+ * Get the structure of a translation (files and keys)
  * @param {string} locale - The locale code
  * @returns {{files: Map<string, Set<string>>, fileList: string[]}} - Structure information
  */
 function getLocaleStructure(locale) {
-  const localeDir = path.join(localesDir, locale)
+  const localeDir = path.join(translationsDir, locale)
   const files = new Map()
   const fileList = []
 
   if (!fs.existsSync(localeDir)) {
-    throw new Error(`Locale directory not found: ${localeDir}`)
+    throw new Error(`Translation directory not found: ${localeDir}`)
   }
 
   /**
@@ -178,23 +178,23 @@ function compareSets(set1, set2) {
  * Main validation function
  */
 function main() {
-  console.log('🔍 Validating locale structures...\n')
+  console.log('🔍 Validating translation structures...\n')
 
   const locales = discoverLocales()
 
   if (locales.length === 0) {
-    console.error('❌ No locales found!')
+    console.error('❌ No translations found!')
     process.exit(1)
   }
 
   if (locales.length === 1) {
-    console.log(`⚠️  Only one locale found (${locales[0]}), nothing to compare.`)
+    console.log(`⚠️  Only one translation found (${locales[0]}), nothing to compare.`)
     process.exit(0)
   }
 
-  console.log(`Found ${locales.length} locales: ${locales.join(', ')}\n`)
+  console.log(`Found ${locales.length} translations: ${locales.join(', ')}\n`)
 
-  // Get structure for each locale
+  // Get structure for each translation
   const structures = new Map()
   let hasErrors = false
 
@@ -212,7 +212,7 @@ function main() {
     process.exit(1)
   }
 
-  // Use the first locale as reference
+  // Use the first translation as reference
   const referenceLocale = locales[0]
   const referenceStructure = structures.get(referenceLocale)
 
@@ -220,7 +220,7 @@ function main() {
 
   const errors = []
 
-  // Compare each locale with the reference
+  // Compare each translation with the reference
   for (let i = 1; i < locales.length; i++) {
     const locale = locales[i]
     const structure = structures.get(locale)
@@ -290,7 +290,7 @@ function main() {
     console.error('❌ Structure differences found:\n')
 
     for (const error of errors) {
-      console.error(`📂 Locale: ${error.locale}`)
+      console.error(`📂 Translation: ${error.locale}`)
 
       if (error.type === 'file_list') {
         console.error('   Type: File list mismatch')
@@ -331,16 +331,16 @@ function main() {
     }
 
     console.error('='.repeat(70))
-    console.error('❌ Validation failed! Locale structures are not identical.')
+    console.error('❌ Validation failed! Translation structures are not identical.')
     console.error('='.repeat(70))
     process.exit(1)
   }
 
   // Success
   console.log('='.repeat(70))
-  console.log('✅ All locale structures are identical!')
+  console.log('✅ All translation structures are identical!')
   console.log('='.repeat(70))
-  console.log(`\nChecked ${locales.length} locales:`)
+  console.log(`\nChecked ${locales.length} translations:`)
   locales.forEach(locale => {
     const structure = structures.get(locale)
     console.log(`   • ${locale}: ${structure.fileList.length} files`)

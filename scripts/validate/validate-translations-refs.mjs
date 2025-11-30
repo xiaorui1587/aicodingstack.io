@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Validates i18n reference syntax in locale files
+ * Validates i18n reference syntax in translation files
  *
  * This script checks:
  * 1. All @:path references point to valid paths
@@ -20,22 +20,22 @@ import { extractReferences, getValueByPath, resolveReference } from '../../src/i
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const rootDir = path.join(__dirname, '../..')
-const localesDir = path.join(rootDir, 'locales')
+const translationsDir = path.join(rootDir, 'translations')
 
 /**
- * Discover all available locales by scanning the locales directory
- * A locale is valid if:
+ * Discover all available translations by scanning the translations directory
+ * A translation is valid if:
  * 1. It's a directory (not a file)
  * 2. It's not in the exclude list (e.g., _archive)
  * 3. It contains an index.ts file
  * @returns {string[]} - Array of locale codes
  */
 function discoverLocales() {
-  if (!fs.existsSync(localesDir)) {
-    throw new Error(`Locales directory not found: ${localesDir}`)
+  if (!fs.existsSync(translationsDir)) {
+    throw new Error(`Translations directory not found: ${translationsDir}`)
   }
 
-  const entries = fs.readdirSync(localesDir, { withFileTypes: true })
+  const entries = fs.readdirSync(translationsDir, { withFileTypes: true })
   const locales = []
 
   for (const entry of entries) {
@@ -51,8 +51,8 @@ function discoverLocales() {
       continue
     }
 
-    // Check if it's a valid locale directory (has index.ts)
-    const indexPath = path.join(localesDir, localeName, 'index.ts')
+    // Check if it's a valid translation directory (has index.ts)
+    const indexPath = path.join(translationsDir, localeName, 'index.ts')
     if (fs.existsSync(indexPath)) {
       locales.push(localeName)
     }
@@ -62,7 +62,7 @@ function discoverLocales() {
   return locales.sort()
 }
 
-// Discover locales dynamically
+// Discover translations dynamically
 const LOCALES = discoverLocales()
 
 /**
@@ -87,16 +87,16 @@ function toCamelCase(filename) {
 }
 
 /**
- * Load messages from a locale by dynamically reading JSON files
- * This mimics the structure in locales/{locale}/index.ts
+ * Load messages from a translation by dynamically reading JSON files
+ * This mimics the structure in translations/{locale}/index.ts
  * @param {string} locale - The locale code
  * @returns {{messages: Record<string, unknown>, fileMap: Map<string, string>}} - The messages object and file mapping
  */
 function loadMessages(locale) {
-  const localeDir = path.join(localesDir, locale)
+  const localeDir = path.join(translationsDir, locale)
 
   if (!fs.existsSync(localeDir)) {
-    throw new Error(`Locale directory not found: ${localeDir}`)
+    throw new Error(`Translation directory not found: ${localeDir}`)
   }
 
   const messages = {}
@@ -309,7 +309,7 @@ function findSimilarPaths(targetPath, messages, maxSuggestions = 3) {
 }
 
 /**
- * Validate references in a locale
+ * Validate references in a translation
  * @param {string} locale - The locale code
  * @returns {{errors: Array<{path: string, filePath: string, message: string, suggestion?: string}>, warnings: Array<{path: string, filePath: string, message: string}>}}
  */
@@ -368,12 +368,12 @@ function validateLocale(locale) {
         } catch (_error) {
           // Path doesn't exist or is invalid
           const similarPaths = findSimilarPaths(ref.path, messages, 3)
-          let suggestion = `The path "${ref.path}" does not exist in the locale messages.`
+          let suggestion = `The path "${ref.path}" does not exist in the translation messages.`
 
           if (similarPaths.length > 0) {
             suggestion += `\n   Did you mean one of these?\n${similarPaths.map(p => `   • ${p}`).join('\n')}`
           } else {
-            suggestion += `\n   Check that the path is correct and the referenced key exists in your locale files.`
+            suggestion += `\n   Check that the path is correct and the referenced key exists in your translation files.`
           }
 
           errors.push({
@@ -434,7 +434,7 @@ function validateLocale(locale) {
         filePath: 'unknown',
         message: `Resolution error`,
         details: `Failed to resolve references: ${error.message}`,
-        suggestion: `Check for syntax errors or circular references in your locale files.`,
+        suggestion: `Check for syntax errors or circular references in your translation files.`,
       })
     }
   } catch (error) {
@@ -442,8 +442,8 @@ function validateLocale(locale) {
       path: 'root',
       filePath: 'unknown',
       message: `Load error`,
-      details: `Failed to load locale ${locale}: ${error.message}`,
-      suggestion: `Check that the locale directory exists and all JSON files are valid.`,
+      details: `Failed to load translation ${locale}: ${error.message}`,
+      suggestion: `Check that the translation directory exists and all JSON files are valid.`,
     })
   }
 
@@ -469,14 +469,14 @@ function formatFilePath(filePath) {
  * Main validation function
  */
 function main() {
-  console.log('🔍 Validating i18n reference syntax in locale files...\n')
+  console.log('🔍 Validating i18n reference syntax in translation files...\n')
 
   let totalErrors = 0
   let totalWarnings = 0
   const localeResults = []
 
   for (const locale of LOCALES) {
-    console.log(`\n📂 Checking locale: ${locale}`)
+    console.log(`\n📂 Checking translation: ${locale}`)
     const result = validateLocale(locale)
     localeResults.push({ locale, ...result })
 
@@ -522,7 +522,7 @@ function main() {
   // Summary
   console.log(`\n${'='.repeat(70)}`)
   console.log('📊 Summary:')
-  console.log(`   Locales checked: ${LOCALES.length}`)
+  console.log(`   Translations checked: ${LOCALES.length}`)
   console.log(`   Total errors: ${totalErrors}`)
   console.log(`   Total warnings: ${totalWarnings}`)
   console.log('='.repeat(70))
