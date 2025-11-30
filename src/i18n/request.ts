@@ -1,5 +1,6 @@
 import { getRequestConfig } from 'next-intl/server'
 import { defaultLocale, locales } from './config'
+import { resolveReferences } from './lib'
 
 export default getRequestConfig(async ({ requestLocale }) => {
   // This typically corresponds to the `[locale]` segment
@@ -10,8 +11,12 @@ export default getRequestConfig(async ({ requestLocale }) => {
     locale = defaultLocale
   }
 
+  // Import raw messages and resolve references centrally
+  const rawMessages = (await import(`../../locales/${locale}/index.ts`)).default
+  const messages = resolveReferences(rawMessages)
+
   return {
     locale,
-    messages: (await import(`../../locales/${locale}.json`)).default,
+    messages,
   }
 })

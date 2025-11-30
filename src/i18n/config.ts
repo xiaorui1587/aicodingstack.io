@@ -13,7 +13,7 @@ export const localeNames: Record<Locale, string> = {
 export const localeLabels: Record<Locale, string> = {
   en: 'EN',
   de: 'DE',
-  'zh-Hans': '中文',
+  'zh-Hans': '简中',
 
   ko: '한국어',
 }

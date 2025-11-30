@@ -1,12 +1,5 @@
 import { createNavigation } from 'next-intl/navigation'
-import { defineRouting } from 'next-intl/routing'
-import { defaultLocale, locales } from './config'
-
-export const routing = defineRouting({
-  locales,
-  defaultLocale,
-  localePrefix: 'as-needed',
-})
+import { routing } from './routing'
 
 // Create localized versions of Link, redirect, usePathname, useRouter, getPathname
 // These will automatically handle locale prefixes based on the current locale
