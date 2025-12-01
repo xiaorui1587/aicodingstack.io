@@ -20,6 +20,7 @@
     "validate:github-stars": "node scripts/validate/index.mjs github-stars",
     "validate:urls": "node scripts/validate/index.mjs urls",
     "validate:locales-structure": "node scripts/validate/index.mjs locales-structure",
+    "validate:types-alignment": "node scripts/validate/index.mjs types-alignment",
     "generate": "node scripts/generate/index.mjs",
     "generate:manifests": "node scripts/generate/index.mjs manifest-indexes",
     "generate:metadata": "node scripts/generate/index.mjs metadata",
