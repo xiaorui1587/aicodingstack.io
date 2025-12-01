@@ -40,23 +40,23 @@ export interface SearchResult {
  * Get localized name from manifest with fallback to default name
  */
 function getLocalizedName(
-  item: { name: string; i18n?: { [locale: string]: { name?: string } } },
+  item: { name: string; translations?: { [locale: string]: { name?: string } } },
   locale?: string
 ): string {
-  if (locale && item.i18n?.[locale]?.name) {
-    return item.i18n[locale].name
+  if (locale && item.translations?.[locale]?.name) {
+    return item.translations[locale].name
   }
   return item.name
 }
 
 /**
- * Check if query matches item name (supports i18n)
+ * Check if query matches item name (supports translations)
  */
 function matchesQuery(
   item: {
     name: string
     description: string
-    i18n?: { [locale: string]: { name?: string; description?: string } }
+    translations?: { [locale: string]: { name?: string; description?: string } }
   },
   query: string
 ): boolean {
@@ -65,9 +65,9 @@ function matchesQuery(
   // Search in default name only
   if (item.name.toLowerCase().includes(lowerQuery)) return true
 
-  // Search in i18n translations (name only)
-  if (item.i18n) {
-    for (const translation of Object.values(item.i18n)) {
+  // Search in translations (name only)
+  if (item.translations) {
+    for (const translation of Object.values(item.translations)) {
       if (translation.name?.toLowerCase().includes(lowerQuery)) return true
     }
   }

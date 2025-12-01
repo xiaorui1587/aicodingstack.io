@@ -21,9 +21,10 @@ export interface ManifestEntity {
   id: string
   name: string
   description: string
-  i18n?: ManifestI18n
-  websiteUrl?: string
-  docsUrl?: string
+  translations: ManifestTranslations
+  verified: boolean
+  websiteUrl: string
+  docsUrl?: string | null
 }
 
 /**
@@ -33,6 +34,7 @@ export interface ManifestEntity {
  */
 export interface ManifestVendorEntity extends ManifestEntity {
   vendor: string
+  docsUrl: string | null // Override: required in vendor-entity schema
 }
 
 /**
@@ -48,7 +50,7 @@ export interface ManifestApp extends ManifestEntity {
  * Internationalization translations
  * Based on: /manifests/$schemas/ref/translations.schema.json
  */
-export interface ManifestI18n {
+export interface ManifestTranslations {
   [locale: string]: {
     name?: string
     title?: string
@@ -198,7 +200,7 @@ export interface ManifestBaseProduct extends ManifestVendorEntity {
   latestVersion: string
   githubUrl: string | null
   license: string // SPDX License Identifier or 'Proprietary'
-  pricing?: ManifestPricingTier[]
+  pricing: ManifestPricingTier[]
   resourceUrls: ManifestResourceUrls
   communityUrls: ManifestCommunityUrls
   relatedProducts: ManifestRelatedProduct[]
@@ -220,14 +222,10 @@ export interface ManifestIDE extends ManifestVendorEntity {
   communityUrls: ManifestCommunityUrls
   relatedProducts: ManifestRelatedProduct[]
   platforms: ManifestPlatformElement[]
-  websiteUrl?: string
-  docsUrl?: string
-  i18n?: ManifestI18n
   // Legacy fields that may exist in data
   cli?: string | null
   install?: string | null
   launch?: string | null
-  verified?: boolean
 }
 
 /**
@@ -244,14 +242,10 @@ export interface ManifestCLI extends ManifestVendorEntity {
   communityUrls: ManifestCommunityUrls
   relatedProducts: ManifestRelatedProduct[]
   platforms: ManifestPlatformElement[]
-  websiteUrl?: string
-  docsUrl?: string
-  i18n?: ManifestI18n
   // Legacy fields that may exist in data
   ide?: string | null
   install?: string | null
   launch?: string | null
-  verified?: boolean
 }
 
 /**
@@ -264,8 +258,6 @@ export interface ManifestExtension extends ManifestApp {
   type: 'cli' | 'ide'
   extends: string // Type of extension
   latestVersion: string
-  websiteUrl?: string
-  docsUrl?: string
   license: string
   pricing: ManifestPricingTier[]
   resourceUrls: ManifestResourceUrls
@@ -298,8 +290,8 @@ export interface ManifestModel {
   vendor: string
   id: string
   description: string
-  i18n?: ManifestI18n
-  websiteUrl?: string | null
+  translations: ManifestTranslations
+  websiteUrl: string | null
   docsUrl?: string | null
   verified?: boolean
   size: string | null
@@ -325,7 +317,7 @@ export interface ManifestModel {
  * Extends: ManifestVendorEntity
  */
 export interface ManifestProvider extends ManifestVendorEntity {
-  verified?: boolean
+  // verified is inherited from ManifestVendorEntity -> ManifestEntity (required boolean)
   type?: string
   applyKeyUrl?: string
   platformUrls?: {
@@ -362,7 +354,7 @@ export interface ManifestCollection {
   title: string
   description: string
   extractedDate: string
-  i18n?: {
+  translations?: {
     [locale: string]: {
       title?: string
       description?: string
