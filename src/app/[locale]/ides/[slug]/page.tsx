@@ -76,7 +76,7 @@ export default async function IDEPage({
   const tGlobal = await getTranslations({ locale })
 
   const websiteUrl = ide.resourceUrls?.download || ide.websiteUrl
-  const docsUrl = ide.docsUrl
+  const docsUrl = ide.docsUrl || undefined
 
   // Transform resourceUrls to component format (convert null to undefined)
   const resourceUrls: ComponentResourceUrls = {

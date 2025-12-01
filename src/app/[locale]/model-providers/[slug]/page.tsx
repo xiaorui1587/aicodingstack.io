@@ -60,7 +60,7 @@ export default async function ProviderPage({
   const tGlobal = await getTranslations({ locale })
 
   const websiteUrl = provider.websiteUrl
-  const docsUrl = provider.docsUrl
+  const docsUrl = provider.docsUrl || undefined
 
   // Configuration for AI platform links
   const AI_PLATFORM_LINKS = [

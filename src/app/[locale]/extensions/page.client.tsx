@@ -37,15 +37,15 @@ export default function ExtensionsPageClient({ locale }: Props) {
   const filteredAndSortedExtensions = useMemo(() => {
     let result = [...localizedExtensions]
 
-    // Apply search filter (search in name and i18n fields)
+    // Apply search filter (search in name and translations fields)
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase()
       result = result.filter(extension => {
         // Search in main name
         if (extension.name.toLowerCase().includes(query)) return true
-        // Search in i18n names if available
-        if (extension.i18n) {
-          return Object.values(extension.i18n).some(
+        // Search in translations names if available
+        if (extension.translations) {
+          return Object.values(extension.translations).some(
             translation =>
               typeof translation === 'object' &&
               translation !== null &&

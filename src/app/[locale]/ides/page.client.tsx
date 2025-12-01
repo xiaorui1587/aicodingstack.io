@@ -43,9 +43,9 @@ export default function IDEsPageClient({ locale }: Props) {
       result = result.filter(ide => {
         // Search in main name
         if (ide.name.toLowerCase().includes(query)) return true
-        // Search in i18n names if available
-        if (ide.i18n) {
-          return Object.values(ide.i18n).some(
+        // Search in translations names if available
+        if (ide.translations) {
+          return Object.values(ide.translations).some(
             translation =>
               typeof translation === 'object' &&
               translation !== null &&

@@ -75,7 +75,7 @@ export default async function CLIPage({
   const tGlobal = await getTranslations({ locale })
 
   const websiteUrl = cli.resourceUrls?.download || cli.websiteUrl
-  const docsUrl = cli.docsUrl
+  const docsUrl = cli.docsUrl || undefined
 
   // Transform resourceUrls to component format (convert null to undefined)
   const resourceUrls: ComponentResourceUrls = {

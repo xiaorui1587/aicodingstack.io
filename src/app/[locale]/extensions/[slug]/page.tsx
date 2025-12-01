@@ -70,7 +70,7 @@ export default async function ExtensionPage({
   const tGlobal = await getTranslations({ locale })
 
   const websiteUrl = extension.resourceUrls?.download || extension.websiteUrl
-  const docsUrl = extension.docsUrl
+  const docsUrl = extension.docsUrl || undefined
 
   // Schema.org structured data
   const softwareApplicationSchema = {

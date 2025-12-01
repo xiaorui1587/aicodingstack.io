@@ -32,15 +32,15 @@ export default function ModelProvidersPageClient({ locale }: Props) {
   const filteredProviders = useMemo(() => {
     let result = [...localizedProviders]
 
-    // Apply search filter (search in name and i18n fields)
+    // Apply search filter (search in name and translations fields)
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase()
       result = result.filter(provider => {
         // Search in main name
         if (provider.name.toLowerCase().includes(query)) return true
-        // Search in i18n names if available
-        if (provider.i18n) {
-          return Object.values(provider.i18n).some(
+        // Search in translations names if available
+        if (provider.translations) {
+          return Object.values(provider.translations).some(
             translation =>
               typeof translation === 'object' &&
               translation !== null &&
