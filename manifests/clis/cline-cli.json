@@ -6,6 +6,9 @@
   "translations": {
     "zh-Hans": {
       "description": "Cline CLI 支持从终端无头执行任务并将 Cline 集成到任何地方。使用它通过协作 AI 驱动 GitHub Actions、Discord 机器人和 Linear 工单。"
+    },
+    "de": {
+      "description": "Cline CLI ermöglicht headless Aufgabenausführung vom Terminal und integriert Cline überall. Verwenden Sie es, um GitHub Actions, Discord-Bots und Linear-Tickets mit kollaborativer KI zu betreiben."
     }
   },
   "verified": false,

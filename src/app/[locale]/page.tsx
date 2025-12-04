@@ -6,6 +6,7 @@ import { MarkdownContent } from '@/components/MarkdownContent'
 import { Link } from '@/i18n/navigation'
 import { getFaqItems } from '@/lib/faq'
 import { buildCanonicalUrl, buildOpenGraph, buildTitle, buildTwitterCard } from '@/lib/metadata'
+import { generateFAQPageSchema } from '@/lib/metadata/schemas'
 
 export const revalidate = 3600
 
@@ -46,18 +47,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 async function getFaqSchema(locale: string) {
   const faqItems = getFaqItems(locale)
 
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqItems.map(faq => ({
-      '@type': 'Question',
-      name: faq.title,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.content,
-      },
-    })),
-  }
+  // Use the new schema generator
+  return await generateFAQPageSchema(
+    faqItems.map(faq => ({
+      question: faq.title,
+      answer: faq.content,
+    }))
+  )
 }
 
 type Props = {

@@ -2,10 +2,13 @@
   "$schema": "../$schemas/vendor.schema.json",
   "id": "cline-bot",
   "name": "Cline Bot",
-  "description": "Cline Bot is a vendor.",
+  "description": "Open-source autonomous coding agent for VS Code with model-agnostic design, MCP integration, and human-in-the-loop approval, trusted by 4M+ developers worldwide.",
   "translations": {
     "zh-Hans": {
-      "description": "Cline 是一个开源的协作式编码 Agent，用于复杂工作。它提供计划-执行工作流程，具有完全透明性、模型自由度和企业级安全的客户端架构。"
+      "description": "VS Code 的开源自主编码智能体,模型无关设计、MCP 集成和人机协作审批,受到全球 400 万以上开发者信赖。"
+    },
+    "de": {
+      "description": "Open-Source autonomer Codierungs-Agent für VS Code mit modell-agnostischem Design, MCP-Integration und menschlicher Genehmigungsschleife."
     }
   },
   "verified": false,

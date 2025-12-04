@@ -6,6 +6,9 @@
   "translations": {
     "zh-Hans": {
       "description": "Google 的 AI 驱动集成开发环境（IDE），用于现代软件开发，具有先进的 AI 功能。"
+    },
+    "de": {
+      "description": "Eine moderne IDE mit KI-gestützten Entwicklungstools und intelligenten Code-Vorschlägen für produktive Programmierung."
     }
   },
   "verified": false,

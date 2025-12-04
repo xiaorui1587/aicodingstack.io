@@ -6,6 +6,9 @@
   "translations": {
     "zh-Hans": {
       "description": "AI 驱动的 IDE，充当 10 倍效率 AI 工程师，提供实时代码补全、聊天式辅助和自主代码生成（Builder/SOLO 模式）用于端到端开发。"
+    },
+    "de": {
+      "description": "Eine spezialisierte IDE mit KI-Features für moderne Entwicklungsworkflows und Team-Zusammenarbeit."
     }
   },
   "verified": false,

@@ -106,7 +106,7 @@ export function ProductHero({
       <div className="max-w-8xl mx-auto px-[var(--spacing-md)] text-center">
         {/* Title with Badge */}
         <div className="relative inline-block mb-[var(--spacing-sm)]">
-          <h1 className="text-5xl font-semibold tracking-[-0.04em]">{name}</h1>
+          <h1 className="text-5xl font-semibold tracking-[-0.04em] detail-page-h1">{name}</h1>
           <div className="absolute bottom-0 right-0 translate-x-[calc(100%+1rem)]">
             <div className="px-[var(--spacing-xs)] py-[2px] text-xs text-[var(--color-text-muted)] border-[1.5px] border-double border-[var(--color-border-strong)] whitespace-nowrap">
               {badgeText}

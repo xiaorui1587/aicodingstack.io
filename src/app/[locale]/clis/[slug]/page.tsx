@@ -13,12 +13,8 @@ import { clisData as clis } from '@/lib/generated'
 import { getGithubStars } from '@/lib/generated/github-stars'
 import { translateLicenseText } from '@/lib/license'
 import { generateSoftwareDetailMetadata } from '@/lib/metadata'
-import { getSchemaCurrency, getSchemaPrice } from '@/lib/pricing'
-import type {
-  ComponentCommunityUrls,
-  ComponentResourceUrls,
-  ManifestPricingTier,
-} from '@/types/manifests'
+import { generateSoftwareDetailSchema } from '@/lib/metadata/schemas'
+import type { ComponentCommunityUrls, ComponentResourceUrls } from '@/types/manifests'
 
 export const revalidate = 3600
 
@@ -96,35 +92,22 @@ export default async function CLIPage({
     reddit: cli.communityUrls?.reddit || undefined,
   }
 
-  // Schema.org structured data
-  const softwareApplicationSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    name: cli.name,
-    applicationCategory: 'DeveloperApplication',
-    operatingSystem: cli.platforms?.map(p => p.os).join(', ') || 'Windows, macOS, Linux',
-    softwareVersion: cli.latestVersion,
-    description: cli.description,
-    url: websiteUrl,
-    downloadUrl: cli.resourceUrls?.download,
-    installUrl: cli.resourceUrls?.download,
-    author: {
-      '@type': 'Organization',
-      name: cli.vendor,
+  // Generate JSON-LD schema using the new unified system
+  const softwareApplicationSchema = await generateSoftwareDetailSchema({
+    product: {
+      name: cli.name,
+      description: cli.description,
+      vendor: cli.vendor,
+      websiteUrl,
+      downloadUrl: cli.resourceUrls?.download,
+      version: cli.latestVersion,
+      platforms: cli.platforms,
+      pricing: cli.pricing as any,
+      license: cli.license ? translateLicenseText(cli.license, tGlobal) : undefined,
     },
-    offers: cli.pricing
-      ? cli.pricing.map((tier: ManifestPricingTier) => {
-          return {
-            '@type': 'Offer',
-            name: tier.name,
-            price: getSchemaPrice(tier),
-            priceCurrency: getSchemaCurrency(tier),
-            category: tier.category,
-          }
-        })
-      : undefined,
-    license: cli.license ? translateLicenseText(cli.license, tGlobal) : undefined,
-  }
+    category: 'clis',
+    locale,
+  })
 
   return (
     <>

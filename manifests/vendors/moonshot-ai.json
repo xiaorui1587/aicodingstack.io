@@ -2,18 +2,21 @@
   "$schema": "../$schemas/vendor.schema.json",
   "id": "moonshot-ai",
   "name": "Moonshot AI",
-  "description": "Moonshot AI is a vendor.",
+  "description": "Chinese AI company developing large language models with long context capabilities, creator of Kimi chatbot and K-series models backed by Alibaba and Tencent.",
   "translations": {
     "zh-Hans": {
-      "description": "Kimi CLI 是一款新的 CLI Agent，可以帮助您完成软件开发任务和终端操作。具有类 Shell 的用户界面、Zsh 集成、Agent Client Protocol 支持和 MCP 支持。"
+      "description": "中国 AI 公司,开发具有长上下文能力的大型语言模型,创造了 Kimi 聊天机器人和 K 系列模型,由阿里巴巴和腾讯支持。"
+    },
+    "de": {
+      "description": "Chinesisches KI-Unternehmen, das große Sprachmodelle mit langen Kontextfähigkeiten entwickelt, Schöpfer des Kimi-Chatbots."
     }
   },
   "verified": false,
-  "websiteUrl": "https://github.com/MoonshotAI/kimi-cli",
+  "websiteUrl": "https://www.moonshot.ai",
   "communityUrls": {
     "linkedin": null,
     "twitter": null,
-    "github": "https://github.com/MoonshotAI/kimi-cli",
+    "github": "https://github.com/MoonshotAI",
     "youtube": null,
     "discord": null,
     "reddit": null,

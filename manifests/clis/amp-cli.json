@@ -6,6 +6,9 @@
   "translations": {
     "zh-Hans": {
       "description": "Sourcegraph 的前沿编码 Agent，执行自主推理、代码编辑和复杂任务。提供 CLI 版本，并在 VS Code、Cursor 和 Windsurf 中可用。"
+    },
+    "de": {
+      "description": "Ein fortschrittlicher Codierungs-Agent von Sourcegraph, der autonomes Denken, Code-Bearbeitung und komplexe Aufgaben ausführt. Verfügbar als CLI und in VS Code, Cursor und Windsurf."
     }
   },
   "verified": false,

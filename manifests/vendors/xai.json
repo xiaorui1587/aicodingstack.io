@@ -2,21 +2,24 @@
   "$schema": "../$schemas/vendor.schema.json",
   "id": "xai",
   "name": "xAI",
-  "description": "xAI is a vendor.",
+  "description": "AI company advancing scientific discovery and understanding of the universe, creator of Grok AI models and the world's largest AI supercomputer, Colossus.",
   "translations": {
     "zh-Hans": {
-      "description": "一个极速推理模型，在代理式编码方面表现出色，在 Kilo Code 中限时免费提供。注意：提示和完成内容会被 xAI 记录并用于改进模型。"
+      "description": "致力于推进科学发现和理解宇宙的 AI 公司,创造了 Grok AI 模型和全球最大的 AI 超级计算机 Colossus。"
+    },
+    "de": {
+      "description": "KI-Unternehmen zur Förderung wissenschaftlicher Entdeckungen und des Verständnisses des Universums, Schöpfer der Grok-KI-Modelle und des weltgrößten KI-Supercomputers Colossus."
     }
   },
   "verified": false,
-  "websiteUrl": "https://docs.x.ai/docs/models/grok-code-fast-1",
+  "websiteUrl": "https://x.ai",
   "communityUrls": {
-    "linkedin": null,
+    "linkedin": "https://www.linkedin.com/company/xai",
     "twitter": "https://x.com/xai",
-    "github": null,
+    "github": "https://github.com/xai-org",
     "youtube": null,
     "discord": null,
     "reddit": null,
-    "blog": null
+    "blog": "https://x.ai/news"
   }
 }

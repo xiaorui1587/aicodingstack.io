@@ -2,21 +2,24 @@
   "$schema": "../$schemas/vendor.schema.json",
   "id": "aws",
   "name": "AWS",
-  "description": "AWS is a vendor.",
+  "description": "World's most comprehensive cloud platform providing 240+ services including compute, storage, AI/ML, and databases to help organizations innovate faster and lower costs.",
   "translations": {
     "zh-Hans": {
-      "description": "AWS 的智能 IDE，为 VS Code 带来规范驱动开发。使用 AI Agent 将自然语言规范转化为代码、自动化任务并与工作流集成。"
+      "description": "全球最全面的云平台,提供 240 多项服务,包括计算、存储、AI/ML 和数据库,帮助组织更快创新并降低成本。"
+    },
+    "de": {
+      "description": "Weltweit umfassendste Cloud-Plattform mit über 240 Services für Computing, Speicher, KI/ML und Datenbanken für schnellere Innovation und Kostensenkung."
     }
   },
   "verified": false,
-  "websiteUrl": "https://kiro.dev",
+  "websiteUrl": "https://aws.amazon.com",
   "communityUrls": {
     "linkedin": "https://www.linkedin.com/company/amazon-web-services",
     "twitter": "https://x.com/awscloud",
-    "github": "https://github.com/kirodotdev/Kiro",
+    "github": "https://github.com/aws",
     "youtube": "https://www.youtube.com/@amazonwebservices",
     "discord": null,
     "reddit": null,
-    "blog": "https://kiro.dev/blog"
+    "blog": "https://aws.amazon.com/blogs"
   }
 }

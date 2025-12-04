@@ -2,20 +2,23 @@
   "$schema": "../$schemas/vendor.schema.json",
   "id": "sst",
   "name": "SST",
-  "description": "SST is a vendor.",
+  "description": "Open-source framework for building modern full-stack applications on AWS using serverless architecture, backed by Y Combinator with Pulumi and Terraform engine.",
   "translations": {
     "zh-Hans": {
-      "description": "OpenCode 是一个为终端构建的开源 AI 编码 Agent。具有原生 TUI、LSP 支持、多会话功能，支持 75+ 个 LLM 提供商，包括本地模型。"
+      "description": "开源框架,使用无服务器架构在 AWS 上构建现代全栈应用,由 Y Combinator 支持,采用 Pulumi 和 Terraform 引擎。"
+    },
+    "de": {
+      "description": "Open-Source-Framework zum Erstellen moderner Full-Stack-Anwendungen auf AWS mit serverloser Architektur, unterstützt von Y Combinator."
     }
   },
   "verified": false,
-  "websiteUrl": "https://opencode.ai",
+  "websiteUrl": "https://sst.dev",
   "communityUrls": {
     "linkedin": null,
-    "twitter": "https://x.com/opencode",
-    "github": "https://github.com/sst/opencode",
+    "twitter": "https://x.com/SST_dev",
+    "github": "https://github.com/sst/sst",
     "youtube": null,
-    "discord": "https://discord.gg/opencode",
+    "discord": "https://discord.gg/sst",
     "reddit": null,
     "blog": null
   }

@@ -6,13 +6,16 @@
   "translations": {
     "zh-Hans": {
       "description": "免费开源的代码编辑器，具有广泛的语言支持和扩展生态系统（包括 GitHub Copilot 等 AI Agent），用于编辑、调试和版本控制。"
+    },
+    "de": {
+      "description": "Kostenloser Open-Source-Editor mit umfangreicher Sprachunterstützung und Erweiterungen (inkl. KI-Agenten wie GitHub Copilot) für Bearbeitung, Debugging und Versionskontrolle."
     }
   },
   "verified": false,
   "websiteUrl": "https://code.visualstudio.com",
   "docsUrl": "https://code.visualstudio.com/docs",
   "vendor": "Microsoft",
-  "latestVersion": "1.104",
+  "latestVersion": "1.106",
   "githubUrl": "https://github.com/microsoft/vscode",
   "license": "MIT",
   "pricing": [

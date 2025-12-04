@@ -6,13 +6,16 @@
   "translations": {
     "zh-Hans": {
       "description": "基于 VS Code 构建的 AI 驱动代码编辑器，具有高级 AI 功能，用于代码生成、编辑和理解。"
+    },
+    "de": {
+      "description": "Ein KI-gestützter Code-Editor auf Basis von VS Code mit erweiterten KI-Funktionen für Code-Generierung, -Bearbeitung und -Verständnis."
     }
   },
   "verified": false,
   "websiteUrl": "https://cursor.com",
   "docsUrl": "https://cursor.com/docs",
   "vendor": "Anysphere",
-  "latestVersion": "1.7.28",
+  "latestVersion": "2.1.46",
   "githubUrl": "https://github.com/cursor/cursor",
   "license": "Proprietary",
   "pricing": [

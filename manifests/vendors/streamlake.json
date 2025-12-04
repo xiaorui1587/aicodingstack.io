@@ -2,20 +2,23 @@
   "$schema": "../$schemas/vendor.schema.json",
   "id": "streamlake",
   "name": "StreamLake",
-  "description": "StreamLake is a vendor.",
+  "description": "Video cloud service brand of Kuaishou providing live streaming, video processing, and content delivery capabilities leveraging experience from short-video platform operations.",
   "translations": {
     "zh-Hans": {
-      "description": "由人工智能驱动的智能代码编辑器，旨在释放您的代码想象力，提供先进的AI辅助功能。"
+      "description": "快手旗下的视频云服务品牌,提供直播、视频处理和内容分发能力,利用短视频平台运营经验。"
+    },
+    "de": {
+      "description": "Video-Cloud-Service-Marke von Kuaishou, die Live-Streaming, Videoverarbeitung und Content-Delivery-Funktionen bereitstellt."
     }
   },
   "verified": false,
-  "websiteUrl": "https://www.codeflicker.ai",
+  "websiteUrl": "https://www.streamlake.com",
   "communityUrls": {
     "linkedin": null,
-    "twitter": "https://x.com/CodeFlicker_ai",
+    "twitter": null,
     "github": null,
     "youtube": null,
-    "discord": "https://discord.gg/rVdpZS9D3C",
+    "discord": null,
     "reddit": null,
     "blog": null
   }

@@ -6,41 +6,51 @@
   "translations": {
     "zh-Hans": {
       "description": "GitHub Copilot CLI 将 AI 辅助功能带到您的终端。建议 shell 命令、生成代码片段，并通过自然语言与代码仓库集成。"
+    },
+    "de": {
+      "description": "GitHub Copilot CLI bringt KI-Unterstützung in Ihr Terminal. Schlägt Shell-Befehle vor, generiert Code-Snippets und integriert sich über natürliche Sprache mit Repositories."
     }
   },
   "verified": false,
   "websiteUrl": "https://github.com/features/copilot/cli",
   "docsUrl": "https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli",
   "vendor": "GitHub",
-  "latestVersion": "0.0.334",
+  "latestVersion": "0.0.365",
   "githubUrl": "https://github.com/github/copilot-cli",
   "license": "Proprietary",
   "pricing": [
     {
-      "name": "Copilot Pro",
+      "name": "Free",
+      "value": 0,
+      "currency": "USD",
+      "per": "month",
+      "category": "Individual"
+    },
+    {
+      "name": "Pro",
       "value": 10,
       "currency": "USD",
       "per": "month",
       "category": "Individual"
     },
     {
-      "name": "Copilot Pro+",
+      "name": "Pro+",
       "value": 39,
       "currency": "USD",
       "per": "month",
       "category": "Individual"
     },
     {
-      "name": "Copilot Business",
+      "name": "Business",
       "value": 19,
       "currency": "USD",
       "per": "user/month",
       "category": "Business"
     },
     {
-      "name": "Copilot Enterprise",
+      "name": "Enterprise",
       "value": null,
-      "currency": null,
+      "currency": "USD",
       "per": "custom",
       "category": "Enterprise"
     }
