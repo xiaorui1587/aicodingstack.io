@@ -17,6 +17,7 @@ import GeminiCli from '../../../manifests/clis/gemini-cli.json'
 import GithubCopilotCli from '../../../manifests/clis/github-copilot-cli.json'
 import KiloCodeCli from '../../../manifests/clis/kilo-code-cli.json'
 import KimiCli from '../../../manifests/clis/kimi-cli.json'
+import KiroCli from '../../../manifests/clis/kiro-cli.json'
 import Kode from '../../../manifests/clis/kode.json'
 import NeovateCode from '../../../manifests/clis/neovate-code.json'
 import Opencode from '../../../manifests/clis/opencode.json'
@@ -37,6 +38,7 @@ export const clisData = [
   GithubCopilotCli,
   KiloCodeCli,
   KimiCli,
+  KiroCli,
   Kode,
   NeovateCode,
   Opencode,
