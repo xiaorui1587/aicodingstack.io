@@ -1,0 +1,63 @@
+{
+  "$schema": "../$schemas/extension.schema.json",
+  "id": "qoder",
+  "name": "Qoder",
+  "description": "An agentic coding platform that brings autonomous AI agents to your IDE. Features code completion, Ask mode for debugging, and Agent mode for complex multi-step development tasks.",
+  "translations": {
+    "zh-Hans": {
+      "description": "将自主 AI 代理引入 IDE 的智能编码平台。具备代码补全、问答模式用于调试，以及代理模式用于复杂的多步骤开发任务。"
+    },
+    "de": {
+      "description": "Eine agentenbasierte Coding-Plattform, die autonome KI-Agenten in Ihre IDE bringt. Bietet Code-Vervollständigung, Ask-Modus für Debugging und Agent-Modus für komplexe mehrstufige Entwicklungsaufgaben."
+    }
+  },
+  "verified": false,
+  "websiteUrl": "https://qoder.com",
+  "docsUrl": "https://docs.qoder.com",
+  "vendor": "Alibaba",
+  "latestVersion": "0.1.20",
+  "githubUrl": null,
+  "license": "Proprietary",
+  "pricing": [
+    {
+      "name": "Free",
+      "value": null,
+      "currency": "USD",
+      "per": "Month",
+      "category": "Individual"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://qoder.com/download",
+    "changelog": "https://qoder.com/changelog",
+    "pricing": "https://qoder.com/pricing",
+    "mcp": null,
+    "issue": null
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": "https://x.com/Qoder_ai_ide",
+    "github": "https://github.com/QoderAI",
+    "youtube": "https://www.youtube.com/@qoder_ai",
+    "discord": "https://discord.gg/NRpVfWbn",
+    "reddit": "https://www.reddit.com/r/Qoder",
+    "blog": "https://qoder.com/blog"
+  },
+  "relatedProducts": [
+    {
+      "type": "cli",
+      "productId": "qoder-cli"
+    },
+    {
+      "type": "ide",
+      "productId": "qoder-ide"
+    }
+  ],
+  "supportedIdes": [
+    {
+      "ideId": "jetbrains",
+      "marketplaceUrl": "https://plugins.jetbrains.com/plugin/28926-qoder--think-deeper-build-better-",
+      "installUri": null
+    }
+  ]
+}
