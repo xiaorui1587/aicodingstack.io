@@ -23,7 +23,6 @@
       "@content/*": ["./content/*"]
     },
     "types": ["node"],
-
     // Strict type checking
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
@@ -34,7 +33,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "forceConsistentCasingInFileNames": true,
-
     // Output optimization
     "removeComments": true,
     "verbatimModuleSyntax": true
@@ -45,7 +43,8 @@
     "cloudflare-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }
