@@ -1,0 +1,100 @@
+{
+  "$schema": "../$schemas/cli.schema.json",
+  "id": "kiro-cli",
+  "name": "Kiro CLI",
+  "description": "Agentic AI development CLI for building from prototype to production. Features spec-driven development, agent hooks, web search capabilities, and natural language coding assistance in your terminal.",
+  "translations": {
+    "zh-Hans": {
+      "description": "用于从原型到生产的智能 AI 开发 CLI。具备规范驱动开发、代理钩子、网络搜索功能，以及终端中的自然语言编码辅助。"
+    },
+    "de": {
+      "description": "Agentic AI-Entwicklungs-CLI für Prototyp bis Produktion. Mit Spec-driven Development, Agent-Hooks, Web-Suche und natürlichsprachlicher Codierungsunterstützung im Terminal."
+    }
+  },
+  "verified": false,
+  "websiteUrl": "https://kiro.dev",
+  "docsUrl": "https://kiro.dev/docs/cli",
+  "vendor": "AWS",
+  "latestVersion": "1.21.0",
+  "githubUrl": "https://github.com/kirodotdev/Kiro",
+  "license": "Proprietary",
+  "pricing": [
+    {
+      "name": "Free",
+      "value": null,
+      "currency": "USD",
+      "per": "Month",
+      "category": "Individual"
+    },
+    {
+      "name": "Pro",
+      "value": 20,
+      "currency": "USD",
+      "per": "Month",
+      "category": "Individual"
+    },
+    {
+      "name": "Pro+",
+      "value": 40,
+      "currency": "USD",
+      "per": "Month",
+      "category": "Individual"
+    },
+    {
+      "name": "Power",
+      "value": 200,
+      "currency": "USD",
+      "per": "Month",
+      "category": "Individual"
+    },
+    {
+      "name": "Enterprise",
+      "value": null,
+      "currency": "USD",
+      "per": "Custom",
+      "category": "Enterprise"
+    }
+  ],
+  "resourceUrls": {
+    "download": "https://kiro.dev/downloads",
+    "changelog": "https://kiro.dev/changelog",
+    "pricing": "https://kiro.dev/pricing",
+    "mcp": null,
+    "issue": "https://github.com/kirodotdev/Kiro/issues"
+  },
+  "communityUrls": {
+    "linkedin": null,
+    "twitter": "https://x.com/kirodotdev",
+    "github": "https://github.com/kirodotdev",
+    "youtube": "https://www.youtube.com/@kirodotdev",
+    "discord": "https://discord.gg/kirodotdev",
+    "reddit": "https://www.reddit.com/r/kiroIDE",
+    "blog": "https://kiro.dev/blog"
+  },
+  "relatedProducts": [
+    {
+      "type": "ide",
+      "productId": "kiro"
+    }
+  ],
+  "platforms": [
+    {
+      "os": "macOS",
+      "installCommand": "curl -fsSL https://cli.kiro.dev/install | bash",
+      "launchCommand": "kiro-cli",
+      "installPath": "~/.local/bin"
+    },
+    {
+      "os": "Windows",
+      "installCommand": null,
+      "launchCommand": "kiro-cli",
+      "installPath": null
+    },
+    {
+      "os": "Linux",
+      "installCommand": "curl -fsSL https://cli.kiro.dev/install | bash",
+      "launchCommand": "kiro-cli",
+      "installPath": "~/.local/bin"
+    }
+  ]
+}

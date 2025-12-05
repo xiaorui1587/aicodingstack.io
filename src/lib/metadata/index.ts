@@ -25,6 +25,7 @@ export {
   type Locale,
   METADATA_DEFAULTS,
   OG_IMAGE_CONFIG,
+  SEO_CONFIG,
   SITE_CONFIG,
 } from './config'
 // Export all generators
@@ -55,3 +56,19 @@ export {
   getAlternateOGLocale,
   mapLocaleToOG,
 } from './helpers'
+// Export robots configuration
+export {
+  DEFAULT_ROBOTS,
+  getCustomRobots,
+  getPageRobots,
+  NOFOLLOW_ROBOTS,
+  NOINDEX_ROBOTS,
+} from './robots'
+// Export metadata templates
+export type { PageMetadataOptions, PageType, RootLayoutMetadataOptions } from './templates'
+export {
+  createBaseMetadata,
+  createPageMetadata,
+  createRootLayoutMetadata,
+  mergeMetadata,
+} from './templates'

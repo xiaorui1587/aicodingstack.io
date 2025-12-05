@@ -6,6 +6,9 @@
   "translations": {
     "zh-Hans": {
       "description": "Augment Code CLI 将自主 AI Agent 带到您的终端，配备行业领先的上下文引擎。具有原生 TUI、自动化工作流和深度代码库理解功能。"
+    },
+    "de": {
+      "description": "Augment Code CLI bringt autonome KI-Agenten mit branchenführender Kontext-Engine in Ihr Terminal. Bietet native TUI, automatisierte Workflows und tiefes Codebasis-Verständnis."
     }
   },
   "verified": false,

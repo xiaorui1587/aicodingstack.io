@@ -38,9 +38,9 @@ export default function ModelsPageClient({ locale }: Props) {
       result = result.filter(model => {
         // Search in main name
         if (model.name.toLowerCase().includes(query)) return true
-        // Search in i18n names if available
-        if (model.i18n) {
-          return Object.values(model.i18n).some(
+        // Search in translations names if available
+        if (model.translations) {
+          return Object.values(model.translations).some(
             translation =>
               typeof translation === 'object' &&
               translation !== null &&

@@ -38,9 +38,9 @@ export default function VendorsPageClient({ locale }: Props) {
       result = result.filter(vendor => {
         // Search in main name
         if (vendor.name.toLowerCase().includes(query)) return true
-        // Search in i18n names if available
-        if (vendor.i18n) {
-          return Object.values(vendor.i18n).some(
+        // Search in translations names if available
+        if (vendor.translations) {
+          return Object.values(vendor.translations).some(
             translation =>
               typeof translation === 'object' &&
               translation !== null &&

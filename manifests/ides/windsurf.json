@@ -6,13 +6,16 @@
   "translations": {
     "zh-Hans": {
       "description": "AI 原生 IDE，具有智能助手 Cascade，可自主生成、编辑、测试和部署代码。集成 MCP 服务器和插件钩子，让开发者保持心流状态。"
+    },
+    "de": {
+      "description": "Eine KI-native IDE mit dem \"Cascade\"-Assistenten, der autonom Code generiert, bearbeitet, testet und bereitstellt. Integriert MCP-Server und Plugin-Hooks für den Entwickler-Flow."
     }
   },
   "verified": false,
   "websiteUrl": "https://windsurf.com",
   "docsUrl": "https://docs.windsurf.com",
   "vendor": "Cognition",
-  "latestVersion": "1.12.12",
+  "latestVersion": "1.12.33",
   "githubUrl": null,
   "license": "Proprietary",
   "pricing": [

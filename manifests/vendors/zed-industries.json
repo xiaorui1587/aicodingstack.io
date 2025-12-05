@@ -2,20 +2,23 @@
   "$schema": "../$schemas/vendor.schema.json",
   "id": "zed-industries",
   "name": "Zed Industries",
-  "description": "Zed Industries is a vendor.",
+  "description": "High-performance multiplayer code editor built in Rust by the creators of Atom and Tree-sitter, designed for collaboration with humans and AI.",
   "translations": {
     "zh-Hans": {
-      "description": "用 Rust 构建的下一代代码编辑器，专为与人类和 AI 的高性能协作而设计。具有智能编辑、多缓冲区编辑和原生 Git 支持。"
+      "description": "由 Atom 和 Tree-sitter 创作者打造的高性能多人协作代码编辑器,用 Rust 构建,专为人类和 AI 协作而设计。"
+    },
+    "de": {
+      "description": "Hochleistungs-Multiplayer-Code-Editor in Rust von den Entwicklern von Atom und Tree-sitter, entwickelt für die Zusammenarbeit mit Menschen und KI."
     }
   },
   "verified": false,
   "websiteUrl": "https://zed.dev",
   "communityUrls": {
-    "linkedin": null,
+    "linkedin": "https://www.linkedin.com/company/zeddotdev",
     "twitter": "https://x.com/zeddotdev",
     "github": "https://github.com/zed-industries/zed",
     "youtube": "https://www.youtube.com/@zeddotdev",
-    "discord": null,
+    "discord": "https://discord.com/invite/qSDQ8VWc7k",
     "reddit": null,
     "blog": "https://zed.dev/blog"
   }

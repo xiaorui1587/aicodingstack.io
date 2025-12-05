@@ -76,7 +76,7 @@ export default async function IDEPage({
   const tGlobal = await getTranslations({ locale })
 
   const websiteUrl = ide.resourceUrls?.download || ide.websiteUrl
-  const docsUrl = ide.docsUrl
+  const docsUrl = ide.docsUrl || undefined
 
   // Transform resourceUrls to component format (convert null to undefined)
   const resourceUrls: ComponentResourceUrls = {
@@ -107,8 +107,8 @@ export default async function IDEPage({
     softwareVersion: ide.latestVersion,
     description: ide.description,
     url: websiteUrl,
-    downloadUrl: ide.resourceUrls?.download,
-    installUrl: ide.resourceUrls?.download,
+    downloadUrl: ide.resourceUrls?.download || undefined,
+    installUrl: ide.resourceUrls?.download || undefined,
     author: {
       '@type': 'Organization',
       name: ide.vendor,

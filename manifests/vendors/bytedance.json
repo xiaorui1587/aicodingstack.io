@@ -2,21 +2,24 @@
   "$schema": "../$schemas/vendor.schema.json",
   "id": "bytedance",
   "name": "ByteDance",
-  "description": "ByteDance is a vendor.",
+  "description": "Chinese multinational internet technology company behind TikTok, leveraging AI and machine learning for content platforms including Douyin, CapCut, and Lark.",
   "translations": {
     "zh-Hans": {
-      "description": "AI 驱动的 IDE，充当 10 倍效率 AI 工程师，提供实时代码补全、聊天式辅助和自主代码生成（Builder/SOLO 模式）用于端到端开发。"
+      "description": "中国跨国互联网科技公司,TikTok 的母公司,利用 AI 和机器学习构建内容平台,包括抖音、剪映和飞书。"
+    },
+    "de": {
+      "description": "Chinesisches multinationales Internettechnologieunternehmen hinter TikTok, nutzt KI und maschinelles Lernen für Content-Plattformen."
     }
   },
   "verified": false,
-  "websiteUrl": "https://www.trae.ai",
+  "websiteUrl": "https://www.bytedance.com",
   "communityUrls": {
-    "linkedin": null,
-    "twitter": "https://x.com/Trae_ai",
-    "github": null,
+    "linkedin": "https://www.linkedin.com/company/bytedance",
+    "twitter": null,
+    "github": "https://github.com/bytedance",
     "youtube": null,
     "discord": null,
-    "reddit": "https://www.reddit.com/r/Trae_ai",
-    "blog": "https://www.trae.ai/blog"
+    "reddit": null,
+    "blog": null
   }
 }

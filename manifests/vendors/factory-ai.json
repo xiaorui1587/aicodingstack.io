@@ -2,16 +2,19 @@
   "$schema": "../$schemas/vendor.schema.json",
   "id": "factory-ai",
   "name": "Factory AI",
-  "description": "Factory AI is a vendor.",
+  "description": "Agent-native software development company building autonomous AI Droids that automate the software development lifecycle, saving enterprises over 500,000 engineering hours.",
   "translations": {
     "zh-Hans": {
-      "description": "Factory AI 的 Droid CLI 是基于终端的编码 Agent，处理从规划到测试的完整功能开发。与企业工具集成并提供透明的差异审查。"
+      "description": "智能体原生软件开发公司,构建自主 AI Droids 自动化软件开发生命周期,为企业节省超过 50 万工程小时。"
+    },
+    "de": {
+      "description": "Agentenbasiertes Softwareentwicklungsunternehmen, das autonome KI-Droids entwickelt, die den Software-Entwicklungslebenszyklus automatisieren."
     }
   },
   "verified": false,
   "websiteUrl": "https://factory.ai",
   "communityUrls": {
-    "linkedin": "https://www.linkedin.com/company/factoryai",
+    "linkedin": "https://www.linkedin.com/company/factory-hq",
     "twitter": "https://x.com/FactoryAI",
     "github": null,
     "youtube": null,

@@ -33,10 +33,20 @@ export async function POST(request: NextRequest) {
       })
     } else {
       // Revalidate all ai-coding-stack pages
+      revalidatePath('/')
       revalidatePath('ides')
       revalidatePath('models')
       revalidatePath('clis')
+      revalidatePath('extensions')
       revalidatePath('model-providers')
+      revalidatePath('vendors')
+      revalidatePath('articles')
+      revalidatePath('ai-coding-stack')
+      revalidatePath('docs')
+      revalidatePath('curated-collections')
+      revalidatePath('manifesto')
+      revalidatePath('ai-coding-landscape')
+      revalidatePath('open-source-rank')
       return Response.json({
         revalidated: true,
         type: 'all',

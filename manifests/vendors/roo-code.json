@@ -2,10 +2,13 @@
   "$schema": "../$schemas/vendor.schema.json",
   "id": "roo-code",
   "name": "Roo Code",
-  "description": "Roo Code is a vendor.",
+  "description": "Open-source AI coding assistant providing a dev team of AI agents in VS Code with multi-file capabilities, model flexibility, and permission-based control.",
   "translations": {
     "zh-Hans": {
-      "description": "Roo Code 是一个开源的 AI 驱动编码助手，提供用于规划、架构、调试等的专门模式。它支持任何 AI 模型，具有精细的自动批准和完全自定义功能。"
+      "description": "开源 AI 编码助手,在 VS Code 中提供 AI 智能体开发团队,具有多文件能力、模型灵活性和基于权限的控制。"
+    },
+    "de": {
+      "description": "Open-Source-KI-Coding-Assistent mit einem Team von KI-Agenten in VS Code, Multi-Datei-Fähigkeiten und berechtigungsbasierter Kontrolle."
     }
   },
   "verified": false,

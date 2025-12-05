@@ -2,21 +2,24 @@
   "$schema": "../$schemas/vendor.schema.json",
   "id": "tencent",
   "name": "Tencent",
-  "description": "Tencent is a vendor.",
+  "description": "World's largest video game vendor and technology conglomerate offering social networks, messaging (WeChat/QQ), cloud services, payment systems, and AI technology.",
   "translations": {
     "zh-Hans": {
-      "description": "腾讯的 AI 编码助手，提供智能代码补全、多文件代码生成（Craft 模式）、设计转代码转换和集成部署工具。"
+      "description": "全球最大的视频游戏厂商和科技集团,提供社交网络、即时通讯(微信/QQ)、云服务、支付系统和 AI 技术。"
+    },
+    "de": {
+      "description": "Weltweit größter Videospielanbieter und Technologiekonzern mit sozialen Netzwerken, Messaging (WeChat/QQ), Cloud-Services und KI-Technologie."
     }
   },
   "verified": false,
-  "websiteUrl": "https://www.codebuddy.ai",
+  "websiteUrl": "https://www.tencent.com",
   "communityUrls": {
-    "linkedin": null,
-    "twitter": null,
-    "github": null,
+    "linkedin": "https://www.linkedin.com/company/tencentglobal",
+    "twitter": "https://x.com/TencentGlobal",
+    "github": "https://github.com/Tencent",
     "youtube": null,
     "discord": null,
     "reddit": null,
-    "blog": "https://www.codebuddy.ai/blog"
+    "blog": null
   }
 }

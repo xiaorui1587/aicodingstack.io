@@ -17,6 +17,7 @@ import {
   SCHEMA_PATHS,
   WORKFLOW_PATHS,
 } from './lib/config.mjs'
+import { updateGithubStarsEntry } from './lib/github-stars-updater.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -169,6 +170,22 @@ if (mode === 'create') {
 }
 
 console.log('━'.repeat(60))
+console.log('📝 Post-Creation/Update Steps')
+console.log('━'.repeat(60))
+console.log('')
+console.log('After creating or updating the manifest:')
+console.log('1. Save the manifest file')
+console.log('2. Update github-stars.json automatically:')
+console.log(`   - Will add entry: ${type}s["${name}"] = null`)
+console.log('   - Stars will be fetched in next scheduled update')
+console.log('3. Generate completion report')
+console.log('')
+console.log('━'.repeat(60))
 console.log('')
 console.log('✅ Ready! Execute workflow above.')
 console.log('')
+console.log('⚠️  IMPORTANT: After saving the manifest, remember to update github-stars.json')
+console.log('')
+
+// Export helper function for Claude to use in manifest-automation skill
+export { updateGithubStarsEntry, type as manifestType, name as manifestName, mode as operationMode }

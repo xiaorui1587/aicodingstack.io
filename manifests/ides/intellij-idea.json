@@ -6,6 +6,9 @@
   "translations": {
     "zh-Hans": {
       "description": "功能强大的 Java IDE，具有智能代码辅助、重构工具和多语言支持。提供社区版（免费）和旗舰版（付费）两个版本。"
+    },
+    "de": {
+      "description": "JetBrains führende Java-IDE mit intelligenter Code-Vervollständigung, Refactoring-Tools und integrierter KI-Unterstützung durch JetBrains AI Assistant."
     }
   },
   "verified": false,

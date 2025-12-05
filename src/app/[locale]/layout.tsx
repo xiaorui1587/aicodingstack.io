@@ -8,12 +8,9 @@ import './globals.css'
 import ClientLayout from '@/components/ClientLayout'
 import { JsonLd } from '@/components/JsonLd'
 import { defaultLocale, type Locale, locales } from '@/i18n/config'
-import { SITE_CONFIG } from '@/lib/metadata/config'
-import {
-  buildLanguageAlternates,
-  getAlternateOGLocale,
-  mapLocaleToOG,
-} from '@/lib/metadata/helpers'
+import { createRootLayoutMetadata, SITE_CONFIG } from '@/lib/metadata'
+import { buildLanguageAlternates, mapLocaleToOG } from '@/lib/metadata/helpers'
+import { generateRootOrganizationSchema, generateWebSiteSchema } from '@/lib/metadata/schemas'
 import { WebVitals } from './web-vitals'
 
 // Reduced font weights from 4 to 2 for better performance
@@ -57,8 +54,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonicalPath = locale === defaultLocale ? '/' : `/${locale}`
   const baseUrl = SITE_CONFIG.url
 
-  return {
-    metadataBase: new URL(baseUrl),
+  // Build OpenGraph with proper locale handling
+  const ogLocale = mapLocaleToOG(locale)
+  const alternateLocales = locales.filter(l => l !== locale).map(l => mapLocaleToOG(l))
+
+  // Use the new template system
+  return createRootLayoutMetadata({
+    locale: locale as Locale,
     title,
     description,
     keywords: [
@@ -71,81 +73,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'AI coding directory',
       'coding tools comparison',
     ].join(', '),
-    icons: {
-      icon: '/icon.svg',
-      shortcut: '/icon.svg',
-      apple: '/icon.svg',
-    },
-    alternates: {
-      canonical: canonicalPath,
-      languages: buildLanguageAlternates('/'),
-    },
-    appleWebApp: {
-      capable: true,
-      title: 'AI Coding Stack',
-      statusBarStyle: 'default',
-    },
-    // Resource hints for better performance
-    other: {
-      'x-dns-prefetch-control': 'on',
-    },
+    canonical: canonicalPath,
+    languageAlternates: buildLanguageAlternates('/'),
     openGraph: {
       type: 'website',
-      locale: mapLocaleToOG(locale),
-      alternateLocale: getAlternateOGLocale(locale),
+      locale: ogLocale,
+      alternateLocale: alternateLocales,
       url: `${baseUrl}${canonicalPath}`,
-      siteName: 'AI Coding Stack',
+      siteName: SITE_CONFIG.name,
       title,
       description,
-      images: [
-        {
-          url: '/og-image.png',
-          width: 1200,
-          height: 630,
-          alt: 'AI Coding Stack - Your AI Coding Ecosystem Hub',
-        },
-      ],
+      // Images are auto-detected from opengraph-image.tsx files
     },
     twitter: {
       card: 'summary_large_image',
-      site: '@aicodingstack',
-      creator: '@aicodingstack',
+      site: SITE_CONFIG.twitter.site,
+      creator: SITE_CONFIG.twitter.creator,
       title,
       description,
-      images: ['/twitter-card.png'],
+      // Images are auto-detected from opengraph-image.tsx files
     },
-  }
-}
-
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'AI Coding Stack',
-  url: SITE_CONFIG.url,
-  logo: `${SITE_CONFIG.url}/logo.png`,
-  description:
-    'Comprehensive directory and community-maintained metadata repository for AI-powered coding tools, models, and platforms.',
-  foundingDate: '2025',
-  sameAs: ['https://github.com/aicodingstack/aicodingstack.io'],
-  contactPoint: {
-    '@type': 'ContactPoint',
-    contactType: 'customer support',
-    url: 'https://github.com/aicodingstack/aicodingstack.io/issues',
-  },
-}
-
-const websiteSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'AI Coding Stack',
-  url: SITE_CONFIG.url,
-  description:
-    'Comprehensive directory for AI coding tools across IDEs, CLIs, MCP servers, models and providers.',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: `${SITE_CONFIG.url}/search?q={search_term_string}`,
-    'query-input': 'required name=search_term_string',
-  },
+  })
 }
 
 export default async function RootLayout({ children, params }: Props) {
@@ -157,6 +105,10 @@ export default async function RootLayout({ children, params }: Props) {
   }
 
   const messages = await getMessages()
+
+  // Generate JSON-LD schemas using new generators
+  const organizationSchema = await generateRootOrganizationSchema()
+  const websiteSchema = await generateWebSiteSchema()
 
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -178,7 +130,7 @@ export default async function RootLayout({ children, params }: Props) {
           }}
         />
 
-        {/* Structured Data */}
+        {/* Structured Data - Generated using unified schema system */}
         <JsonLd data={organizationSchema} />
         <JsonLd data={websiteSchema} />
       </head>

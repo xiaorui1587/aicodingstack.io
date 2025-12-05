@@ -337,9 +337,10 @@ Status: DRAFT (3 fields incomplete)
 📝 Next Steps:
 1. Review manifest file: manifests/clis/cursor-cli.json
 2. Manually fill TODO-marked fields if information available
-3. Update i18n translations if English content changed
-4. Update verified field once data confirmed accurate
-5. Run validation: node scripts/validate/validate-manifests.mjs
+3. **Update github-stars.json** with new entry
+4. Update i18n translations if English content changed
+5. Update verified field once data confirmed accurate
+6. Run validation: node scripts/validate/validate-manifests.mjs
 ```
 
 ## Comparison with manifest-creator
@@ -430,18 +431,100 @@ After running this skill, expect:
 3. **Valid against schema**: `manifests/$schemas/<type>.schema.json`
 4. **Ready for validation**: Run `node scripts/validate/validate-manifests.mjs`
 
+## GitHub Stars Update
+
+After creating or updating a manifest, you **MUST** update the `data/github-stars.json` file:
+
+### Why Update github-stars.json?
+
+The `github-stars.json` file tracks GitHub star counts for all manifests. When you create or update a manifest:
+- A new entry must be added for tracking
+- The entry is initialized with `null` (stars not yet fetched)
+- A scheduled job will automatically fetch the actual star count later
+
+### How to Update
+
+Use the `updateGithubStarsEntry()` function from `github-stars-updater.mjs`:
+
+```javascript
+import { updateGithubStarsEntry } from './lib/github-stars-updater.mjs'
+
+// After creating a new manifest
+const result = updateGithubStarsEntry('cli', 'cursor-cli', { isNew: true })
+
+// After updating an existing manifest
+const result = updateGithubStarsEntry('extension', 'claude-code', { isNew: false })
+```
+
+### CLI Usage
+
+You can also use the CLI directly:
+
+```bash
+# Add new entry
+node .claude/skills/manifest-automation/scripts/lib/github-stars-updater.mjs add cli cursor-cli
+
+# Update existing entry
+node .claude/skills/manifest-automation/scripts/lib/github-stars-updater.mjs update extension claude-code
+
+# Remove entry
+node .claude/skills/manifest-automation/scripts/lib/github-stars-updater.mjs remove ide windsurf
+```
+
+### What It Does
+
+The updater will:
+1. Load the current `github-stars.json` file
+2. Add or update the entry: `<category>["<id>"] = null`
+3. Sort entries alphabetically within the category
+4. Save the updated file back to disk
+
+### Example Result
+
+For a new CLI manifest `cursor-cli`:
+
+```json
+{
+  "clis": {
+    "claude-code-cli": 43.5,
+    "cursor-cli": null,  // ← newly added
+    "kode": 3.6
+  }
+}
+```
+
+### Integration with Workflow
+
+The `automate.mjs` script exports the necessary information for you to call the updater:
+
+```javascript
+// After workflow completes and manifest is saved:
+import {
+  updateGithubStarsEntry,
+  manifestType,
+  manifestName,
+  operationMode
+} from './automate.mjs'
+
+updateGithubStarsEntry(manifestType, manifestName, { isNew: operationMode === 'create' })
+```
+
 ## Next Steps After Creation
 
 1. **Review manifest**: Check all extracted values for accuracy
 2. **Fill TODOs**: Manually add fields that couldn't be auto-discovered
-3. **Add translations**: Populate `i18n` object with localized content
+3. **Update github-stars.json**: Add entry for the new/updated manifest
+   - Use: `updateGithubStarsEntry(type, id, { isNew: mode === 'create' })`
+   - This adds an entry like `clis["cursor-cli"] = null`
+   - Stars will be automatically fetched in the next scheduled update
+4. **Add translations**: Populate `i18n` object with localized content
    - **CRITICAL**: Ensure i18n content matches English default values
    - Validate all i18n fields are consistent across all supported languages
    - Check that no language has outdated or mismatched translations
-4. **Set verified**: Change `verified` to `true` if data is confirmed accurate
-5. **Add related products**: Manually curate `relatedProducts` array
-6. **Run validation**: Ensure schema compliance
-7. **Commit changes**: Add manifest to git repository
+5. **Set verified**: Change `verified` to `true` if data is confirmed accurate
+6. **Add related products**: Manually curate `relatedProducts` array
+7. **Run validation**: Ensure schema compliance
+8. **Commit changes**: Add manifest to git repository
 
 ## i18n Consistency Requirements
 

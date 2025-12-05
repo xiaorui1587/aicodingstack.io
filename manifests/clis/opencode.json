@@ -6,6 +6,9 @@
   "translations": {
     "zh-Hans": {
       "description": "OpenCode 是一个为终端构建的开源 AI 编码 Agent。具有原生 TUI、LSP 支持、多会话功能，支持 75+ 个 LLM 提供商，包括本地模型。"
+    },
+    "de": {
+      "description": "SSTs OpenCode CLI ist ein Community-orientierter Open-Source-Codierungs-Agent mit Fokus auf Zusammenarbeit, geteilte Workflows und anpassbare Codierungserfahrung."
     }
   },
   "verified": false,

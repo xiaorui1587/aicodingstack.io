@@ -2,20 +2,23 @@
   "$schema": "../$schemas/vendor.schema.json",
   "id": "github",
   "name": "GitHub",
-  "description": "GitHub is a vendor.",
+  "description": "AI-powered developer platform enabling millions to collaborate on code, from planning through deployment, with built-in security and automation.",
   "translations": {
     "zh-Hans": {
-      "description": "GitHub Copilot CLI 将 AI 辅助功能带到您的终端。建议 shell 命令、生成代码片段，并通过自然语言与代码仓库集成。"
+      "description": "AI 驱动的开发者平台,让数百万开发者能够协作编写代码,从规划到部署,内置安全和自动化功能。"
+    },
+    "de": {
+      "description": "KI-gestützte Entwicklerplattform, die Millionen ermöglicht, an Code zu kollaborieren, von der Planung bis zur Bereitstellung mit integrierter Sicherheit."
     }
   },
   "verified": false,
-  "websiteUrl": "https://github.com/features/copilot/cli",
+  "websiteUrl": "https://github.com",
   "communityUrls": {
-    "linkedin": null,
+    "linkedin": "https://www.linkedin.com/company/github",
     "twitter": "https://x.com/github",
-    "github": "https://github.com/github/copilot-cli",
+    "github": "https://github.com/github",
     "youtube": "https://www.youtube.com/@github",
-    "discord": null,
+    "discord": "https://discord.com/invite/github",
     "reddit": null,
     "blog": "https://github.blog"
   }

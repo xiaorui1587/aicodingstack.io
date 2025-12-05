@@ -6,6 +6,9 @@
   "translations": {
     "zh-Hans": {
       "description": "OpenAI 的 Codex CLI 是本地编码 Agent，通过自然语言命令读取、修改和运行代码。支持构建、调试和自动化编码任务。"
+    },
+    "de": {
+      "description": "OpenAIs Codex CLI ist ein lokaler Codierungs-Agent, der Code über natürliche Sprache liest, modifiziert und ausführt. Ermöglicht Erstellen, Debuggen und Automatisieren von Aufgaben."
     }
   },
   "verified": false,

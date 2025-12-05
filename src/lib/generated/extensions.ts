@@ -14,6 +14,7 @@ import Droid from '../../../manifests/extensions/droid.json'
 import GithubCopilot from '../../../manifests/extensions/github-copilot.json'
 import JetbrainsJunie from '../../../manifests/extensions/jetbrains-junie.json'
 import KiloCode from '../../../manifests/extensions/kilo-code.json'
+import Qoder from '../../../manifests/extensions/qoder.json'
 import RooCode from '../../../manifests/extensions/roo-code.json'
 import Tabnine from '../../../manifests/extensions/tabnine.json'
 import type { ManifestExtension } from '../../types/manifests'
@@ -29,6 +30,7 @@ export const extensionsData = [
   GithubCopilot,
   JetbrainsJunie,
   KiloCode,
+  Qoder,
   RooCode,
   Tabnine,
 ] as unknown as ManifestExtension[]

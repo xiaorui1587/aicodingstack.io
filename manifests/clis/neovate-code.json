@@ -6,6 +6,9 @@
   "translations": {
     "zh-Hans": {
       "description": "蚂蚁集团的 Neovate Code 是开源智能编程助手。生成代码、修复错误、审查代码并添加测试，具有灵活的多客户端架构。"
+    },
+    "de": {
+      "description": "Neovate Code CLI ist ein moderner Codierungs-Agent mit fortschrittlichem Kontextmanagement, iterativer Code-Verfeinerung und nahtloser Git-Integration. Verfügbar als CLI und Erweiterung."
     }
   },
   "verified": false,

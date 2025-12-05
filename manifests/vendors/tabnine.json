@@ -2,10 +2,13 @@
   "$schema": "../$schemas/vendor.schema.json",
   "id": "tabnine",
   "name": "Tabnine",
-  "description": "Tabnine is a vendor.",
+  "description": "AI coding platform providing intelligent code completion and generation across 30+ IDEs with enterprise-grade security, flexible deployment, and complete code privacy.",
   "translations": {
     "zh-Hans": {
-      "description": "Tabnine 是一个 AI 代码补全工具，帮助开发者更快、更准确地编写代码。它基于上下文提供智能代码建议，并从您的代码库中学习。"
+      "description": "AI 编码平台,在 30 多个 IDE 中提供智能代码补全和生成,具备企业级安全、灵活部署和完全代码隐私保护。"
+    },
+    "de": {
+      "description": "KI-Codierungsplattform mit intelligenter Code-Vervollständigung und -Generierung über 30+ IDEs mit Unternehmenssicherheit und vollständigem Code-Datenschutz."
     }
   },
   "verified": false,
@@ -15,7 +18,7 @@
     "twitter": "https://x.com/TabNine",
     "github": "https://github.com/codota/TabNine",
     "youtube": "https://www.youtube.com/@TabNine",
-    "discord": null,
+    "discord": "https://discord.me/tabnine",
     "reddit": null,
     "blog": "https://www.tabnine.com/blog"
   }

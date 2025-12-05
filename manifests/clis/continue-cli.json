@@ -6,13 +6,16 @@
   "translations": {
     "zh-Hans": {
       "description": "开源 CLI Agent，将持续 AI 带到您的终端。使用任何模型构建和运行自定义 Agent，定义您自己的规则，并集成 MCP 工具，无供应商锁定。"
+    },
+    "de": {
+      "description": "Open-Source CLI-Agent, der kontinuierliche KI in Ihr Terminal bringt. Erstellen Sie Agenten mit jedem Modell, definieren Sie Regeln und integrieren Sie MCP-Tools ohne Vendor-Lock-in."
     }
   },
   "verified": false,
   "websiteUrl": "https://www.continue.dev",
   "docsUrl": "https://docs.continue.dev",
   "vendor": "Continue Dev",
-  "latestVersion": "1.5.7",
+  "latestVersion": "1.5.18",
   "githubUrl": "https://github.com/continuedev/continue",
   "license": "Apache-2.0",
   "pricing": [

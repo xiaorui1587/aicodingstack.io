@@ -2,21 +2,24 @@
   "$schema": "../$schemas/vendor.schema.json",
   "id": "cognition",
   "name": "Cognition",
-  "description": "Cognition is a vendor.",
+  "description": "Applied AI lab developing advanced AI software engineering solutions, creator of Devin, the first AI software engineer that can autonomously write, debug, and deploy code.",
   "translations": {
     "zh-Hans": {
-      "description": "AI 原生 IDE，具有智能助手 Cascade，可自主生成、编辑、测试和部署代码。集成 MCP 服务器和插件钩子，让开发者保持心流状态。"
+      "description": "专注于 AI 软件工程的应用型 AI 实验室,创造了 Devin - 首个能够自主编写、调试和部署代码的 AI 软件工程师。"
+    },
+    "de": {
+      "description": "Angewandtes KI-Labor zur Entwicklung fortschrittlicher KI-Softwareentwicklungslösungen, Schöpfer von Devin, dem ersten KI-Softwareingenieur."
     }
   },
   "verified": false,
-  "websiteUrl": "https://windsurf.com",
+  "websiteUrl": "https://cognition.ai",
   "communityUrls": {
-    "linkedin": "https://www.linkedin.com/company/windsurf",
-    "twitter": "https://x.com/windsurf",
-    "github": null,
-    "youtube": "https://www.youtube.com/@windsurf",
+    "linkedin": "https://www.linkedin.com/company/cognition-ai-labs",
+    "twitter": "https://x.com/cognition_labs",
+    "github": "https://github.com/CognitionAI",
+    "youtube": null,
     "discord": null,
     "reddit": null,
-    "blog": "https://windsurf.com/blog"
+    "blog": "https://cognition.ai/blog"
   }
 }

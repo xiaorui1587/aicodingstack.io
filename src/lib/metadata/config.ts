@@ -41,6 +41,32 @@ export const METADATA_DEFAULTS = {
 } as const
 
 /**
+ * SEO Configuration
+ * Additional SEO settings including robots directives and verification
+ */
+export const SEO_CONFIG = {
+  /**
+   * Site verification codes for search engines
+   * Set these via environment variables for security
+   */
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+    bing: process.env.NEXT_PUBLIC_BING_VERIFICATION,
+    yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
+  },
+  /**
+   * Author and publisher information for better SEO
+   */
+  authors: [{ name: `${SITE_CONFIG.name} Team` }],
+  creator: SITE_CONFIG.name,
+  publisher: SITE_CONFIG.name,
+  /**
+   * Category for app stores
+   */
+  category: 'Technology',
+} as const
+
+/**
  * Category-specific SEO keywords
  * These are appended to dynamic keywords for each category
  */

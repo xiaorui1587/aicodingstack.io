@@ -76,6 +76,11 @@ h1::before {
   content: none;
 }
 
+/* Detail page specific: H1 without "//" prefix */
+.detail-page-h1::before {
+  content: none;
+}
+
 /* Homepage specific: H2 with "//" prefix */
 .homepage-h2::before {
   content: "//";

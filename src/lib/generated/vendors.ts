@@ -13,7 +13,7 @@ import Aws from '../../../manifests/vendors/aws.json'
 import Bytedance from '../../../manifests/vendors/bytedance.json'
 import ClineBot from '../../../manifests/vendors/cline-bot.json'
 import Cognition from '../../../manifests/vendors/cognition.json'
-import ContinueDev from '../../../manifests/vendors/continue-dev.json'
+import Continue from '../../../manifests/vendors/continue.json'
 import Deepseek from '../../../manifests/vendors/deepseek.json'
 import FactoryAi from '../../../manifests/vendors/factory-ai.json'
 import Github from '../../../manifests/vendors/github.json'
@@ -50,7 +50,7 @@ export const vendorsData = [
   Bytedance,
   ClineBot,
   Cognition,
-  ContinueDev,
+  Continue,
   Deepseek,
   FactoryAi,
   Github,
