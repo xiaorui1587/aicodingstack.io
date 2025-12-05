@@ -59,7 +59,7 @@ const nextConfig: NextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    unoptimized: false, // Ensure images are optimized
+    unoptimized: true, // Ensure images are optimized
     remotePatterns: [
       // Add remote image domains here if needed
       // {
