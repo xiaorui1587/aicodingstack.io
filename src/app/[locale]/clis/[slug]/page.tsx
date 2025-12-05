@@ -99,14 +99,14 @@ export default async function CLIPage({
       description: cli.description,
       vendor: cli.vendor,
       websiteUrl,
-      downloadUrl: cli.resourceUrls?.download,
+      downloadUrl: cli.resourceUrls?.download || undefined,
       version: cli.latestVersion,
       platforms: cli.platforms,
-      pricing: cli.pricing as any,
+      pricing: cli.pricing,
       license: cli.license ? translateLicenseText(cli.license, tGlobal) : undefined,
     },
     category: 'clis',
-    locale,
+    locale: locale as Locale,
   })
 
   return (

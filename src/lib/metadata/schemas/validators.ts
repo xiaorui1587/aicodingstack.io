@@ -4,7 +4,18 @@
  * Helps catch errors during development
  */
 
-import type { AnySchema } from './types'
+import type {
+  AnySchema,
+  SchemaArticle,
+  SchemaBreadcrumbList,
+  SchemaFAQPage,
+  SchemaItemList,
+  SchemaOffer,
+  SchemaOrganization,
+  SchemaProduct,
+  SchemaSoftwareApplication,
+  SchemaWebSite,
+} from './types'
 
 /**
  * Validation result
@@ -37,30 +48,30 @@ export function validateSchema(schema: AnySchema): ValidationResult {
   if (schema['@type']) {
     switch (schema['@type']) {
       case 'Organization':
-        validateOrganization(schema, errors, warnings)
+        validateOrganization(schema as SchemaOrganization, errors, warnings)
         break
       case 'SoftwareApplication':
-        validateSoftwareApplication(schema, errors, warnings)
+        validateSoftwareApplication(schema as SchemaSoftwareApplication, errors, warnings)
         break
       case 'Product':
-        validateProduct(schema, errors, warnings)
+        validateProduct(schema as SchemaProduct, errors, warnings)
         break
       case 'Article':
       case 'TechArticle':
       case 'BlogPosting':
-        validateArticle(schema, errors, warnings)
+        validateArticle(schema as SchemaArticle, errors, warnings)
         break
       case 'ItemList':
-        validateItemList(schema, errors, warnings)
+        validateItemList(schema as SchemaItemList, errors, warnings)
         break
       case 'BreadcrumbList':
-        validateBreadcrumbList(schema, errors, warnings)
+        validateBreadcrumbList(schema as SchemaBreadcrumbList, errors, warnings)
         break
       case 'WebSite':
-        validateWebSite(schema, errors, warnings)
+        validateWebSite(schema as SchemaWebSite, errors, warnings)
         break
       case 'FAQPage':
-        validateFAQPage(schema, errors, warnings)
+        validateFAQPage(schema as SchemaFAQPage, errors, warnings)
         break
       default:
         warnings.push(`Unknown schema type: ${schema['@type']}`)
@@ -77,7 +88,7 @@ export function validateSchema(schema: AnySchema): ValidationResult {
 /**
  * Validate Organization schema
  */
-function validateOrganization(schema: any, errors: string[], warnings: string[]) {
+function validateOrganization(schema: SchemaOrganization, errors: string[], warnings: string[]) {
   if (!schema.name) errors.push('Organization: Missing required field "name"')
   if (!schema.url) errors.push('Organization: Missing required field "url"')
   else if (!isValidUrl(schema.url)) errors.push(`Organization: Invalid URL "${schema.url}"`)
@@ -90,7 +101,11 @@ function validateOrganization(schema: any, errors: string[], warnings: string[])
 /**
  * Validate SoftwareApplication schema
  */
-function validateSoftwareApplication(schema: any, errors: string[], warnings: string[]) {
+function validateSoftwareApplication(
+  schema: SchemaSoftwareApplication,
+  errors: string[],
+  warnings: string[]
+) {
   if (!schema.name) errors.push('SoftwareApplication: Missing required field "name"')
   if (!schema.applicationCategory) {
     errors.push('SoftwareApplication: Missing required field "applicationCategory"')
@@ -119,7 +134,7 @@ function validateSoftwareApplication(schema: any, errors: string[], warnings: st
 /**
  * Validate Product schema
  */
-function validateProduct(schema: any, errors: string[], warnings: string[]) {
+function validateProduct(schema: SchemaProduct, errors: string[], warnings: string[]) {
   if (!schema.name) errors.push('Product: Missing required field "name"')
   if (!schema.description) errors.push('Product: Missing required field "description"')
   if (!schema.brand) errors.push('Product: Missing required field "brand"')
@@ -132,7 +147,7 @@ function validateProduct(schema: any, errors: string[], warnings: string[]) {
 /**
  * Validate Article schema
  */
-function validateArticle(schema: any, errors: string[], warnings: string[]) {
+function validateArticle(schema: SchemaArticle, errors: string[], warnings: string[]) {
   if (!schema.headline) errors.push('Article: Missing required field "headline"')
   if (!schema.author) errors.push('Article: Missing required field "author"')
   if (!schema.datePublished) errors.push('Article: Missing required field "datePublished"')
@@ -154,13 +169,13 @@ function validateArticle(schema: any, errors: string[], warnings: string[]) {
 /**
  * Validate ItemList schema
  */
-function validateItemList(schema: any, errors: string[], warnings: string[]) {
+function validateItemList(schema: SchemaItemList, errors: string[], warnings: string[]) {
   if (!schema.itemListElement) {
     errors.push('ItemList: Missing required field "itemListElement"')
   } else if (!Array.isArray(schema.itemListElement)) {
     errors.push('ItemList: "itemListElement" must be an array')
   } else {
-    schema.itemListElement.forEach((item: any, index: number) => {
+    schema.itemListElement.forEach((item, index: number) => {
       if (!item['@type'] || item['@type'] !== 'ListItem') {
         errors.push(`ItemList: Item ${index + 1} missing @type "ListItem"`)
       }
@@ -183,13 +198,17 @@ function validateItemList(schema: any, errors: string[], warnings: string[]) {
 /**
  * Validate BreadcrumbList schema
  */
-function validateBreadcrumbList(schema: any, errors: string[], _warnings: string[]) {
+function validateBreadcrumbList(
+  schema: SchemaBreadcrumbList,
+  errors: string[],
+  _warnings: string[]
+) {
   if (!schema.itemListElement) {
     errors.push('BreadcrumbList: Missing required field "itemListElement"')
   } else if (!Array.isArray(schema.itemListElement)) {
     errors.push('BreadcrumbList: "itemListElement" must be an array')
   } else {
-    schema.itemListElement.forEach((item: any, index: number) => {
+    schema.itemListElement.forEach((item, index: number) => {
       if (!item['@type'] || item['@type'] !== 'ListItem') {
         errors.push(`BreadcrumbList: Item ${index + 1} missing @type "ListItem"`)
       }
@@ -209,7 +228,7 @@ function validateBreadcrumbList(schema: any, errors: string[], _warnings: string
 /**
  * Validate WebSite schema
  */
-function validateWebSite(schema: any, errors: string[], warnings: string[]) {
+function validateWebSite(schema: SchemaWebSite, errors: string[], warnings: string[]) {
   if (!schema.name) errors.push('WebSite: Missing required field "name"')
   if (!schema.url) errors.push('WebSite: Missing required field "url"')
   else if (!isValidUrl(schema.url)) errors.push(`WebSite: Invalid URL "${schema.url}"`)
@@ -222,7 +241,7 @@ function validateWebSite(schema: any, errors: string[], warnings: string[]) {
 /**
  * Validate FAQPage schema
  */
-function validateFAQPage(schema: any, errors: string[], warnings: string[]) {
+function validateFAQPage(schema: SchemaFAQPage, errors: string[], warnings: string[]) {
   if (!schema.mainEntity) {
     errors.push('FAQPage: Missing required field "mainEntity"')
   } else if (!Array.isArray(schema.mainEntity)) {
@@ -230,7 +249,7 @@ function validateFAQPage(schema: any, errors: string[], warnings: string[]) {
   } else if (schema.mainEntity.length === 0) {
     warnings.push('FAQPage: "mainEntity" is empty')
   } else {
-    schema.mainEntity.forEach((question: any, index: number) => {
+    schema.mainEntity.forEach((question, index: number) => {
       if (!question['@type'] || question['@type'] !== 'Question') {
         errors.push(`FAQPage: Question ${index + 1} missing @type "Question"`)
       }
@@ -249,10 +268,15 @@ function validateFAQPage(schema: any, errors: string[], warnings: string[]) {
 /**
  * Validate Offer or array of Offers
  */
-function validateOffers(offers: any, errors: string[], _warnings: string[], parentType: string) {
+function validateOffers(
+  offers: SchemaOffer | SchemaOffer[],
+  errors: string[],
+  _warnings: string[],
+  parentType: string
+) {
   const offerArray = Array.isArray(offers) ? offers : [offers]
 
-  offerArray.forEach((offer: any, index: number) => {
+  offerArray.forEach((offer, index: number) => {
     if (!offer['@type'] || offer['@type'] !== 'Offer') {
       errors.push(`${parentType}: Offer ${index + 1} missing @type "Offer"`)
     }
@@ -299,12 +323,16 @@ export function validateAndLog(schema: AnySchema, pageName: string): void {
 
     if (result.errors.length > 0) {
       console.error('❌ Errors:')
-      result.errors.forEach(error => console.error(`  - ${error}`))
+      for (const error of result.errors) {
+        console.error(`  - ${error}`)
+      }
     }
 
     if (result.warnings.length > 0) {
       console.warn('⚠️  Warnings:')
-      result.warnings.forEach(warning => console.warn(`  - ${warning}`))
+      for (const warning of result.warnings) {
+        console.warn(`  - ${warning}`)
+      }
     }
 
     console.groupEnd()

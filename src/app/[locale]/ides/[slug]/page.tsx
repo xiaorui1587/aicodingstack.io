@@ -107,8 +107,8 @@ export default async function IDEPage({
     softwareVersion: ide.latestVersion,
     description: ide.description,
     url: websiteUrl,
-    downloadUrl: ide.resourceUrls?.download,
-    installUrl: ide.resourceUrls?.download,
+    downloadUrl: ide.resourceUrls?.download || undefined,
+    installUrl: ide.resourceUrls?.download || undefined,
     author: {
       '@type': 'Organization',
       name: ide.vendor,
