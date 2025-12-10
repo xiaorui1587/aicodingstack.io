@@ -13,11 +13,11 @@
   "docsUrl": "https://docs.x.ai/docs/models/grok-code-fast-1",
   "vendor": "xAI",
   "size": "Unknown",
-  "totalContext": "128K",
+  "totalContext": "256K",
   "maxOutput": "8K",
   "tokenPricing": {
-    "input": 0,
-    "output": 0,
+    "input": $0.20,
+    "output": $0.15,
     "cache": null
   },
   "platformUrls": {
